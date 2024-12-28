@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import Editor from '@monaco-editor/react';
 import * as monaco from 'monaco-editor';
 
-// FIX CDN issue begin
+/////////////////////// Enable download js library fom local instead of CDN begin
 import { loader } from '@monaco-editor/react';
 import editorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker';
 import jsonWorker from 'monaco-editor/esm/vs/language/json/json.worker?worker';
@@ -30,7 +30,7 @@ self.MonacoEnvironment = {
 
 loader.config({ monaco });
 loader.init().then(/* ... */);
-// FIX CDN issue end
+////////////////////////////////////////////////// FIX CDN issue end
 
 const App: React.FC = () => {
     const [code, setCode] = useState('// Start coding here!');
@@ -44,7 +44,6 @@ const App: React.FC = () => {
 
     const editorDidMount = (editor: monaco.editor.IStandaloneCodeEditor) => {
         setEditorInstance(editor); // Save the Monaco editor instance once it's mounted
-
         editor.onDidChangeCursorSelection((event) => {
             console.log('Selection changed:', event);
         });
