@@ -13,7 +13,7 @@ const App: React.FC = () => {
       <Monaco
         height="200px"
         width="600px"
-        language="python"
+        language="javascript"
         theme="vs-dark"
         value={code}
         onChange={handleEditorChange}
