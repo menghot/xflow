@@ -9,14 +9,4 @@ declare module 'bpmn-js-properties-panel' {
     // Define the types for a generic BpmnPropertiesProviderModule
     const BpmnPropertiesProviderModule: Module;
     export {BpmnPropertiesProviderModule};
-
-    export default BpmnPropertiesPanelModule;
-
-
-    const PropertiesPanelTab: Module;
-    export {PropertiesPanelTab};
-    const PropertiesPanelGroup: Module;
-    export {PropertiesPanelGroup};
-    const PropertiesPanelEntry: Module;
-    export {PropertiesPanelEntry};
 }
