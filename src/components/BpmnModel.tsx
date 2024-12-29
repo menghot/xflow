@@ -11,12 +11,29 @@ const BpmnEditorComponent: React.FC = () => {
     const [modeler, setModeler] = useState<BpmnModeler | null>(null);
 
     useEffect(() => {
-        if (containerRef.current) {
-            // Initialize BpmnModeler for editable BPMN diagrams
-            const newModeler = new BpmnModeler({
+        if (containerRef.current && containerRef.current.getAttribute("loaded") !== "1") {
+
+            setModeler(new BpmnModeler({
                 container: containerRef.current!,
+            }));
+
+            // Update flag to indicate BpmnModeler loaded
+            containerRef.current.setAttribute("loaded", "1");
+        }
+
+        if (modeler) {
+            console.log("load diagram")
+            // Import the BPMN diagram into the modeler
+            modeler.importXML(diagram).then(() => {
+                // Optionally fit the diagram to the viewport
+                const canvas = modeler.get('canvas') as any;
+
+                if (canvas) {
+                    canvas.zoom('fit-viewport');
+                }
+            }).catch((err) => {
+                console.error('Error loading BPMN diagram:', err);
             });
-            setModeler(newModeler);
         }
 
         return () => {
@@ -24,12 +41,13 @@ const BpmnEditorComponent: React.FC = () => {
                 modeler.destroy();
             }
         };
-    }, []); // Only initialize once on component mount
+    }, [modeler]); // Only initialize once on component mount
 
-    useEffect(() => {
-        if (modeler) {
-            // Example BPMN diagram (you can replace this with your own XML)
-            const diagram = `
+    return <div ref={containerRef} style={{width: '100%', height: '500px', border: '1px solid #ccc'}}/>;
+};
+
+// Example BPMN diagram (you can replace this with your own XML)
+const diagram = `
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0" id="sid-38422fae-e03e-43a3-bef4-bd33b32041b2" targetNamespace="http://bpmn.io/bpmn" exporter="bpmn-js (https://demo.bpmn.io)" exporterVersion="18.1.1">
   <process id="Process_1" isExecutable="false">
@@ -470,25 +488,7 @@ const BpmnEditorComponent: React.FC = () => {
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
-</definitions>
+</definitions>`
 
-      `;
-
-            // Import the BPMN diagram into the modeler
-            modeler.importXML(diagram).then(() => {
-                // Optionally fit the diagram to the viewport
-                const canvas = modeler.get('canvas') as any;
-
-                if (canvas) {
-                    canvas.zoom('fit-viewport');
-                }
-            }).catch((err) => {
-                console.error('Error loading BPMN diagram:', err);
-            });
-        }
-    }, [modeler]); // Only run after the modeler has been initialized
-
-    return <div ref={containerRef} style={{width: '100%', height: '500px', border: '1px solid #ccc'}}/>;
-};
 
 export default BpmnEditorComponent;
