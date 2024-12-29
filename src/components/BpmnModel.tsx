@@ -175,7 +175,7 @@ const BpmnEditorComponent: React.FC = () => {
     }, [modeler]); // Only initialize once on component mount
 
     return <div>
-        <div ref={containerRef} style={{width: '100%', height: '500px', border: '1px solid #ccc'}}/>
+        <div ref={containerRef} style={{width: '100%', height: '380px', border: '1px solid #ccc'}}/>
         <button onClick={load1} style={{margin: '10px'}}> Load Diagram 1</button>
         <button onClick={load2} style={{margin: '10px'}}>Load Diagram 2</button>
         <button onClick={saveXml} style={{margin: '10px'}}>Save Diagram</button>
@@ -187,7 +187,7 @@ const BpmnEditorComponent: React.FC = () => {
             <CodeMirror style={{textAlign: 'left'}} onCreateEditor={setEditorView} value={value} theme="dark"
                         height="200px" onChange={onChange}
                         extensions={[python()]}/>
-            <button onClick={displaySelectedText}>Display Selected Text</button>
+            <button onClick={displaySelectedText} style={{margin: '10px'}}>Display Selected Text</button>
         </div>
 
     </div>;

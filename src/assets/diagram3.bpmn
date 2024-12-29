@@ -232,10 +232,10 @@
       <bpmndi:BPMNShape id="Activity_13kqv70_di" bpmnElement="Activity_13kqv70" bioc:stroke="#831311" bioc:fill="#ffcdd2" color:background-color="#ffcdd2" color:border-color="#831311">
         <omgdc:Bounds x="2260" y="460" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0nsf39w_di" bpmnElement="Activity_0nsf39w">
+      <bpmndi:BPMNShape id="Activity_0nsf39w_di" bpmnElement="Activity_0nsf39w" bioc:stroke="#831311" bioc:fill="#ffcdd2" color:background-color="#f22dd2" color:border-color="#831311">
         <omgdc:Bounds x="610" y="830" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0rqc0y8_di" bpmnElement="Activity_0rqc0y8">
+      <bpmndi:BPMNShape id="Activity_0rqc0y8_di" bpmnElement="Activity_0rqc0y8" bioc:stroke="#831311" bioc:fill="#ffcdd2" color:background-color="#f22dd2" color:border-color="#831311">
         <omgdc:Bounds x="610" y="940" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Group_1eze2dy_di" bpmnElement="Group_1eze2dy" bioc:stroke="#205022" bioc:fill="#c8e6c9" color:background-color="#c8e6c9" color:border-color="#205022">
