@@ -9,8 +9,8 @@ import 'bpmn-js/dist/assets/bpmn-font/css/bpmn.css'
 import 'bpmn-js/dist/assets/bpmn-font/css/bpmn-codes.css'
 import 'bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css'
 
-// import Editors from './MultipleCodeEditors.tsx'
-import CodeEditor from './CodeMirrorEditor'
+import CodeMirror, {EditorView} from '@uiw/react-codemirror';
+import {python} from '@codemirror/lang-python';
 
 // import 'bpmn-js-properties-panel/dist/assets/bpmn-js-properties-panel.css'
 const BpmnEditorComponent: React.FC = () => {
@@ -122,6 +122,27 @@ const BpmnEditorComponent: React.FC = () => {
         link.click();
         window.URL.revokeObjectURL(url);
     };
+    //////////////////////
+
+    const [value, setValue] = React.useState("print(123)");
+
+    //Keep editor reference for further use
+    const [editorView, setEditorView] = React.useState<EditorView | null>(null)
+
+    const onChange = React.useCallback((v: string) => {
+        setValue(v);
+    }, []);
+
+    const displaySelectedText = () => {
+        // Get the primary selection
+        // console.log(editorView)
+        if (editorView) {
+            const selection = editorView.state.selection.main;
+            const selected = editorView.state.doc.sliceString(selection.from, selection.to);
+            console.log(selected)
+        }
+    }
+    //////////////////////
 
 
     useEffect(() => {
@@ -138,6 +159,7 @@ const BpmnEditorComponent: React.FC = () => {
             // @ts-expect-error
             eventBus.on('element.click', ({element}) => {
                 console.log('Clicked element:', element);
+                setValue(element.id)
                 //alert(`Element clicked:ID: ${element.id} Type: ${element.type}`);
             });
 
@@ -161,7 +183,12 @@ const BpmnEditorComponent: React.FC = () => {
         <button onClick={() => exportAsImage('png')} style={{margin: '10px'}}>Export png2 Diagram</button>
         <button onClick={() => exportDiagram()} style={{margin: '10px'}}>Export Diagram</button>
 
-        <CodeEditor/>
+        <div style={{height: '260px'}}>
+            <CodeMirror style={{textAlign: 'left'}} onCreateEditor={setEditorView} value={value} theme="dark"
+                        height="200px" onChange={onChange}
+                        extensions={[python()]}/>
+            <button onClick={displaySelectedText}>Display Selected Text</button>
+        </div>
 
     </div>;
 };
