@@ -9,6 +9,9 @@ import 'bpmn-js/dist/assets/bpmn-font/css/bpmn.css'
 import 'bpmn-js/dist/assets/bpmn-font/css/bpmn-codes.css'
 import 'bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css'
 
+// import Editors from './MultipleCodeEditors.tsx'
+import CodeEditor from './CodeMirrorEditor'
+
 // import 'bpmn-js-properties-panel/dist/assets/bpmn-js-properties-panel.css'
 const BpmnEditorComponent: React.FC = () => {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -55,7 +58,7 @@ const BpmnEditorComponent: React.FC = () => {
                 if (xml) {
                     download(xml, 'diagram.bpmn', 'application/xml');
                 } else {
-                     console.error('Failed to export BPMN model');
+                    console.error('Failed to export BPMN model');
                 }
             }
         } catch (err) {
@@ -123,13 +126,25 @@ const BpmnEditorComponent: React.FC = () => {
 
     useEffect(() => {
         if (containerRef.current && containerRef.current.getAttribute("loaded") !== "loaded") {
-            setModeler(new BpmnModeler({
+
+            const modeler = new BpmnModeler({
                 container: containerRef.current!,
-            }));
+            })
+
+            setModeler(modeler);
+
+            const eventBus = modeler.get('eventBus');
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-expect-error
+            eventBus.on('element.click', ({element}) => {
+                console.log('Clicked element:', element);
+                //alert(`Element clicked:ID: ${element.id} Type: ${element.type}`);
+            });
 
             // set BpmnModeler loaded
             containerRef.current.setAttribute("loaded", "loaded");
         }
+
 
         return () => {
             //FIXME
@@ -146,7 +161,7 @@ const BpmnEditorComponent: React.FC = () => {
         <button onClick={() => exportAsImage('png')} style={{margin: '10px'}}>Export png2 Diagram</button>
         <button onClick={() => exportDiagram()} style={{margin: '10px'}}>Export Diagram</button>
 
-
+        <CodeEditor/>
 
     </div>;
 };

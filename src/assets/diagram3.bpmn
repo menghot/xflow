@@ -137,7 +137,7 @@
     <sequenceFlow id="Flow_1x83u87" sourceRef="Task_1hcentk" targetRef="Activity_0rqc0y8" />
     <sequenceFlow id="Flow_11rlgoa" sourceRef="Activity_0nsf39w" targetRef="Activity_11gbemy" />
     <sequenceFlow id="Flow_0y34f94" sourceRef="Activity_0rqc0y8" targetRef="Activity_11gbemy" />
-    <sequenceFlow id="Flow_02opcr2" sourceRef="Activity_0jbsqj1" targetRef="Activity_0mf0hg3" />
+    <sequenceFlow id="Flow_02opcr2" name="nodependency" sourceRef="Activity_0jbsqj1" targetRef="Activity_0mf0hg3" />
     <sequenceFlow id="Flow_1jz011p" sourceRef="Activity_07pevdq" targetRef="Activity_11gbemy" />
     <group id="Group_1eze2dy" categoryValueRef="CategoryValue_0iw81cd" />
     <group id="Group_160to0q" categoryValueRef="CategoryValue_0kbzhpd" />
@@ -238,10 +238,6 @@
       <bpmndi:BPMNShape id="Activity_0rqc0y8_di" bpmnElement="Activity_0rqc0y8">
         <omgdc:Bounds x="610" y="940" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Association_05npldt_di" bpmnElement="Association_05npldt">
-        <omgdi:waypoint x="172" y="210" />
-        <omgdi:waypoint x="50" y="210" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Group_1eze2dy_di" bpmnElement="Group_1eze2dy" bioc:stroke="#205022" bioc:fill="#c8e6c9" color:background-color="#c8e6c9" color:border-color="#205022">
         <omgdc:Bounds x="510" y="110" width="320" height="610" />
         <bpmndi:BPMNLabel>
@@ -271,6 +267,10 @@
         <bpmndi:BPMNLabel>
           <omgdc:Bounds x="623" y="767" width="90" height="27" />
         </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_1k8shik_di" bpmnElement="TextAnnotation_1k8shik">
+        <omgdc:Bounds x="-50" y="195" width="100" height="30" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_0h21x7r_di" bpmnElement="SequenceFlow_0h21x7r">
         <omgdi:waypoint x="208" y="210" />
@@ -433,15 +433,18 @@
       <bpmndi:BPMNEdge id="Flow_02opcr2_di" bpmnElement="Flow_02opcr2">
         <omgdi:waypoint x="710" y="210" />
         <omgdi:waypoint x="1160" y="210" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="873" y="192" width="73" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1jz011p_di" bpmnElement="Flow_1jz011p">
         <omgdi:waypoint x="710" y="415" />
         <omgdi:waypoint x="870" y="415" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="TextAnnotation_1k8shik_di" bpmnElement="TextAnnotation_1k8shik">
-        <omgdc:Bounds x="-50" y="195" width="100" height="30" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_05npldt_di" bpmnElement="Association_05npldt">
+        <omgdi:waypoint x="172" y="210" />
+        <omgdi:waypoint x="50" y="210" />
+      </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </definitions>
