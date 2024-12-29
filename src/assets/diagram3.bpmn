@@ -144,10 +144,10 @@
     <group id="Group_046gz2b" categoryValueRef="CategoryValue_0838pta" />
     <group id="Group_10av2g2" categoryValueRef="CategoryValue_055vj6n" />
     <group id="Group_067m3wy" categoryValueRef="CategoryValue_1uiauft" />
-    <textAnnotation id="TextAnnotation_1k8shik">
+    <textAnnotation id="begin_simon_id">
       <text>begin</text>
     </textAnnotation>
-    <association id="Association_05npldt" associationDirection="None" sourceRef="StartEvent_1y45yut" targetRef="TextAnnotation_1k8shik" />
+    <association id="Association_05npldt" associationDirection="None" sourceRef="StartEvent_1y45yut" targetRef="begin_simon_id" />
   </process>
   <category id="Category_1jju8es">
     <categoryValue id="CategoryValue_0iw81cd" value="ODS" />
@@ -268,7 +268,7 @@
           <omgdc:Bounds x="623" y="767" width="90" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="TextAnnotation_1k8shik_di" bpmnElement="TextAnnotation_1k8shik">
+      <bpmndi:BPMNShape id="TextAnnotation_1k8shik_di" bpmnElement="begin_simon_id">
         <omgdc:Bounds x="-50" y="195" width="100" height="30" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>

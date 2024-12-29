@@ -3,18 +3,24 @@ import BpmnModeler from 'bpmn-js/lib/Modeler';
 import diagram1 from '../assets/diagram3.bpmn?raw';
 import diagram2 from '../assets/diagram2.bpmn?raw';
 
-//MUST import those css files
+//bpmn css files is mandatory
 import 'bpmn-js/dist/assets/diagram-js.css'
 import 'bpmn-js/dist/assets/bpmn-font/css/bpmn.css'
 import 'bpmn-js/dist/assets/bpmn-font/css/bpmn-codes.css'
 import 'bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css'
+import '@bpmn-io/properties-panel/assets/properties-panel.css';
 
 import CodeMirror, {EditorView} from '@uiw/react-codemirror';
 import {python} from '@codemirror/lang-python';
 
+import { BpmnPropertiesPanelModule, BpmnPropertiesProviderModule } from 'bpmn-js-properties-panel';
+
 // import 'bpmn-js-properties-panel/dist/assets/bpmn-js-properties-panel.css'
+
 const BpmnEditorComponent: React.FC = () => {
     const containerRef = useRef<HTMLDivElement>(null);
+    const propertiesRef = useRef<HTMLDivElement>(null);
+
     const [modeler, setModeler] = useState<BpmnModeler | null>(null);
 
     const saveXml = () => {
@@ -26,6 +32,8 @@ const BpmnEditorComponent: React.FC = () => {
     }
 
     const load1 = () => {
+        //togglePalette(true);
+
         console.log("load diagram1")
         //modeler?.clear()
         modeler?.importXML(diagram1).then(() => {
@@ -39,6 +47,7 @@ const BpmnEditorComponent: React.FC = () => {
     }
 
     const load2 = () => {
+        //togglePalette(false);
         console.log("load diagram2")
         //modeler?.clear()
         modeler?.importXML(diagram2).then(() => {
@@ -122,34 +131,23 @@ const BpmnEditorComponent: React.FC = () => {
         link.click();
         window.URL.revokeObjectURL(url);
     };
-    //////////////////////
 
-    const [value, setValue] = React.useState("print(123)");
 
-    //Keep editor reference for further use
-    const [editorView, setEditorView] = React.useState<EditorView | null>(null)
-
-    const onChange = React.useCallback((v: string) => {
-        setValue(v);
-    }, []);
-
-    const displaySelectedText = () => {
-        // Get the primary selection
-        // console.log(editorView)
-        if (editorView) {
-            const selection = editorView.state.selection.main;
-            const selected = editorView.state.doc.sliceString(selection.from, selection.to);
-            console.log(selected)
-        }
-    }
-    //////////////////////
-
+    // const togglePalette = (visible:boolean) => {
+    //     const palette = document.querySelector('.djs-palette');
+    //     if (palette) {
+    //         palette.style.display = visible ? 'block' : 'none';
+    //     }
+    // };
 
     useEffect(() => {
         if (containerRef.current && containerRef.current.getAttribute("loaded") !== "loaded") {
-
             const modeler = new BpmnModeler({
                 container: containerRef.current!,
+                additionalModules: [BpmnPropertiesPanelModule, BpmnPropertiesProviderModule],
+                propertiesPanel: {
+                    parent: propertiesRef.current,
+                },
             })
 
             setModeler(modeler);
@@ -174,17 +172,46 @@ const BpmnEditorComponent: React.FC = () => {
         };
     }, [modeler]); // Only initialize once on component mount
 
+
+    ////////////////////// code editor begin
+    const [value, setValue] = React.useState("print(1234)");
+
+    //Keep editor reference for further use
+    const [editorView, setEditorView] = React.useState<EditorView | null>(null)
+
+    const onChange = React.useCallback((v: string) => {
+        setValue(v);
+    }, []);
+
+    const displaySelectedText = () => {
+        // Get the primary selection
+        // console.log(editorView)
+        if (editorView) {
+            const selection = editorView.state.selection.main;
+            const selected = editorView.state.doc.sliceString(selection.from, selection.to);
+            console.log(selected)
+        }
+    }
+    ////////////////////// code editor end
+
     return <div>
-        <div ref={containerRef} style={{width: '100%', height: '380px', border: '1px solid #ccc'}}/>
-        <button onClick={load1} style={{margin: '10px'}}> Load Diagram 1</button>
-        <button onClick={load2} style={{margin: '10px'}}>Load Diagram 2</button>
-        <button onClick={saveXml} style={{margin: '10px'}}>Save Diagram</button>
-        <button onClick={() => exportAsImage('svg')} style={{margin: '10px'}}>Export SVG1 Diagram</button>
-        <button onClick={() => exportAsImage('png')} style={{margin: '10px'}}>Export png2 Diagram</button>
-        <button onClick={() => exportDiagram()} style={{margin: '10px'}}>Export Diagram</button>
+
+        <div style={{display: 'flex', height: '380px'}}>
+            <div ref={containerRef} style={{width: '78%', border: '1px solid #ccc'}}></div>
+            <div ref={propertiesRef} style={{width: '22%', border: '1px solid #ccc', borderLeft: 'none'}}></div>
+        </div>
+
+        <div>
+            <button onClick={load1} style={{margin: '10px'}}> Load Diagram 1</button>
+            <button onClick={load2} style={{margin: '10px'}}>Load Diagram 2</button>
+            <button onClick={saveXml} style={{margin: '10px'}}>Save Diagram</button>
+            <button onClick={() => exportAsImage('svg')} style={{margin: '10px'}}>Export SVG1 Diagram</button>
+            <button onClick={() => exportAsImage('png')} style={{margin: '10px'}}>Export png2 Diagram</button>
+            <button onClick={() => exportDiagram()} style={{margin: '10px'}}>Export Diagram</button>
+        </div>
 
         <div style={{height: '260px'}}>
-            <CodeMirror style={{textAlign: 'left'}} onCreateEditor={setEditorView} value={value} theme="dark"
+            <CodeMirror style={{textAlign: 'left'}} onCreateEditor={setEditorView} value={value} theme="light"
                         height="200px" onChange={onChange}
                         extensions={[python()]}/>
             <button onClick={displaySelectedText} style={{margin: '10px'}}>Display Selected Text</button>

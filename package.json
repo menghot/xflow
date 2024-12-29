@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@bpmn-io/properties-panel": "^3.25.1",
     "@codemirror/lang-javascript": "^6.2.2",
     "@codemirror/lang-python": "^6.1.6",
     "@codemirror/lang-sql": "^6.8.0",
@@ -16,12 +17,11 @@
     "@uiw/react-codemirror": "^4.23.7",
     "bpmn-js": "^18.1.2",
     "bpmn-js-properties-panel": "^5.30.0",
+    "camunda-bpmn-moddle": "^7.0.1",
     "monaco-editor-core": "^0.52.2",
     "monaco-languages": "^2.11.1",
     "react": "^18.3.1",
-    "react-digraph": "^9.1.2",
-    "react-dom": "^18.3.1",
-    "react-flow-renderer": "^10.3.17"
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
