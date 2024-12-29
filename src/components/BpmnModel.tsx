@@ -13,7 +13,7 @@ import '@bpmn-io/properties-panel/assets/properties-panel.css';
 import CodeMirror, {EditorView} from '@uiw/react-codemirror';
 import {python} from '@codemirror/lang-python';
 
-import { BpmnPropertiesPanelModule, BpmnPropertiesProviderModule } from 'bpmn-js-properties-panel';
+import {BpmnPropertiesPanelModule, BpmnPropertiesProviderModule} from 'bpmn-js-properties-panel';
 
 // import 'bpmn-js-properties-panel/dist/assets/bpmn-js-properties-panel.css'
 
@@ -157,7 +157,11 @@ const BpmnEditorComponent: React.FC = () => {
             // @ts-expect-error
             eventBus.on('element.click', ({element}) => {
                 console.log('Clicked element:', element);
-                setValue(element.id)
+                if (element.businessObject.documentation && element.businessObject.documentation.length > 0) {
+                    setValue(element.businessObject.documentation[0].text);
+                } else {
+                    setValue('')
+                }
                 //alert(`Element clicked:ID: ${element.id} Type: ${element.type}`);
             });
 

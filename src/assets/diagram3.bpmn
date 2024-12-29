@@ -35,27 +35,28 @@
       <outgoing>Flow_0lcwadl</outgoing>
       <outgoing>Flow_1fdjwc7</outgoing>
     </scriptTask>
-    <serviceTask id="Activity_0jbsqj1">
+    <serviceTask id="Activity_0jbsqj1" name="load treas trade">
       <incoming>Flow_1us96s3</incoming>
       <outgoing>Flow_02opcr2</outgoing>
     </serviceTask>
-    <serviceTask id="Activity_0ehag79">
+    <serviceTask id="Activity_0ehag79" name="load otc trade">
       <incoming>Flow_13e7qwl</incoming>
       <outgoing>Flow_0isaw67</outgoing>
     </serviceTask>
-    <serviceTask id="Activity_07pevdq">
+    <serviceTask id="Activity_07pevdq" name="load sft trade">
       <incoming>Flow_0uev2lx</incoming>
       <outgoing>Flow_1jz011p</outgoing>
     </serviceTask>
-    <serviceTask id="Activity_1ion9sy">
+    <serviceTask id="Activity_1ion9sy" name="load collateral">
       <incoming>Flow_1i9nk5i</incoming>
       <outgoing>Flow_1ntfu6e</outgoing>
     </serviceTask>
-    <serviceTask id="Activity_0gmjt9h">
+    <serviceTask id="Activity_0gmjt9h" name="load limit">
       <incoming>Flow_1qjlg4d</incoming>
       <outgoing>Flow_1ok3ot6</outgoing>
     </serviceTask>
-    <receiveTask id="Task_1hcentk" name="CobDate">
+    <receiveTask id="Task_1hcentk" name="CobDate" messageRef="Message_0gvcahs">
+      <documentation> ods_cpty</documentation>
       <incoming>SequenceFlow_0h21x7r</incoming>
       <outgoing>Flow_1us96s3</outgoing>
       <outgoing>Flow_13e7qwl</outgoing>
@@ -74,6 +75,7 @@
       <outgoing>Flow_1nrk476</outgoing>
     </task>
     <task id="Activity_0cw0qg7">
+      <documentation>select * from ods_cpty</documentation>
       <incoming>Flow_1fdjwc7</incoming>
       <outgoing>Flow_19bplht</outgoing>
     </task>
@@ -119,17 +121,18 @@
     </task>
     <sequenceFlow id="Flow_130ttz9" sourceRef="Activity_1oboin4" targetRef="Activity_0ye18o4" />
     <task id="Activity_13kqv70">
+      <documentation>show catalogs</documentation>
       <incoming>Flow_1bxayw9</incoming>
       <outgoing>Flow_1f5tds3</outgoing>
     </task>
     <sequenceFlow id="Flow_1bxayw9" sourceRef="Activity_1oboin4" targetRef="Activity_13kqv70" />
     <sequenceFlow id="Flow_1f5tds3" sourceRef="Activity_13kqv70" targetRef="Event_14n5bq1" />
     <sequenceFlow id="Flow_0miqxr5" sourceRef="Activity_0ye18o4" targetRef="Event_14n5bq1" />
-    <task id="Activity_0nsf39w">
+    <task id="Activity_0nsf39w" name="load cpty">
       <incoming>Flow_1l6ypsf</incoming>
       <outgoing>Flow_11rlgoa</outgoing>
     </task>
-    <task id="Activity_0rqc0y8">
+    <task id="Activity_0rqc0y8" name="load hierachy">
       <incoming>Flow_1x83u87</incoming>
       <outgoing>Flow_0y34f94</outgoing>
     </task>
@@ -164,6 +167,7 @@
   <category id="Category_0q6n1zd">
     <categoryValue id="CategoryValue_1uiauft" value="Mandatory Task/Data prepare" />
   </category>
+  <message id="Message_0gvcahs" name="Message_0gvcahs" />
   <bpmndi:BPMNDiagram id="BpmnDiagram_1">
     <bpmndi:BPMNPlane id="BpmnPlane_1" bpmnElement="Process_2">
       <bpmndi:BPMNShape id="StartEvent_1y45yut_di" bpmnElement="StartEvent_1y45yut">
@@ -184,18 +188,23 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_01jk0oz_di" bpmnElement="Activity_0jbsqj1" bioc:stroke="#205022" bioc:fill="#c8e6c9" color:background-color="#c8e6c9" color:border-color="#205022">
         <omgdc:Bounds x="610" y="170" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0onv916_di" bpmnElement="Activity_0ehag79" bioc:stroke="#205022" bioc:fill="#c8e6c9" color:background-color="#c8e6c9" color:border-color="#205022">
         <omgdc:Bounds x="610" y="280" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1wfzi1m_di" bpmnElement="Activity_07pevdq" bioc:stroke="#205022" bioc:fill="#c8e6c9" color:background-color="#c8e6c9" color:border-color="#205022">
         <omgdc:Bounds x="610" y="375" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0k78nig_di" bpmnElement="Activity_1ion9sy" bioc:stroke="#205022" bioc:fill="#c8e6c9" color:background-color="#c8e6c9" color:border-color="#205022">
         <omgdc:Bounds x="610" y="470" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1ib191t_di" bpmnElement="Activity_0gmjt9h" bioc:stroke="#205022" bioc:fill="#c8e6c9" color:background-color="#c8e6c9" color:border-color="#205022">
         <omgdc:Bounds x="610" y="580" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1jdsolt_di" bpmnElement="Task_1hcentk">
         <omgdc:Bounds x="290" y="170" width="100" height="80" />
@@ -234,9 +243,11 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0nsf39w_di" bpmnElement="Activity_0nsf39w" bioc:stroke="#831311" bioc:fill="#ffcdd2" color:background-color="#f22dd2" color:border-color="#831311">
         <omgdc:Bounds x="610" y="830" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0rqc0y8_di" bpmnElement="Activity_0rqc0y8" bioc:stroke="#831311" bioc:fill="#ffcdd2" color:background-color="#f22dd2" color:border-color="#831311">
         <omgdc:Bounds x="610" y="940" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Group_1eze2dy_di" bpmnElement="Group_1eze2dy" bioc:stroke="#205022" bioc:fill="#c8e6c9" color:background-color="#c8e6c9" color:border-color="#205022">
         <omgdc:Bounds x="510" y="110" width="320" height="610" />
