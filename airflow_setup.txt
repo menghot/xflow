@@ -1,0 +1,4 @@
+pip install "apache-airflow[celery]==2.8.4" --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.8.4/constraints-3.9.txt"
+
+airflow db init
+airflow users create -r Admin -u admin -e admin@example.com -f admin -l admin -p admin
