@@ -11,7 +11,8 @@ import 'bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css'
 import '@bpmn-io/properties-panel/assets/properties-panel.css';
 
 import CodeMirror, {EditorView} from '@uiw/react-codemirror';
-import {python} from '@codemirror/lang-python';
+// import {python} from '@codemirror/lang-python';
+import {sql} from '@codemirror/lang-sql';
 
 import {BpmnPropertiesPanelModule, BpmnPropertiesProviderModule} from 'bpmn-js-properties-panel';
 import Modeling from "bpmn-js/lib/features/modeling/Modeling";
@@ -252,7 +253,7 @@ const BpmnEditorComponent: React.FC = () => {
         <div style={{height: '260px'}}>
             <CodeMirror style={{textAlign: 'left'}} onCreateEditor={setEditorView} value={value} theme="light"
                         height="200px" onChange={onChange}
-                        extensions={[python()]}/>
+                        extensions={[sql()]}/>
             <button onClick={displaySelectedText} style={{margin: '10px'}}>Display Selected Text</button>
         </div>
 

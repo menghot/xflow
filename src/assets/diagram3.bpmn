@@ -6,11 +6,14 @@
     </startEvent>
     <sequenceFlow id="SequenceFlow_0h21x7r" sourceRef="StartEvent_1y45yut" targetRef="Task_1hcentk" />
     <sequenceFlow id="Flow_1us96s3" sourceRef="Task_1hcentk" targetRef="Activity_0jbsqj1" />
-    <task id="Activity_0mf0hg3">
+    <task id="Activity_0mf0hg3" name="1">
       <incoming>Flow_02opcr2</incoming>
       <outgoing>Flow_0ff0tt7</outgoing>
     </task>
-    <task id="Activity_09f58kw">
+    <task id="Activity_09f58kw" name="analyze user activity">
+      <documentation>select * from table;
+
+select current_date;</documentation>
       <incoming>Flow_0ff0tt7</incoming>
       <incoming>Flow_1bw5h1u</incoming>
       <incoming>Flow_1nrk476</incoming>
@@ -24,17 +27,6 @@
     <sequenceFlow id="Flow_0isaw67" sourceRef="Activity_0ehag79" targetRef="Activity_11gbemy" />
     <sequenceFlow id="Flow_1ntfu6e" sourceRef="Activity_1ion9sy" targetRef="Activity_11gbemy" />
     <sequenceFlow id="Flow_1ok3ot6" sourceRef="Activity_0gmjt9h" targetRef="Activity_11gbemy" />
-    <scriptTask id="Activity_11gbemy" name="Wait of static data">
-      <incoming>Flow_0isaw67</incoming>
-      <incoming>Flow_1ntfu6e</incoming>
-      <incoming>Flow_1ok3ot6</incoming>
-      <incoming>Flow_11rlgoa</incoming>
-      <incoming>Flow_0y34f94</incoming>
-      <incoming>Flow_1jz011p</incoming>
-      <outgoing>Flow_0tbjzlz</outgoing>
-      <outgoing>Flow_0lcwadl</outgoing>
-      <outgoing>Flow_1fdjwc7</outgoing>
-    </scriptTask>
     <serviceTask id="Activity_0jbsqj1" name="load treas trade">
       <incoming>Flow_1us96s3</incoming>
       <outgoing>Flow_02opcr2</outgoing>
@@ -66,18 +58,18 @@
       <outgoing>Flow_1l6ypsf</outgoing>
       <outgoing>Flow_1x83u87</outgoing>
     </receiveTask>
-    <task id="Activity_03a8wp7">
+    <task id="Activity_03a8wp7" name="2">
       <incoming>Flow_0tbjzlz</incoming>
       <outgoing>Flow_1bw5h1u</outgoing>
     </task>
-    <task id="Activity_0qi3eaq">
+    <task id="Activity_0qi3eaq" name="3">
       <incoming>Flow_0lcwadl</incoming>
       <outgoing>Flow_1nrk476</outgoing>
     </task>
     <task id="Activity_0cw0qg7" name="transform data from ods">
-      <documentation>select * from ods_cpty;
-callable
-""
+      <documentation>---------
+select * from ods_cpty;
+
 </documentation>
       <incoming>Flow_1fdjwc7</incoming>
       <outgoing>Flow_19bplht</outgoing>
@@ -85,21 +77,29 @@ callable
     <sequenceFlow id="Flow_0tbjzlz" sourceRef="Activity_11gbemy" targetRef="Activity_03a8wp7" />
     <sequenceFlow id="Flow_0lcwadl" sourceRef="Activity_11gbemy" targetRef="Activity_0qi3eaq" />
     <sequenceFlow id="Flow_1fdjwc7" sourceRef="Activity_11gbemy" targetRef="Activity_0cw0qg7" />
-    <task id="Activity_1gxks2f">
+    <task id="Activity_1gxks2f" name="4">
       <incoming>Flow_1apfk9a</incoming>
       <outgoing>Flow_1a4gteh</outgoing>
     </task>
     <sequenceFlow id="Flow_1apfk9a" sourceRef="Activity_09f58kw" targetRef="Activity_1gxks2f" />
     <sequenceFlow id="Flow_1bw5h1u" sourceRef="Activity_03a8wp7" targetRef="Activity_09f58kw" />
     <sequenceFlow id="Flow_1nrk476" sourceRef="Activity_0qi3eaq" targetRef="Activity_09f58kw" />
-    <task id="Activity_1i0mfm4">
+    <task id="Activity_1i0mfm4" name="generate report">
+      <documentation>---------
+select * from ods_cpty;
+</documentation>
       <incoming>Flow_19bplht</incoming>
       <outgoing>Flow_12jilhq</outgoing>
     </task>
     <sequenceFlow id="Flow_19bplht" sourceRef="Activity_0cw0qg7" targetRef="Activity_1i0mfm4" />
     <sequenceFlow id="Flow_1a4gteh" sourceRef="Activity_1gxks2f" targetRef="Activity_1oboin4" />
     <sequenceFlow id="Flow_12jilhq" sourceRef="Activity_1i0mfm4" targetRef="Activity_1oboin4" />
-    <task id="Activity_16a8a92">
+    <task id="Activity_16a8a92" name="5_create_table">
+      <documentation>-- 1. create temp table 
+create table ods.test as select * from xfile.ods.test;
+
+-- 2. set session properties
+set session max_query_time = '5m';</documentation>
       <incoming>Flow_087d5j5</incoming>
       <outgoing>Flow_1svyg4o</outgoing>
     </task>
@@ -118,12 +118,12 @@ callable
       <outgoing>Flow_130ttz9</outgoing>
       <outgoing>Flow_1bxayw9</outgoing>
     </task>
-    <task id="Activity_0ye18o4">
+    <task id="Activity_0ye18o4" name="6">
       <incoming>Flow_130ttz9</incoming>
       <outgoing>Flow_0miqxr5</outgoing>
     </task>
     <sequenceFlow id="Flow_130ttz9" sourceRef="Activity_1oboin4" targetRef="Activity_0ye18o4" />
-    <task id="Activity_13kqv70">
+    <task id="Activity_13kqv70" name="7">
       <documentation>show catalogs</documentation>
       <incoming>Flow_1bxayw9</incoming>
       <outgoing>Flow_1f5tds3</outgoing>
@@ -145,6 +145,18 @@ callable
     <sequenceFlow id="Flow_0y34f94" sourceRef="Activity_0rqc0y8" targetRef="Activity_11gbemy" />
     <sequenceFlow id="Flow_02opcr2" name="nodependency" sourceRef="Activity_0jbsqj1" targetRef="Activity_0mf0hg3" />
     <sequenceFlow id="Flow_1jz011p" sourceRef="Activity_07pevdq" targetRef="Activity_11gbemy" />
+    <serviceTask id="Activity_11gbemy" name="Wait of static data">
+      <documentation>show tables;</documentation>
+      <incoming>Flow_0isaw67</incoming>
+      <incoming>Flow_1ntfu6e</incoming>
+      <incoming>Flow_1ok3ot6</incoming>
+      <incoming>Flow_11rlgoa</incoming>
+      <incoming>Flow_0y34f94</incoming>
+      <incoming>Flow_1jz011p</incoming>
+      <outgoing>Flow_0tbjzlz</outgoing>
+      <outgoing>Flow_0lcwadl</outgoing>
+      <outgoing>Flow_1fdjwc7</outgoing>
+    </serviceTask>
     <group id="Group_1eze2dy" categoryValueRef="CategoryValue_0iw81cd" />
     <group id="Group_160to0q" categoryValueRef="CategoryValue_0kbzhpd" />
     <group id="Group_046gz2b" categoryValueRef="CategoryValue_0838pta" />
@@ -181,12 +193,10 @@ callable
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0mf0hg3_di" bpmnElement="Activity_0mf0hg3" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
         <omgdc:Bounds x="1160" y="170" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_09f58kw_di" bpmnElement="Activity_09f58kw" bioc:stroke="#6b3c00" bioc:fill="#ffe0b2" color:background-color="#ffe0b2" color:border-color="#6b3c00">
         <omgdc:Bounds x="1570" y="270" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0du17t0_di" bpmnElement="Activity_11gbemy">
-        <omgdc:Bounds x="870" y="375" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_01jk0oz_di" bpmnElement="Activity_0jbsqj1" bioc:stroke="#205022" bioc:fill="#c8e6c9" color:background-color="#c8e6c9" color:border-color="#205022">
@@ -215,9 +225,11 @@ callable
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_03a8wp7_di" bpmnElement="Activity_03a8wp7" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
         <omgdc:Bounds x="1160" y="270" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0qi3eaq_di" bpmnElement="Activity_0qi3eaq" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
         <omgdc:Bounds x="1160" y="375" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0cw0qg7_di" bpmnElement="Activity_0cw0qg7" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
         <omgdc:Bounds x="1160" y="510" width="100" height="80" />
@@ -225,12 +237,15 @@ callable
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1gxks2f_di" bpmnElement="Activity_1gxks2f" bioc:stroke="#6b3c00" bioc:fill="#ffe0b2" color:background-color="#ffe0b2" color:border-color="#6b3c00">
         <omgdc:Bounds x="1730" y="270" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1i0mfm4_di" bpmnElement="Activity_1i0mfm4" bioc:stroke="#6b3c00" bioc:fill="#ffe0b2" color:background-color="#ffe0b2" color:border-color="#6b3c00">
         <omgdc:Bounds x="1570" y="510" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_16a8a92_di" bpmnElement="Activity_16a8a92" bioc:stroke="#831311" bioc:fill="#ffcdd2" color:background-color="#ffcdd2" color:border-color="#831311">
         <omgdc:Bounds x="2260" y="230" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1p0p2z7_di" bpmnElement="Event_14n5bq1">
         <omgdc:Bounds x="2542" y="372" width="36" height="36" />
@@ -241,9 +256,11 @@ callable
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0ye18o4_di" bpmnElement="Activity_0ye18o4" bioc:stroke="#831311" bioc:fill="#ffcdd2" color:background-color="#ffcdd2" color:border-color="#831311">
         <omgdc:Bounds x="2260" y="350" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_13kqv70_di" bpmnElement="Activity_13kqv70" bioc:stroke="#831311" bioc:fill="#ffcdd2" color:background-color="#ffcdd2" color:border-color="#831311">
         <omgdc:Bounds x="2260" y="460" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0nsf39w_di" bpmnElement="Activity_0nsf39w" bioc:stroke="#831311" bioc:fill="#ffcdd2" color:background-color="#f22dd2" color:border-color="#831311">
         <omgdc:Bounds x="610" y="830" width="100" height="80" />
@@ -252,6 +269,9 @@ callable
       <bpmndi:BPMNShape id="Activity_0rqc0y8_di" bpmnElement="Activity_0rqc0y8" bioc:stroke="#831311" bioc:fill="#ffcdd2" color:background-color="#f22dd2" color:border-color="#831311">
         <omgdc:Bounds x="610" y="940" width="100" height="80" />
         <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0ivitmh_di" bpmnElement="Activity_11gbemy">
+        <omgdc:Bounds x="870" y="375" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Group_1eze2dy_di" bpmnElement="Group_1eze2dy" bioc:stroke="#205022" bioc:fill="#c8e6c9" color:background-color="#c8e6c9" color:border-color="#205022">
         <omgdc:Bounds x="510" y="110" width="320" height="610" />
