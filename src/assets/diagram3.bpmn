@@ -74,8 +74,11 @@
       <incoming>Flow_0lcwadl</incoming>
       <outgoing>Flow_1nrk476</outgoing>
     </task>
-    <task id="Activity_0cw0qg7">
-      <documentation>select * from ods_cpty</documentation>
+    <task id="Activity_0cw0qg7" name="transform data from ods">
+      <documentation>select * from ods_cpty;
+callable
+""
+</documentation>
       <incoming>Flow_1fdjwc7</incoming>
       <outgoing>Flow_19bplht</outgoing>
     </task>

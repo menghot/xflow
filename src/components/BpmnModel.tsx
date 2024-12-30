@@ -23,16 +23,16 @@ import {Moddle} from "bpmn-js/lib/model/Types";
 const BpmnEditorComponent: React.FC = () => {
     const containerRef = useRef<HTMLDivElement>(null);
     const propertiesRef = useRef<HTMLDivElement>(null);
-
+    const [selectedNode, setNode] = React.useState("");
     //const currentNodeDocRef = useRef<HTMLDivElement>(null);
 
     const [modeler, setModeler] = useState<BpmnModeler | null>(null);
 
     const saveXml = () => {
         modeler?.saveXML().then(({xml}) => {
-            console.log('Saved BPMN XML:', xml);
+            console.log('Saved BPMN XML:', xml)
         }).catch((err) => {
-            console.error('Error saving BPMN XML:', err);
+            console.error('Error saving BPMN XML:', err)
         });
     }
 
@@ -165,21 +165,8 @@ const BpmnEditorComponent: React.FC = () => {
                 const elementRegistry: ElementRegistry = modeler.get('elementRegistry');
                 console.log(elementRegistry)
 
-                let docs = element.businessObject.documentation || [];
-                if (docs.length === 0) {
-                    const moddle: Moddle = modeler.get('moddle');
-                    docs = [...docs, moddle.create('bpmn:Documentation', {text: '--- ' + new Date() + '\n show catalogs'})]
-                } else {
-                    docs[0].text = '--- ' + new Date() + '\n show catalogs'
-                }
-
-                // update properties panel
-                const modeling: Modeling = modeler.get('modeling');
-                modeling.updateModdleProperties(element, element.businessObject, {
-                    documentation: docs,
-                });
-
-
+                setNode(element.id)
+                const docs = element.businessObject.documentation || [];
                 // update to editor
                 if (docs.length > 0) {
                     setValue(docs[0].text);
@@ -207,9 +194,33 @@ const BpmnEditorComponent: React.FC = () => {
     //Keep editor reference for further use
     const [editorView, setEditorView] = React.useState<EditorView | null>(null)
 
-    const onChange = React.useCallback((v: string) => {
-        setValue(v);
-    }, []);
+    const onChange = (v: string) => {
+        setValue(v)
+
+        // Update to properties panel
+        if (modeler) {
+            const elementRegistry: ElementRegistry = modeler.get('elementRegistry');
+            const element = elementRegistry.get(selectedNode)
+
+            if (element) {
+                let docs = element.businessObject.documentation || [];
+                if (docs.length === 0) {
+                    const moddle: Moddle = modeler.get('moddle');
+                    docs = [...docs, moddle.create('bpmn:Documentation', {text: v})]
+                } else {
+                    docs[0].text = v
+                }
+
+                // update properties panel
+                const modeling: Modeling = modeler.get('modeling');
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-expect-error
+                modeling.updateModdleProperties(element, element.businessObject, {
+                    documentation: docs,
+                });
+            }
+        }
+    };
 
     const displaySelectedText = () => {
         // Get the primary selection
