@@ -6,7 +6,7 @@
     </startEvent>
     <sequenceFlow id="SequenceFlow_0h21x7r" sourceRef="StartEvent_1y45yut" targetRef="Task_1hcentk" />
     <sequenceFlow id="Flow_1us96s3" sourceRef="Task_1hcentk" targetRef="Activity_0jbsqj1" />
-    <task id="Activity_0mf0hg3" name="1">
+    <task id="Activity_0mf0hg3" name="Trino SQL">
       <incoming>Flow_02opcr2</incoming>
       <outgoing>Flow_0ff0tt7</outgoing>
     </task>
@@ -58,11 +58,11 @@ select current_date;</documentation>
       <outgoing>Flow_1l6ypsf</outgoing>
       <outgoing>Flow_1x83u87</outgoing>
     </receiveTask>
-    <task id="Activity_03a8wp7" name="2">
+    <task id="Activity_03a8wp7" name="Trino JDBC">
       <incoming>Flow_0tbjzlz</incoming>
       <outgoing>Flow_1bw5h1u</outgoing>
     </task>
-    <task id="Activity_0qi3eaq" name="3">
+    <task id="Activity_0qi3eaq" name="Spark Application">
       <incoming>Flow_0lcwadl</incoming>
       <outgoing>Flow_1nrk476</outgoing>
     </task>
@@ -77,7 +77,7 @@ select * from ods_cpty;
     <sequenceFlow id="Flow_0tbjzlz" sourceRef="Activity_11gbemy" targetRef="Activity_03a8wp7" />
     <sequenceFlow id="Flow_0lcwadl" sourceRef="Activity_11gbemy" targetRef="Activity_0qi3eaq" />
     <sequenceFlow id="Flow_1fdjwc7" sourceRef="Activity_11gbemy" targetRef="Activity_0cw0qg7" />
-    <task id="Activity_1gxks2f" name="4">
+    <task id="Activity_1gxks2f" name="Trino SQL">
       <incoming>Flow_1apfk9a</incoming>
       <outgoing>Flow_1a4gteh</outgoing>
     </task>
@@ -118,12 +118,12 @@ set session max_query_time = '5m';</documentation>
       <outgoing>Flow_130ttz9</outgoing>
       <outgoing>Flow_1bxayw9</outgoing>
     </task>
-    <task id="Activity_0ye18o4" name="6">
+    <task id="Activity_0ye18o4" name="Spark JDBC">
       <incoming>Flow_130ttz9</incoming>
       <outgoing>Flow_0miqxr5</outgoing>
     </task>
     <sequenceFlow id="Flow_130ttz9" sourceRef="Activity_1oboin4" targetRef="Activity_0ye18o4" />
-    <task id="Activity_13kqv70" name="7">
+    <task id="Activity_13kqv70" name="Spark JDBC">
       <documentation>show catalogs</documentation>
       <incoming>Flow_1bxayw9</incoming>
       <outgoing>Flow_1f5tds3</outgoing>

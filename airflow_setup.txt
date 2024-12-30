@@ -1,14 +1,11 @@
 pip install "apache-airflow[celery]==2.8.4" --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.8.4/constraints-3.9.txt"
+pip install psycopg2 connexion[swagger-ui]
 
 airflow db init
 airflow users create -r Admin -u admin -e admin@example.com -f admin -l admin -p admin
 
-
 pg_ctl -D /Users/simon/pg_data_build_from_src -l logfile start
 psql -d postgres
-
-pip install psycopg2 connexion[swagger-ui]
-
 
 airflow webserver --port 8080
 airflow scheduler
