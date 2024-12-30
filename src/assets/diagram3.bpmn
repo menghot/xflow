@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0" id="sid-38422fae-e03e-43a3-bef4-bd33b32041b2" targetNamespace="http://bpmn.io/bpmn" exporter="bpmn-js (https://demo.bpmn.io)" exporterVersion="18.1.1">
-  <process id="Process_2" isExecutable="false">
+  <process id="Process_2" name="hello_process" isExecutable="false">
     <startEvent id="StartEvent_1y45yut" name="hunger noticed">
       <outgoing>SequenceFlow_0h21x7r</outgoing>
     </startEvent>
@@ -218,6 +218,7 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0cw0qg7_di" bpmnElement="Activity_0cw0qg7" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
         <omgdc:Bounds x="1160" y="510" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1gxks2f_di" bpmnElement="Activity_1gxks2f" bioc:stroke="#6b3c00" bioc:fill="#ffe0b2" color:background-color="#ffe0b2" color:border-color="#6b3c00">
         <omgdc:Bounds x="1730" y="270" width="100" height="80" />

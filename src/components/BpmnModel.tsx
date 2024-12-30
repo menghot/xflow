@@ -14,12 +14,17 @@ import CodeMirror, {EditorView} from '@uiw/react-codemirror';
 import {python} from '@codemirror/lang-python';
 
 import {BpmnPropertiesPanelModule, BpmnPropertiesProviderModule} from 'bpmn-js-properties-panel';
+import Modeling from "bpmn-js/lib/features/modeling/Modeling";
+import {ElementRegistry} from "bpmn-js/lib/features/auto-place/BpmnAutoPlaceUtil";
+import {Moddle} from "bpmn-js/lib/model/Types";
 
 // import 'bpmn-js-properties-panel/dist/assets/bpmn-js-properties-panel.css'
 
 const BpmnEditorComponent: React.FC = () => {
     const containerRef = useRef<HTMLDivElement>(null);
     const propertiesRef = useRef<HTMLDivElement>(null);
+
+    //const currentNodeDocRef = useRef<HTMLDivElement>(null);
 
     const [modeler, setModeler] = useState<BpmnModeler | null>(null);
 
@@ -157,8 +162,27 @@ const BpmnEditorComponent: React.FC = () => {
             // @ts-expect-error
             eventBus.on('element.click', ({element}) => {
                 console.log('Clicked element:', element);
-                if (element.businessObject.documentation && element.businessObject.documentation.length > 0) {
-                    setValue(element.businessObject.documentation[0].text);
+                const elementRegistry: ElementRegistry = modeler.get('elementRegistry');
+                console.log(elementRegistry)
+
+                let docs = element.businessObject.documentation || [];
+                if (docs.length === 0) {
+                    const moddle: Moddle = modeler.get('moddle');
+                    docs = [...docs, moddle.create('bpmn:Documentation', {text: '--- ' + new Date() + '\n show catalogs'})]
+                } else {
+                    docs[0].text = '--- ' + new Date() + '\n show catalogs'
+                }
+
+                // update properties panel
+                const modeling: Modeling = modeler.get('modeling');
+                modeling.updateModdleProperties(element, element.businessObject, {
+                    documentation: docs,
+                });
+
+
+                // update to editor
+                if (docs.length > 0) {
+                    setValue(docs[0].text);
                 } else {
                     setValue('')
                 }
