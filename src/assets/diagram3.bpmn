@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0" id="sid-38422fae-e03e-43a3-bef4-bd33b32041b2" targetNamespace="http://bpmn.io/bpmn" exporter="bpmn-js (https://demo.bpmn.io)" exporterVersion="18.1.1">
   <process id="Process_2" name="hello_process" isExecutable="false">
+    <documentation>SELECT * FROM pg_stat_activity;</documentation>
     <startEvent id="StartEvent_1y45yut" name="hunger noticed">
       <outgoing>SequenceFlow_0h21x7r</outgoing>
     </startEvent>
@@ -97,9 +98,14 @@ select * from ods_cpty;
     <task id="Activity_16a8a92" name="5_create_table">
       <documentation>-- 1. create temp table 
 create table ods.test as select * from xfile.ods.test;
-
 -- 2. set session properties
-set session max_query_time = '5m';</documentation>
+set session max_query_time = '5m';
+-- 3. display all tasks
+SELECT * FROM task_instance;
+SELECT * FROM pg_stat_activity;
+
+update task_instance set try_number = 2 where task_id = 'get_names';
+</documentation>
       <incoming>Flow_087d5j5</incoming>
       <outgoing>Flow_1svyg4o</outgoing>
     </task>

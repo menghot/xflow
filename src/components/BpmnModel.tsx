@@ -18,14 +18,23 @@ import {BpmnPropertiesPanelModule, BpmnPropertiesProviderModule} from 'bpmn-js-p
 import Modeling from "bpmn-js/lib/features/modeling/Modeling";
 import {ElementRegistry} from "bpmn-js/lib/features/auto-place/BpmnAutoPlaceUtil";
 import {Moddle} from "bpmn-js/lib/model/Types";
+import axios from "axios";
 
 // import 'bpmn-js-properties-panel/dist/assets/bpmn-js-properties-panel.css'
+interface ResponseData {
+    status: string;
+    data: Record<string, any>[]; // Array of data rows, each row is a key-value pair
+    headers: string[]; // Column names (headers) from the SQL query result
+}
 
 const BpmnEditorComponent: React.FC = () => {
     const containerRef = useRef<HTMLDivElement>(null);
     const propertiesRef = useRef<HTMLDivElement>(null);
     const [selectedNode, setNode] = React.useState("");
     //const currentNodeDocRef = useRef<HTMLDivElement>(null);
+
+    const [response, setResponse] = useState<ResponseData | null>(null); // Response from the API
+    const [loading, setLoading] = useState<boolean>(false); // Loading state for button
 
     const [modeler, setModeler] = useState<BpmnModeler | null>(null);
 
@@ -190,7 +199,7 @@ const BpmnEditorComponent: React.FC = () => {
 
 
     ////////////////////// code editor begin
-    const [value, setValue] = React.useState("print(1234)");
+    const [value, setValue] = React.useState("");
 
     //Keep editor reference for further use
     const [editorView, setEditorView] = React.useState<EditorView | null>(null)
@@ -223,20 +232,59 @@ const BpmnEditorComponent: React.FC = () => {
         }
     };
 
-    const displaySelectedText = () => {
-        // Get the primary selection
-        // console.log(editorView)
+    ////////////////////// code editor end
+    const renderTable = (data: Record<string, any>[], headers: string[]) => {
+        return (
+            <table className="users-table">
+                <thead>
+                <tr>
+                    {headers.map((header, index) => (
+                        <th key={index}>{header}</th>
+                    ))}
+                </tr>
+                </thead>
+                <tbody>
+                {data.map((row, rowIndex) => (
+                    <tr key={rowIndex}>
+                        {headers.map((header, colIndex) => (
+                            <td key={colIndex}>{row[header]}</td>
+                        ))}
+                    </tr>
+                ))}
+                </tbody>
+            </table>
+        );
+    };
+
+    const executeSqlQuery = async () => {
+        setLoading(true);
+
+        let sql = value;
         if (editorView) {
             const selection = editorView.state.selection.main;
             const selected = editorView.state.doc.sliceString(selection.from, selection.to);
-            console.log(selected)
+            if (selected !== '') {
+                sql = selected
+            }
         }
-    }
-    ////////////////////// code editor end
+
+        try {
+            const result = await axios.post<ResponseData>('./sql/query', {
+                conn_id: 'postgres_default', // Connection ID
+                sql: sql,  // SQL query
+            });
+            setResponse(result.data); // Update response with API result
+        } catch (error) {
+            console.error('Error executing SQL query:', error);
+            setResponse({status: 'error', data: [], headers: []}); // Update response in case of error
+        } finally {
+            setLoading(false);
+        }
+    };
 
     return <div>
 
-        <div style={{display: 'flex', height: '380px'}}>
+        <div style={{display: 'flex', height: '320px'}}>
             <div ref={containerRef} style={{width: '78%', border: '1px solid #ccc'}}></div>
             <div ref={propertiesRef} style={{width: '22%', border: '1px solid #ccc', borderLeft: 'none'}}></div>
         </div>
@@ -248,13 +296,32 @@ const BpmnEditorComponent: React.FC = () => {
             <button onClick={() => exportAsImage('svg')} style={{margin: '10px'}}>Export SVG1 Diagram</button>
             <button onClick={() => exportAsImage('png')} style={{margin: '10px'}}>Export png2 Diagram</button>
             <button onClick={() => exportDiagram()} style={{margin: '10px'}}>Export Diagram</button>
+            <button onClick={executeSqlQuery} disabled={loading} style={{margin: '10px'}}>Execute SQL</button>
         </div>
 
-        <div style={{height: '260px'}}>
+        <div style={{height: '200px'}}>
             <CodeMirror style={{textAlign: 'left'}} onCreateEditor={setEditorView} value={value} theme="light"
-                        height="200px" onChange={onChange}
+                        height="180px" onChange={onChange}
                         extensions={[sql()]}/>
-            <button onClick={displaySelectedText} style={{margin: '10px'}}>Display Selected Text</button>
+        </div>
+
+        <div>
+
+            {loading && <p>Loading...</p>}
+
+            {response && response.status === 'success' && (
+                <div>
+                    <h5>Query Results</h5>
+                    {renderTable(response.data, response.headers)}
+                </div>
+            )}
+
+            {response && response.status === 'error' && (
+                <div>
+                    <h2>Error</h2>
+                    <p>There was an error executing the query.</p>
+                </div>
+            )}
         </div>
 
     </div>;
