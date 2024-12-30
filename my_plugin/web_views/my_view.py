@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 
 from flask import Blueprint, request, jsonify, send_from_directory
 from airflow.plugins_manager import AirflowPlugin
@@ -12,13 +13,16 @@ from airflow.api_connexion import security
 #     url_prefix="/my_plugin",  # URL prefix for the view
 # )
 
+STATIC_FOLDER = '../static'
+
 my_blueprint = Blueprint(
     "my_plugin",  # Blueprint name
     __name__,
     url_prefix="/my_plugin",
-    static_folder="./dist",  # Path to static files
+    static_folder=STATIC_FOLDER,  # Path to static files
     static_url_path="/"  # URL prefix for static files
 )
+
 
 # @my_blueprint.route("/")
 # def index():
@@ -26,13 +30,15 @@ my_blueprint = Blueprint(
 
 @my_blueprint.route("/")
 def index():
-     return send_from_directory(os.path.join(os.path.dirname(__file__), "dist"), "index.html")
+    return send_from_directory(os.path.join(os.path.dirname(__file__), STATIC_FOLDER), "index.html")
+
 
 # Define a route for the custom view
 @my_blueprint.route("/hello", methods=["GET"])
 def hello():
     """Example route that returns a greeting."""
     return jsonify({"message": "Hello from MyPlugin!"})
+
 
 @my_blueprint.route("/sum", methods=["POST"])
 @csrf.exempt
