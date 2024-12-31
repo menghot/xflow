@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import BpmnModeler from 'bpmn-js/lib/Modeler';
-import diagram1 from '../assets/diagram_simple.bpmn?raw';
+import diagram1 from '../assets/diagram3.bpmn?raw';
 
 //bpmn css files is mandatory
 import 'bpmn-js/dist/assets/diagram-js.css'
@@ -57,6 +57,21 @@ const BpmnEditorComponent: React.FC = () => {
             console.error('Failed to export BPMN model', err);
         }
     };
+
+    const previewBpmn2dag = async () => {
+        try {
+            if (modeler) {
+                const {xml} = await modeler.saveXML({format: true});
+                const result = await myApi.post<ResponseData>('/bpmn/preview', {
+                    dag_id: 'simple_dag',
+                    bpmn_xml: xml,
+                });
+                console.log(result)
+            }
+        } catch (err) {
+            console.error('Failed to export BPMN model', err);
+        }
+    }
 
 
     const exportAsImage = async (type: string) => {
@@ -225,7 +240,7 @@ const BpmnEditorComponent: React.FC = () => {
             <button onClick={() => exportAsImage('svg')} style={{margin: '10px'}}>Export SVG Diagram</button>
             <button onClick={() => exportDiagram()} style={{margin: '10px'}}>Export Diagram</button>
             <button onClick={executeSqlQuery} disabled={loading} style={{margin: '10px'}}>Execute SQL</button>
-            <button onClick={executeSqlQuery} disabled={loading} style={{margin: '10px'}}>Preview Dag</button>
+            <button onClick={previewBpmn2dag} disabled={loading} style={{margin: '10px'}}>Preview Dag</button>
             <button onClick={executeSqlQuery} disabled={loading} style={{margin: '10px'}}>Deploy To Airflow</button>
         </div>
 

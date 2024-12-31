@@ -35,12 +35,14 @@ def execute_sql(conn_id, sql):
         # Execute the SQL query
         with engine.connect() as connection:
             result = connection.execute(sql)
-
+            print(result)
             # Extract column headers
-            headers = [col[0] for col in result.cursor.description]
-
-            # Fetch all results as a list of dictionaries
-            data = [dict(row) for row in result.fetchall()]
+            if result.cursor:
+                headers = [col[0] for col in result.cursor.description]
+                data = [dict(row) for row in result.fetchall()]
+            else:
+                headers = []
+                data = []
 
         return {"status": "success", "headers": headers, "data": data}
 

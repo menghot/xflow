@@ -2,21 +2,26 @@ import xml.etree.ElementTree as ET
 
 
 class BPMNToAirflowTransformer:
-    def __init__(self, bpmn_file):
+    def __init__(self, bpmn_file, bpmn_content):
         self.bpmn_file = bpmn_file
+        self.bpmn_content = bpmn_content
         self.namespaces = {
             "bpmn": "http://www.omg.org/spec/BPMN/20100524/MODEL",
         }
         self.tasks = {}
         self.sequence_flows = []
+        if self.bpmn_content is not None:
+            self.root = ET.fromstring(bpmn_content)
+        else:
+            self.root = ET.parse(self.bpmn_file).getroot()
+
 
     def extract_tasks(self):
         """
         Extracts tasks from the BPMN file and maps them to Airflow task names.
         """
-        root = ET.parse(self.bpmn_file).getroot()
         for task_type in ["task", "serviceTask", "receiveTask"]:
-            for task in root.findall(f".//bpmn:{task_type}", self.namespaces):
+            for task in self.root.findall(f".//bpmn:{task_type}", self.namespaces):
                 task_id = task.attrib["id"]
                 task_name = task.attrib.get("name", "").replace(" ", "_").lower() or task_id.lower()
                 self.tasks[task_id] = task_name
@@ -25,8 +30,7 @@ class BPMNToAirflowTransformer:
         """
         Extracts sequence flows from the BPMN file.
         """
-        root = ET.parse(self.bpmn_file).getroot()
-        for sequence_flow in root.findall(".//bpmn:sequenceFlow", self.namespaces):
+        for sequence_flow in self.root.findall(".//bpmn:sequenceFlow", self.namespaces):
             source = sequence_flow.attrib["sourceRef"]
             target = sequence_flow.attrib["targetRef"]
             self.sequence_flows.append((source, target))
@@ -93,5 +97,5 @@ if __name__ == '__main__':
     output_file = "/Users/simon/airflow/dags/example_dag.py"
 
     # Instantiate the transformer and transform the BPMN to DAG
-    transformer = BPMNToAirflowTransformer(bpmn_file)
+    transformer = BPMNToAirflowTransformer(bpmn_file, None)
     transformer.transform_to_dag(dag_id, output_file)
