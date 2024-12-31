@@ -2,12 +2,16 @@ import sqlalchemy
 from airflow.hooks.base import BaseHook
 from airflow.www.app import csrf
 from flask import Blueprint, request, jsonify
+from flask_cors import CORS
 
 api_blueprint = Blueprint(
     "api",  # Blueprint name
     __name__,
-    url_prefix="/my_plugin",
+    url_prefix="/my_plugin/api",
 )
+
+# Enable CORS
+CORS(api_blueprint)
 
 
 def execute_sql(conn_id, sql):
