@@ -216,7 +216,7 @@ const BpmnEditorComponent: React.FC = () => {
 
     return <div>
 
-        <div style={{display: 'flex', height: '320px'}}>
+        <div style={{display: 'flex', height: '380px'}}>
             <div ref={containerRef} style={{width: '78%', border: '1px solid #ccc'}}></div>
             <div ref={propertiesRef} style={{width: '22%', border: '1px solid #ccc', borderLeft: 'none'}}></div>
         </div>
@@ -225,10 +225,12 @@ const BpmnEditorComponent: React.FC = () => {
             <button onClick={() => exportAsImage('svg')} style={{margin: '10px'}}>Export SVG Diagram</button>
             <button onClick={() => exportDiagram()} style={{margin: '10px'}}>Export Diagram</button>
             <button onClick={executeSqlQuery} disabled={loading} style={{margin: '10px'}}>Execute SQL</button>
+            <button onClick={executeSqlQuery} disabled={loading} style={{margin: '10px'}}>Preview Dag</button>
+            <button onClick={executeSqlQuery} disabled={loading} style={{margin: '10px'}}>Deploy To Airflow</button>
         </div>
 
         <div style={{height: '200px'}}>
-            <CodeMirror style={{textAlign: 'left'}} onCreateEditor={setEditorView} value={sqlText} theme="light"
+            <CodeMirror onCreateEditor={setEditorView} value={sqlText} theme="light"
                         height="180px" onChange={onChange} extensions={[sql()]}/>
         </div>
 

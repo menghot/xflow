@@ -9,6 +9,7 @@ lerna-debug.log*
 my_plugin/static
 node_modules
 dist
+dags
 dist-ssr
 *.local
 __pycache__
