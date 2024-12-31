@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import BpmnModeler from 'bpmn-js/lib/Modeler';
-import diagram1 from '../assets/diagram3.bpmn?raw';
+import diagram1 from '../assets/diagram_simple.bpmn?raw';
 
 //bpmn css files is mandatory
 import 'bpmn-js/dist/assets/diagram-js.css'
