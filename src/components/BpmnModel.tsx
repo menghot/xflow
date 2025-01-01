@@ -170,7 +170,6 @@ const BpmnEditorComponent: React.FC = () => {
             containerRef.current.setAttribute("loaded", "loaded");
         }
 
-
         return () => {
             //FIXME
             //modeler?.destroy();
