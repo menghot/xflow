@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0" id="sid-38422fae-e03e-43a3-bef4-bd33b32041b2" targetNamespace="http://bpmn.io/bpmn" exporter="bpmn-js (https://demo.bpmn.io)" exporterVersion="18.1.1">
-  <process id="Process_2" name="hello_process" isExecutable="false">
+  <process id="demo_bpmn" name="hello_process" isExecutable="false">
     <documentation>SELECT * FROM pg_stat_activity;</documentation>
     <startEvent id="StartEvent_1y45yut" name="hunger noticed">
       <outgoing>SequenceFlow_0h21x7r</outgoing>
@@ -190,7 +190,7 @@ update task_instance set try_number = 2 where task_id = 'get_names';
   </category>
   <message id="Message_0gvcahs" name="Message_0gvcahs" />
   <bpmndi:BPMNDiagram id="BpmnDiagram_1">
-    <bpmndi:BPMNPlane id="BpmnPlane_1" bpmnElement="Process_2">
+    <bpmndi:BPMNPlane id="BpmnPlane_1" bpmnElement="demo_bpmn">
       <bpmndi:BPMNShape id="StartEvent_1y45yut_di" bpmnElement="StartEvent_1y45yut">
         <omgdc:Bounds x="172" y="192" width="36" height="36" />
         <bpmndi:BPMNLabel>

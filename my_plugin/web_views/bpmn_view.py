@@ -26,18 +26,12 @@ def preview():
     """
     try:
         # Get JSON data from the request
-        data = request.get_json()
-        dag_id = data.get("dag_id")
-        bpmn_xml = data.get("bpmn_xml")
-        print(bpmn_xml + '-----------')
+        bpmn_xml = request.data.decode('utf-8')
         transformer = BPMNToAirflowTransformer(None, bpmn_xml)
-        dag = transformer.generate_airflow_dag(dag_id)
-        print(dag + '-----------')
-        return jsonify({"status": "success", "data": dag}), 200
-
+        dag_code = transformer.generate_airflow_dag()
+        return jsonify({"status": "success", "data": dag_code}), 200
     except Exception as e:
         print(e)
-
         return jsonify({"status": "error", "message": str(e)}), 500
 
 
@@ -46,21 +40,18 @@ def preview():
 def deploy():
     try:
         # Get JSON data from the request
-        dag_id = request.args.get('dag_id')
-        dag_id = unquote(dag_id) if dag_id else None
         bpmn_xml = request.data.decode('utf-8')
         transformer = BPMNToAirflowTransformer(None, bpmn_xml)
-        dag = transformer.generate_airflow_dag(dag_id)
+        dag_code = transformer.generate_airflow_dag()
 
         # save to airflow home
-        output_file = os.path.join(os.path.dirname(__file__), "../../dags", dag_id + ".py")
+        output_file = os.path.join(os.path.dirname(__file__), "../../dags", transformer.process_id + ".py")
 
         with open(output_file, "w") as f:
-            f.write(dag)
+            f.write(dag_code)
         print(f"DAG saved to {output_file}")
         return jsonify({"status": "success"}), 200
 
     except Exception as e:
         print(e)
-
         return jsonify({"status": "error", "message": str(e)}), 500

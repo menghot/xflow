@@ -15,8 +15,16 @@ class BPMNToAirflowTransformer:
 
         self.tasks = {}
         self.sequence_flows = []
+        self.process_id = None
+
+        self.extract_process_id()
         self.extract_tasks()
         self.extract_sequence_flows()
+
+    def extract_process_id(self):
+        process = self.root.find("bpmn:process", self.namespaces)
+        if process is not None:
+            self.process_id = process.attrib.get("id").lower()
 
     def extract_tasks(self):
         """
@@ -37,25 +45,10 @@ class BPMNToAirflowTransformer:
             target = sequence_flow.attrib["targetRef"]
             self.sequence_flows.append((source, target))
 
-    def transform_to_dag(self, dag_id, output_file):
-        """
-        Transforms the BPMN workflow into an Airflow DAG Python script.
-
-        :param dag_id: ID for the generated Airflow DAG.
-        :param output_file: Path to save the generated Airflow DAG file.
-        """
-
-        dag_code = self.generate_airflow_dag(dag_id)
-        print(dag_code)
-        with open(output_file, "w") as f:
-            f.write(dag_code)
-        print(f"DAG saved to {output_file}")
-
-    def generate_airflow_dag(self, dag_id):
+    def generate_airflow_dag(self):
         """
         Generates the Airflow DAG Python code.
 
-        :param dag_id: ID for the DAG.
         :return: Python code as a string.
         """
         dag_code = f"""from airflow import DAG
@@ -73,7 +66,7 @@ default_args = {{
 }}
 
 
-with DAG(dag_id='{dag_id}', default_args=default_args, schedule_interval=None) as dag:
+with DAG(dag_id='{self.process_id}', default_args=default_args, schedule_interval=None) as dag:
 """
 
         # Add Airflow tasks
@@ -94,9 +87,14 @@ with DAG(dag_id='{dag_id}', default_args=default_args, schedule_interval=None) a
 if __name__ == '__main__':
     # Set the BPMN file path and output DAG file
     bpmn_file = "/Users/simon/workspaces/react-sql-editor/src/assets/diagram3.bpmn"
-    dag_id = "example_dag"
     output_file = "/Users/simon/airflow/dags/example_dag.py"
 
     # Instantiate the transformer and transform the BPMN to DAG
     transformer = BPMNToAirflowTransformer(bpmn_file, None)
-    transformer.transform_to_dag(dag_id, output_file)
+    dag_code = transformer.generate_airflow_dag()
+    print(dag_code)
+    with open(output_file, "w") as f:
+        f.write(dag_code)
+
+    print(f"DAG saved to {output_file}")
+

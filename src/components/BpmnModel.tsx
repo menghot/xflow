@@ -62,11 +62,17 @@ const BpmnEditorComponent: React.FC = () => {
         try {
             if (modeler) {
                 const {xml} = await modeler.saveXML({format: true});
-                const result = await myApi.post<ResponseData>('/api/bpmn/preview', {
-                    dag_id: 'simple_dag',
-                    bpmn_xml: xml,
-                });
-                console.log(result)
+                myApi.post('/api/bpmn/preview', xml, {
+                    headers: {
+                        'Content-Type': 'application/xml' // Specify the Content-Type
+                    }
+                })
+                    .then(response => {
+                        console.log('Response:', response.data);
+                    })
+                    .catch(error => {
+                        console.error('Error:', error.response ? error.response.data : error.message);
+                    });
             }
         } catch (err) {
             console.error('Failed to export BPMN model', err);
@@ -78,7 +84,6 @@ const BpmnEditorComponent: React.FC = () => {
             if (modeler) {
                 const {xml} = await modeler.saveXML({format: true});
                 myApi.post('/api/bpmn/deploy', xml, {
-                    params: {"dag_id": 'simple_dag2'}, // Add query parameters
                     headers: {
                         'Content-Type': 'application/xml' // Specify the Content-Type
                     }
