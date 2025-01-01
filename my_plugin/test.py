@@ -9,13 +9,12 @@ def spark_job():
     spark = SparkSession.builder \
         .appName("ExampleJob") \
         .getOrCreate()
-    #spark.sparkContext.setLogLevel('DEBUG')
     df = spark.read.csv("/Users/simon/tools/postgresql.git/contrib/file_fdw/data/list1.csv", header=True)
     df.show()
 
 
 if __name__ == '__main__':
-    dagbag = DagBag(dag_folder='/Users/simon/workspaces/react-sql-editor/dags', include_examples=False)
+    dagbag = DagBag(dag_folder='/Users/simon/workspaces/dags', include_examples=False)
     dag = dagbag.get_dag(dag_id='pyspark_example')
     task = PythonOperator(
         task_id='dummy_task',
