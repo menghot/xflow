@@ -46,7 +46,7 @@ def execute_sql(conn_id, sql):
     Execute a SQL query using the given Airflow connection ID.
     """
     try:
-        print("connections: ", ConnectionAccessPlugin.list_connections())
+        print("connections size: ", len(ConnectionAccessPlugin.list_connections()))
 
         # Get connection details from Airflow
         connection = BaseHook.get_connection(conn_id)

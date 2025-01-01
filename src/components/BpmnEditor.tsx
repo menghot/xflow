@@ -27,7 +27,7 @@ interface ResponseData {
     headers: string[]; // Column names (headers) from the SQL query result
 }
 
-const BpmnEditorComponent: React.FC = () => {
+const BpmnEditor: React.FC = () => {
     // bpmn js
     const [modeler, setModeler] = useState<BpmnModeler | null>(null);
     const containerRef = useRef<HTMLDivElement>(null);
@@ -296,4 +296,4 @@ const BpmnEditorComponent: React.FC = () => {
 };
 
 
-export default BpmnEditorComponent;
+export default BpmnEditor;

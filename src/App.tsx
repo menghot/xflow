@@ -1,12 +1,12 @@
 // src/App.tsx
 import React from "react";
-import BpmnEditorComponent from "./components/BpmnModel.tsx";
+import BpmnEditor from "./components/BpmnEditor.tsx";
 
 const App: React.FC = () => {
   return (
     <div>
       <h5>DAG Tools</h5>
-      <BpmnEditorComponent />
+      <BpmnEditor />
     </div>
   );
 };
