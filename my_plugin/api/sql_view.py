@@ -16,6 +16,31 @@ api_blueprint = Blueprint(
 CORS(api_blueprint)
 
 
+# Define the API route
+@api_blueprint.route("/query", methods=["POST"])
+@csrf.exempt
+def execute_sql_endpoint():
+    """
+    API endpoint to execute a SQL query.
+    """
+    try:
+        # Get JSON data from the request
+        data = request.get_json()
+        conn_id = data.get("conn_id")
+        sql = data.get("sql")
+
+        if not conn_id or not sql:
+            return jsonify({"status": "error", "message": "conn_id and sql are required"}), 400
+
+        # Execute the SQL query
+        result = execute_sql(conn_id, sql)
+        return jsonify(result)
+
+    except Exception as e:
+        print(e)
+        return jsonify({"status": "error", "message": str(e)}), 500
+
+
 def execute_sql(conn_id, sql):
     """
     Execute a SQL query using the given Airflow connection ID.
@@ -55,26 +80,5 @@ def execute_sql(conn_id, sql):
         return {"status": "error", "message": str(e)}
 
 
-# Define the API route
-@api_blueprint.route("/query", methods=["POST"])
-@csrf.exempt
-def execute_sql_endpoint():
-    """
-    API endpoint to execute a SQL query.
-    """
-    try:
-        # Get JSON data from the request
-        data = request.get_json()
-        conn_id = data.get("conn_id")
-        sql = data.get("sql")
-
-        if not conn_id or not sql:
-            return jsonify({"status": "error", "message": "conn_id and sql are required"}), 400
-
-        # Execute the SQL query
-        result = execute_sql(conn_id, sql)
-        return jsonify(result)
-
-    except Exception as e:
-        print(e)
-        return jsonify({"status": "error", "message": str(e)}), 500
+if __name__ == "__main__":
+    print(execute_sql('postgres_default', 'select current_date').values())
