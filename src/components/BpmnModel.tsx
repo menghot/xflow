@@ -62,11 +62,33 @@ const BpmnEditorComponent: React.FC = () => {
         try {
             if (modeler) {
                 const {xml} = await modeler.saveXML({format: true});
-                const result = await myApi.post<ResponseData>('/bpmn/preview', {
+                const result = await myApi.post<ResponseData>('/api/bpmn/preview', {
                     dag_id: 'simple_dag',
                     bpmn_xml: xml,
                 });
                 console.log(result)
+            }
+        } catch (err) {
+            console.error('Failed to export BPMN model', err);
+        }
+    }
+
+    const deploy = async () => {
+        try {
+            if (modeler) {
+                const {xml} = await modeler.saveXML({format: true});
+                myApi.post('/api/bpmn/deploy', xml, {
+                    params: {"dag_id": 'simple_dag2'}, // Add query parameters
+                    headers: {
+                        'Content-Type': 'application/xml' // Specify the Content-Type
+                    }
+                })
+                    .then(response => {
+                        console.log('Response:', response.data);
+                    })
+                    .catch(error => {
+                        console.error('Error:', error.response ? error.response.data : error.message);
+                    });
             }
         } catch (err) {
             console.error('Failed to export BPMN model', err);
@@ -241,7 +263,7 @@ const BpmnEditorComponent: React.FC = () => {
             <button onClick={() => exportDiagram()} style={{margin: '10px'}}>Export Diagram</button>
             <button onClick={executeSqlQuery} disabled={loading} style={{margin: '10px'}}>Execute SQL</button>
             <button onClick={previewBpmn2dag} disabled={loading} style={{margin: '10px'}}>Preview Dag</button>
-            <button onClick={executeSqlQuery} disabled={loading} style={{margin: '10px'}}>Deploy To Airflow</button>
+            <button onClick={deploy} disabled={loading} style={{margin: '10px'}}>Deploy To Airflow</button>
         </div>
 
         <div style={{height: '200px'}}>

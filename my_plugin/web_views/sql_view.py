@@ -4,10 +4,12 @@ from airflow.www.app import csrf
 from flask import Blueprint, request, jsonify
 from flask_cors import CORS
 
+from my_plugin.connection_plugin import ConnectionAccessPlugin
+
 api_blueprint = Blueprint(
     "api",  # Blueprint name
     __name__,
-    url_prefix="/my_plugin/api",
+    url_prefix="/my_plugin/api/sql",
 )
 
 # Enable CORS
@@ -19,6 +21,8 @@ def execute_sql(conn_id, sql):
     Execute a SQL query using the given Airflow connection ID.
     """
     try:
+        print("connections: ", ConnectionAccessPlugin.list_connections())
+
         # Get connection details from Airflow
         connection = BaseHook.get_connection(conn_id)
         if connection.conn_type == 'postgres':
@@ -52,7 +56,7 @@ def execute_sql(conn_id, sql):
 
 
 # Define the API route
-@api_blueprint.route("/sql/query", methods=["POST"])
+@api_blueprint.route("/query", methods=["POST"])
 @csrf.exempt
 def execute_sql_endpoint():
     """

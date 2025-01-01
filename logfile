@@ -1,0 +1,12 @@
+2025-01-01 08:43:48.240 CST [1774] LOG:  starting PostgreSQL 16.6 on x86_64-apple-darwin21.6.0, compiled by Apple clang version 14.0.0 (clang-1400.0.29.202), 64-bit
+2025-01-01 08:43:48.242 CST [1774] LOG:  listening on IPv6 address "::1", port 5432
+2025-01-01 08:43:48.242 CST [1774] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2025-01-01 08:43:48.243 CST [1774] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2025-01-01 08:43:48.247 CST [1777] LOG:  database system was shut down at 2025-01-01 00:48:34 CST
+2025-01-01 08:43:48.251 CST [1774] LOG:  database system is ready to accept connections
+2025-01-01 08:46:12.351 CST [1774] LOG:  received smart shutdown request
+2025-01-01 08:46:12.354 CST [1774] LOG:  background worker "logical replication launcher" (PID 1780) exited with exit code 1
+2025-01-01 08:46:12.354 CST [1775] LOG:  shutting down
+2025-01-01 08:46:12.354 CST [1775] LOG:  checkpoint starting: shutdown immediate
+2025-01-01 08:46:12.357 CST [1775] LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.002 s, sync=0.001 s, total=0.003 s; sync files=2, longest=0.001 s, average=0.001 s; distance=0 kB, estimate=0 kB; lsn=0/2C71468, redo lsn=0/2C71468
+2025-01-01 08:46:12.359 CST [1774] LOG:  database system is shut down

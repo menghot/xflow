@@ -8,13 +8,15 @@ class BPMNToAirflowTransformer:
         self.namespaces = {
             "bpmn": "http://www.omg.org/spec/BPMN/20100524/MODEL",
         }
-        self.tasks = {}
-        self.sequence_flows = []
         if self.bpmn_content is not None:
             self.root = ET.fromstring(bpmn_content)
         else:
             self.root = ET.parse(self.bpmn_file).getroot()
 
+        self.tasks = {}
+        self.sequence_flows = []
+        self.extract_tasks()
+        self.extract_sequence_flows()
 
     def extract_tasks(self):
         """
@@ -42,10 +44,9 @@ class BPMNToAirflowTransformer:
         :param dag_id: ID for the generated Airflow DAG.
         :param output_file: Path to save the generated Airflow DAG file.
         """
-        self.extract_tasks()
-        self.extract_sequence_flows()
 
         dag_code = self.generate_airflow_dag(dag_id)
+        print(dag_code)
         with open(output_file, "w") as f:
             f.write(dag_code)
         print(f"DAG saved to {output_file}")
