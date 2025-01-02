@@ -20,6 +20,10 @@ import myApi from "../services/api"
 import {AxiosError} from "axios";
 import {Canvas} from "bpmn-js/lib/features/context-pad/ContextPadProvider";
 
+import {Button, Splitter, Tabs} from 'antd';
+import {SettingFilled, ThunderboltFilled, AppleOutlined} from '@ant-design/icons';
+import type {TabsProps} from 'antd';
+
 interface ResponseData {
     status: string;
     message: string;
@@ -176,6 +180,13 @@ const BpmnEditor: React.FC = () => {
         };
     }, []);
 
+    const onCanvasResize = (sizes: number[]) => {
+        console.log(sizes)
+        if (modeler) {
+            const canvas: Canvas = modeler.get('canvas')
+            canvas.zoom('fit-viewport');
+        }
+    }
 
     const onChange = (v: string) => {
         setSqlText(v)
@@ -255,25 +266,64 @@ const BpmnEditor: React.FC = () => {
         }
     };
 
+    const onTabChange = (key: string) => {
+        console.log(key);
+    };
+
+    const tabItems: TabsProps['items'] = [
+        {
+            key: '1',
+            label: <p><AppleOutlined/> sql</p>,
+            children: <div style={{height: '200px'}}>
+                <CodeMirror onCreateEditor={setEditorView} value={sqlText} theme="light"
+                            height="180px" onChange={onChange} extensions={[sql()]}/>
+            </div>,
+        },
+        {
+            key: '2',
+            label: 'dag',
+            children: 'Content of Tab Pane 2',
+        },
+        {
+            key: '3',
+            label: 'metadata',
+            children: <div>hello</div>,
+        },
+    ];
+
+
     return <div>
 
         <div style={{display: 'flex', height: '380px'}}>
-            <div ref={containerRef} style={{width: '78%', border: '1px solid #ccc'}}></div>
-            <div ref={propertiesRef} style={{width: '22%', border: '1px solid #ccc', borderLeft: 'none'}}></div>
+            <Splitter onResizeEnd={onCanvasResize} style={{height: 380, boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'}}>
+                <Splitter.Panel defaultSize="82%" min="20%" max="100%">
+                    <div ref={containerRef} style={{width: '100%', height: '100%'}}></div>
+                </Splitter.Panel>
+                <Splitter.Panel>
+                    <div ref={propertiesRef}></div>
+                </Splitter.Panel>
+            </Splitter>
+
+
+
+
+
+
         </div>
 
         <div>
-            <button onClick={() => exportAsImage('svg')} style={{margin: '10px'}}>Export SVG Diagram</button>
-            <button onClick={() => exportDiagram()} style={{margin: '10px'}}>Export Diagram</button>
-            <button onClick={executeSqlQuery} disabled={loading} style={{margin: '10px'}}>Execute SQL</button>
-            <button onClick={previewBpmn2dag} disabled={loading} style={{margin: '10px'}}>Preview Dag</button>
-            <button onClick={deploy} disabled={loading} style={{margin: '10px'}}>Deploy To Airflow</button>
+            <Button onClick={() => exportAsImage('svg')} size="small" style={{}}>Export SVG Diagram</Button>
+            <Button onClick={() => exportDiagram()} size="small" style={{}}>Export Diagram</Button>
+            <Button onClick={executeSqlQuery} size="small" disabled={loading} style={{}}><ThunderboltFilled/>Execute
+                SQL</Button>
+            <Button onClick={previewBpmn2dag} size="small" disabled={loading} style={{}}>Preview Dag</Button>
+            <Button onClick={deploy} size="small" disabled={loading} style={{}}>Deploy To Airflow</Button>
+            <Button onClick={deploy} size="small" disabled={loading}><SettingFilled/>Deploy To Airflow</Button>
         </div>
 
-        <div style={{height: '200px'}}>
-            <CodeMirror onCreateEditor={setEditorView} value={sqlText} theme="light"
-                        height="180px" onChange={onChange} extensions={[sql()]}/>
-        </div>
+        <Tabs defaultActiveKey="1" items={tabItems} onChange={onTabChange} />
+
+
 
         <div>
 
