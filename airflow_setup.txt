@@ -25,4 +25,4 @@ airflow users create \
 
 npx @svgr/cli --typescript src/assets/icons/trino-logo-w-bk.svg --out-dir src/components/icons
 
-npx @svgr/cli --typescript src/assets/icons/xcodeflow2.svg --out-dir src/components/icons
+npx @svgr/cli --typescript src/assets/icons/xcodeflow.svg --out-dir src/components/icons

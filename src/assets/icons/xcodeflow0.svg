@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="100" viewBox="0 0 400 100">
+  <!-- Background -->
+  <rect width="400" height="100" fill="transparent"/>
+
+  <!-- Text -->
+  <text x="20" y="50" font-family="Arial, sans-serif" font-size="45" font-weight="bold" fill="url(#gradXcode)">
+    xcode
+  </text>
+  <text x="170" y="50" font-family="Arial, sans-serif" font-size="45" font-weight="bold" fill="url(#gradFlow)">
+    flow
+  </text>
+
+  <!-- Gradient for 'xcode' inspired by VSCode -->
+  <defs>
+    <linearGradient id="gradXcode" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:rgb(0,102,255);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(0,61,122);stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Gradient for 'flow' inspired by Airflow -->
+    <linearGradient id="gradFlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:rgb(34,193,195);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(253,187,45);stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Flowing dynamic lines for "flow" -->
+  <path d="M 160 50 Q 180 40, 210 55 Q 240 70, 270 50" stroke="rgb(34,193,195)" stroke-width="3" fill="transparent" />
+</svg>

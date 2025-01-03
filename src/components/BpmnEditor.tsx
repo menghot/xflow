@@ -287,12 +287,6 @@ const BpmnEditor: React.FC = () => {
                             height="180px" onChange={onSQLChange} extensions={[sql()]}/>
             </div>,
         },
-
-        // {
-        //     key: '3',
-        //     label: 'metadata',
-        //     children: <div>hello</div>,
-        // },
     ];
 
     return <div>
@@ -355,8 +349,6 @@ const BpmnEditor: React.FC = () => {
                 </Splitter>
             </Splitter.Panel>
         </Splitter>
-
-
     </div>;
 };
 
