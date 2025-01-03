@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="200" viewBox="0 0 400 200">
+  <!-- Background (optional, if needed for presentation) -->
+  <rect width="400" height="200" fill="#ffffff" />
+
+  <!-- Abstract Shape -->
+  <path d="M200 50c40 0 60 30 80 40s40-20 60 0-40 60-60 80-40 40-80 40-60-30-80-40-40 20-60 0 40-60 60-80 40-40 80-40z" fill="url(#gradient)" />
+
+  <!-- Gradient Definition -->
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#007acc; stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7df9ff; stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Main Text -->
+  <text x="200" y="130" text-anchor="middle" fill="#333333" font-size="30" font-family="Arial, sans-serif" font-weight="bold">
+    XcodeFlow
+  </text>
+
+  <!-- Tagline -->
+  <text x="200" y="160" text-anchor="middle" fill="#555555" font-size="18" font-family="Arial, sans-serif">
+    DAG Easy
+  </text>
+</svg>
+

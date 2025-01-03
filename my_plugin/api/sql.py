@@ -1,3 +1,5 @@
+import sys
+
 import sqlalchemy
 from airflow.hooks.base import BaseHook
 from airflow.www.app import csrf
@@ -81,4 +83,5 @@ def execute_sql(conn_id, sql):
 
 
 if __name__ == "__main__":
+    print(sys.path)
     print(execute_sql('postgres_default', 'select current_date').values())

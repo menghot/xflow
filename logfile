@@ -17,3 +17,18 @@
 2025-01-02 20:03:02.521 CST [1356] LOG:  database system is ready to accept connections
 2025-01-02 20:08:02.517 CST [1357] LOG:  checkpoint starting: time
 2025-01-02 20:08:02.522 CST [1357] LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.002 s, sync=0.001 s, total=0.006 s; sync files=2, longest=0.001 s, average=0.001 s; distance=0 kB, estimate=0 kB; lsn=0/4880630, redo lsn=0/48805F8
+2025-01-03 08:44:54.897 CST [1595] LOG:  starting PostgreSQL 16.6 on x86_64-apple-darwin21.6.0, compiled by Apple clang version 14.0.0 (clang-1400.0.29.202), 64-bit
+2025-01-03 08:44:54.898 CST [1595] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2025-01-03 08:44:54.899 CST [1595] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2025-01-03 08:44:54.914 CST [1598] LOG:  database system was shut down at 2025-01-03 00:53:24 CST
+2025-01-03 08:44:54.923 CST [1595] LOG:  database system is ready to accept connections
+2025-01-03 08:49:54.902 CST [1596] LOG:  checkpoint starting: time
+2025-01-03 08:49:54.908 CST [1596] LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.002 s, sync=0.001 s, total=0.006 s; sync files=2, longest=0.001 s, average=0.001 s; distance=0 kB, estimate=0 kB; lsn=0/48E3858, redo lsn=0/48E3820
+2025-01-03 08:59:54.895 CST [1596] LOG:  checkpoint starting: time
+2025-01-03 08:59:55.610 CST [1596] LOG:  checkpoint complete: wrote 8 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.709 s, sync=0.003 s, total=0.715 s; sync files=8, longest=0.002 s, average=0.001 s; distance=35 kB, estimate=35 kB; lsn=0/48EC5B8, redo lsn=0/48EC580
+2025-01-03 09:04:54.601 CST [1596] LOG:  checkpoint starting: time
+2025-01-03 09:04:56.125 CST [1596] LOG:  checkpoint complete: wrote 16 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=1.518 s, sync=0.004 s, total=1.525 s; sync files=12, longest=0.003 s, average=0.001 s; distance=61 kB, estimate=61 kB; lsn=0/48FBB70, redo lsn=0/48FBB38
+2025-01-03 09:14:54.105 CST [1596] LOG:  checkpoint starting: time
+2025-01-03 09:14:54.513 CST [1596] LOG:  checkpoint complete: wrote 5 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.403 s, sync=0.003 s, total=0.409 s; sync files=5, longest=0.002 s, average=0.001 s; distance=12 kB, estimate=56 kB; lsn=0/48FEE90, redo lsn=0/48FEE58
+2025-01-03 09:39:54.467 CST [1596] LOG:  checkpoint starting: time
+2025-01-03 09:39:55.182 CST [1596] LOG:  checkpoint complete: wrote 8 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.710 s, sync=0.003 s, total=0.716 s; sync files=5, longest=0.003 s, average=0.001 s; distance=25 kB, estimate=53 kB; lsn=0/49052A0, redo lsn=0/4905268

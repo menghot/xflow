@@ -21,3 +21,8 @@ airflow users create \
     --lastname LASTNAME \
     --role Admin \
     --email admin@example.com
+
+
+npx @svgr/cli --typescript src/assets/icons/trino-logo-w-bk.svg --out-dir src/components/icons
+
+npx @svgr/cli --typescript src/assets/icons/xcodeflow2.svg --out-dir src/components/icons

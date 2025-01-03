@@ -23,6 +23,9 @@ import {Canvas} from "bpmn-js/lib/features/context-pad/ContextPadProvider";
 import {Button, Splitter, Tabs} from 'antd';
 import {SettingFilled, ThunderboltFilled, AppleOutlined} from '@ant-design/icons';
 import type {TabsProps} from 'antd';
+import TrinoLogoWBk from "./icons/TrinoLogoWBk.tsx";
+
+import Connections from "./Tables.tsx";
 
 interface ResponseData {
     status: string;
@@ -188,7 +191,7 @@ const BpmnEditor: React.FC = () => {
         }
     }
 
-    const onChange = (v: string) => {
+    const onSQLChange = (v: string) => {
         setSqlText(v)
 
         // Sync to properties panel
@@ -273,74 +276,86 @@ const BpmnEditor: React.FC = () => {
     const tabItems: TabsProps['items'] = [
         {
             key: '1',
-            label: <p><AppleOutlined/> sql</p>,
-            children: <div style={{height: '200px'}}>
-                <CodeMirror onCreateEditor={setEditorView} value={sqlText} theme="light"
-                            height="180px" onChange={onChange} extensions={[sql()]}/>
-            </div>,
+            label: <p><TrinoLogoWBk size={14} color={'black'}/>dag</p>,
+            children: <p>DAG</p>,
         },
         {
             key: '2',
-            label: 'dag',
-            children: 'Content of Tab Pane 2',
+            label: <p><AppleOutlined/>sql</p>,
+            children: <div style={{height: '200px'}}>
+                <CodeMirror onCreateEditor={setEditorView} value={sqlText} theme="light"
+                            height="180px" onChange={onSQLChange} extensions={[sql()]}/>
+            </div>,
         },
-        {
-            key: '3',
-            label: 'metadata',
-            children: <div>hello</div>,
-        },
-    ];
 
+        // {
+        //     key: '3',
+        //     label: 'metadata',
+        //     children: <div>hello</div>,
+        // },
+    ];
 
     return <div>
 
-        <div style={{display: 'flex', height: '380px'}}>
-            <Splitter onResizeEnd={onCanvasResize} style={{height: 380, boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'}}>
-                <Splitter.Panel defaultSize="82%" min="20%" max="100%">
-                    <div ref={containerRef} style={{width: '100%', height: '100%'}}></div>
-                </Splitter.Panel>
-                <Splitter.Panel>
-                    <div ref={propertiesRef}></div>
-                </Splitter.Panel>
-            </Splitter>
+        <Splitter style={{height: 800, boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'}}>
+            <Splitter.Panel defaultSize="15%" min="10%" max="100%">
+                <Splitter layout="vertical" style={{height: 800, boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'}}>
+                    <Splitter.Panel>
+                        <Connections/>
+                    </Splitter.Panel>
+                    <Splitter.Panel>
+                        <div>bpmn & dags files</div>
+                    </Splitter.Panel>
+                </Splitter>
+            </Splitter.Panel>
+            <Splitter.Panel>
+                <Splitter onResizeEnd={onCanvasResize} style={{height: 380, boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'}}>
+                    <Splitter.Panel defaultSize="82%" min="20%" max="90%">
+                        <div ref={containerRef} style={{width: '100%', height: '100%'}}></div>
+                    </Splitter.Panel>
+                    <Splitter.Panel>
+                        <div ref={propertiesRef}></div>
+                    </Splitter.Panel>
+                </Splitter>
+                <Splitter layout="vertical" style={{height: 800, boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'}}>
+                    <Splitter.Panel>
+                        <Tabs defaultActiveKey="1" items={tabItems} onChange={onTabChange}/>
+                        <div>
+                            <Button onClick={() => exportAsImage('svg')} size="small" style={{}}>Export SVG
+                                Diagram</Button>
+                            <Button onClick={() => exportDiagram()} size="small" style={{}}>Export Diagram</Button>
+                            <Button onClick={executeSqlQuery} size="small" disabled={loading}
+                                    style={{}}><ThunderboltFilled/>Execute
+                                SQL</Button>
+                            <Button onClick={previewBpmn2dag} size="small" disabled={loading} style={{}}>Preview
+                                Dag</Button>
+                            <Button onClick={deploy} size="small" disabled={loading} style={{}}>Deploy To
+                                Airflow</Button>
+                            <Button onClick={deploy} size="small" disabled={loading}><SettingFilled/>Deploy To
+                                Airflow</Button>
+                        </div>
+                    </Splitter.Panel>
+                    <Splitter.Panel>
+                        <div>
+                            {loading && <p>Loading...</p>}
+                            {queryResponse && queryResponse.status === 'success' && (
+                                <div>
+                                    <h5>Query Results</h5>
+                                    {renderTable(queryResponse.data, queryResponse.headers)}
+                                </div>
+                            )}
+                            {queryResponse && queryResponse.status === 'error' && (
+                                <div>
+                                    <h2>Error</h2>
+                                    <p>There was an error executing the query.</p>
+                                </div>
+                            )}
+                        </div>
+                    </Splitter.Panel>
+                </Splitter>
+            </Splitter.Panel>
+        </Splitter>
 
-
-
-
-
-
-        </div>
-
-        <div>
-            <Button onClick={() => exportAsImage('svg')} size="small" style={{}}>Export SVG Diagram</Button>
-            <Button onClick={() => exportDiagram()} size="small" style={{}}>Export Diagram</Button>
-            <Button onClick={executeSqlQuery} size="small" disabled={loading} style={{}}><ThunderboltFilled/>Execute
-                SQL</Button>
-            <Button onClick={previewBpmn2dag} size="small" disabled={loading} style={{}}>Preview Dag</Button>
-            <Button onClick={deploy} size="small" disabled={loading} style={{}}>Deploy To Airflow</Button>
-            <Button onClick={deploy} size="small" disabled={loading}><SettingFilled/>Deploy To Airflow</Button>
-        </div>
-
-        <Tabs defaultActiveKey="1" items={tabItems} onChange={onTabChange} />
-
-
-
-        <div>
-
-            {loading && <p>Loading...</p>}
-            {queryResponse && queryResponse.status === 'success' && (
-                <div>
-                    <h5>Query Results</h5>
-                    {renderTable(queryResponse.data, queryResponse.headers)}
-                </div>
-            )}
-            {queryResponse && queryResponse.status === 'error' && (
-                <div>
-                    <h2>Error</h2>
-                    <p>There was an error executing the query.</p>
-                </div>
-            )}
-        </div>
 
     </div>;
 };
