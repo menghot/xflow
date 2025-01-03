@@ -25,8 +25,6 @@ import {SettingFilled, ThunderboltFilled, AppleOutlined} from '@ant-design/icons
 import type {TabsProps} from 'antd';
 import TrinoLogoWBk from "./icons/TrinoLogoWBk.tsx";
 
-import Connections from "./Tables.tsx";
-
 interface ResponseData {
     status: string;
     message: string;
@@ -295,7 +293,6 @@ const BpmnEditor: React.FC = () => {
             <Splitter.Panel defaultSize="15%" min="10%" max="100%">
                 <Splitter layout="vertical" style={{height: 800, boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'}}>
                     <Splitter.Panel>
-                        <Connections/>
                     </Splitter.Panel>
                     <Splitter.Panel>
                         <div>bpmn & dags files</div>
