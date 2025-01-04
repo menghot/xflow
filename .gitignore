@@ -7,7 +7,7 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 logfile
-my_plugin/static
+xcode_flow/static
 node_modules
 dist
 dags

@@ -4,10 +4,10 @@
 
   <!-- Text 'XcodeFlow' with rounded curves and soft style -->
   <text x="28" y="55" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="url(#gradXcode)">
-    Xcode
+    X-code
   </text>
-  <text x="52" y="55" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="url(#gradFlow)">
-    Flow
+  <text x="55" y="55" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="url(#gradFlow)">
+    flow
   </text>
 
   <!-- Gradient for 'xcode' inspired by VSCode -->

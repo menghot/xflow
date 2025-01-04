@@ -7,7 +7,7 @@ from flask_cors import CORS
 dag_blueprint = Blueprint(
     "dag",  # Blueprint name
     __name__,
-    url_prefix="/my_plugin/api/dag",
+    url_prefix="/xcodeflow/api/dag",
 )
 
 CORS(dag_blueprint)

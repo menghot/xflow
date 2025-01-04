@@ -12,12 +12,12 @@ const App: React.FC = () => {
     const dagFileTreeRef = useRef<DagFileTreeRef>(null);
     const mainTabsRef = useRef<MainTabsRef>(null);
 
+    console.log("x-codeflow")
     // const triggerFetch = () => {
     //     console.log('Triggering TreeDisplay fetch...');
     //     tableTreeRef.current?.fetchTreeData();
     //     mainTabsRef.current?.openConsole();
     // };
-
 
     return (
         <div>
@@ -29,11 +29,10 @@ const App: React.FC = () => {
                     <Splitter.Panel defaultSize="18%" min="10%" max="100%">
                         <Splitter layout="vertical" style={{height: 800, boxShadow: '0 0 0px rgba(0, 0, 0, 0.1)'}}>
                             <Splitter.Panel>
-                                <TableTree ref={tableTreeRef} autoExp={true}/>
+                                <TableTree ref={tableTreeRef} />
                             </Splitter.Panel>
                             <Splitter.Panel>
-                                {/*<Button onClick={triggerFetch}>Fetch Connection Tree</Button>*/}
-                                <DagFileTree ref={dagFileTreeRef} autoExp={true}/>
+                                <DagFileTree ref={dagFileTreeRef}/>
                             </Splitter.Panel>
                             <Splitter.Panel>
                                 Git Panel

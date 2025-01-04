@@ -1,5 +1,5 @@
 import {useState, useEffect, forwardRef, useImperativeHandle} from 'react';
-import {Tree, Spin, Alert} from 'antd';
+import {Tree, Spin, Alert, Modal} from 'antd';
 import api from "../services/api"
 import {FileOutlined, FolderOutlined} from "@ant-design/icons";
 
@@ -13,7 +13,7 @@ interface DataNode {
 
 // for external usage -------------
 interface DagFileTreeProps {
-    autoExp: boolean
+    autoExp?: boolean
 }
 
 export interface DagFileTreeRef {
@@ -49,13 +49,18 @@ const TreeDisplay = forwardRef<DagFileTreeRef, DagFileTreeProps>((_, ref) => {
     //     }));
 
     const titleRender = (node: DataNode) => (
-        <span onDoubleClick={() => console.log(node)}>
+        <span onDoubleClick={() => Modal.info({
+            title: 'File Path',
+            content: node.key,
+        })}>
              {node.isLeaf ? <FileOutlined style={{marginRight: 8}}/> : <FolderOutlined style={{marginRight: 8}}/>}
             {node.title}
     </span>
     );
 
-    useEffect(() => {fetchTreeData().then()}, []);
+    useEffect(() => {
+        fetchTreeData().then()
+    }, []);
 
 
     useImperativeHandle(ref, () => ({

@@ -3,12 +3,12 @@ from airflow.hooks.base import BaseHook
 from airflow.www.app import csrf
 from flask import Blueprint, request, jsonify
 from flask_cors import CORS
-from my_plugin.connection_plugin import ConnectionAccessPlugin
+from xcodeflow.connection_plugin import ConnectionAccessPlugin
 
 db_blueprint = Blueprint(
     "db",  # Blueprint name
     __name__,
-    url_prefix="/my_plugin/api/db",
+    url_prefix="/xcodeflow/api/db",
 )
 
 CORS(db_blueprint)

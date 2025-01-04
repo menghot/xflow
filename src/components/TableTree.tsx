@@ -13,7 +13,7 @@ interface DataNode {
 
 // for external usage -------------
 interface TableTreeProps {
-    autoExp: boolean
+    autoExp?: boolean
 }
 
 export interface TableTreeRef {

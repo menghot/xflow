@@ -6,12 +6,12 @@ from airflow.www.app import csrf
 from flask import Blueprint, request, jsonify
 from flask_cors import CORS
 
-from my_plugin.connection_plugin import ConnectionAccessPlugin
+from xcodeflow.connection_plugin import ConnectionAccessPlugin
 
 api_blueprint = Blueprint(
     "api",  # Blueprint name
     __name__,
-    url_prefix="/my_plugin/api/sql",
+    url_prefix="/xcodeflow/api/sql",
 )
 
 # Enable CORS

@@ -4,12 +4,12 @@ from airflow.www.app import csrf
 from flask import Blueprint, request, jsonify
 from flask_cors import CORS
 
-from my_plugin.bpmn_to_dag_transformer import BPMNToAirflowTransformer
+from xcodeflow.bpmn_to_dag_transformer import BPMNToAirflowTransformer
 
 bpmn_blueprint = Blueprint(
     "bpmn",  # Blueprint name
     __name__,
-    url_prefix="/my_plugin/api/bpmn",
+    url_prefix="/xcodeflow/api/bpmn",
 )
 
 # Enable CORS

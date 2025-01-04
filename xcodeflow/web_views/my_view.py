@@ -5,9 +5,9 @@ from flask import Blueprint, send_from_directory
 STATIC_FOLDER = '../static'
 
 my_blueprint = Blueprint(
-    "my_plugin",  # Blueprint name
+    "xcodeflow",  # Blueprint name
     __name__,
-    url_prefix="/my_plugin",
+    url_prefix="/xcodeflow",
     static_folder=STATIC_FOLDER,  # Path to static files
     static_url_path="/"  # URL prefix for static files
 )
