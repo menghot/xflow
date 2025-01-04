@@ -53,7 +53,7 @@ const TreeDisplay = forwardRef<DagFileTreeRef, DagFileTreeProps>((_, ref) => {
             title: 'File Path',
             content: node.key,
         })}>
-             {node.isLeaf ? <FileOutlined style={{marginRight: 8}}/> : <FolderOutlined style={{marginRight: 8}}/>}
+             {node.isLeaf ? <FileOutlined style={{marginRight: 6}}/> : <FolderOutlined style={{marginRight: 6}}/>}
             {node.title}
     </span>
     );

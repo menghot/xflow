@@ -5,6 +5,7 @@ import {Splitter} from 'antd';
 import TableTree, {TableTreeRef} from "./components/TableTree";
 import DagFileTree , {DagFileTreeRef} from "./components/DagFileTree";
 import MainTabs, {MainTabsRef} from "./components/MainTabs.tsx";
+import TT from "./components/test_tabs.tsx";
 
 const App: React.FC = () => {
     // reference sub components
@@ -42,9 +43,10 @@ const App: React.FC = () => {
                     <Splitter.Panel>
                         <Splitter style={{height: 380, boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'}}>
                             <Splitter.Panel defaultSize="82%" min="20%" max="90%">
-                                <MainTabs ref={mainTabsRef} autoExp={true}/>
+                                <TT/>
                             </Splitter.Panel>
                             <Splitter.Panel>
+                                <MainTabs ref={mainTabsRef} autoExp={true}/>
                             </Splitter.Panel>
                         </Splitter>
                         {/*<Splitter layout="vertical" style={{height: 800}}>*/}

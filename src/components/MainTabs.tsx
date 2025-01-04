@@ -44,7 +44,7 @@ const MainTabs = forwardRef<MainTabsRef, MainTabsProps>((tabProps, ref) => {
         {
             key: '2',
             label: <p>sql</p>,
-            children: <div style={{height: '200px'}}>
+            children: <div style={{height: '20px'}}>
                 <CodeMirror onCreateEditor={setCodeMirrorEditorView} value="" theme="light"
                             height="180px" onChange={onSQLChange} extensions={[sql()]}/>
             </div>,
