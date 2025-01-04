@@ -1,8 +1,7 @@
-import unittest
-from airflow.models import DagBag, TaskInstance
-from pyspark.sql import SparkSession
+from airflow.models import DagBag
 from airflow.operators.python import PythonOperator
 from airflow.utils.dates import days_ago
+from pyspark.sql import SparkSession
 
 
 def spark_job():

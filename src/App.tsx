@@ -1,17 +1,22 @@
 // src/App.tsx
 import React, {useRef} from "react";
 import XcodeFlow from "./components/icons/Xcodeflow";
-import {Button, Splitter} from 'antd';
+import {Splitter} from 'antd';
 import TableTree, {TableTreeRef} from "./components/TableTree";
+import DagFileTree , {DagFileTreeRef} from "./components/DagFileTree";
+import MainTabs, {MainTabsRef} from "./components/MainTabs.tsx";
 
 const App: React.FC = () => {
+    // reference sub components
+    const tableTreeRef = useRef<TableTreeRef>(null);
+    const dagFileTreeRef = useRef<DagFileTreeRef>(null);
+    const mainTabsRef = useRef<MainTabsRef>(null);
 
-    const treeDisplayRef = useRef<TableTreeRef>(null);
-
-    const triggerFetch = () => {
-        console.log('Triggering TreeDisplay fetch...');
-        treeDisplayRef.current?.fetchTreeData();
-    };
+    // const triggerFetch = () => {
+    //     console.log('Triggering TreeDisplay fetch...');
+    //     tableTreeRef.current?.fetchTreeData();
+    //     mainTabsRef.current?.openConsole();
+    // };
 
 
     return (
@@ -21,32 +26,35 @@ const App: React.FC = () => {
             </div>
             <div>
                 <Splitter style={{height: 800, boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'}}>
-                    <Splitter.Panel defaultSize="15%" min="10%" max="100%">
-                        <Splitter layout="vertical" style={{height: 800, boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'}}>
+                    <Splitter.Panel defaultSize="18%" min="10%" max="100%">
+                        <Splitter layout="vertical" style={{height: 800, boxShadow: '0 0 0px rgba(0, 0, 0, 0.1)'}}>
                             <Splitter.Panel>
-                                <TableTree ref={treeDisplayRef} autoExp={true}/>
+                                <TableTree ref={tableTreeRef} autoExp={true}/>
                             </Splitter.Panel>
                             <Splitter.Panel>
-                                <div>bpmn & dags files</div>
-                                <Button onClick={triggerFetch}>Fetch Connection Tree</Button>
+                                {/*<Button onClick={triggerFetch}>Fetch Connection Tree</Button>*/}
+                                <DagFileTree ref={dagFileTreeRef} autoExp={true}/>
+                            </Splitter.Panel>
+                            <Splitter.Panel>
+                                Git Panel
                             </Splitter.Panel>
                         </Splitter>
                     </Splitter.Panel>
                     <Splitter.Panel>
                         <Splitter style={{height: 380, boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'}}>
                             <Splitter.Panel defaultSize="82%" min="20%" max="90%">
+                                <MainTabs ref={mainTabsRef} autoExp={true}/>
                             </Splitter.Panel>
                             <Splitter.Panel>
                             </Splitter.Panel>
                         </Splitter>
-                        <Splitter layout="vertical" style={{height: 800, boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'}}>
-                            <Splitter.Panel>
+                        {/*<Splitter layout="vertical" style={{height: 800}}>*/}
+                            {/*<Splitter.Panel>*/}
+                            {/*</Splitter.Panel>*/}
+                            {/*<Splitter.Panel>*/}
 
-                            </Splitter.Panel>
-                            <Splitter.Panel>
-
-                            </Splitter.Panel>
-                        </Splitter>
+                            {/*</Splitter.Panel>*/}
+                        {/*</Splitter>*/}
                     </Splitter.Panel>
                 </Splitter>
 

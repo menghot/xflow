@@ -1,5 +1,5 @@
-from airflow.plugins_manager import AirflowPlugin
 from airflow.models.connection import Connection
+from airflow.plugins_manager import AirflowPlugin
 from airflow.utils.db import provide_session
 
 

@@ -1,0 +1,18 @@
+useRef usage
+1 . --------- define interface
+
+interface TreeDisplayProps {}
+
+export interface TreeDisplayRef {
+  fetchTreeData: () => void;
+}
+
+2 . --------- useImperativeHandle register interface methods
+useImperativeHandle(ref, () => ({
+    fetchTreeData,
+ }));
+
+
+3. ---------- ref
+treeDisplayRef
+ <TreeDisplay ref={treeDisplayRef} />

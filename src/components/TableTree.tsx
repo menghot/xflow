@@ -33,7 +33,6 @@ const TreeDisplay = forwardRef<TableTreeRef, TableTreeProps>((_, ref) => {
             setLoading(true);
             const response = await api.get<DataNode>('api/db/tree?connection_id=postgres_default');
             const nodes = mapTreeData([response.data])
-            console.log(nodes)
             setTreeData(nodes); // Map data to include icons
         } catch (err) {
             console.log(err)
@@ -65,7 +64,7 @@ const TreeDisplay = forwardRef<TableTreeRef, TableTreeProps>((_, ref) => {
     };
 
     useEffect(() => {
-        fetchTreeData().then(r => console.log(r));
+        fetchTreeData().then();
     }, []);
 
     useImperativeHandle(ref, () => ({

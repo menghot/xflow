@@ -290,15 +290,6 @@ const BpmnEditor: React.FC = () => {
     return <div>
 
         <Splitter style={{height: 800, boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'}}>
-            <Splitter.Panel defaultSize="15%" min="10%" max="100%">
-                <Splitter layout="vertical" style={{height: 800, boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'}}>
-                    <Splitter.Panel>
-                    </Splitter.Panel>
-                    <Splitter.Panel>
-                        <div>bpmn & dags files</div>
-                    </Splitter.Panel>
-                </Splitter>
-            </Splitter.Panel>
             <Splitter.Panel>
                 <Splitter onResizeEnd={onCanvasResize} style={{height: 380, boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'}}>
                     <Splitter.Panel defaultSize="82%" min="20%" max="90%">
