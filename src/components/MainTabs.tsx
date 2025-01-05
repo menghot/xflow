@@ -1,15 +1,15 @@
 import React, {forwardRef, useImperativeHandle, useState} from 'react';
-import type {DragEndEvent} from '@dnd-kit/core';
 import {closestCenter, DndContext, PointerSensor, useSensor} from '@dnd-kit/core';
 import {arrayMove, horizontalListSortingStrategy, SortableContext, useSortable,} from '@dnd-kit/sortable';
 import {CSS} from '@dnd-kit/utilities';
-import type {TabsProps} from 'antd';
 import {Tabs} from 'antd';
 import {DatabaseOutlined} from "@ant-design/icons";
 import DagEditor from "./DagEditor.tsx";
 import SqlEditor from "./SqlEditor.tsx";
 import BpmnEditor from "./BpmnEditor.tsx";
 
+import type {TabsProps} from 'antd';
+import type {DragEndEvent} from '@dnd-kit/core';
 type TargetKey = React.MouseEvent | React.KeyboardEvent | string;
 
 
