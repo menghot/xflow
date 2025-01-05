@@ -1,7 +1,7 @@
 import {forwardRef, useEffect, useImperativeHandle, useState} from 'react';
 import {Alert, Spin, Tree} from 'antd';
 import api from "../services/api"
-import {FileOutlined, FolderOutlined} from "@ant-design/icons";
+import {ConsoleSqlOutlined, FileOutlined, FolderOutlined, PythonOutlined} from "@ant-design/icons";
 
 interface DataNode {
     title: string;
@@ -27,6 +27,7 @@ const TreeDisplay = forwardRef<DagFileTreeRef, DagFileTreeProps>((dagFileTreePro
     const [treeData, setTreeData] = useState<DataNode[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error] = useState<string | null>(null);
+    const [selectedKeys, setSelectedKeys] = useState<string[]>([]);
 
     const fetchTreeData = async () => {
         try {
@@ -49,12 +50,28 @@ const TreeDisplay = forwardRef<DagFileTreeRef, DagFileTreeProps>((dagFileTreePro
     //         children: node.children ? mapTreeData(node.children) : undefined,
     //     }));
 
-    const titleRender = (node: DataNode) => (
-        <span onDoubleClick={() => dagFileTreeProps.editor(node.key)}>
-             {node.isLeaf ? <FileOutlined style={{marginRight: 6}}/> : <FolderOutlined style={{marginRight: 6}}/>}
-            {node.title}
-    </span>
-    );
+    const getNodeTitleIcon = (node: DataNode) => {
+        if (!node.isLeaf) {
+            return <FolderOutlined style={{marginRight: 6}}/>
+        } else if (node.title.endsWith(".sql")) {
+            return <ConsoleSqlOutlined style={{marginRight: 6}}/>;
+        } else if (node.title.endsWith(".py")) {
+            return <PythonOutlined style={{marginRight: 6}}/>;
+        }
+        return <FileOutlined style={{marginRight: 6}}/>;
+    }
+
+    const handleDoubleClick = ( node: DataNode) => {
+        setSelectedKeys([node.key]); // Set the node as selected
+        dagFileTreeProps.editor(node.key)
+    };
+
+
+    const titleRender = (node: DataNode) => {
+        return <span onDoubleClick={() => handleDoubleClick(node)}>
+            {getNodeTitleIcon(node)}{node.title}
+        </span>
+    }
 
     useEffect(() => {
         fetchTreeData().then()
@@ -70,7 +87,7 @@ const TreeDisplay = forwardRef<DagFileTreeRef, DagFileTreeProps>((dagFileTreePro
     }
 
     return <Spin spinning={loading} tip="Loading tree data...">
-        <Tree titleRender={titleRender} showIcon treeData={treeData}/>
+        <Tree selectedKeys={selectedKeys} titleRender={titleRender} showIcon treeData={treeData}/>
     </Spin>;
 });
 

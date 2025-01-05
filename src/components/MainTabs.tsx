@@ -3,13 +3,14 @@ import {closestCenter, DndContext, PointerSensor, useSensor} from '@dnd-kit/core
 import {arrayMove, horizontalListSortingStrategy, SortableContext, useSortable,} from '@dnd-kit/sortable';
 import {CSS} from '@dnd-kit/utilities';
 import {Tabs} from 'antd';
-import {DatabaseOutlined} from "@ant-design/icons";
+import {ConsoleSqlOutlined, DatabaseOutlined, PythonOutlined} from "@ant-design/icons";
 import DagEditor from "./DagEditor.tsx";
 import SqlEditor from "./SqlEditor.tsx";
 import BpmnEditor from "./BpmnEditor.tsx";
 
 import type {TabsProps} from 'antd';
 import type {DragEndEvent} from '@dnd-kit/core';
+
 type TargetKey = React.MouseEvent | React.KeyboardEvent | string;
 
 
@@ -120,14 +121,32 @@ const MainTabs = forwardRef<MainTabsRef, MainTabProps>((ttProps, ref) => {
 
     }
 
+    const getTabLabel = (path: string, type: "dag" | "sql" | "bpmn") => {
+        if (path.endsWith(".sql")) {
+            return <span><ConsoleSqlOutlined /> {path.substring(path.lastIndexOf('/') + 1)}</span>
+        }else if (type === "dag") {
+            return <span><PythonOutlined/> {path.substring(path.lastIndexOf('/') + 1)}</span>
+        } else  {
+            return <span><DatabaseOutlined/>{path.substring(path.lastIndexOf('/') + 1)}</span>
+        }
+    }
+
 
     const openEditor = (path: string, type: "dag" | "sql" | "bpmn") => {
         console.log(path, type);
+
+        for (let i = 0; i < items.length; i++) {
+            if (items[i].key === path) {
+                  setActiveKey(path);
+                  return
+            }
+        }
+
         setItems([
             ...(items || []),
             {
                 key: path,
-                label: <span><DatabaseOutlined/>{path.substring(path.lastIndexOf('/') + 1)}</span>,
+                label: getTabLabel(path, type),
                 children: getEditor(path, type)
             }
         ]);

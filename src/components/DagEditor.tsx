@@ -64,14 +64,14 @@ const DagEditor = forwardRef<SqlEditorRef, SqlEditorProps>((sqlEditorProps, ref)
 
 
     return <div>
-        <div>tool bar include database connection</div>
+        <div>TODO: tool bar to add button for dag deployment/debug</div>
         <Splitter layout="vertical" style={{height: "100vh"}}>
             <Splitter.Panel defaultSize="30%" min="10%" max="90%">
                 <CodeMirror height="300px" onCreateEditor={init} value={editorText} theme="light"
                             onChange={onSQLChange} extensions={[python()]}/>
             </Splitter.Panel>
             <Splitter.Panel>
-                <div>status</div>
+                <div>TODO: status for deploy & debug</div>
                 <div>
                     <Tabs size={"small"} items={tabItems}/>
                 </div>

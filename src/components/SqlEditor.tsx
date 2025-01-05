@@ -1,22 +1,23 @@
 import {Splitter, Tabs, type TabsProps} from "antd";
 import React, {forwardRef, useImperativeHandle} from "react";
 import CodeMirror, {EditorView} from "@uiw/react-codemirror";
-import {python} from "@codemirror/lang-python";
 import api from "../services/api.ts";
+import {HistoryOutlined, InfoCircleOutlined, TableOutlined} from "@ant-design/icons";
+import {sql} from "@codemirror/lang-sql";
 
 
 const tabItems: TabsProps['items'] = [
     {
         key: '1',
-        label: "Query History",
+        label: <span><HistoryOutlined/> Query History</span>,
         children: "",
     }, {
         key: '2',
-        label: "Results",
+        label: <span><TableOutlined/> Results</span>,
         children: "",
     }, {
         key: '3',
-        label: "Execution Logs",
+        label: <span><InfoCircleOutlined/> Execution Logs</span>,
         children: "",
     },
 ];
@@ -72,15 +73,16 @@ const SqlEditor = forwardRef<SqlEditorRef, SqlEditorProps>((sqlEditorProps, ref)
 
 
     return <div>
-        <div>tool bar include database connection</div>
+        <div style={{padding: "0 0 6 0"}}>TODO: Implement tool bar include db connection & execution configuration</div>
         <Splitter layout="vertical" style={{height: "100vh"}}>
             <Splitter.Panel defaultSize="30%" min="10%" max="90%">
                 <CodeMirror height="300px" onCreateEditor={onCreateEditor} value={sqlText} theme="light"
-                            onChange={onSQLChange} extensions={[python()]}/>
+                            onChange={onSQLChange} extensions={[sql()]}/>
             </Splitter.Panel>
             <Splitter.Panel>
-                <div>status</div>
-                <div>
+                <div style={{padding: "6px"}}>TODO: SQL execution button & Paging size limit</div>
+                <div style={{padding: "6px"}}>TODO: Set Status</div>
+                <div style={{padding: "6px"}}>
                     <Tabs size={"small"} items={tabItems}/>
                 </div>
             </Splitter.Panel>
