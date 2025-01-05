@@ -1,19 +1,16 @@
-// src/App.tsx
 import React, {useRef} from "react";
 import XcodeFlowIcon from "./components/icons/Xcodeflow";
 import {Splitter} from 'antd';
 import TableTree, {TableTreeRef} from "./components/TableTree";
 import DagFileTree, {DagFileTreeRef} from "./components/DagFileTree";
-import TT, {TTRef} from "./components/test_tabs.tsx";
-// import Dag from "./components/Dag.tsx";
+import MainTabs, {MainTabsRef} from "./components/MainTabs";
 
 const App: React.FC = () => {
-    // reference sub components
+    // References to sub components
     const tableTreeRef = useRef<TableTreeRef>(null);
     const dagFileTreeRef = useRef<DagFileTreeRef>(null);
-    const ttRef = useRef<TTRef>(null);
+    const mainTabsRef = useRef<MainTabsRef>(null);
 
-    console.log("x-codeflow")
     // const triggerFetch = () => {
     //     console.log('Triggering TreeDisplay fetch...');
     //     tableTreeRef.current?.fetchTreeData();
@@ -21,7 +18,7 @@ const App: React.FC = () => {
     // };
 
     const editFile = (path: string) => {
-        ttRef.current?.openEditor(path, 'dag');
+        mainTabsRef.current?.openEditor(path, 'dag');
     }
 
     return (
@@ -46,7 +43,7 @@ const App: React.FC = () => {
                         </Splitter>
                     </Splitter.Panel>
                     <Splitter.Panel>
-                        <TT ref={ttRef}/>
+                        <MainTabs ref={mainTabsRef}/>
                         {/*<Splitter style={{height: 380, boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'}}>*/}
                         {/*    <Splitter.Panel defaultSize="82%" min="20%" max="90%">*/}
                         {/*        <TT/>*/}

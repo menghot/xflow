@@ -39,16 +39,16 @@ const DraggableTabNode: React.FC<Readonly<DraggableTabPaneProps>> = ({...props})
 };
 
 
-export interface TTRef {
+export interface MainTabsRef {
     openEditor: (path: string, type: "dag" | "sql" | "bpmn") => void;
 }
 
-interface TTProps {
+interface MainTabProps {
     autoExp?: boolean,
 }
 
 
-const TT = forwardRef<TTRef, TTProps>((ttProps, ref) => {
+const MainTabs = forwardRef<MainTabsRef, MainTabProps>((ttProps, ref) => {
 
     console.log(ttProps)
     const [items, setItems] = useState<NonNullable<TabsProps['items']>>([
@@ -170,4 +170,4 @@ const TT = forwardRef<TTRef, TTProps>((ttProps, ref) => {
     );
 });
 
-export default TT;
+export default MainTabs;

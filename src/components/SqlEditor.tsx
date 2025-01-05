@@ -60,7 +60,7 @@ const SqlEditor = forwardRef<SqlEditorRef, SqlEditorProps>((sqlEditorProps, ref)
         }
     };
 
-    const init = (view: EditorView) => {
+    const onCreateEditor = (view: EditorView) => {
         setCodeMirrorEditorView(view)
         openFile(sqlEditorProps.filePath).then()
     }
@@ -75,7 +75,7 @@ const SqlEditor = forwardRef<SqlEditorRef, SqlEditorProps>((sqlEditorProps, ref)
         <div>tool bar include database connection</div>
         <Splitter layout="vertical" style={{height: "100vh"}}>
             <Splitter.Panel defaultSize="30%" min="10%" max="90%">
-                <CodeMirror height="300px" onCreateEditor={init} value={sqlText} theme="light"
+                <CodeMirror height="300px" onCreateEditor={onCreateEditor} value={sqlText} theme="light"
                             onChange={onSQLChange} extensions={[python()]}/>
             </Splitter.Panel>
             <Splitter.Panel>
