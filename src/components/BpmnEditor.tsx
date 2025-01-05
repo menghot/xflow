@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {forwardRef, useEffect, useRef, useState} from 'react';
 import BpmnModeler from 'bpmn-js/lib/Modeler';
 import diagram1 from '../assets/diagram3.bpmn?raw';
 
@@ -32,7 +32,20 @@ interface ResponseData {
     headers: string[]; // Column names (headers) from the SQL query result
 }
 
-const BpmnEditor: React.FC = () => {
+export interface BpmnEditorRef {
+    openFile: (path: string) => void;
+}
+
+interface BpmnEditorProps {
+    autoExp?: boolean,
+    filePath?: string
+}
+
+const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) => {
+
+    console.log(ref)
+    console.log(bpmnProps)
+
     // bpmn js
     const [modeler, setModeler] = useState<BpmnModeler | null>(null);
     const containerRef = useRef<HTMLDivElement>(null);
@@ -338,7 +351,7 @@ const BpmnEditor: React.FC = () => {
             </Splitter.Panel>
         </Splitter>
     </div>;
-};
+});
 
 
 export default BpmnEditor;

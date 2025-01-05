@@ -1,35 +1,35 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="20 0 60 60">
-  <!-- Background -->
-  <rect width="60" height="60" fill="transparent"/>
+    <!-- Background -->
+    <rect width="60" height="60" fill="transparent"/>
 
-  <!-- Text 'XcodeFlow' with rounded curves and soft style -->
-  <text x="28" y="55" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="url(#gradXcode)">
-    X-code
-  </text>
-  <text x="55" y="55" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="url(#gradFlow)">
-    flow
-  </text>
+    <!-- Text 'XcodeFlow' with rounded curves and soft style -->
+    <text x="28" y="55" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="url(#gradXcode)">
+        X-code
+    </text>
+    <text x="55" y="55" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="url(#gradFlow)">
+        flow
+    </text>
 
-  <!-- Gradient for 'xcode' inspired by VSCode -->
-  <defs>
-    <linearGradient id="gradXcode" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:rgb(0,102,255);stop-opacity:1" />
-      <stop offset="100%" style="stop-color:rgb(34,193,195);stop-opacity:1" />
-    </linearGradient>
+    <!-- Gradient for 'xcode' inspired by VSCode -->
+    <defs>
+        <linearGradient id="gradXcode" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:rgb(0,102,255);stop-opacity:1"/>
+            <stop offset="100%" style="stop-color:rgb(34,193,195);stop-opacity:1"/>
+        </linearGradient>
 
-    <!-- Gradient for 'flow' inspired by Airflow -->
-    <linearGradient id="gradFlow" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:rgb(34,193,195);stop-opacity:1" />
-      <stop offset="100%" style="stop-color:rgb(253,187,45);stop-opacity:1" />
-    </linearGradient>
-  </defs>
+        <!-- Gradient for 'flow' inspired by Airflow -->
+        <linearGradient id="gradFlow" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:rgb(34,193,195);stop-opacity:1"/>
+            <stop offset="100%" style="stop-color:rgb(253,187,45);stop-opacity:1"/>
+        </linearGradient>
+    </defs>
 
-  <!-- Group for polygons (rotating the entire logo except text) -->
-  <g transform="rotate(15, 60, 60)">
-    <!-- 4 polygons arranged like a big X with rotated and rounded corners -->
-    <polygon points="20,20 40,40 30,50 10,30" fill="rgb(232, 184, 12)" opacity="0.4" rx="5" ry="5" />
-    <polygon points="30,20 50,40 40,50 20,30" fill="rgb(13, 179, 181)" opacity="0.4" rx="5" ry="5" />
-    <polygon points="40,10 60,30 50,40 30,20" fill="rgb(232, 184, 12)" opacity="0.4" rx="5" ry="5" />
-    <polygon points="50,10 70,30 60,40 40,20" fill="rgb(13, 179, 181)" opacity="0.4" rx="5" ry="5" />
-  </g>
+    <!-- Group for polygons (rotating the entire logo except text) -->
+    <g transform="rotate(15, 60, 60)">
+        <!-- 4 polygons arranged like a big X with rotated and rounded corners -->
+        <polygon points="20,20 40,40 30,50 10,30" fill="rgb(232, 184, 12)" opacity="0.4" rx="5" ry="5"/>
+        <polygon points="30,20 50,40 40,50 20,30" fill="rgb(13, 179, 181)" opacity="0.4" rx="5" ry="5"/>
+        <polygon points="40,10 60,30 50,40 30,20" fill="rgb(232, 184, 12)" opacity="0.4" rx="5" ry="5"/>
+        <polygon points="50,10 70,30 60,40 40,20" fill="rgb(13, 179, 181)" opacity="0.4" rx="5" ry="5"/>
+    </g>
 </svg>

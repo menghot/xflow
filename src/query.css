@@ -1,99 +1,99 @@
 /* Define the query-tables class for styling the table */
 .query-tables {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
-  border-radius: 8px;
-  overflow: hidden; /* Ensures rounded corners are respected */
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden; /* Ensures rounded corners are respected */
 }
 
 /* Table Headers */
 .query-tables th {
-  background-color: #a5af4c; /* Green color */
-  color: white;
-  padding: 4px 8px;
-  text-align: left;
-  font-weight: bold;
-  font-size: 16px;
-  vertical-align: middle; /* Vertically center the text */
-  height: 32px; /* Fixed height for header cells */
-  white-space: nowrap; /* Prevent text from wrapping */
-  overflow: hidden; /* Clip any overflowing text */
-  text-overflow: ellipsis; /* Add "..." for overflowing text */
-  max-width: 180px; /* Limit the maximum width of column */
+    background-color: #a5af4c; /* Green color */
+    color: white;
+    padding: 4px 8px;
+    text-align: left;
+    font-weight: bold;
+    font-size: 16px;
+    vertical-align: middle; /* Vertically center the text */
+    height: 32px; /* Fixed height for header cells */
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Clip any overflowing text */
+    text-overflow: ellipsis; /* Add "..." for overflowing text */
+    max-width: 180px; /* Limit the maximum width of column */
 }
 
 /* Table Cells */
 .query-tables td {
-  padding: 4px 8px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-  font-size: 14px;
-  color: #333;
-  vertical-align: middle; /* Vertically center the text */
-  white-space: nowrap; /* Prevent text from wrapping */
-  overflow: hidden; /* Clip any overflowing text */
-  text-overflow: ellipsis; /* Add "..." for overflowing text */
-  max-width: 180px; /* Limit the maximum width of column */
-  position: relative; /* Position for the tooltip */
+    padding: 4px 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+    color: #333;
+    vertical-align: middle; /* Vertically center the text */
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Clip any overflowing text */
+    text-overflow: ellipsis; /* Add "..." for overflowing text */
+    max-width: 180px; /* Limit the maximum width of column */
+    position: relative; /* Position for the tooltip */
 }
 
 /* Tooltip on hover */
 .query-tables td[title]:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .query-tables td[title]:hover::after {
-  content: attr(title); /* Use the title attribute content as tooltip */
-  position: absolute;
-  background-color: #333;
-  color: #fff;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 12px;
-  left: 0;
-  top: 100%;
-  white-space: normal;
-  z-index: 10;
-  opacity: 1;
-  transition: opacity 0.3s ease;
+    content: attr(title); /* Use the title attribute content as tooltip */
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    left: 0;
+    top: 100%;
+    white-space: normal;
+    z-index: 10;
+    opacity: 1;
+    transition: opacity 0.3s ease;
 }
 
 /* Fixed height for rows */
 .query-tables tr {
-  height: 50px; /* Fixed height for rows */
+    height: 50px; /* Fixed height for rows */
 }
 
 /* Table Row Hover Effect */
 .query-tables tr:hover {
-  background-color: #f5f5f5;
-  cursor: pointer;
+    background-color: #f5f5f5;
+    cursor: pointer;
 }
 
 /* Zebra Striping for Rows */
 .query-tables tbody tr:nth-child(odd) {
-  background-color: #f9f9f9;
+    background-color: #f9f9f9;
 }
 
 /* Table Borders and Spacing */
 .query-tables, .query-tables th, .query-tables td {
-  border: 1px solid #ddd;
+    border: 1px solid #ddd;
 }
 
 .query-tables td {
-  word-wrap: break-word;
+    word-wrap: break-word;
 }
 
 /* Responsive design for small screens */
 @media (max-width: 768px) {
-  .query-tables {
-    width: 100%;
-    font-size: 12px;
-  }
+    .query-tables {
+        width: 100%;
+        font-size: 12px;
+    }
 
-  .query-tables th, .query-tables td {
-    padding: 8px;
-  }
+    .query-tables th, .query-tables td {
+        padding: 8px;
+    }
 }

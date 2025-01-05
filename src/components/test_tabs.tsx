@@ -7,6 +7,8 @@ import type {TabsProps} from 'antd';
 import {Tabs} from 'antd';
 import {DatabaseOutlined} from "@ant-design/icons";
 import DagEditor from "./DagEditor.tsx";
+import SqlEditor from "./SqlEditor.tsx";
+import BpmnEditor from "./BpmnEditor.tsx";
 
 type TargetKey = React.MouseEvent | React.KeyboardEvent | string;
 
@@ -87,10 +89,9 @@ const TT = forwardRef<TTRef, TTProps>((ttProps, ref) => {
     const onEdit = (targetKey: TargetKey, action: 'add' | 'remove') => {
         if (action === 'add') {
             //add();
-        } else if (action === 'remove') {
+        }
+        if (action === 'remove') {
             remove(targetKey);
-        } else {
-            //add();
         }
     };
 
@@ -108,6 +109,18 @@ const TT = forwardRef<TTRef, TTProps>((ttProps, ref) => {
         }
     };
 
+    const get = (path: string, type: "dag" | "sql" | "bpmn") => {
+        if (path.endsWith('.sql')) {
+            return <SqlEditor filePath={path}/>
+        } else if (type === 'bpmn') {
+            return <BpmnEditor filePath={path}/>
+        } else if (type === 'dag') {
+            return <DagEditor filePath={path}/>
+        } else
+            return type
+    }
+
+
     const openEditor = (path: string, type: "dag" | "sql" | "bpmn") => {
         console.log(path, type);
         setItems([
@@ -115,7 +128,7 @@ const TT = forwardRef<TTRef, TTProps>((ttProps, ref) => {
             {
                 key: path,
                 label: <span><DatabaseOutlined/>{path}</span>,
-                children: <DagEditor filePath={path}/>
+                children: get(path, type)
             }
 
         ]);

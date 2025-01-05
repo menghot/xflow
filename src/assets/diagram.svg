@@ -1,4 +1,1195 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- created with bpmn-js / http://bpmn.io -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="2639" height="990" viewBox="-55 75 2639 990" version="1.1"><g class="djs-group"><g class="djs-element djs-shape" data-element-id="StartEvent_1y45yut" style="display: block;" transform="matrix(1 0 0 1 172 192)"><g class="djs-visual"><circle cx="18" cy="18" r="18" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; fill: white; fill-opacity: 0.95;"/></g><rect class="djs-hit djs-hit-all" x="0" y="0" width="36" height="36" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><circle cx="18" cy="18" r="23" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-shape" data-element-id="StartEvent_1y45yut_label" style="display: block;" transform="matrix(1 0 0 1 154 235)"><g class="djs-visual"><text lineHeight="1.2" class="djs-label" style="font-family: Arial, sans-serif; font-size: 11px; font-weight: normal; fill: rgb(34, 36, 42);"><tspan x="0" y="9.899999999999999">hunger noticed</tspan></text></g><rect class="djs-hit djs-hit-all" x="0" y="0" width="73" height="14" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="-5" y="-5" rx="4" width="83" height="24" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-shape" data-element-id="Activity_0mf0hg3" style="display: block;" transform="matrix(1 0 0 1 1160 170)"><g class="djs-visual"><rect x="0" y="0" width="100" height="80" rx="10" ry="10" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(13, 67, 114); stroke-width: 2px; fill: rgb(187, 222, 251); fill-opacity: 0.95;"/><text lineHeight="1.2" class="djs-label" style="font-family: Arial, sans-serif; font-size: 12px; font-weight: normal; fill: rgb(13, 67, 114);"><tspan x="22.3125" y="43.599999999999994">Spark App</tspan></text></g><rect class="djs-hit djs-hit-all" x="0" y="0" width="100" height="80" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="-5" y="-5" rx="14" width="110" height="90" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-shape" data-element-id="Activity_09f58kw" style="display: block;" transform="matrix(1 0 0 1 1570 270)"><g class="djs-visual"><rect x="0" y="0" width="100" height="80" rx="10" ry="10" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(107, 60, 0); stroke-width: 2px; fill: rgb(255, 224, 178); fill-opacity: 0.95;"/><text lineHeight="1.2" class="djs-label" style="font-family: Arial, sans-serif; font-size: 12px; font-weight: normal; fill: rgb(107, 60, 0);"><tspan x="10.64453125" y="29.200000000000003">[PostgreSQL]a</tspan><tspan x="19.2353515625" y="43.6">nalyze user </tspan><tspan x="31.66015625" y="58">activity</tspan></text></g><rect class="djs-hit djs-hit-all" x="0" y="0" width="100" height="80" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="-5" y="-5" rx="14" width="110" height="90" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-shape" data-element-id="Activity_0jbsqj1" style="display: block;" transform="matrix(1 0 0 1 610 170)"><g class="djs-visual"><rect x="0" y="0" width="100" height="80" rx="10" ry="10" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(32, 80, 34); stroke-width: 2px; fill: rgb(200, 230, 201); fill-opacity: 0.95;"/><text lineHeight="1.2" class="djs-label" style="font-family: Arial, sans-serif; font-size: 12px; font-weight: normal; fill: rgb(32, 80, 34);"><tspan x="8.3046875" y="43.599999999999994">load treas trade</tspan></text><circle cx="5" cy="5" r="5" transform="translate(6, 6)" style="stroke-linecap: round; stroke-linejoin: round; stroke: none; stroke-width: 2px; fill: rgb(200, 230, 201);"/><path d="m 12,18 v -1.71335 c 0.352326,-0.0705 0.703932,-0.17838 1.047628,-0.32133 0.344416,-0.14465 0.665822,-0.32133 0.966377,-0.52145 l 1.19431,1.18005 1.567487,-1.57688 -1.195028,-1.18014 c 0.403376,-0.61394 0.683079,-1.29908 0.825447,-2.01824 l 1.622133,-0.01 v -2.2196 l -1.636514,0.01 c -0.07333,-0.35153 -0.178319,-0.70024 -0.323564,-1.04372 -0.145244,-0.34406 -0.321407,-0.6644 -0.522735,-0.96217 l 1.131035,-1.13631 -1.583305,-1.56293 -1.129598,1.13589 c -0.614052,-0.40108 -1.302883,-0.68093 -2.022633,-0.82247 l 0.0093,-1.61852 h -2.241173 l 0.0042,1.63124 c -0.353763,0.0736 -0.705369,0.17977 -1.049785,0.32371 -0.344415,0.14437 -0.665102,0.32092 -0.9635006,0.52046 l -1.1698628,-1.15823 -1.5667691,1.5792 1.1684265,1.15669 c -0.4026573,0.61283 -0.68308,1.29797 -0.8247287,2.01713 l -1.6588041,0.003 v 2.22174 l 1.6724648,-0.006 c 0.073327,0.35077 0.1797598,0.70243 0.3242851,1.04472 0.1452428,0.34448 0.3214064,0.6644 0.5227339,0.96066 l -1.1993431,1.19723 1.5840256,1.56011 1.1964668,-1.19348 c 0.6140517,0.40346 1.3028827,0.68232 2.0233517,0.82331 l 7.19e-4,1.69892 h 2.226848 z m 0.221462,-3.9957 c -1.788948,0.7502 -3.8576,-0.0928 -4.6097055,-1.87438 -0.7521065,-1.78321 0.090598,-3.84627 1.8802645,-4.59604 1.78823,-0.74936 3.856881,0.0929 4.608987,1.87437 0.752106,1.78165 -0.0906,3.84612 -1.879546,4.59605 z" style="fill: rgb(200, 230, 201); stroke-linecap: round; stroke-linejoin: round; stroke: rgb(32, 80, 34); stroke-width: 1px;"/><circle cx="5" cy="5" r="5" transform="translate(11, 10)" style="stroke-linecap: round; stroke-linejoin: round; stroke: none; stroke-width: 2px; fill: rgb(200, 230, 201);"/><path d="m 17,22 v -1.71335 c 0.352326,-0.0705 0.703932,-0.17838 1.047628,-0.32133 0.344416,-0.14465 0.665822,-0.32133 0.966377,-0.52145 l 1.19431,1.18005 1.567487,-1.57688 -1.195028,-1.18014 c 0.403376,-0.61394 0.683079,-1.29908 0.825447,-2.01824 l 1.622133,-0.01 v -2.2196 l -1.636514,0.01 c -0.07333,-0.35153 -0.178319,-0.70024 -0.323564,-1.04372 -0.145244,-0.34406 -0.321407,-0.6644 -0.522735,-0.96217 l 1.131035,-1.13631 -1.583305,-1.56293 -1.129598,1.13589 c -0.614052,-0.40108 -1.302883,-0.68093 -2.022633,-0.82247 l 0.0093,-1.61852 h -2.241173 l 0.0042,1.63124 c -0.353763,0.0736 -0.705369,0.17977 -1.049785,0.32371 -0.344415,0.14437 -0.665102,0.32092 -0.9635006,0.52046 l -1.1698628,-1.15823 -1.5667691,1.5792 1.1684265,1.15669 c -0.4026573,0.61283 -0.68308,1.29797 -0.8247287,2.01713 l -1.6588041,0.003 v 2.22174 l 1.6724648,-0.006 c 0.073327,0.35077 0.1797598,0.70243 0.3242851,1.04472 0.1452428,0.34448 0.3214064,0.6644 0.5227339,0.96066 l -1.1993431,1.19723 1.5840256,1.56011 1.1964668,-1.19348 c 0.6140517,0.40346 1.3028827,0.68232 2.0233517,0.82331 l 7.19e-4,1.69892 h 2.226848 z m 0.221462,-3.9957 c -1.788948,0.7502 -3.8576,-0.0928 -4.6097055,-1.87438 -0.7521065,-1.78321 0.090598,-3.84627 1.8802645,-4.59604 1.78823,-0.74936 3.856881,0.0929 4.608987,1.87437 0.752106,1.78165 -0.0906,3.84612 -1.879546,4.59605 z" style="fill: rgb(200, 230, 201); stroke-linecap: round; stroke-linejoin: round; stroke: rgb(32, 80, 34); stroke-width: 1px;"/></g><rect class="djs-hit djs-hit-all" x="0" y="0" width="100" height="80" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="-5" y="-5" rx="14" width="110" height="90" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-shape" data-element-id="Activity_0ehag79" style="display: block;" transform="matrix(1 0 0 1 610 280)"><g class="djs-visual"><rect x="0" y="0" width="100" height="80" rx="10" ry="10" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(32, 80, 34); stroke-width: 2px; fill: rgb(200, 230, 201); fill-opacity: 0.95;"/><text lineHeight="1.2" class="djs-label" style="font-family: Arial, sans-serif; font-size: 12px; font-weight: normal; fill: rgb(32, 80, 34);"><tspan x="13.640625" y="43.599999999999994">load otc trade</tspan></text><circle cx="5" cy="5" r="5" transform="translate(6, 6)" style="stroke-linecap: round; stroke-linejoin: round; stroke: none; stroke-width: 2px; fill: rgb(200, 230, 201);"/><path d="m 12,18 v -1.71335 c 0.352326,-0.0705 0.703932,-0.17838 1.047628,-0.32133 0.344416,-0.14465 0.665822,-0.32133 0.966377,-0.52145 l 1.19431,1.18005 1.567487,-1.57688 -1.195028,-1.18014 c 0.403376,-0.61394 0.683079,-1.29908 0.825447,-2.01824 l 1.622133,-0.01 v -2.2196 l -1.636514,0.01 c -0.07333,-0.35153 -0.178319,-0.70024 -0.323564,-1.04372 -0.145244,-0.34406 -0.321407,-0.6644 -0.522735,-0.96217 l 1.131035,-1.13631 -1.583305,-1.56293 -1.129598,1.13589 c -0.614052,-0.40108 -1.302883,-0.68093 -2.022633,-0.82247 l 0.0093,-1.61852 h -2.241173 l 0.0042,1.63124 c -0.353763,0.0736 -0.705369,0.17977 -1.049785,0.32371 -0.344415,0.14437 -0.665102,0.32092 -0.9635006,0.52046 l -1.1698628,-1.15823 -1.5667691,1.5792 1.1684265,1.15669 c -0.4026573,0.61283 -0.68308,1.29797 -0.8247287,2.01713 l -1.6588041,0.003 v 2.22174 l 1.6724648,-0.006 c 0.073327,0.35077 0.1797598,0.70243 0.3242851,1.04472 0.1452428,0.34448 0.3214064,0.6644 0.5227339,0.96066 l -1.1993431,1.19723 1.5840256,1.56011 1.1964668,-1.19348 c 0.6140517,0.40346 1.3028827,0.68232 2.0233517,0.82331 l 7.19e-4,1.69892 h 2.226848 z m 0.221462,-3.9957 c -1.788948,0.7502 -3.8576,-0.0928 -4.6097055,-1.87438 -0.7521065,-1.78321 0.090598,-3.84627 1.8802645,-4.59604 1.78823,-0.74936 3.856881,0.0929 4.608987,1.87437 0.752106,1.78165 -0.0906,3.84612 -1.879546,4.59605 z" style="fill: rgb(200, 230, 201); stroke-linecap: round; stroke-linejoin: round; stroke: rgb(32, 80, 34); stroke-width: 1px;"/><circle cx="5" cy="5" r="5" transform="translate(11, 10)" style="stroke-linecap: round; stroke-linejoin: round; stroke: none; stroke-width: 2px; fill: rgb(200, 230, 201);"/><path d="m 17,22 v -1.71335 c 0.352326,-0.0705 0.703932,-0.17838 1.047628,-0.32133 0.344416,-0.14465 0.665822,-0.32133 0.966377,-0.52145 l 1.19431,1.18005 1.567487,-1.57688 -1.195028,-1.18014 c 0.403376,-0.61394 0.683079,-1.29908 0.825447,-2.01824 l 1.622133,-0.01 v -2.2196 l -1.636514,0.01 c -0.07333,-0.35153 -0.178319,-0.70024 -0.323564,-1.04372 -0.145244,-0.34406 -0.321407,-0.6644 -0.522735,-0.96217 l 1.131035,-1.13631 -1.583305,-1.56293 -1.129598,1.13589 c -0.614052,-0.40108 -1.302883,-0.68093 -2.022633,-0.82247 l 0.0093,-1.61852 h -2.241173 l 0.0042,1.63124 c -0.353763,0.0736 -0.705369,0.17977 -1.049785,0.32371 -0.344415,0.14437 -0.665102,0.32092 -0.9635006,0.52046 l -1.1698628,-1.15823 -1.5667691,1.5792 1.1684265,1.15669 c -0.4026573,0.61283 -0.68308,1.29797 -0.8247287,2.01713 l -1.6588041,0.003 v 2.22174 l 1.6724648,-0.006 c 0.073327,0.35077 0.1797598,0.70243 0.3242851,1.04472 0.1452428,0.34448 0.3214064,0.6644 0.5227339,0.96066 l -1.1993431,1.19723 1.5840256,1.56011 1.1964668,-1.19348 c 0.6140517,0.40346 1.3028827,0.68232 2.0233517,0.82331 l 7.19e-4,1.69892 h 2.226848 z m 0.221462,-3.9957 c -1.788948,0.7502 -3.8576,-0.0928 -4.6097055,-1.87438 -0.7521065,-1.78321 0.090598,-3.84627 1.8802645,-4.59604 1.78823,-0.74936 3.856881,0.0929 4.608987,1.87437 0.752106,1.78165 -0.0906,3.84612 -1.879546,4.59605 z" style="fill: rgb(200, 230, 201); stroke-linecap: round; stroke-linejoin: round; stroke: rgb(32, 80, 34); stroke-width: 1px;"/></g><rect class="djs-hit djs-hit-all" x="0" y="0" width="100" height="80" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="-5" y="-5" rx="14" width="110" height="90" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-shape" data-element-id="Activity_07pevdq" style="display: block;" transform="matrix(1 0 0 1 610 375)"><g class="djs-visual"><rect x="0" y="0" width="100" height="80" rx="10" ry="10" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(32, 80, 34); stroke-width: 2px; fill: rgb(200, 230, 201); fill-opacity: 0.95;"/><text lineHeight="1.2" class="djs-label" style="font-family: Arial, sans-serif; font-size: 12px; font-weight: normal; fill: rgb(32, 80, 34);"><tspan x="15.3125" y="43.599999999999994">load sft trade</tspan></text><circle cx="5" cy="5" r="5" transform="translate(6, 6)" style="stroke-linecap: round; stroke-linejoin: round; stroke: none; stroke-width: 2px; fill: rgb(200, 230, 201);"/><path d="m 12,18 v -1.71335 c 0.352326,-0.0705 0.703932,-0.17838 1.047628,-0.32133 0.344416,-0.14465 0.665822,-0.32133 0.966377,-0.52145 l 1.19431,1.18005 1.567487,-1.57688 -1.195028,-1.18014 c 0.403376,-0.61394 0.683079,-1.29908 0.825447,-2.01824 l 1.622133,-0.01 v -2.2196 l -1.636514,0.01 c -0.07333,-0.35153 -0.178319,-0.70024 -0.323564,-1.04372 -0.145244,-0.34406 -0.321407,-0.6644 -0.522735,-0.96217 l 1.131035,-1.13631 -1.583305,-1.56293 -1.129598,1.13589 c -0.614052,-0.40108 -1.302883,-0.68093 -2.022633,-0.82247 l 0.0093,-1.61852 h -2.241173 l 0.0042,1.63124 c -0.353763,0.0736 -0.705369,0.17977 -1.049785,0.32371 -0.344415,0.14437 -0.665102,0.32092 -0.9635006,0.52046 l -1.1698628,-1.15823 -1.5667691,1.5792 1.1684265,1.15669 c -0.4026573,0.61283 -0.68308,1.29797 -0.8247287,2.01713 l -1.6588041,0.003 v 2.22174 l 1.6724648,-0.006 c 0.073327,0.35077 0.1797598,0.70243 0.3242851,1.04472 0.1452428,0.34448 0.3214064,0.6644 0.5227339,0.96066 l -1.1993431,1.19723 1.5840256,1.56011 1.1964668,-1.19348 c 0.6140517,0.40346 1.3028827,0.68232 2.0233517,0.82331 l 7.19e-4,1.69892 h 2.226848 z m 0.221462,-3.9957 c -1.788948,0.7502 -3.8576,-0.0928 -4.6097055,-1.87438 -0.7521065,-1.78321 0.090598,-3.84627 1.8802645,-4.59604 1.78823,-0.74936 3.856881,0.0929 4.608987,1.87437 0.752106,1.78165 -0.0906,3.84612 -1.879546,4.59605 z" style="fill: rgb(200, 230, 201); stroke-linecap: round; stroke-linejoin: round; stroke: rgb(32, 80, 34); stroke-width: 1px;"/><circle cx="5" cy="5" r="5" transform="translate(11, 10)" style="stroke-linecap: round; stroke-linejoin: round; stroke: none; stroke-width: 2px; fill: rgb(200, 230, 201);"/><path d="m 17,22 v -1.71335 c 0.352326,-0.0705 0.703932,-0.17838 1.047628,-0.32133 0.344416,-0.14465 0.665822,-0.32133 0.966377,-0.52145 l 1.19431,1.18005 1.567487,-1.57688 -1.195028,-1.18014 c 0.403376,-0.61394 0.683079,-1.29908 0.825447,-2.01824 l 1.622133,-0.01 v -2.2196 l -1.636514,0.01 c -0.07333,-0.35153 -0.178319,-0.70024 -0.323564,-1.04372 -0.145244,-0.34406 -0.321407,-0.6644 -0.522735,-0.96217 l 1.131035,-1.13631 -1.583305,-1.56293 -1.129598,1.13589 c -0.614052,-0.40108 -1.302883,-0.68093 -2.022633,-0.82247 l 0.0093,-1.61852 h -2.241173 l 0.0042,1.63124 c -0.353763,0.0736 -0.705369,0.17977 -1.049785,0.32371 -0.344415,0.14437 -0.665102,0.32092 -0.9635006,0.52046 l -1.1698628,-1.15823 -1.5667691,1.5792 1.1684265,1.15669 c -0.4026573,0.61283 -0.68308,1.29797 -0.8247287,2.01713 l -1.6588041,0.003 v 2.22174 l 1.6724648,-0.006 c 0.073327,0.35077 0.1797598,0.70243 0.3242851,1.04472 0.1452428,0.34448 0.3214064,0.6644 0.5227339,0.96066 l -1.1993431,1.19723 1.5840256,1.56011 1.1964668,-1.19348 c 0.6140517,0.40346 1.3028827,0.68232 2.0233517,0.82331 l 7.19e-4,1.69892 h 2.226848 z m 0.221462,-3.9957 c -1.788948,0.7502 -3.8576,-0.0928 -4.6097055,-1.87438 -0.7521065,-1.78321 0.090598,-3.84627 1.8802645,-4.59604 1.78823,-0.74936 3.856881,0.0929 4.608987,1.87437 0.752106,1.78165 -0.0906,3.84612 -1.879546,4.59605 z" style="fill: rgb(200, 230, 201); stroke-linecap: round; stroke-linejoin: round; stroke: rgb(32, 80, 34); stroke-width: 1px;"/></g><rect class="djs-hit djs-hit-all" x="0" y="0" width="100" height="80" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="-5" y="-5" rx="14" width="110" height="90" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-shape" data-element-id="Activity_1ion9sy" style="display: block;" transform="matrix(1 0 0 1 610 470)"><g class="djs-visual"><rect x="0" y="0" width="100" height="80" rx="10" ry="10" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(32, 80, 34); stroke-width: 2px; fill: rgb(200, 230, 201); fill-opacity: 0.95;"/><text lineHeight="1.2" class="djs-label" style="font-family: Arial, sans-serif; font-size: 12px; font-weight: normal; fill: rgb(32, 80, 34);"><tspan x="12.9765625" y="43.599999999999994">load collateral</tspan></text><circle cx="5" cy="5" r="5" transform="translate(6, 6)" style="stroke-linecap: round; stroke-linejoin: round; stroke: none; stroke-width: 2px; fill: rgb(200, 230, 201);"/><path d="m 12,18 v -1.71335 c 0.352326,-0.0705 0.703932,-0.17838 1.047628,-0.32133 0.344416,-0.14465 0.665822,-0.32133 0.966377,-0.52145 l 1.19431,1.18005 1.567487,-1.57688 -1.195028,-1.18014 c 0.403376,-0.61394 0.683079,-1.29908 0.825447,-2.01824 l 1.622133,-0.01 v -2.2196 l -1.636514,0.01 c -0.07333,-0.35153 -0.178319,-0.70024 -0.323564,-1.04372 -0.145244,-0.34406 -0.321407,-0.6644 -0.522735,-0.96217 l 1.131035,-1.13631 -1.583305,-1.56293 -1.129598,1.13589 c -0.614052,-0.40108 -1.302883,-0.68093 -2.022633,-0.82247 l 0.0093,-1.61852 h -2.241173 l 0.0042,1.63124 c -0.353763,0.0736 -0.705369,0.17977 -1.049785,0.32371 -0.344415,0.14437 -0.665102,0.32092 -0.9635006,0.52046 l -1.1698628,-1.15823 -1.5667691,1.5792 1.1684265,1.15669 c -0.4026573,0.61283 -0.68308,1.29797 -0.8247287,2.01713 l -1.6588041,0.003 v 2.22174 l 1.6724648,-0.006 c 0.073327,0.35077 0.1797598,0.70243 0.3242851,1.04472 0.1452428,0.34448 0.3214064,0.6644 0.5227339,0.96066 l -1.1993431,1.19723 1.5840256,1.56011 1.1964668,-1.19348 c 0.6140517,0.40346 1.3028827,0.68232 2.0233517,0.82331 l 7.19e-4,1.69892 h 2.226848 z m 0.221462,-3.9957 c -1.788948,0.7502 -3.8576,-0.0928 -4.6097055,-1.87438 -0.7521065,-1.78321 0.090598,-3.84627 1.8802645,-4.59604 1.78823,-0.74936 3.856881,0.0929 4.608987,1.87437 0.752106,1.78165 -0.0906,3.84612 -1.879546,4.59605 z" style="fill: rgb(200, 230, 201); stroke-linecap: round; stroke-linejoin: round; stroke: rgb(32, 80, 34); stroke-width: 1px;"/><circle cx="5" cy="5" r="5" transform="translate(11, 10)" style="stroke-linecap: round; stroke-linejoin: round; stroke: none; stroke-width: 2px; fill: rgb(200, 230, 201);"/><path d="m 17,22 v -1.71335 c 0.352326,-0.0705 0.703932,-0.17838 1.047628,-0.32133 0.344416,-0.14465 0.665822,-0.32133 0.966377,-0.52145 l 1.19431,1.18005 1.567487,-1.57688 -1.195028,-1.18014 c 0.403376,-0.61394 0.683079,-1.29908 0.825447,-2.01824 l 1.622133,-0.01 v -2.2196 l -1.636514,0.01 c -0.07333,-0.35153 -0.178319,-0.70024 -0.323564,-1.04372 -0.145244,-0.34406 -0.321407,-0.6644 -0.522735,-0.96217 l 1.131035,-1.13631 -1.583305,-1.56293 -1.129598,1.13589 c -0.614052,-0.40108 -1.302883,-0.68093 -2.022633,-0.82247 l 0.0093,-1.61852 h -2.241173 l 0.0042,1.63124 c -0.353763,0.0736 -0.705369,0.17977 -1.049785,0.32371 -0.344415,0.14437 -0.665102,0.32092 -0.9635006,0.52046 l -1.1698628,-1.15823 -1.5667691,1.5792 1.1684265,1.15669 c -0.4026573,0.61283 -0.68308,1.29797 -0.8247287,2.01713 l -1.6588041,0.003 v 2.22174 l 1.6724648,-0.006 c 0.073327,0.35077 0.1797598,0.70243 0.3242851,1.04472 0.1452428,0.34448 0.3214064,0.6644 0.5227339,0.96066 l -1.1993431,1.19723 1.5840256,1.56011 1.1964668,-1.19348 c 0.6140517,0.40346 1.3028827,0.68232 2.0233517,0.82331 l 7.19e-4,1.69892 h 2.226848 z m 0.221462,-3.9957 c -1.788948,0.7502 -3.8576,-0.0928 -4.6097055,-1.87438 -0.7521065,-1.78321 0.090598,-3.84627 1.8802645,-4.59604 1.78823,-0.74936 3.856881,0.0929 4.608987,1.87437 0.752106,1.78165 -0.0906,3.84612 -1.879546,4.59605 z" style="fill: rgb(200, 230, 201); stroke-linecap: round; stroke-linejoin: round; stroke: rgb(32, 80, 34); stroke-width: 1px;"/></g><rect class="djs-hit djs-hit-all" x="0" y="0" width="100" height="80" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="-5" y="-5" rx="14" width="110" height="90" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-shape" data-element-id="Activity_0gmjt9h" style="display: block;" transform="matrix(1 0 0 1 610 580)"><g class="djs-visual"><rect x="0" y="0" width="100" height="80" rx="10" ry="10" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(32, 80, 34); stroke-width: 2px; fill: rgb(200, 230, 201); fill-opacity: 0.95;"/><text lineHeight="1.2" class="djs-label" style="font-family: Arial, sans-serif; font-size: 12px; font-weight: normal; fill: rgb(32, 80, 34);"><tspan x="26.32421875" y="43.599999999999994">load limit</tspan></text><circle cx="5" cy="5" r="5" transform="translate(6, 6)" style="stroke-linecap: round; stroke-linejoin: round; stroke: none; stroke-width: 2px; fill: rgb(200, 230, 201);"/><path d="m 12,18 v -1.71335 c 0.352326,-0.0705 0.703932,-0.17838 1.047628,-0.32133 0.344416,-0.14465 0.665822,-0.32133 0.966377,-0.52145 l 1.19431,1.18005 1.567487,-1.57688 -1.195028,-1.18014 c 0.403376,-0.61394 0.683079,-1.29908 0.825447,-2.01824 l 1.622133,-0.01 v -2.2196 l -1.636514,0.01 c -0.07333,-0.35153 -0.178319,-0.70024 -0.323564,-1.04372 -0.145244,-0.34406 -0.321407,-0.6644 -0.522735,-0.96217 l 1.131035,-1.13631 -1.583305,-1.56293 -1.129598,1.13589 c -0.614052,-0.40108 -1.302883,-0.68093 -2.022633,-0.82247 l 0.0093,-1.61852 h -2.241173 l 0.0042,1.63124 c -0.353763,0.0736 -0.705369,0.17977 -1.049785,0.32371 -0.344415,0.14437 -0.665102,0.32092 -0.9635006,0.52046 l -1.1698628,-1.15823 -1.5667691,1.5792 1.1684265,1.15669 c -0.4026573,0.61283 -0.68308,1.29797 -0.8247287,2.01713 l -1.6588041,0.003 v 2.22174 l 1.6724648,-0.006 c 0.073327,0.35077 0.1797598,0.70243 0.3242851,1.04472 0.1452428,0.34448 0.3214064,0.6644 0.5227339,0.96066 l -1.1993431,1.19723 1.5840256,1.56011 1.1964668,-1.19348 c 0.6140517,0.40346 1.3028827,0.68232 2.0233517,0.82331 l 7.19e-4,1.69892 h 2.226848 z m 0.221462,-3.9957 c -1.788948,0.7502 -3.8576,-0.0928 -4.6097055,-1.87438 -0.7521065,-1.78321 0.090598,-3.84627 1.8802645,-4.59604 1.78823,-0.74936 3.856881,0.0929 4.608987,1.87437 0.752106,1.78165 -0.0906,3.84612 -1.879546,4.59605 z" style="fill: rgb(200, 230, 201); stroke-linecap: round; stroke-linejoin: round; stroke: rgb(32, 80, 34); stroke-width: 1px;"/><circle cx="5" cy="5" r="5" transform="translate(11, 10)" style="stroke-linecap: round; stroke-linejoin: round; stroke: none; stroke-width: 2px; fill: rgb(200, 230, 201);"/><path d="m 17,22 v -1.71335 c 0.352326,-0.0705 0.703932,-0.17838 1.047628,-0.32133 0.344416,-0.14465 0.665822,-0.32133 0.966377,-0.52145 l 1.19431,1.18005 1.567487,-1.57688 -1.195028,-1.18014 c 0.403376,-0.61394 0.683079,-1.29908 0.825447,-2.01824 l 1.622133,-0.01 v -2.2196 l -1.636514,0.01 c -0.07333,-0.35153 -0.178319,-0.70024 -0.323564,-1.04372 -0.145244,-0.34406 -0.321407,-0.6644 -0.522735,-0.96217 l 1.131035,-1.13631 -1.583305,-1.56293 -1.129598,1.13589 c -0.614052,-0.40108 -1.302883,-0.68093 -2.022633,-0.82247 l 0.0093,-1.61852 h -2.241173 l 0.0042,1.63124 c -0.353763,0.0736 -0.705369,0.17977 -1.049785,0.32371 -0.344415,0.14437 -0.665102,0.32092 -0.9635006,0.52046 l -1.1698628,-1.15823 -1.5667691,1.5792 1.1684265,1.15669 c -0.4026573,0.61283 -0.68308,1.29797 -0.8247287,2.01713 l -1.6588041,0.003 v 2.22174 l 1.6724648,-0.006 c 0.073327,0.35077 0.1797598,0.70243 0.3242851,1.04472 0.1452428,0.34448 0.3214064,0.6644 0.5227339,0.96066 l -1.1993431,1.19723 1.5840256,1.56011 1.1964668,-1.19348 c 0.6140517,0.40346 1.3028827,0.68232 2.0233517,0.82331 l 7.19e-4,1.69892 h 2.226848 z m 0.221462,-3.9957 c -1.788948,0.7502 -3.8576,-0.0928 -4.6097055,-1.87438 -0.7521065,-1.78321 0.090598,-3.84627 1.8802645,-4.59604 1.78823,-0.74936 3.856881,0.0929 4.608987,1.87437 0.752106,1.78165 -0.0906,3.84612 -1.879546,4.59605 z" style="fill: rgb(200, 230, 201); stroke-linecap: round; stroke-linejoin: round; stroke: rgb(32, 80, 34); stroke-width: 1px;"/></g><rect class="djs-hit djs-hit-all" x="0" y="0" width="100" height="80" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="-5" y="-5" rx="14" width="110" height="90" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-shape" data-element-id="Task_1hcentk" style="display: block;" transform="matrix(1 0 0 1 290 170)"><g class="djs-visual"><rect x="0" y="0" width="100" height="80" rx="10" ry="10" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; fill: white; fill-opacity: 0.95;"/><text lineHeight="1.2" class="djs-label" style="font-family: Arial, sans-serif; font-size: 12px; font-weight: normal; fill: rgb(34, 36, 42);"><tspan x="26.31640625" y="43.599999999999994">CobDate</tspan></text><path d="m 6.3,5.6000000000000005 l 0,12.6 l 18.900000000000002,0 l 0,-12.6 z l 9.450000000000001,5.4 l 9.450000000000001,-5.4" style="fill: white; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px;"/></g><rect class="djs-hit djs-hit-all" x="0" y="0" width="100" height="80" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="-5" y="-5" rx="14" width="110" height="90" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-shape" data-element-id="Activity_03a8wp7" style="display: block;" transform="matrix(1 0 0 1 1160 270)"><g class="djs-visual"><rect x="0" y="0" width="100" height="80" rx="10" ry="10" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(13, 67, 114); stroke-width: 2px; fill: rgb(187, 222, 251); fill-opacity: 0.95;"/><text lineHeight="1.2" class="djs-label" style="font-family: Arial, sans-serif; font-size: 12px; font-weight: normal; fill: rgb(13, 67, 114);"><tspan x="11.3046875" y="43.599999999999994">Springboot job</tspan></text></g><rect class="djs-hit djs-hit-all" x="0" y="0" width="100" height="80" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="-5" y="-5" rx="14" width="110" height="90" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-shape" data-element-id="Activity_0qi3eaq" style="display: block;" transform="matrix(1 0 0 1 1160 375)"><g class="djs-visual"><rect x="0" y="0" width="100" height="80" rx="10" ry="10" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(13, 67, 114); stroke-width: 2px; fill: rgb(187, 222, 251); fill-opacity: 0.95;"/><text lineHeight="1.2" class="djs-label" style="font-family: Arial, sans-serif; font-size: 12px; font-weight: normal; fill: rgb(13, 67, 114);"><tspan x="9.63671875" y="43.599999999999994">Springboot Job</tspan></text></g><rect class="djs-hit djs-hit-all" x="0" y="0" width="100" height="80" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="-5" y="-5" rx="14" width="110" height="90" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-shape" data-element-id="Activity_0cw0qg7" style="display: block;" transform="matrix(1 0 0 1 1160 510)"><g class="djs-visual"><rect x="0" y="0" width="100" height="80" rx="10" ry="10" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(13, 67, 114); stroke-width: 2px; fill: rgb(187, 222, 251); fill-opacity: 0.95;"/><text lineHeight="1.2" class="djs-label" style="font-family: Arial, sans-serif; font-size: 12px; font-weight: normal; fill: rgb(13, 67, 114);"><tspan x="11.31640625" y="36.4">transform data </tspan><tspan x="26.65625" y="50.8">from ods</tspan></text></g><rect class="djs-hit djs-hit-all" x="0" y="0" width="100" height="80" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="-5" y="-5" rx="14" width="110" height="90" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-shape" data-element-id="Activity_1i0mfm4" style="display: block;" transform="matrix(1 0 0 1 1570 510)"><g class="djs-visual"><rect x="0" y="0" width="100" height="80" rx="10" ry="10" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(107, 60, 0); stroke-width: 2px; fill: rgb(255, 224, 178); fill-opacity: 0.95;"/><text lineHeight="1.2" class="djs-label" style="font-family: Arial, sans-serif; font-size: 12px; font-weight: normal; fill: rgb(107, 60, 0);"><tspan x="8.97265625" y="43.599999999999994">generate report</tspan></text></g><rect class="djs-hit djs-hit-all" x="0" y="0" width="100" height="80" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="-5" y="-5" rx="14" width="110" height="90" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-shape" data-element-id="Activity_16a8a92" style="display: block;" transform="matrix(1 0 0 1 2260 230)"><g class="djs-visual"><rect x="0" y="0" width="100" height="80" rx="10" ry="10" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(131, 19, 17); stroke-width: 2px; fill: rgb(255, 205, 210); fill-opacity: 0.95;"/><text lineHeight="1.2" class="djs-label" style="font-family: Arial, sans-serif; font-size: 12px; font-weight: normal; fill: rgb(131, 19, 17);"><tspan x="10.30078125" y="43.599999999999994">5_create_table</tspan></text></g><rect class="djs-hit djs-hit-all" x="0" y="0" width="100" height="80" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="-5" y="-5" rx="14" width="110" height="90" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-shape" data-element-id="Event_14n5bq1" style="display: block;" transform="matrix(1 0 0 1 2542 372)"><g class="djs-visual"><circle cx="18" cy="18" r="18" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 4px; fill: white; fill-opacity: 0.95;"/><circle cx="18" cy="18" r="10" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 4px; fill: rgb(34, 36, 42);"/></g><rect class="djs-hit djs-hit-all" x="0" y="0" width="36" height="36" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><circle cx="18" cy="18" r="24" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-shape" data-element-id="Activity_0ye18o4" style="display: block;" transform="matrix(1 0 0 1 2260 350)"><g class="djs-visual"><rect x="0" y="0" width="100" height="80" rx="10" ry="10" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(131, 19, 17); stroke-width: 2px; fill: rgb(255, 205, 210); fill-opacity: 0.95;"/><text lineHeight="1.2" class="djs-label" style="font-family: Arial, sans-serif; font-size: 12px; font-weight: normal; fill: rgb(131, 19, 17);"><tspan x="19.9765625" y="43.599999999999994">Python Job</tspan></text></g><rect class="djs-hit djs-hit-all" x="0" y="0" width="100" height="80" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="-5" y="-5" rx="14" width="110" height="90" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-shape" data-element-id="Activity_13kqv70" style="display: block;" transform="matrix(1 0 0 1 2260 460)"><g class="djs-visual"><rect x="0" y="0" width="100" height="80" rx="10" ry="10" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(131, 19, 17); stroke-width: 2px; fill: rgb(255, 205, 210); fill-opacity: 0.95;"/><text lineHeight="1.2" class="djs-label" style="font-family: Arial, sans-serif; font-size: 12px; font-weight: normal; fill: rgb(131, 19, 17);"><tspan x="25.31640625" y="43.599999999999994">Shell Job</tspan></text></g><rect class="djs-hit djs-hit-all" x="0" y="0" width="100" height="80" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="-5" y="-5" rx="14" width="110" height="90" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-shape" data-element-id="Activity_0nsf39w" style="display: block;" transform="matrix(1 0 0 1 610 830)"><g class="djs-visual"><rect x="0" y="0" width="100" height="80" rx="10" ry="10" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(131, 19, 17); stroke-width: 2px; fill: rgb(242, 45, 210); fill-opacity: 0.95;"/><text lineHeight="1.2" class="djs-label" style="font-family: Arial, sans-serif; font-size: 12px; font-weight: normal; fill: rgb(131, 19, 17);"><tspan x="25.984375" y="43.599999999999994">load cpty</tspan></text></g><rect class="djs-hit djs-hit-all" x="0" y="0" width="100" height="80" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="-5" y="-5" rx="14" width="110" height="90" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-shape" data-element-id="Activity_0rqc0y8" style="display: block;" transform="matrix(1 0 0 1 610 940)"><g class="djs-visual"><rect x="0" y="0" width="100" height="80" rx="10" ry="10" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(131, 19, 17); stroke-width: 2px; fill: rgb(242, 45, 210); fill-opacity: 0.95;"/><text lineHeight="1.2" class="djs-label" style="font-family: Arial, sans-serif; font-size: 12px; font-weight: normal; fill: rgb(131, 19, 17);"><tspan x="14.30859375" y="43.599999999999994">load hierachy</tspan></text></g><rect class="djs-hit djs-hit-all" x="0" y="0" width="100" height="80" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="-5" y="-5" rx="14" width="110" height="90" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-shape" data-element-id="Activity_11gbemy" style="display: block;" transform="matrix(1 0 0 1 870 375)"><g class="djs-visual"><rect x="0" y="0" width="100" height="80" rx="10" ry="10" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; fill: white; fill-opacity: 0.95;"/><text lineHeight="1.2" class="djs-label" style="font-family: Arial, sans-serif; font-size: 12px; font-weight: normal; fill: rgb(34, 36, 42);"><tspan x="15.87890625" y="36.4">Wait of static </tspan><tspan x="38.3203125" y="50.8">data</tspan></text><circle cx="5" cy="5" r="5" transform="translate(6, 6)" style="stroke-linecap: round; stroke-linejoin: round; stroke: none; stroke-width: 2px; fill: white;"/><path d="m 12,18 v -1.71335 c 0.352326,-0.0705 0.703932,-0.17838 1.047628,-0.32133 0.344416,-0.14465 0.665822,-0.32133 0.966377,-0.52145 l 1.19431,1.18005 1.567487,-1.57688 -1.195028,-1.18014 c 0.403376,-0.61394 0.683079,-1.29908 0.825447,-2.01824 l 1.622133,-0.01 v -2.2196 l -1.636514,0.01 c -0.07333,-0.35153 -0.178319,-0.70024 -0.323564,-1.04372 -0.145244,-0.34406 -0.321407,-0.6644 -0.522735,-0.96217 l 1.131035,-1.13631 -1.583305,-1.56293 -1.129598,1.13589 c -0.614052,-0.40108 -1.302883,-0.68093 -2.022633,-0.82247 l 0.0093,-1.61852 h -2.241173 l 0.0042,1.63124 c -0.353763,0.0736 -0.705369,0.17977 -1.049785,0.32371 -0.344415,0.14437 -0.665102,0.32092 -0.9635006,0.52046 l -1.1698628,-1.15823 -1.5667691,1.5792 1.1684265,1.15669 c -0.4026573,0.61283 -0.68308,1.29797 -0.8247287,2.01713 l -1.6588041,0.003 v 2.22174 l 1.6724648,-0.006 c 0.073327,0.35077 0.1797598,0.70243 0.3242851,1.04472 0.1452428,0.34448 0.3214064,0.6644 0.5227339,0.96066 l -1.1993431,1.19723 1.5840256,1.56011 1.1964668,-1.19348 c 0.6140517,0.40346 1.3028827,0.68232 2.0233517,0.82331 l 7.19e-4,1.69892 h 2.226848 z m 0.221462,-3.9957 c -1.788948,0.7502 -3.8576,-0.0928 -4.6097055,-1.87438 -0.7521065,-1.78321 0.090598,-3.84627 1.8802645,-4.59604 1.78823,-0.74936 3.856881,0.0929 4.608987,1.87437 0.752106,1.78165 -0.0906,3.84612 -1.879546,4.59605 z" style="fill: white; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px;"/><circle cx="5" cy="5" r="5" transform="translate(11, 10)" style="stroke-linecap: round; stroke-linejoin: round; stroke: none; stroke-width: 2px; fill: white;"/><path d="m 17,22 v -1.71335 c 0.352326,-0.0705 0.703932,-0.17838 1.047628,-0.32133 0.344416,-0.14465 0.665822,-0.32133 0.966377,-0.52145 l 1.19431,1.18005 1.567487,-1.57688 -1.195028,-1.18014 c 0.403376,-0.61394 0.683079,-1.29908 0.825447,-2.01824 l 1.622133,-0.01 v -2.2196 l -1.636514,0.01 c -0.07333,-0.35153 -0.178319,-0.70024 -0.323564,-1.04372 -0.145244,-0.34406 -0.321407,-0.6644 -0.522735,-0.96217 l 1.131035,-1.13631 -1.583305,-1.56293 -1.129598,1.13589 c -0.614052,-0.40108 -1.302883,-0.68093 -2.022633,-0.82247 l 0.0093,-1.61852 h -2.241173 l 0.0042,1.63124 c -0.353763,0.0736 -0.705369,0.17977 -1.049785,0.32371 -0.344415,0.14437 -0.665102,0.32092 -0.9635006,0.52046 l -1.1698628,-1.15823 -1.5667691,1.5792 1.1684265,1.15669 c -0.4026573,0.61283 -0.68308,1.29797 -0.8247287,2.01713 l -1.6588041,0.003 v 2.22174 l 1.6724648,-0.006 c 0.073327,0.35077 0.1797598,0.70243 0.3242851,1.04472 0.1452428,0.34448 0.3214064,0.6644 0.5227339,0.96066 l -1.1993431,1.19723 1.5840256,1.56011 1.1964668,-1.19348 c 0.6140517,0.40346 1.3028827,0.68232 2.0233517,0.82331 l 7.19e-4,1.69892 h 2.226848 z m 0.221462,-3.9957 c -1.788948,0.7502 -3.8576,-0.0928 -4.6097055,-1.87438 -0.7521065,-1.78321 0.090598,-3.84627 1.8802645,-4.59604 1.78823,-0.74936 3.856881,0.0929 4.608987,1.87437 0.752106,1.78165 -0.0906,3.84612 -1.879546,4.59605 z" style="fill: white; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px;"/></g><rect class="djs-hit djs-hit-all" x="0" y="0" width="100" height="80" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="-5" y="-5" rx="14" width="110" height="90" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-shape" data-element-id="Activity_1oboin4" style="display: block;" transform="matrix(1 0 0 1 2040 350)"><g class="djs-visual"><rect x="0" y="0" width="100" height="80" rx="10" ry="10" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(131, 19, 17); stroke-width: 2px; fill: rgb(255, 205, 210); fill-opacity: 0.95;"/><text lineHeight="1.2" class="djs-label" style="font-family: Arial, sans-serif; font-size: 12px; font-weight: normal; fill: rgb(131, 19, 17);"><tspan x="25.09765625" y="43.599999999999994">Http Task</tspan></text><path d="m 5.984999999999999,4.997999999999999 l 0,14 l 21,0 l 0,-14 z l 10.5,6 l 10.5,-6" style="fill: rgb(131, 19, 17); stroke-linecap: round; stroke-linejoin: round; stroke: rgb(255, 205, 210); stroke-width: 1px;"/></g><rect class="djs-hit djs-hit-all" x="0" y="0" width="100" height="80" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="-5" y="-5" rx="14" width="110" height="90" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-shape" data-element-id="Activity_1gxks2f" style="display: block;" transform="matrix(1 0 0 1 1730 270)"><g class="djs-visual"><rect x="0" y="0" width="100" height="80" rx="10" ry="10" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(107, 60, 0); stroke-width: 2px; fill: rgb(255, 224, 178); fill-opacity: 0.95;"/><text lineHeight="1.2" class="djs-label" style="font-family: Arial, sans-serif; font-size: 12px; font-weight: normal; fill: rgb(107, 60, 0);"><tspan x="20.65234375" y="36.4">Spark SQL </tspan><tspan x="30.99609375" y="50.8">[JDBC]</tspan></text><circle cx="5" cy="5" r="5" transform="translate(6, 6)" style="stroke-linecap: round; stroke-linejoin: round; stroke: none; stroke-width: 2px; fill: rgb(255, 224, 178);"/><path d="m 12,18 v -1.71335 c 0.352326,-0.0705 0.703932,-0.17838 1.047628,-0.32133 0.344416,-0.14465 0.665822,-0.32133 0.966377,-0.52145 l 1.19431,1.18005 1.567487,-1.57688 -1.195028,-1.18014 c 0.403376,-0.61394 0.683079,-1.29908 0.825447,-2.01824 l 1.622133,-0.01 v -2.2196 l -1.636514,0.01 c -0.07333,-0.35153 -0.178319,-0.70024 -0.323564,-1.04372 -0.145244,-0.34406 -0.321407,-0.6644 -0.522735,-0.96217 l 1.131035,-1.13631 -1.583305,-1.56293 -1.129598,1.13589 c -0.614052,-0.40108 -1.302883,-0.68093 -2.022633,-0.82247 l 0.0093,-1.61852 h -2.241173 l 0.0042,1.63124 c -0.353763,0.0736 -0.705369,0.17977 -1.049785,0.32371 -0.344415,0.14437 -0.665102,0.32092 -0.9635006,0.52046 l -1.1698628,-1.15823 -1.5667691,1.5792 1.1684265,1.15669 c -0.4026573,0.61283 -0.68308,1.29797 -0.8247287,2.01713 l -1.6588041,0.003 v 2.22174 l 1.6724648,-0.006 c 0.073327,0.35077 0.1797598,0.70243 0.3242851,1.04472 0.1452428,0.34448 0.3214064,0.6644 0.5227339,0.96066 l -1.1993431,1.19723 1.5840256,1.56011 1.1964668,-1.19348 c 0.6140517,0.40346 1.3028827,0.68232 2.0233517,0.82331 l 7.19e-4,1.69892 h 2.226848 z m 0.221462,-3.9957 c -1.788948,0.7502 -3.8576,-0.0928 -4.6097055,-1.87438 -0.7521065,-1.78321 0.090598,-3.84627 1.8802645,-4.59604 1.78823,-0.74936 3.856881,0.0929 4.608987,1.87437 0.752106,1.78165 -0.0906,3.84612 -1.879546,4.59605 z" style="fill: rgb(255, 224, 178); stroke-linecap: round; stroke-linejoin: round; stroke: rgb(107, 60, 0); stroke-width: 1px;"/><circle cx="5" cy="5" r="5" transform="translate(11, 10)" style="stroke-linecap: round; stroke-linejoin: round; stroke: none; stroke-width: 2px; fill: rgb(255, 224, 178);"/><path d="m 17,22 v -1.71335 c 0.352326,-0.0705 0.703932,-0.17838 1.047628,-0.32133 0.344416,-0.14465 0.665822,-0.32133 0.966377,-0.52145 l 1.19431,1.18005 1.567487,-1.57688 -1.195028,-1.18014 c 0.403376,-0.61394 0.683079,-1.29908 0.825447,-2.01824 l 1.622133,-0.01 v -2.2196 l -1.636514,0.01 c -0.07333,-0.35153 -0.178319,-0.70024 -0.323564,-1.04372 -0.145244,-0.34406 -0.321407,-0.6644 -0.522735,-0.96217 l 1.131035,-1.13631 -1.583305,-1.56293 -1.129598,1.13589 c -0.614052,-0.40108 -1.302883,-0.68093 -2.022633,-0.82247 l 0.0093,-1.61852 h -2.241173 l 0.0042,1.63124 c -0.353763,0.0736 -0.705369,0.17977 -1.049785,0.32371 -0.344415,0.14437 -0.665102,0.32092 -0.9635006,0.52046 l -1.1698628,-1.15823 -1.5667691,1.5792 1.1684265,1.15669 c -0.4026573,0.61283 -0.68308,1.29797 -0.8247287,2.01713 l -1.6588041,0.003 v 2.22174 l 1.6724648,-0.006 c 0.073327,0.35077 0.1797598,0.70243 0.3242851,1.04472 0.1452428,0.34448 0.3214064,0.6644 0.5227339,0.96066 l -1.1993431,1.19723 1.5840256,1.56011 1.1964668,-1.19348 c 0.6140517,0.40346 1.3028827,0.68232 2.0233517,0.82331 l 7.19e-4,1.69892 h 2.226848 z m 0.221462,-3.9957 c -1.788948,0.7502 -3.8576,-0.0928 -4.6097055,-1.87438 -0.7521065,-1.78321 0.090598,-3.84627 1.8802645,-4.59604 1.78823,-0.74936 3.856881,0.0929 4.608987,1.87437 0.752106,1.78165 -0.0906,3.84612 -1.879546,4.59605 z" style="fill: rgb(255, 224, 178); stroke-linecap: round; stroke-linejoin: round; stroke: rgb(107, 60, 0); stroke-width: 1px;"/></g><rect class="djs-hit djs-hit-all" x="0" y="0" width="100" height="80" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="-5" y="-5" rx="14" width="110" height="90" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-shape djs-frame" data-element-id="Group_1eze2dy" style="display: block;" transform="matrix(1 0 0 1 510 110)"><g class="djs-visual"><rect x="0" y="0" width="320" height="610" rx="10" ry="10" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(32, 80, 34); stroke-width: 1.5px; fill: none; stroke-dasharray: 10, 6, 0, 6; pointer-events: none;"/></g><rect class="djs-hit djs-hit-stroke" x="0" y="0" width="320" height="610" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="-5" y="-5" rx="14" width="330" height="620" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-shape" data-element-id="Group_1eze2dy_label" style="display: block;" transform="matrix(1 0 0 1 658 117)"><g class="djs-visual"><text lineHeight="1.2" class="djs-label" style="font-family: Arial, sans-serif; font-size: 11px; font-weight: normal; fill: rgb(32, 80, 34);"><tspan x="0" y="9.899999999999999">ODS</tspan></text></g><rect class="djs-hit djs-hit-all" x="0" y="0" width="24" height="14" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="-5" y="-5" rx="4" width="34" height="24" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-shape djs-frame" data-element-id="Group_160to0q" style="display: block;" transform="matrix(1 0 0 1 1000 85)"><g class="djs-visual"><rect x="0" y="0" width="380" height="645" rx="10" ry="10" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1.5px; fill: none; stroke-dasharray: 10, 6, 0, 6; pointer-events: none;"/></g><rect class="djs-hit djs-hit-stroke" x="0" y="0" width="380" height="645" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="-5" y="-5" rx="14" width="390" height="655" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-shape" data-element-id="Group_160to0q_label" style="display: block;" transform="matrix(1 0 0 1 1161 92)"><g class="djs-visual"><text lineHeight="1.2" class="djs-label" style="font-family: Arial, sans-serif; font-size: 11px; font-weight: normal; fill: rgb(34, 36, 42);"><tspan x="0" y="9.899999999999999">ODS-&gt;DWD</tspan></text></g><rect class="djs-hit djs-hit-all" x="0" y="0" width="61" height="14" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="-5" y="-5" rx="4" width="71" height="24" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-shape djs-frame" data-element-id="Group_046gz2b" style="display: block;" transform="matrix(1 0 0 1 1512 82)"><g class="djs-visual"><rect x="0" y="0" width="415" height="645" rx="10" ry="10" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1.5px; fill: none; stroke-dasharray: 10, 6, 0, 6; pointer-events: none;"/></g><rect class="djs-hit djs-hit-stroke" x="0" y="0" width="415" height="645" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="-5" y="-5" rx="14" width="425" height="655" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-shape" data-element-id="Group_046gz2b_label" style="display: block;" transform="matrix(1 0 0 1 1688 89)"><g class="djs-visual"><text lineHeight="1.2" class="djs-label" style="font-family: Arial, sans-serif; font-size: 11px; font-weight: normal; fill: rgb(34, 36, 42);"><tspan x="0" y="9.899999999999999">DWD-&gt;DWS</tspan></text></g><rect class="djs-hit djs-hit-all" x="0" y="0" width="63" height="14" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="-5" y="-5" rx="4" width="73" height="24" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-shape djs-frame" data-element-id="Group_10av2g2" style="display: block;" transform="matrix(1 0 0 1 2000 80)"><g class="djs-visual"><rect x="0" y="0" width="470" height="650" rx="10" ry="10" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1.5px; fill: none; stroke-dasharray: 10, 6, 0, 6; pointer-events: none;"/></g><rect class="djs-hit djs-hit-stroke" x="0" y="0" width="470" height="650" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="-5" y="-5" rx="14" width="480" height="660" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-shape" data-element-id="Group_10av2g2_label" style="display: block;" transform="matrix(1 0 0 1 2224 87)"><g class="djs-visual"><text lineHeight="1.2" class="djs-label" style="font-family: Arial, sans-serif; font-size: 11px; font-weight: normal; fill: rgb(34, 36, 42);"><tspan x="0" y="9.899999999999999">ADS</tspan></text></g><rect class="djs-hit djs-hit-all" x="0" y="0" width="23" height="14" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="-5" y="-5" rx="4" width="33" height="24" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-shape djs-frame" data-element-id="Group_067m3wy" style="display: block;" transform="matrix(1 0 0 1 505 760)"><g class="djs-visual"><rect x="0" y="0" width="325" height="300" rx="10" ry="10" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1.5px; fill: none; stroke-dasharray: 10, 6, 0, 6; pointer-events: none;"/></g><rect class="djs-hit djs-hit-stroke" x="0" y="0" width="325" height="300" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="-5" y="-5" rx="14" width="335" height="310" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-shape" data-element-id="Group_067m3wy_label" style="display: block;" transform="matrix(1 0 0 1 623 767)"><g class="djs-visual"><text lineHeight="1.2" class="djs-label" style="font-family: Arial, sans-serif; font-size: 11px; font-weight: normal; fill: rgb(34, 36, 42);"><tspan x="18.953125" y="9.899999999999999">Mandatory </tspan><tspan x="0" y="23.099999999999998">Task/Data prepare</tspan></text></g><rect class="djs-hit djs-hit-all" x="0" y="0" width="90" height="27" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="-5" y="-5" rx="4" width="100" height="37" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-shape" data-element-id="begin_simon_id" style="display: block;" transform="matrix(1 0 0 1 -50 195)"><g class="djs-visual"><rect x="0" y="0" width="100" height="30" rx="0" ry="0" style="stroke-linecap: round; stroke-linejoin: round; stroke: none; stroke-width: 2px; fill: none;"/><path d="m 0, 0 m 10,0 l -10,0 l 0,30 l 10,0" style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px;"/><text lineHeight="1.2" class="djs-label" style="font-family: Arial, sans-serif; font-size: 12px; font-weight: normal; fill: rgb(34, 36, 42);"><tspan x="7" y="17.799999999999997">begin</tspan></text></g><rect class="djs-hit djs-hit-all" x="0" y="0" width="100" height="30" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="-5" y="-5" rx="4" width="110" height="40" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-connection" data-element-id="SequenceFlow_0h21x7r" style="display: block;"><g class="djs-visual"><defs><marker id="marker-3pp1yjllhkmuco18woyvc9cj6" viewBox="0 0 20 20" refX="11" refY="10" markerWidth="10" markerHeight="10" orient="auto"><path d="M 1 5 L 11 10 L 1 15 Z" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/></marker></defs><path data-corner-radius="5" style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-3pp1yjllhkmuco18woyvc9cj6');" d="M208,210L290,210"/></g><path d="M208,210L290,210" class="djs-hit djs-hit-stroke" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="203" y="205" rx="4" width="92" height="10" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-connection" data-element-id="Flow_1us96s3" style="display: block;"><g class="djs-visual"><defs><marker id="marker-3bkbo9rygick2vq2ynd9tdlgm" viewBox="0 0 20 20" refX="11" refY="10" markerWidth="10" markerHeight="10" orient="auto"><path d="M 1 5 L 11 10 L 1 15 Z" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/></marker></defs><path data-corner-radius="5" style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-3bkbo9rygick2vq2ynd9tdlgm');" d="M390,210L610,210"/></g><path d="M390,210L610,210" class="djs-hit djs-hit-stroke" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="385" y="205" rx="4" width="230" height="10" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-connection" data-element-id="Flow_0ff0tt7" style="display: block;"><g class="djs-visual"><defs><marker id="marker-ez6gv7nu1ikwqt7ia4r02dpsc" viewBox="0 0 20 20" refX="11" refY="10" markerWidth="10" markerHeight="10" orient="auto"><path d="M 1 5 L 11 10 L 1 15 Z" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/></marker></defs><path data-corner-radius="5" style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-ez6gv7nu1ikwqt7ia4r02dpsc');" d="M1260,210L1325,210C1327.5,210,1330,212.5,1330,215L1330,305C1330,307.5,1332.5,310,1335,310L1570,310"/></g><path d="M1260,210L1330,210L1330,310L1570,310" class="djs-hit djs-hit-stroke" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="1255" y="205" rx="4" width="320" height="110" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-connection" data-element-id="Flow_13e7qwl" style="display: block;"><g class="djs-visual"><defs><marker id="marker-6omi69wtkbdjknbkxxz439mkf" viewBox="0 0 20 20" refX="11" refY="10" markerWidth="10" markerHeight="10" orient="auto"><path d="M 1 5 L 11 10 L 1 15 Z" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/></marker></defs><path data-corner-radius="5" style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-6omi69wtkbdjknbkxxz439mkf');" d="M390,210L555,210C557.5,210,560,212.5,560,215L560,315C560,317.5,562.5,320,565,320L610,320"/></g><path d="M390,210L560,210L560,320L610,320" class="djs-hit djs-hit-stroke" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="385" y="205" rx="4" width="230" height="120" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-connection" data-element-id="Flow_0uev2lx" style="display: block;"><g class="djs-visual"><defs><marker id="marker-86hdjgqlpcw1i42j29qr3gjza" viewBox="0 0 20 20" refX="11" refY="10" markerWidth="10" markerHeight="10" orient="auto"><path d="M 1 5 L 11 10 L 1 15 Z" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/></marker></defs><path data-corner-radius="5" style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-86hdjgqlpcw1i42j29qr3gjza');" d="M390,210L555,210C557.5,210,560,212.5,560,215L560,410C560,412.5,562.5,415,565,415L610,415"/></g><path d="M390,210L560,210L560,415L610,415" class="djs-hit djs-hit-stroke" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="385" y="205" rx="4" width="230" height="215" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-connection" data-element-id="Flow_1i9nk5i" style="display: block;"><g class="djs-visual"><defs><marker id="marker-32ubmbry2ln4px69u60tch5ra" viewBox="0 0 20 20" refX="11" refY="10" markerWidth="10" markerHeight="10" orient="auto"><path d="M 1 5 L 11 10 L 1 15 Z" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/></marker></defs><path data-corner-radius="5" style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-32ubmbry2ln4px69u60tch5ra');" d="M390,210L555,210C557.5,210,560,212.5,560,215L560,505C560,507.5,562.5,510,565,510L610,510"/></g><path d="M390,210L560,210L560,510L610,510" class="djs-hit djs-hit-stroke" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="385" y="205" rx="4" width="230" height="310" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-connection" data-element-id="Flow_1qjlg4d" style="display: block;"><g class="djs-visual"><defs><marker id="marker-8f60r5775adl48r9ut8umkn3t" viewBox="0 0 20 20" refX="11" refY="10" markerWidth="10" markerHeight="10" orient="auto"><path d="M 1 5 L 11 10 L 1 15 Z" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/></marker></defs><path data-corner-radius="5" style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-8f60r5775adl48r9ut8umkn3t');" d="M390,210L555,210C557.5,210,560,212.5,560,215L560,615C560,617.5,562.5,620,565,620L610,620"/></g><path d="M390,210L560,210L560,620L610,620" class="djs-hit djs-hit-stroke" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="385" y="205" rx="4" width="230" height="420" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-connection" data-element-id="Flow_0isaw67" style="display: block;"><g class="djs-visual"><defs><marker id="marker-bwuksxbnvis9x6bcsxm1wtx6x" viewBox="0 0 20 20" refX="11" refY="10" markerWidth="10" markerHeight="10" orient="auto"><path d="M 1 5 L 11 10 L 1 15 Z" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/></marker></defs><path data-corner-radius="5" style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-bwuksxbnvis9x6bcsxm1wtx6x');" d="M710,320L755,320C757.5,320,760,322.5,760,325L760,410C760,412.5,762.5,415,765,415L870,415"/></g><path d="M710,320L760,320L760,415L870,415" class="djs-hit djs-hit-stroke" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="705" y="315" rx="4" width="170" height="105" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-connection" data-element-id="Flow_1ntfu6e" style="display: block;"><g class="djs-visual"><defs><marker id="marker-2thkthn5agjre3wobp74m8iep" viewBox="0 0 20 20" refX="11" refY="10" markerWidth="10" markerHeight="10" orient="auto"><path d="M 1 5 L 11 10 L 1 15 Z" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/></marker></defs><path data-corner-radius="5" style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-2thkthn5agjre3wobp74m8iep');" d="M710,510L755,510C757.5,510,760,507.5,760,505L760,420C760,417.5,762.5,415,765,415L870,415"/></g><path d="M710,510L760,510L760,415L870,415" class="djs-hit djs-hit-stroke" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="705" y="410" rx="4" width="170" height="105" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-connection" data-element-id="Flow_1ok3ot6" style="display: block;"><g class="djs-visual"><defs><marker id="marker-8az1i1q2xnw9lg49wxcx0z9nf" viewBox="0 0 20 20" refX="11" refY="10" markerWidth="10" markerHeight="10" orient="auto"><path d="M 1 5 L 11 10 L 1 15 Z" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/></marker></defs><path data-corner-radius="5" style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-8az1i1q2xnw9lg49wxcx0z9nf');" d="M710,620L755,620C757.5,620,760,617.5,760,615L760,420C760,417.5,762.5,415,765,415L870,415"/></g><path d="M710,620L760,620L760,415L870,415" class="djs-hit djs-hit-stroke" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="705" y="410" rx="4" width="170" height="215" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-connection" data-element-id="Flow_0tbjzlz" style="display: block;"><g class="djs-visual"><defs><marker id="marker-b42p7nhqb13c2w8h4z7vpcsb5" viewBox="0 0 20 20" refX="11" refY="10" markerWidth="10" markerHeight="10" orient="auto"><path d="M 1 5 L 11 10 L 1 15 Z" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/></marker></defs><path data-corner-radius="5" style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-b42p7nhqb13c2w8h4z7vpcsb5');" d="M970,415L1025,415C1027.5,415,1030,412.5,1030,410L1030,315C1030,312.5,1032.5,310,1035,310L1160,310"/></g><path d="M970,415L1030,415L1030,310L1160,310" class="djs-hit djs-hit-stroke" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="965" y="305" rx="4" width="200" height="115" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-connection" data-element-id="Flow_0lcwadl" style="display: block;"><g class="djs-visual"><defs><marker id="marker-1dumy0g1qdnaslwzhafcnq5t4" viewBox="0 0 20 20" refX="11" refY="10" markerWidth="10" markerHeight="10" orient="auto"><path d="M 1 5 L 11 10 L 1 15 Z" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/></marker></defs><path data-corner-radius="5" style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-1dumy0g1qdnaslwzhafcnq5t4');" d="M970,415L1160,415"/></g><path d="M970,415L1160,415" class="djs-hit djs-hit-stroke" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="965" y="410" rx="4" width="200" height="10" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-connection" data-element-id="Flow_1fdjwc7" style="display: block;"><g class="djs-visual"><defs><marker id="marker-9xscx53pnk6e7w0twq90v40ll" viewBox="0 0 20 20" refX="11" refY="10" markerWidth="10" markerHeight="10" orient="auto"><path d="M 1 5 L 11 10 L 1 15 Z" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/></marker></defs><path data-corner-radius="5" style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-9xscx53pnk6e7w0twq90v40ll');" d="M970,415L1025,415C1027.5,415,1030,417.5,1030,420L1030,545C1030,547.5,1032.5,550,1035,550L1160,550"/></g><path d="M970,415L1030,415L1030,550L1160,550" class="djs-hit djs-hit-stroke" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="965" y="410" rx="4" width="200" height="145" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-connection" data-element-id="Flow_1apfk9a" style="display: block;"><g class="djs-visual"><defs><marker id="marker-5ik6vvia0jf2vfg4e546ahrqc" viewBox="0 0 20 20" refX="11" refY="10" markerWidth="10" markerHeight="10" orient="auto"><path d="M 1 5 L 11 10 L 1 15 Z" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/></marker></defs><path data-corner-radius="5" style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-5ik6vvia0jf2vfg4e546ahrqc');" d="M1670,310L1730,310"/></g><path d="M1670,310L1730,310" class="djs-hit djs-hit-stroke" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="1665" y="305" rx="4" width="70" height="10" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-connection" data-element-id="Flow_1bw5h1u" style="display: block;"><g class="djs-visual"><defs><marker id="marker-bdqu125md8ockpiautd6i8wzk" viewBox="0 0 20 20" refX="11" refY="10" markerWidth="10" markerHeight="10" orient="auto"><path d="M 1 5 L 11 10 L 1 15 Z" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/></marker></defs><path data-corner-radius="5" style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-bdqu125md8ockpiautd6i8wzk');" d="M1260,310L1570,310"/></g><path d="M1260,310L1570,310" class="djs-hit djs-hit-stroke" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="1255" y="305" rx="4" width="320" height="10" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-connection" data-element-id="Flow_1nrk476" style="display: block;"><g class="djs-visual"><defs><marker id="marker-6g81z8x3rm9oplccryouoxon5" viewBox="0 0 20 20" refX="11" refY="10" markerWidth="10" markerHeight="10" orient="auto"><path d="M 1 5 L 11 10 L 1 15 Z" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/></marker></defs><path data-corner-radius="5" style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-6g81z8x3rm9oplccryouoxon5');" d="M1260,415L1325,415C1327.5,415,1330,412.5,1330,410L1330,315C1330,312.5,1332.5,310,1335,310L1570,310"/></g><path d="M1260,415L1330,415L1330,310L1570,310" class="djs-hit djs-hit-stroke" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="1255" y="305" rx="4" width="320" height="115" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-connection" data-element-id="Flow_19bplht" style="display: block;"><g class="djs-visual"><defs><marker id="marker-09qete987792png7w68kfvz7r" viewBox="0 0 20 20" refX="11" refY="10" markerWidth="10" markerHeight="10" orient="auto"><path d="M 1 5 L 11 10 L 1 15 Z" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/></marker></defs><path data-corner-radius="5" style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-09qete987792png7w68kfvz7r');" d="M1260,550L1570,550"/></g><path d="M1260,550L1570,550" class="djs-hit djs-hit-stroke" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="1255" y="545" rx="4" width="320" height="10" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-connection" data-element-id="Flow_1a4gteh" style="display: block;"><g class="djs-visual"><defs><marker id="marker-4nnf0oml9xjy4yslvnmhxswi1" viewBox="0 0 20 20" refX="11" refY="10" markerWidth="10" markerHeight="10" orient="auto"><path d="M 1 5 L 11 10 L 1 15 Z" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/></marker></defs><path data-corner-radius="5" style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-4nnf0oml9xjy4yslvnmhxswi1');" d="M1830,310L1865,310C1867.5,310,1870,312.5,1870,315L1870,385C1870,387.5,1872.5,390,1875,390L2040,390"/></g><path d="M1830,310L1870,310L1870,390L2040,390" class="djs-hit djs-hit-stroke" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="1825" y="305" rx="4" width="220" height="90" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-connection" data-element-id="Flow_12jilhq" style="display: block;"><g class="djs-visual"><defs><marker id="marker-c5w0hiwnhaxis8yveo845n83u" viewBox="0 0 20 20" refX="11" refY="10" markerWidth="10" markerHeight="10" orient="auto"><path d="M 1 5 L 11 10 L 1 15 Z" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/></marker></defs><path data-corner-radius="5" style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-c5w0hiwnhaxis8yveo845n83u');" d="M1670,550L1865,550C1867.5,550,1870,547.5,1870,545L1870,395C1870,392.5,1872.5,390,1875,390L2040,390"/></g><path d="M1670,550L1870,550L1870,390L2040,390" class="djs-hit djs-hit-stroke" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="1665" y="385" rx="4" width="380" height="170" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-connection" data-element-id="Flow_087d5j5" style="display: block;"><g class="djs-visual"><defs><marker id="marker-a9twz55j5haosutxzg7h8rfi4" viewBox="0 0 20 20" refX="11" refY="10" markerWidth="10" markerHeight="10" orient="auto"><path d="M 1 5 L 11 10 L 1 15 Z" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/></marker></defs><path data-corner-radius="5" style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-a9twz55j5haosutxzg7h8rfi4');" d="M2140,390L2175,390C2177.5,390,2180,387.5,2180,385L2180,275C2180,272.5,2182.5,270,2185,270L2260,270"/></g><path d="M2140,390L2180,390L2180,270L2260,270" class="djs-hit djs-hit-stroke" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="2135" y="265" rx="4" width="130" height="130" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-connection" data-element-id="Flow_1svyg4o" style="display: block;"><g class="djs-visual"><defs><marker id="marker-bb92qv3g1rrn5zk4j3eed1asm" viewBox="0 0 20 20" refX="11" refY="10" markerWidth="10" markerHeight="10" orient="auto"><path d="M 1 5 L 11 10 L 1 15 Z" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/></marker></defs><path data-corner-radius="5" style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-bb92qv3g1rrn5zk4j3eed1asm');" d="M2360,270L2426,270C2428.5,270,2431,272.5,2431,275L2431,385C2431,387.5,2433.5,390,2436,390L2542,390"/></g><path d="M2360,270L2431,270L2431,390L2542,390" class="djs-hit djs-hit-stroke" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="2355" y="265" rx="4" width="192" height="130" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-connection" data-element-id="Flow_130ttz9" style="display: block;"><g class="djs-visual"><defs><marker id="marker-dlrf1qzspadjc49gghwbhy99k" viewBox="0 0 20 20" refX="11" refY="10" markerWidth="10" markerHeight="10" orient="auto"><path d="M 1 5 L 11 10 L 1 15 Z" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/></marker></defs><path data-corner-radius="5" style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-dlrf1qzspadjc49gghwbhy99k');" d="M2140,390L2260,390"/></g><path d="M2140,390L2260,390" class="djs-hit djs-hit-stroke" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="2135" y="385" rx="4" width="130" height="10" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-connection" data-element-id="Flow_1bxayw9" style="display: block;"><g class="djs-visual"><defs><marker id="marker-2ucja0e22wunoqu86r86zjfc8" viewBox="0 0 20 20" refX="11" refY="10" markerWidth="10" markerHeight="10" orient="auto"><path d="M 1 5 L 11 10 L 1 15 Z" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/></marker></defs><path data-corner-radius="5" style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-2ucja0e22wunoqu86r86zjfc8');" d="M2140,390L2175,390C2177.5,390,2180,392.5,2180,395L2180,495C2180,497.5,2182.5,500,2185,500L2260,500"/></g><path d="M2140,390L2180,390L2180,500L2260,500" class="djs-hit djs-hit-stroke" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="2135" y="385" rx="4" width="130" height="120" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-connection" data-element-id="Flow_1f5tds3" style="display: block;"><g class="djs-visual"><defs><marker id="marker-2953czn5r5kpm9jjxfrwn1qmp" viewBox="0 0 20 20" refX="11" refY="10" markerWidth="10" markerHeight="10" orient="auto"><path d="M 1 5 L 11 10 L 1 15 Z" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/></marker></defs><path data-corner-radius="5" style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-2953czn5r5kpm9jjxfrwn1qmp');" d="M2360,500L2426,500C2428.5,500,2431,497.5,2431,495L2431,395C2431,392.5,2433.5,390,2436,390L2542,390"/></g><path d="M2360,500L2431,500L2431,390L2542,390" class="djs-hit djs-hit-stroke" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="2355" y="385" rx="4" width="192" height="120" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-connection" data-element-id="Flow_0miqxr5" style="display: block;"><g class="djs-visual"><defs><marker id="marker-3w46p1ji5bxxpok7nqn256pns" viewBox="0 0 20 20" refX="11" refY="10" markerWidth="10" markerHeight="10" orient="auto"><path d="M 1 5 L 11 10 L 1 15 Z" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/></marker></defs><path data-corner-radius="5" style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-3w46p1ji5bxxpok7nqn256pns');" d="M2360,390L2542,390"/></g><path d="M2360,390L2542,390" class="djs-hit djs-hit-stroke" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="2355" y="385" rx="4" width="192" height="10" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-connection" data-element-id="Flow_1l6ypsf" style="display: block;"><g class="djs-visual"><defs><marker id="marker-38w3j51zd3v7t35ztcoogqpxm" viewBox="0 0 20 20" refX="11" refY="10" markerWidth="10" markerHeight="10" orient="auto"><path d="M 1 5 L 11 10 L 1 15 Z" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/></marker></defs><path data-corner-radius="5" style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-38w3j51zd3v7t35ztcoogqpxm');" d="M390,210L445,210C447.5,210,450,212.5,450,215L450,865C450,867.5,452.5,870,455,870L610,870"/></g><path d="M390,210L450,210L450,870L610,870" class="djs-hit djs-hit-stroke" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="385" y="205" rx="4" width="230" height="670" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-connection" data-element-id="Flow_1x83u87" style="display: block;"><g class="djs-visual"><defs><marker id="marker-16vs1w3u8qz5400ihrxvot3mx" viewBox="0 0 20 20" refX="11" refY="10" markerWidth="10" markerHeight="10" orient="auto"><path d="M 1 5 L 11 10 L 1 15 Z" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/></marker></defs><path data-corner-radius="5" style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-16vs1w3u8qz5400ihrxvot3mx');" d="M390,210L445,210C447.5,210,450,212.5,450,215L450,975C450,977.5,452.5,980,455,980L610,980"/></g><path d="M390,210L450,210L450,980L610,980" class="djs-hit djs-hit-stroke" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="385" y="205" rx="4" width="230" height="780" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-connection" data-element-id="Flow_11rlgoa" style="display: block;"><g class="djs-visual"><defs><marker id="marker-6j7acvuhwoasjf3iy2rhz7tmm" viewBox="0 0 20 20" refX="11" refY="10" markerWidth="10" markerHeight="10" orient="auto"><path d="M 1 5 L 11 10 L 1 15 Z" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/></marker></defs><path data-corner-radius="5" style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-6j7acvuhwoasjf3iy2rhz7tmm');" d="M710,870L755,870C757.5,870,760,867.5,760,865L760,420C760,417.5,762.5,415,765,415L870,415"/></g><path d="M710,870L760,870L760,415L870,415" class="djs-hit djs-hit-stroke" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="705" y="410" rx="4" width="170" height="465" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-connection" data-element-id="Flow_0y34f94" style="display: block;"><g class="djs-visual"><defs><marker id="marker-7cllaq0ixgict9xmdzh2n414n" viewBox="0 0 20 20" refX="11" refY="10" markerWidth="10" markerHeight="10" orient="auto"><path d="M 1 5 L 11 10 L 1 15 Z" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/></marker></defs><path data-corner-radius="5" style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-7cllaq0ixgict9xmdzh2n414n');" d="M710,980L755,980C757.5,980,760,977.5,760,975L760,420C760,417.5,762.5,415,765,415L870,415"/></g><path d="M710,980L760,980L760,415L870,415" class="djs-hit djs-hit-stroke" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="705" y="410" rx="4" width="170" height="575" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-connection" data-element-id="Flow_02opcr2" style="display: block;"><g class="djs-visual"><defs><marker id="marker-e5xn6q5kphin1cd2imq5xogua" viewBox="0 0 20 20" refX="11" refY="10" markerWidth="10" markerHeight="10" orient="auto"><path d="M 1 5 L 11 10 L 1 15 Z" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/></marker></defs><path data-corner-radius="5" style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-e5xn6q5kphin1cd2imq5xogua');" d="M710,210L1160,210"/></g><path d="M710,210L1160,210" class="djs-hit djs-hit-stroke" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="705" y="205" rx="4" width="460" height="10" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-shape" data-element-id="Flow_02opcr2_label" style="display: block;" transform="matrix(1 0 0 1 873 192)"><g class="djs-visual"><text lineHeight="1.2" class="djs-label" style="font-family: Arial, sans-serif; font-size: 11px; font-weight: normal; fill: rgb(34, 36, 42);"><tspan x="0" y="9.899999999999999">nodependency</tspan></text></g><rect class="djs-hit djs-hit-all" x="0" y="0" width="73" height="14" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="-5" y="-5" rx="4" width="83" height="24" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-connection" data-element-id="Flow_1jz011p" style="display: block;"><g class="djs-visual"><defs><marker id="marker-8qpogqzt4ddfklt7moixt8jay" viewBox="0 0 20 20" refX="11" refY="10" markerWidth="10" markerHeight="10" orient="auto"><path d="M 1 5 L 11 10 L 1 15 Z" style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/></marker></defs><path data-corner-radius="5" style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-8qpogqzt4ddfklt7moixt8jay');" d="M710,415L870,415"/></g><path d="M710,415L870,415" class="djs-hit djs-hit-stroke" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="705" y="410" rx="4" width="170" height="10" class="djs-outline" style="fill: none;"/></g></g><g class="djs-group"><g class="djs-element djs-connection" data-element-id="Association_05npldt" style="display: block;"><g class="djs-visual"><path data-corner-radius="5" style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; stroke-dasharray: 0, 5;" d="M172,210L50,210"/></g><path d="M172,210L50,210" class="djs-hit djs-hit-stroke" style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/><rect x="45" y="205" rx="4" width="132" height="10" class="djs-outline" style="fill: none;"/></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="2639" height="990"
+     viewBox="-55 75 2639 990" version="1.1">
+    <g class="djs-group">
+        <g class="djs-element djs-shape" data-element-id="StartEvent_1y45yut" style="display: block;"
+           transform="matrix(1 0 0 1 172 192)">
+            <g class="djs-visual">
+                <circle cx="18" cy="18" r="18"
+                        style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; fill: white; fill-opacity: 0.95;"/>
+            </g>
+            <rect class="djs-hit djs-hit-all" x="0" y="0" width="36" height="36"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <circle cx="18" cy="18" r="23" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-shape" data-element-id="StartEvent_1y45yut_label" style="display: block;"
+           transform="matrix(1 0 0 1 154 235)">
+            <g class="djs-visual">
+                <text lineHeight="1.2" class="djs-label"
+                      style="font-family: Arial, sans-serif; font-size: 11px; font-weight: normal; fill: rgb(34, 36, 42);">
+                    <tspan x="0" y="9.899999999999999">hunger noticed</tspan>
+                </text>
+            </g>
+            <rect class="djs-hit djs-hit-all" x="0" y="0" width="73" height="14"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="-5" y="-5" rx="4" width="83" height="24" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-shape" data-element-id="Activity_0mf0hg3" style="display: block;"
+           transform="matrix(1 0 0 1 1160 170)">
+            <g class="djs-visual">
+                <rect x="0" y="0" width="100" height="80" rx="10" ry="10"
+                      style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(13, 67, 114); stroke-width: 2px; fill: rgb(187, 222, 251); fill-opacity: 0.95;"/>
+                <text lineHeight="1.2" class="djs-label"
+                      style="font-family: Arial, sans-serif; font-size: 12px; font-weight: normal; fill: rgb(13, 67, 114);">
+                    <tspan x="22.3125" y="43.599999999999994">Spark App</tspan>
+                </text>
+            </g>
+            <rect class="djs-hit djs-hit-all" x="0" y="0" width="100" height="80"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="-5" y="-5" rx="14" width="110" height="90" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-shape" data-element-id="Activity_09f58kw" style="display: block;"
+           transform="matrix(1 0 0 1 1570 270)">
+            <g class="djs-visual">
+                <rect x="0" y="0" width="100" height="80" rx="10" ry="10"
+                      style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(107, 60, 0); stroke-width: 2px; fill: rgb(255, 224, 178); fill-opacity: 0.95;"/>
+                <text lineHeight="1.2" class="djs-label"
+                      style="font-family: Arial, sans-serif; font-size: 12px; font-weight: normal; fill: rgb(107, 60, 0);">
+                    <tspan x="10.64453125" y="29.200000000000003">[PostgreSQL]a</tspan>
+                    <tspan x="19.2353515625" y="43.6">nalyze user</tspan>
+                    <tspan x="31.66015625" y="58">activity</tspan>
+                </text>
+            </g>
+            <rect class="djs-hit djs-hit-all" x="0" y="0" width="100" height="80"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="-5" y="-5" rx="14" width="110" height="90" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-shape" data-element-id="Activity_0jbsqj1" style="display: block;"
+           transform="matrix(1 0 0 1 610 170)">
+            <g class="djs-visual">
+                <rect x="0" y="0" width="100" height="80" rx="10" ry="10"
+                      style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(32, 80, 34); stroke-width: 2px; fill: rgb(200, 230, 201); fill-opacity: 0.95;"/>
+                <text lineHeight="1.2" class="djs-label"
+                      style="font-family: Arial, sans-serif; font-size: 12px; font-weight: normal; fill: rgb(32, 80, 34);">
+                    <tspan x="8.3046875" y="43.599999999999994">load treas trade</tspan>
+                </text>
+                <circle cx="5" cy="5" r="5" transform="translate(6, 6)"
+                        style="stroke-linecap: round; stroke-linejoin: round; stroke: none; stroke-width: 2px; fill: rgb(200, 230, 201);"/>
+                <path d="m 12,18 v -1.71335 c 0.352326,-0.0705 0.703932,-0.17838 1.047628,-0.32133 0.344416,-0.14465 0.665822,-0.32133 0.966377,-0.52145 l 1.19431,1.18005 1.567487,-1.57688 -1.195028,-1.18014 c 0.403376,-0.61394 0.683079,-1.29908 0.825447,-2.01824 l 1.622133,-0.01 v -2.2196 l -1.636514,0.01 c -0.07333,-0.35153 -0.178319,-0.70024 -0.323564,-1.04372 -0.145244,-0.34406 -0.321407,-0.6644 -0.522735,-0.96217 l 1.131035,-1.13631 -1.583305,-1.56293 -1.129598,1.13589 c -0.614052,-0.40108 -1.302883,-0.68093 -2.022633,-0.82247 l 0.0093,-1.61852 h -2.241173 l 0.0042,1.63124 c -0.353763,0.0736 -0.705369,0.17977 -1.049785,0.32371 -0.344415,0.14437 -0.665102,0.32092 -0.9635006,0.52046 l -1.1698628,-1.15823 -1.5667691,1.5792 1.1684265,1.15669 c -0.4026573,0.61283 -0.68308,1.29797 -0.8247287,2.01713 l -1.6588041,0.003 v 2.22174 l 1.6724648,-0.006 c 0.073327,0.35077 0.1797598,0.70243 0.3242851,1.04472 0.1452428,0.34448 0.3214064,0.6644 0.5227339,0.96066 l -1.1993431,1.19723 1.5840256,1.56011 1.1964668,-1.19348 c 0.6140517,0.40346 1.3028827,0.68232 2.0233517,0.82331 l 7.19e-4,1.69892 h 2.226848 z m 0.221462,-3.9957 c -1.788948,0.7502 -3.8576,-0.0928 -4.6097055,-1.87438 -0.7521065,-1.78321 0.090598,-3.84627 1.8802645,-4.59604 1.78823,-0.74936 3.856881,0.0929 4.608987,1.87437 0.752106,1.78165 -0.0906,3.84612 -1.879546,4.59605 z"
+                      style="fill: rgb(200, 230, 201); stroke-linecap: round; stroke-linejoin: round; stroke: rgb(32, 80, 34); stroke-width: 1px;"/>
+                <circle cx="5" cy="5" r="5" transform="translate(11, 10)"
+                        style="stroke-linecap: round; stroke-linejoin: round; stroke: none; stroke-width: 2px; fill: rgb(200, 230, 201);"/>
+                <path d="m 17,22 v -1.71335 c 0.352326,-0.0705 0.703932,-0.17838 1.047628,-0.32133 0.344416,-0.14465 0.665822,-0.32133 0.966377,-0.52145 l 1.19431,1.18005 1.567487,-1.57688 -1.195028,-1.18014 c 0.403376,-0.61394 0.683079,-1.29908 0.825447,-2.01824 l 1.622133,-0.01 v -2.2196 l -1.636514,0.01 c -0.07333,-0.35153 -0.178319,-0.70024 -0.323564,-1.04372 -0.145244,-0.34406 -0.321407,-0.6644 -0.522735,-0.96217 l 1.131035,-1.13631 -1.583305,-1.56293 -1.129598,1.13589 c -0.614052,-0.40108 -1.302883,-0.68093 -2.022633,-0.82247 l 0.0093,-1.61852 h -2.241173 l 0.0042,1.63124 c -0.353763,0.0736 -0.705369,0.17977 -1.049785,0.32371 -0.344415,0.14437 -0.665102,0.32092 -0.9635006,0.52046 l -1.1698628,-1.15823 -1.5667691,1.5792 1.1684265,1.15669 c -0.4026573,0.61283 -0.68308,1.29797 -0.8247287,2.01713 l -1.6588041,0.003 v 2.22174 l 1.6724648,-0.006 c 0.073327,0.35077 0.1797598,0.70243 0.3242851,1.04472 0.1452428,0.34448 0.3214064,0.6644 0.5227339,0.96066 l -1.1993431,1.19723 1.5840256,1.56011 1.1964668,-1.19348 c 0.6140517,0.40346 1.3028827,0.68232 2.0233517,0.82331 l 7.19e-4,1.69892 h 2.226848 z m 0.221462,-3.9957 c -1.788948,0.7502 -3.8576,-0.0928 -4.6097055,-1.87438 -0.7521065,-1.78321 0.090598,-3.84627 1.8802645,-4.59604 1.78823,-0.74936 3.856881,0.0929 4.608987,1.87437 0.752106,1.78165 -0.0906,3.84612 -1.879546,4.59605 z"
+                      style="fill: rgb(200, 230, 201); stroke-linecap: round; stroke-linejoin: round; stroke: rgb(32, 80, 34); stroke-width: 1px;"/>
+            </g>
+            <rect class="djs-hit djs-hit-all" x="0" y="0" width="100" height="80"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="-5" y="-5" rx="14" width="110" height="90" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-shape" data-element-id="Activity_0ehag79" style="display: block;"
+           transform="matrix(1 0 0 1 610 280)">
+            <g class="djs-visual">
+                <rect x="0" y="0" width="100" height="80" rx="10" ry="10"
+                      style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(32, 80, 34); stroke-width: 2px; fill: rgb(200, 230, 201); fill-opacity: 0.95;"/>
+                <text lineHeight="1.2" class="djs-label"
+                      style="font-family: Arial, sans-serif; font-size: 12px; font-weight: normal; fill: rgb(32, 80, 34);">
+                    <tspan x="13.640625" y="43.599999999999994">load otc trade</tspan>
+                </text>
+                <circle cx="5" cy="5" r="5" transform="translate(6, 6)"
+                        style="stroke-linecap: round; stroke-linejoin: round; stroke: none; stroke-width: 2px; fill: rgb(200, 230, 201);"/>
+                <path d="m 12,18 v -1.71335 c 0.352326,-0.0705 0.703932,-0.17838 1.047628,-0.32133 0.344416,-0.14465 0.665822,-0.32133 0.966377,-0.52145 l 1.19431,1.18005 1.567487,-1.57688 -1.195028,-1.18014 c 0.403376,-0.61394 0.683079,-1.29908 0.825447,-2.01824 l 1.622133,-0.01 v -2.2196 l -1.636514,0.01 c -0.07333,-0.35153 -0.178319,-0.70024 -0.323564,-1.04372 -0.145244,-0.34406 -0.321407,-0.6644 -0.522735,-0.96217 l 1.131035,-1.13631 -1.583305,-1.56293 -1.129598,1.13589 c -0.614052,-0.40108 -1.302883,-0.68093 -2.022633,-0.82247 l 0.0093,-1.61852 h -2.241173 l 0.0042,1.63124 c -0.353763,0.0736 -0.705369,0.17977 -1.049785,0.32371 -0.344415,0.14437 -0.665102,0.32092 -0.9635006,0.52046 l -1.1698628,-1.15823 -1.5667691,1.5792 1.1684265,1.15669 c -0.4026573,0.61283 -0.68308,1.29797 -0.8247287,2.01713 l -1.6588041,0.003 v 2.22174 l 1.6724648,-0.006 c 0.073327,0.35077 0.1797598,0.70243 0.3242851,1.04472 0.1452428,0.34448 0.3214064,0.6644 0.5227339,0.96066 l -1.1993431,1.19723 1.5840256,1.56011 1.1964668,-1.19348 c 0.6140517,0.40346 1.3028827,0.68232 2.0233517,0.82331 l 7.19e-4,1.69892 h 2.226848 z m 0.221462,-3.9957 c -1.788948,0.7502 -3.8576,-0.0928 -4.6097055,-1.87438 -0.7521065,-1.78321 0.090598,-3.84627 1.8802645,-4.59604 1.78823,-0.74936 3.856881,0.0929 4.608987,1.87437 0.752106,1.78165 -0.0906,3.84612 -1.879546,4.59605 z"
+                      style="fill: rgb(200, 230, 201); stroke-linecap: round; stroke-linejoin: round; stroke: rgb(32, 80, 34); stroke-width: 1px;"/>
+                <circle cx="5" cy="5" r="5" transform="translate(11, 10)"
+                        style="stroke-linecap: round; stroke-linejoin: round; stroke: none; stroke-width: 2px; fill: rgb(200, 230, 201);"/>
+                <path d="m 17,22 v -1.71335 c 0.352326,-0.0705 0.703932,-0.17838 1.047628,-0.32133 0.344416,-0.14465 0.665822,-0.32133 0.966377,-0.52145 l 1.19431,1.18005 1.567487,-1.57688 -1.195028,-1.18014 c 0.403376,-0.61394 0.683079,-1.29908 0.825447,-2.01824 l 1.622133,-0.01 v -2.2196 l -1.636514,0.01 c -0.07333,-0.35153 -0.178319,-0.70024 -0.323564,-1.04372 -0.145244,-0.34406 -0.321407,-0.6644 -0.522735,-0.96217 l 1.131035,-1.13631 -1.583305,-1.56293 -1.129598,1.13589 c -0.614052,-0.40108 -1.302883,-0.68093 -2.022633,-0.82247 l 0.0093,-1.61852 h -2.241173 l 0.0042,1.63124 c -0.353763,0.0736 -0.705369,0.17977 -1.049785,0.32371 -0.344415,0.14437 -0.665102,0.32092 -0.9635006,0.52046 l -1.1698628,-1.15823 -1.5667691,1.5792 1.1684265,1.15669 c -0.4026573,0.61283 -0.68308,1.29797 -0.8247287,2.01713 l -1.6588041,0.003 v 2.22174 l 1.6724648,-0.006 c 0.073327,0.35077 0.1797598,0.70243 0.3242851,1.04472 0.1452428,0.34448 0.3214064,0.6644 0.5227339,0.96066 l -1.1993431,1.19723 1.5840256,1.56011 1.1964668,-1.19348 c 0.6140517,0.40346 1.3028827,0.68232 2.0233517,0.82331 l 7.19e-4,1.69892 h 2.226848 z m 0.221462,-3.9957 c -1.788948,0.7502 -3.8576,-0.0928 -4.6097055,-1.87438 -0.7521065,-1.78321 0.090598,-3.84627 1.8802645,-4.59604 1.78823,-0.74936 3.856881,0.0929 4.608987,1.87437 0.752106,1.78165 -0.0906,3.84612 -1.879546,4.59605 z"
+                      style="fill: rgb(200, 230, 201); stroke-linecap: round; stroke-linejoin: round; stroke: rgb(32, 80, 34); stroke-width: 1px;"/>
+            </g>
+            <rect class="djs-hit djs-hit-all" x="0" y="0" width="100" height="80"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="-5" y="-5" rx="14" width="110" height="90" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-shape" data-element-id="Activity_07pevdq" style="display: block;"
+           transform="matrix(1 0 0 1 610 375)">
+            <g class="djs-visual">
+                <rect x="0" y="0" width="100" height="80" rx="10" ry="10"
+                      style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(32, 80, 34); stroke-width: 2px; fill: rgb(200, 230, 201); fill-opacity: 0.95;"/>
+                <text lineHeight="1.2" class="djs-label"
+                      style="font-family: Arial, sans-serif; font-size: 12px; font-weight: normal; fill: rgb(32, 80, 34);">
+                    <tspan x="15.3125" y="43.599999999999994">load sft trade</tspan>
+                </text>
+                <circle cx="5" cy="5" r="5" transform="translate(6, 6)"
+                        style="stroke-linecap: round; stroke-linejoin: round; stroke: none; stroke-width: 2px; fill: rgb(200, 230, 201);"/>
+                <path d="m 12,18 v -1.71335 c 0.352326,-0.0705 0.703932,-0.17838 1.047628,-0.32133 0.344416,-0.14465 0.665822,-0.32133 0.966377,-0.52145 l 1.19431,1.18005 1.567487,-1.57688 -1.195028,-1.18014 c 0.403376,-0.61394 0.683079,-1.29908 0.825447,-2.01824 l 1.622133,-0.01 v -2.2196 l -1.636514,0.01 c -0.07333,-0.35153 -0.178319,-0.70024 -0.323564,-1.04372 -0.145244,-0.34406 -0.321407,-0.6644 -0.522735,-0.96217 l 1.131035,-1.13631 -1.583305,-1.56293 -1.129598,1.13589 c -0.614052,-0.40108 -1.302883,-0.68093 -2.022633,-0.82247 l 0.0093,-1.61852 h -2.241173 l 0.0042,1.63124 c -0.353763,0.0736 -0.705369,0.17977 -1.049785,0.32371 -0.344415,0.14437 -0.665102,0.32092 -0.9635006,0.52046 l -1.1698628,-1.15823 -1.5667691,1.5792 1.1684265,1.15669 c -0.4026573,0.61283 -0.68308,1.29797 -0.8247287,2.01713 l -1.6588041,0.003 v 2.22174 l 1.6724648,-0.006 c 0.073327,0.35077 0.1797598,0.70243 0.3242851,1.04472 0.1452428,0.34448 0.3214064,0.6644 0.5227339,0.96066 l -1.1993431,1.19723 1.5840256,1.56011 1.1964668,-1.19348 c 0.6140517,0.40346 1.3028827,0.68232 2.0233517,0.82331 l 7.19e-4,1.69892 h 2.226848 z m 0.221462,-3.9957 c -1.788948,0.7502 -3.8576,-0.0928 -4.6097055,-1.87438 -0.7521065,-1.78321 0.090598,-3.84627 1.8802645,-4.59604 1.78823,-0.74936 3.856881,0.0929 4.608987,1.87437 0.752106,1.78165 -0.0906,3.84612 -1.879546,4.59605 z"
+                      style="fill: rgb(200, 230, 201); stroke-linecap: round; stroke-linejoin: round; stroke: rgb(32, 80, 34); stroke-width: 1px;"/>
+                <circle cx="5" cy="5" r="5" transform="translate(11, 10)"
+                        style="stroke-linecap: round; stroke-linejoin: round; stroke: none; stroke-width: 2px; fill: rgb(200, 230, 201);"/>
+                <path d="m 17,22 v -1.71335 c 0.352326,-0.0705 0.703932,-0.17838 1.047628,-0.32133 0.344416,-0.14465 0.665822,-0.32133 0.966377,-0.52145 l 1.19431,1.18005 1.567487,-1.57688 -1.195028,-1.18014 c 0.403376,-0.61394 0.683079,-1.29908 0.825447,-2.01824 l 1.622133,-0.01 v -2.2196 l -1.636514,0.01 c -0.07333,-0.35153 -0.178319,-0.70024 -0.323564,-1.04372 -0.145244,-0.34406 -0.321407,-0.6644 -0.522735,-0.96217 l 1.131035,-1.13631 -1.583305,-1.56293 -1.129598,1.13589 c -0.614052,-0.40108 -1.302883,-0.68093 -2.022633,-0.82247 l 0.0093,-1.61852 h -2.241173 l 0.0042,1.63124 c -0.353763,0.0736 -0.705369,0.17977 -1.049785,0.32371 -0.344415,0.14437 -0.665102,0.32092 -0.9635006,0.52046 l -1.1698628,-1.15823 -1.5667691,1.5792 1.1684265,1.15669 c -0.4026573,0.61283 -0.68308,1.29797 -0.8247287,2.01713 l -1.6588041,0.003 v 2.22174 l 1.6724648,-0.006 c 0.073327,0.35077 0.1797598,0.70243 0.3242851,1.04472 0.1452428,0.34448 0.3214064,0.6644 0.5227339,0.96066 l -1.1993431,1.19723 1.5840256,1.56011 1.1964668,-1.19348 c 0.6140517,0.40346 1.3028827,0.68232 2.0233517,0.82331 l 7.19e-4,1.69892 h 2.226848 z m 0.221462,-3.9957 c -1.788948,0.7502 -3.8576,-0.0928 -4.6097055,-1.87438 -0.7521065,-1.78321 0.090598,-3.84627 1.8802645,-4.59604 1.78823,-0.74936 3.856881,0.0929 4.608987,1.87437 0.752106,1.78165 -0.0906,3.84612 -1.879546,4.59605 z"
+                      style="fill: rgb(200, 230, 201); stroke-linecap: round; stroke-linejoin: round; stroke: rgb(32, 80, 34); stroke-width: 1px;"/>
+            </g>
+            <rect class="djs-hit djs-hit-all" x="0" y="0" width="100" height="80"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="-5" y="-5" rx="14" width="110" height="90" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-shape" data-element-id="Activity_1ion9sy" style="display: block;"
+           transform="matrix(1 0 0 1 610 470)">
+            <g class="djs-visual">
+                <rect x="0" y="0" width="100" height="80" rx="10" ry="10"
+                      style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(32, 80, 34); stroke-width: 2px; fill: rgb(200, 230, 201); fill-opacity: 0.95;"/>
+                <text lineHeight="1.2" class="djs-label"
+                      style="font-family: Arial, sans-serif; font-size: 12px; font-weight: normal; fill: rgb(32, 80, 34);">
+                    <tspan x="12.9765625" y="43.599999999999994">load collateral</tspan>
+                </text>
+                <circle cx="5" cy="5" r="5" transform="translate(6, 6)"
+                        style="stroke-linecap: round; stroke-linejoin: round; stroke: none; stroke-width: 2px; fill: rgb(200, 230, 201);"/>
+                <path d="m 12,18 v -1.71335 c 0.352326,-0.0705 0.703932,-0.17838 1.047628,-0.32133 0.344416,-0.14465 0.665822,-0.32133 0.966377,-0.52145 l 1.19431,1.18005 1.567487,-1.57688 -1.195028,-1.18014 c 0.403376,-0.61394 0.683079,-1.29908 0.825447,-2.01824 l 1.622133,-0.01 v -2.2196 l -1.636514,0.01 c -0.07333,-0.35153 -0.178319,-0.70024 -0.323564,-1.04372 -0.145244,-0.34406 -0.321407,-0.6644 -0.522735,-0.96217 l 1.131035,-1.13631 -1.583305,-1.56293 -1.129598,1.13589 c -0.614052,-0.40108 -1.302883,-0.68093 -2.022633,-0.82247 l 0.0093,-1.61852 h -2.241173 l 0.0042,1.63124 c -0.353763,0.0736 -0.705369,0.17977 -1.049785,0.32371 -0.344415,0.14437 -0.665102,0.32092 -0.9635006,0.52046 l -1.1698628,-1.15823 -1.5667691,1.5792 1.1684265,1.15669 c -0.4026573,0.61283 -0.68308,1.29797 -0.8247287,2.01713 l -1.6588041,0.003 v 2.22174 l 1.6724648,-0.006 c 0.073327,0.35077 0.1797598,0.70243 0.3242851,1.04472 0.1452428,0.34448 0.3214064,0.6644 0.5227339,0.96066 l -1.1993431,1.19723 1.5840256,1.56011 1.1964668,-1.19348 c 0.6140517,0.40346 1.3028827,0.68232 2.0233517,0.82331 l 7.19e-4,1.69892 h 2.226848 z m 0.221462,-3.9957 c -1.788948,0.7502 -3.8576,-0.0928 -4.6097055,-1.87438 -0.7521065,-1.78321 0.090598,-3.84627 1.8802645,-4.59604 1.78823,-0.74936 3.856881,0.0929 4.608987,1.87437 0.752106,1.78165 -0.0906,3.84612 -1.879546,4.59605 z"
+                      style="fill: rgb(200, 230, 201); stroke-linecap: round; stroke-linejoin: round; stroke: rgb(32, 80, 34); stroke-width: 1px;"/>
+                <circle cx="5" cy="5" r="5" transform="translate(11, 10)"
+                        style="stroke-linecap: round; stroke-linejoin: round; stroke: none; stroke-width: 2px; fill: rgb(200, 230, 201);"/>
+                <path d="m 17,22 v -1.71335 c 0.352326,-0.0705 0.703932,-0.17838 1.047628,-0.32133 0.344416,-0.14465 0.665822,-0.32133 0.966377,-0.52145 l 1.19431,1.18005 1.567487,-1.57688 -1.195028,-1.18014 c 0.403376,-0.61394 0.683079,-1.29908 0.825447,-2.01824 l 1.622133,-0.01 v -2.2196 l -1.636514,0.01 c -0.07333,-0.35153 -0.178319,-0.70024 -0.323564,-1.04372 -0.145244,-0.34406 -0.321407,-0.6644 -0.522735,-0.96217 l 1.131035,-1.13631 -1.583305,-1.56293 -1.129598,1.13589 c -0.614052,-0.40108 -1.302883,-0.68093 -2.022633,-0.82247 l 0.0093,-1.61852 h -2.241173 l 0.0042,1.63124 c -0.353763,0.0736 -0.705369,0.17977 -1.049785,0.32371 -0.344415,0.14437 -0.665102,0.32092 -0.9635006,0.52046 l -1.1698628,-1.15823 -1.5667691,1.5792 1.1684265,1.15669 c -0.4026573,0.61283 -0.68308,1.29797 -0.8247287,2.01713 l -1.6588041,0.003 v 2.22174 l 1.6724648,-0.006 c 0.073327,0.35077 0.1797598,0.70243 0.3242851,1.04472 0.1452428,0.34448 0.3214064,0.6644 0.5227339,0.96066 l -1.1993431,1.19723 1.5840256,1.56011 1.1964668,-1.19348 c 0.6140517,0.40346 1.3028827,0.68232 2.0233517,0.82331 l 7.19e-4,1.69892 h 2.226848 z m 0.221462,-3.9957 c -1.788948,0.7502 -3.8576,-0.0928 -4.6097055,-1.87438 -0.7521065,-1.78321 0.090598,-3.84627 1.8802645,-4.59604 1.78823,-0.74936 3.856881,0.0929 4.608987,1.87437 0.752106,1.78165 -0.0906,3.84612 -1.879546,4.59605 z"
+                      style="fill: rgb(200, 230, 201); stroke-linecap: round; stroke-linejoin: round; stroke: rgb(32, 80, 34); stroke-width: 1px;"/>
+            </g>
+            <rect class="djs-hit djs-hit-all" x="0" y="0" width="100" height="80"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="-5" y="-5" rx="14" width="110" height="90" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-shape" data-element-id="Activity_0gmjt9h" style="display: block;"
+           transform="matrix(1 0 0 1 610 580)">
+            <g class="djs-visual">
+                <rect x="0" y="0" width="100" height="80" rx="10" ry="10"
+                      style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(32, 80, 34); stroke-width: 2px; fill: rgb(200, 230, 201); fill-opacity: 0.95;"/>
+                <text lineHeight="1.2" class="djs-label"
+                      style="font-family: Arial, sans-serif; font-size: 12px; font-weight: normal; fill: rgb(32, 80, 34);">
+                    <tspan x="26.32421875" y="43.599999999999994">load limit</tspan>
+                </text>
+                <circle cx="5" cy="5" r="5" transform="translate(6, 6)"
+                        style="stroke-linecap: round; stroke-linejoin: round; stroke: none; stroke-width: 2px; fill: rgb(200, 230, 201);"/>
+                <path d="m 12,18 v -1.71335 c 0.352326,-0.0705 0.703932,-0.17838 1.047628,-0.32133 0.344416,-0.14465 0.665822,-0.32133 0.966377,-0.52145 l 1.19431,1.18005 1.567487,-1.57688 -1.195028,-1.18014 c 0.403376,-0.61394 0.683079,-1.29908 0.825447,-2.01824 l 1.622133,-0.01 v -2.2196 l -1.636514,0.01 c -0.07333,-0.35153 -0.178319,-0.70024 -0.323564,-1.04372 -0.145244,-0.34406 -0.321407,-0.6644 -0.522735,-0.96217 l 1.131035,-1.13631 -1.583305,-1.56293 -1.129598,1.13589 c -0.614052,-0.40108 -1.302883,-0.68093 -2.022633,-0.82247 l 0.0093,-1.61852 h -2.241173 l 0.0042,1.63124 c -0.353763,0.0736 -0.705369,0.17977 -1.049785,0.32371 -0.344415,0.14437 -0.665102,0.32092 -0.9635006,0.52046 l -1.1698628,-1.15823 -1.5667691,1.5792 1.1684265,1.15669 c -0.4026573,0.61283 -0.68308,1.29797 -0.8247287,2.01713 l -1.6588041,0.003 v 2.22174 l 1.6724648,-0.006 c 0.073327,0.35077 0.1797598,0.70243 0.3242851,1.04472 0.1452428,0.34448 0.3214064,0.6644 0.5227339,0.96066 l -1.1993431,1.19723 1.5840256,1.56011 1.1964668,-1.19348 c 0.6140517,0.40346 1.3028827,0.68232 2.0233517,0.82331 l 7.19e-4,1.69892 h 2.226848 z m 0.221462,-3.9957 c -1.788948,0.7502 -3.8576,-0.0928 -4.6097055,-1.87438 -0.7521065,-1.78321 0.090598,-3.84627 1.8802645,-4.59604 1.78823,-0.74936 3.856881,0.0929 4.608987,1.87437 0.752106,1.78165 -0.0906,3.84612 -1.879546,4.59605 z"
+                      style="fill: rgb(200, 230, 201); stroke-linecap: round; stroke-linejoin: round; stroke: rgb(32, 80, 34); stroke-width: 1px;"/>
+                <circle cx="5" cy="5" r="5" transform="translate(11, 10)"
+                        style="stroke-linecap: round; stroke-linejoin: round; stroke: none; stroke-width: 2px; fill: rgb(200, 230, 201);"/>
+                <path d="m 17,22 v -1.71335 c 0.352326,-0.0705 0.703932,-0.17838 1.047628,-0.32133 0.344416,-0.14465 0.665822,-0.32133 0.966377,-0.52145 l 1.19431,1.18005 1.567487,-1.57688 -1.195028,-1.18014 c 0.403376,-0.61394 0.683079,-1.29908 0.825447,-2.01824 l 1.622133,-0.01 v -2.2196 l -1.636514,0.01 c -0.07333,-0.35153 -0.178319,-0.70024 -0.323564,-1.04372 -0.145244,-0.34406 -0.321407,-0.6644 -0.522735,-0.96217 l 1.131035,-1.13631 -1.583305,-1.56293 -1.129598,1.13589 c -0.614052,-0.40108 -1.302883,-0.68093 -2.022633,-0.82247 l 0.0093,-1.61852 h -2.241173 l 0.0042,1.63124 c -0.353763,0.0736 -0.705369,0.17977 -1.049785,0.32371 -0.344415,0.14437 -0.665102,0.32092 -0.9635006,0.52046 l -1.1698628,-1.15823 -1.5667691,1.5792 1.1684265,1.15669 c -0.4026573,0.61283 -0.68308,1.29797 -0.8247287,2.01713 l -1.6588041,0.003 v 2.22174 l 1.6724648,-0.006 c 0.073327,0.35077 0.1797598,0.70243 0.3242851,1.04472 0.1452428,0.34448 0.3214064,0.6644 0.5227339,0.96066 l -1.1993431,1.19723 1.5840256,1.56011 1.1964668,-1.19348 c 0.6140517,0.40346 1.3028827,0.68232 2.0233517,0.82331 l 7.19e-4,1.69892 h 2.226848 z m 0.221462,-3.9957 c -1.788948,0.7502 -3.8576,-0.0928 -4.6097055,-1.87438 -0.7521065,-1.78321 0.090598,-3.84627 1.8802645,-4.59604 1.78823,-0.74936 3.856881,0.0929 4.608987,1.87437 0.752106,1.78165 -0.0906,3.84612 -1.879546,4.59605 z"
+                      style="fill: rgb(200, 230, 201); stroke-linecap: round; stroke-linejoin: round; stroke: rgb(32, 80, 34); stroke-width: 1px;"/>
+            </g>
+            <rect class="djs-hit djs-hit-all" x="0" y="0" width="100" height="80"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="-5" y="-5" rx="14" width="110" height="90" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-shape" data-element-id="Task_1hcentk" style="display: block;"
+           transform="matrix(1 0 0 1 290 170)">
+            <g class="djs-visual">
+                <rect x="0" y="0" width="100" height="80" rx="10" ry="10"
+                      style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; fill: white; fill-opacity: 0.95;"/>
+                <text lineHeight="1.2" class="djs-label"
+                      style="font-family: Arial, sans-serif; font-size: 12px; font-weight: normal; fill: rgb(34, 36, 42);">
+                    <tspan x="26.31640625" y="43.599999999999994">CobDate</tspan>
+                </text>
+                <path d="m 6.3,5.6000000000000005 l 0,12.6 l 18.900000000000002,0 l 0,-12.6 z l 9.450000000000001,5.4 l 9.450000000000001,-5.4"
+                      style="fill: white; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px;"/>
+            </g>
+            <rect class="djs-hit djs-hit-all" x="0" y="0" width="100" height="80"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="-5" y="-5" rx="14" width="110" height="90" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-shape" data-element-id="Activity_03a8wp7" style="display: block;"
+           transform="matrix(1 0 0 1 1160 270)">
+            <g class="djs-visual">
+                <rect x="0" y="0" width="100" height="80" rx="10" ry="10"
+                      style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(13, 67, 114); stroke-width: 2px; fill: rgb(187, 222, 251); fill-opacity: 0.95;"/>
+                <text lineHeight="1.2" class="djs-label"
+                      style="font-family: Arial, sans-serif; font-size: 12px; font-weight: normal; fill: rgb(13, 67, 114);">
+                    <tspan x="11.3046875" y="43.599999999999994">Springboot job</tspan>
+                </text>
+            </g>
+            <rect class="djs-hit djs-hit-all" x="0" y="0" width="100" height="80"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="-5" y="-5" rx="14" width="110" height="90" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-shape" data-element-id="Activity_0qi3eaq" style="display: block;"
+           transform="matrix(1 0 0 1 1160 375)">
+            <g class="djs-visual">
+                <rect x="0" y="0" width="100" height="80" rx="10" ry="10"
+                      style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(13, 67, 114); stroke-width: 2px; fill: rgb(187, 222, 251); fill-opacity: 0.95;"/>
+                <text lineHeight="1.2" class="djs-label"
+                      style="font-family: Arial, sans-serif; font-size: 12px; font-weight: normal; fill: rgb(13, 67, 114);">
+                    <tspan x="9.63671875" y="43.599999999999994">Springboot Job</tspan>
+                </text>
+            </g>
+            <rect class="djs-hit djs-hit-all" x="0" y="0" width="100" height="80"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="-5" y="-5" rx="14" width="110" height="90" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-shape" data-element-id="Activity_0cw0qg7" style="display: block;"
+           transform="matrix(1 0 0 1 1160 510)">
+            <g class="djs-visual">
+                <rect x="0" y="0" width="100" height="80" rx="10" ry="10"
+                      style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(13, 67, 114); stroke-width: 2px; fill: rgb(187, 222, 251); fill-opacity: 0.95;"/>
+                <text lineHeight="1.2" class="djs-label"
+                      style="font-family: Arial, sans-serif; font-size: 12px; font-weight: normal; fill: rgb(13, 67, 114);">
+                    <tspan x="11.31640625" y="36.4">transform data</tspan>
+                    <tspan x="26.65625" y="50.8">from ods</tspan>
+                </text>
+            </g>
+            <rect class="djs-hit djs-hit-all" x="0" y="0" width="100" height="80"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="-5" y="-5" rx="14" width="110" height="90" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-shape" data-element-id="Activity_1i0mfm4" style="display: block;"
+           transform="matrix(1 0 0 1 1570 510)">
+            <g class="djs-visual">
+                <rect x="0" y="0" width="100" height="80" rx="10" ry="10"
+                      style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(107, 60, 0); stroke-width: 2px; fill: rgb(255, 224, 178); fill-opacity: 0.95;"/>
+                <text lineHeight="1.2" class="djs-label"
+                      style="font-family: Arial, sans-serif; font-size: 12px; font-weight: normal; fill: rgb(107, 60, 0);">
+                    <tspan x="8.97265625" y="43.599999999999994">generate report</tspan>
+                </text>
+            </g>
+            <rect class="djs-hit djs-hit-all" x="0" y="0" width="100" height="80"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="-5" y="-5" rx="14" width="110" height="90" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-shape" data-element-id="Activity_16a8a92" style="display: block;"
+           transform="matrix(1 0 0 1 2260 230)">
+            <g class="djs-visual">
+                <rect x="0" y="0" width="100" height="80" rx="10" ry="10"
+                      style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(131, 19, 17); stroke-width: 2px; fill: rgb(255, 205, 210); fill-opacity: 0.95;"/>
+                <text lineHeight="1.2" class="djs-label"
+                      style="font-family: Arial, sans-serif; font-size: 12px; font-weight: normal; fill: rgb(131, 19, 17);">
+                    <tspan x="10.30078125" y="43.599999999999994">5_create_table</tspan>
+                </text>
+            </g>
+            <rect class="djs-hit djs-hit-all" x="0" y="0" width="100" height="80"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="-5" y="-5" rx="14" width="110" height="90" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-shape" data-element-id="Event_14n5bq1" style="display: block;"
+           transform="matrix(1 0 0 1 2542 372)">
+            <g class="djs-visual">
+                <circle cx="18" cy="18" r="18"
+                        style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 4px; fill: white; fill-opacity: 0.95;"/>
+                <circle cx="18" cy="18" r="10"
+                        style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 4px; fill: rgb(34, 36, 42);"/>
+            </g>
+            <rect class="djs-hit djs-hit-all" x="0" y="0" width="36" height="36"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <circle cx="18" cy="18" r="24" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-shape" data-element-id="Activity_0ye18o4" style="display: block;"
+           transform="matrix(1 0 0 1 2260 350)">
+            <g class="djs-visual">
+                <rect x="0" y="0" width="100" height="80" rx="10" ry="10"
+                      style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(131, 19, 17); stroke-width: 2px; fill: rgb(255, 205, 210); fill-opacity: 0.95;"/>
+                <text lineHeight="1.2" class="djs-label"
+                      style="font-family: Arial, sans-serif; font-size: 12px; font-weight: normal; fill: rgb(131, 19, 17);">
+                    <tspan x="19.9765625" y="43.599999999999994">Python Job</tspan>
+                </text>
+            </g>
+            <rect class="djs-hit djs-hit-all" x="0" y="0" width="100" height="80"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="-5" y="-5" rx="14" width="110" height="90" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-shape" data-element-id="Activity_13kqv70" style="display: block;"
+           transform="matrix(1 0 0 1 2260 460)">
+            <g class="djs-visual">
+                <rect x="0" y="0" width="100" height="80" rx="10" ry="10"
+                      style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(131, 19, 17); stroke-width: 2px; fill: rgb(255, 205, 210); fill-opacity: 0.95;"/>
+                <text lineHeight="1.2" class="djs-label"
+                      style="font-family: Arial, sans-serif; font-size: 12px; font-weight: normal; fill: rgb(131, 19, 17);">
+                    <tspan x="25.31640625" y="43.599999999999994">Shell Job</tspan>
+                </text>
+            </g>
+            <rect class="djs-hit djs-hit-all" x="0" y="0" width="100" height="80"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="-5" y="-5" rx="14" width="110" height="90" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-shape" data-element-id="Activity_0nsf39w" style="display: block;"
+           transform="matrix(1 0 0 1 610 830)">
+            <g class="djs-visual">
+                <rect x="0" y="0" width="100" height="80" rx="10" ry="10"
+                      style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(131, 19, 17); stroke-width: 2px; fill: rgb(242, 45, 210); fill-opacity: 0.95;"/>
+                <text lineHeight="1.2" class="djs-label"
+                      style="font-family: Arial, sans-serif; font-size: 12px; font-weight: normal; fill: rgb(131, 19, 17);">
+                    <tspan x="25.984375" y="43.599999999999994">load cpty</tspan>
+                </text>
+            </g>
+            <rect class="djs-hit djs-hit-all" x="0" y="0" width="100" height="80"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="-5" y="-5" rx="14" width="110" height="90" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-shape" data-element-id="Activity_0rqc0y8" style="display: block;"
+           transform="matrix(1 0 0 1 610 940)">
+            <g class="djs-visual">
+                <rect x="0" y="0" width="100" height="80" rx="10" ry="10"
+                      style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(131, 19, 17); stroke-width: 2px; fill: rgb(242, 45, 210); fill-opacity: 0.95;"/>
+                <text lineHeight="1.2" class="djs-label"
+                      style="font-family: Arial, sans-serif; font-size: 12px; font-weight: normal; fill: rgb(131, 19, 17);">
+                    <tspan x="14.30859375" y="43.599999999999994">load hierachy</tspan>
+                </text>
+            </g>
+            <rect class="djs-hit djs-hit-all" x="0" y="0" width="100" height="80"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="-5" y="-5" rx="14" width="110" height="90" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-shape" data-element-id="Activity_11gbemy" style="display: block;"
+           transform="matrix(1 0 0 1 870 375)">
+            <g class="djs-visual">
+                <rect x="0" y="0" width="100" height="80" rx="10" ry="10"
+                      style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; fill: white; fill-opacity: 0.95;"/>
+                <text lineHeight="1.2" class="djs-label"
+                      style="font-family: Arial, sans-serif; font-size: 12px; font-weight: normal; fill: rgb(34, 36, 42);">
+                    <tspan x="15.87890625" y="36.4">Wait of static</tspan>
+                    <tspan x="38.3203125" y="50.8">data</tspan>
+                </text>
+                <circle cx="5" cy="5" r="5" transform="translate(6, 6)"
+                        style="stroke-linecap: round; stroke-linejoin: round; stroke: none; stroke-width: 2px; fill: white;"/>
+                <path d="m 12,18 v -1.71335 c 0.352326,-0.0705 0.703932,-0.17838 1.047628,-0.32133 0.344416,-0.14465 0.665822,-0.32133 0.966377,-0.52145 l 1.19431,1.18005 1.567487,-1.57688 -1.195028,-1.18014 c 0.403376,-0.61394 0.683079,-1.29908 0.825447,-2.01824 l 1.622133,-0.01 v -2.2196 l -1.636514,0.01 c -0.07333,-0.35153 -0.178319,-0.70024 -0.323564,-1.04372 -0.145244,-0.34406 -0.321407,-0.6644 -0.522735,-0.96217 l 1.131035,-1.13631 -1.583305,-1.56293 -1.129598,1.13589 c -0.614052,-0.40108 -1.302883,-0.68093 -2.022633,-0.82247 l 0.0093,-1.61852 h -2.241173 l 0.0042,1.63124 c -0.353763,0.0736 -0.705369,0.17977 -1.049785,0.32371 -0.344415,0.14437 -0.665102,0.32092 -0.9635006,0.52046 l -1.1698628,-1.15823 -1.5667691,1.5792 1.1684265,1.15669 c -0.4026573,0.61283 -0.68308,1.29797 -0.8247287,2.01713 l -1.6588041,0.003 v 2.22174 l 1.6724648,-0.006 c 0.073327,0.35077 0.1797598,0.70243 0.3242851,1.04472 0.1452428,0.34448 0.3214064,0.6644 0.5227339,0.96066 l -1.1993431,1.19723 1.5840256,1.56011 1.1964668,-1.19348 c 0.6140517,0.40346 1.3028827,0.68232 2.0233517,0.82331 l 7.19e-4,1.69892 h 2.226848 z m 0.221462,-3.9957 c -1.788948,0.7502 -3.8576,-0.0928 -4.6097055,-1.87438 -0.7521065,-1.78321 0.090598,-3.84627 1.8802645,-4.59604 1.78823,-0.74936 3.856881,0.0929 4.608987,1.87437 0.752106,1.78165 -0.0906,3.84612 -1.879546,4.59605 z"
+                      style="fill: white; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px;"/>
+                <circle cx="5" cy="5" r="5" transform="translate(11, 10)"
+                        style="stroke-linecap: round; stroke-linejoin: round; stroke: none; stroke-width: 2px; fill: white;"/>
+                <path d="m 17,22 v -1.71335 c 0.352326,-0.0705 0.703932,-0.17838 1.047628,-0.32133 0.344416,-0.14465 0.665822,-0.32133 0.966377,-0.52145 l 1.19431,1.18005 1.567487,-1.57688 -1.195028,-1.18014 c 0.403376,-0.61394 0.683079,-1.29908 0.825447,-2.01824 l 1.622133,-0.01 v -2.2196 l -1.636514,0.01 c -0.07333,-0.35153 -0.178319,-0.70024 -0.323564,-1.04372 -0.145244,-0.34406 -0.321407,-0.6644 -0.522735,-0.96217 l 1.131035,-1.13631 -1.583305,-1.56293 -1.129598,1.13589 c -0.614052,-0.40108 -1.302883,-0.68093 -2.022633,-0.82247 l 0.0093,-1.61852 h -2.241173 l 0.0042,1.63124 c -0.353763,0.0736 -0.705369,0.17977 -1.049785,0.32371 -0.344415,0.14437 -0.665102,0.32092 -0.9635006,0.52046 l -1.1698628,-1.15823 -1.5667691,1.5792 1.1684265,1.15669 c -0.4026573,0.61283 -0.68308,1.29797 -0.8247287,2.01713 l -1.6588041,0.003 v 2.22174 l 1.6724648,-0.006 c 0.073327,0.35077 0.1797598,0.70243 0.3242851,1.04472 0.1452428,0.34448 0.3214064,0.6644 0.5227339,0.96066 l -1.1993431,1.19723 1.5840256,1.56011 1.1964668,-1.19348 c 0.6140517,0.40346 1.3028827,0.68232 2.0233517,0.82331 l 7.19e-4,1.69892 h 2.226848 z m 0.221462,-3.9957 c -1.788948,0.7502 -3.8576,-0.0928 -4.6097055,-1.87438 -0.7521065,-1.78321 0.090598,-3.84627 1.8802645,-4.59604 1.78823,-0.74936 3.856881,0.0929 4.608987,1.87437 0.752106,1.78165 -0.0906,3.84612 -1.879546,4.59605 z"
+                      style="fill: white; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px;"/>
+            </g>
+            <rect class="djs-hit djs-hit-all" x="0" y="0" width="100" height="80"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="-5" y="-5" rx="14" width="110" height="90" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-shape" data-element-id="Activity_1oboin4" style="display: block;"
+           transform="matrix(1 0 0 1 2040 350)">
+            <g class="djs-visual">
+                <rect x="0" y="0" width="100" height="80" rx="10" ry="10"
+                      style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(131, 19, 17); stroke-width: 2px; fill: rgb(255, 205, 210); fill-opacity: 0.95;"/>
+                <text lineHeight="1.2" class="djs-label"
+                      style="font-family: Arial, sans-serif; font-size: 12px; font-weight: normal; fill: rgb(131, 19, 17);">
+                    <tspan x="25.09765625" y="43.599999999999994">Http Task</tspan>
+                </text>
+                <path d="m 5.984999999999999,4.997999999999999 l 0,14 l 21,0 l 0,-14 z l 10.5,6 l 10.5,-6"
+                      style="fill: rgb(131, 19, 17); stroke-linecap: round; stroke-linejoin: round; stroke: rgb(255, 205, 210); stroke-width: 1px;"/>
+            </g>
+            <rect class="djs-hit djs-hit-all" x="0" y="0" width="100" height="80"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="-5" y="-5" rx="14" width="110" height="90" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-shape" data-element-id="Activity_1gxks2f" style="display: block;"
+           transform="matrix(1 0 0 1 1730 270)">
+            <g class="djs-visual">
+                <rect x="0" y="0" width="100" height="80" rx="10" ry="10"
+                      style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(107, 60, 0); stroke-width: 2px; fill: rgb(255, 224, 178); fill-opacity: 0.95;"/>
+                <text lineHeight="1.2" class="djs-label"
+                      style="font-family: Arial, sans-serif; font-size: 12px; font-weight: normal; fill: rgb(107, 60, 0);">
+                    <tspan x="20.65234375" y="36.4">Spark SQL</tspan>
+                    <tspan x="30.99609375" y="50.8">[JDBC]</tspan>
+                </text>
+                <circle cx="5" cy="5" r="5" transform="translate(6, 6)"
+                        style="stroke-linecap: round; stroke-linejoin: round; stroke: none; stroke-width: 2px; fill: rgb(255, 224, 178);"/>
+                <path d="m 12,18 v -1.71335 c 0.352326,-0.0705 0.703932,-0.17838 1.047628,-0.32133 0.344416,-0.14465 0.665822,-0.32133 0.966377,-0.52145 l 1.19431,1.18005 1.567487,-1.57688 -1.195028,-1.18014 c 0.403376,-0.61394 0.683079,-1.29908 0.825447,-2.01824 l 1.622133,-0.01 v -2.2196 l -1.636514,0.01 c -0.07333,-0.35153 -0.178319,-0.70024 -0.323564,-1.04372 -0.145244,-0.34406 -0.321407,-0.6644 -0.522735,-0.96217 l 1.131035,-1.13631 -1.583305,-1.56293 -1.129598,1.13589 c -0.614052,-0.40108 -1.302883,-0.68093 -2.022633,-0.82247 l 0.0093,-1.61852 h -2.241173 l 0.0042,1.63124 c -0.353763,0.0736 -0.705369,0.17977 -1.049785,0.32371 -0.344415,0.14437 -0.665102,0.32092 -0.9635006,0.52046 l -1.1698628,-1.15823 -1.5667691,1.5792 1.1684265,1.15669 c -0.4026573,0.61283 -0.68308,1.29797 -0.8247287,2.01713 l -1.6588041,0.003 v 2.22174 l 1.6724648,-0.006 c 0.073327,0.35077 0.1797598,0.70243 0.3242851,1.04472 0.1452428,0.34448 0.3214064,0.6644 0.5227339,0.96066 l -1.1993431,1.19723 1.5840256,1.56011 1.1964668,-1.19348 c 0.6140517,0.40346 1.3028827,0.68232 2.0233517,0.82331 l 7.19e-4,1.69892 h 2.226848 z m 0.221462,-3.9957 c -1.788948,0.7502 -3.8576,-0.0928 -4.6097055,-1.87438 -0.7521065,-1.78321 0.090598,-3.84627 1.8802645,-4.59604 1.78823,-0.74936 3.856881,0.0929 4.608987,1.87437 0.752106,1.78165 -0.0906,3.84612 -1.879546,4.59605 z"
+                      style="fill: rgb(255, 224, 178); stroke-linecap: round; stroke-linejoin: round; stroke: rgb(107, 60, 0); stroke-width: 1px;"/>
+                <circle cx="5" cy="5" r="5" transform="translate(11, 10)"
+                        style="stroke-linecap: round; stroke-linejoin: round; stroke: none; stroke-width: 2px; fill: rgb(255, 224, 178);"/>
+                <path d="m 17,22 v -1.71335 c 0.352326,-0.0705 0.703932,-0.17838 1.047628,-0.32133 0.344416,-0.14465 0.665822,-0.32133 0.966377,-0.52145 l 1.19431,1.18005 1.567487,-1.57688 -1.195028,-1.18014 c 0.403376,-0.61394 0.683079,-1.29908 0.825447,-2.01824 l 1.622133,-0.01 v -2.2196 l -1.636514,0.01 c -0.07333,-0.35153 -0.178319,-0.70024 -0.323564,-1.04372 -0.145244,-0.34406 -0.321407,-0.6644 -0.522735,-0.96217 l 1.131035,-1.13631 -1.583305,-1.56293 -1.129598,1.13589 c -0.614052,-0.40108 -1.302883,-0.68093 -2.022633,-0.82247 l 0.0093,-1.61852 h -2.241173 l 0.0042,1.63124 c -0.353763,0.0736 -0.705369,0.17977 -1.049785,0.32371 -0.344415,0.14437 -0.665102,0.32092 -0.9635006,0.52046 l -1.1698628,-1.15823 -1.5667691,1.5792 1.1684265,1.15669 c -0.4026573,0.61283 -0.68308,1.29797 -0.8247287,2.01713 l -1.6588041,0.003 v 2.22174 l 1.6724648,-0.006 c 0.073327,0.35077 0.1797598,0.70243 0.3242851,1.04472 0.1452428,0.34448 0.3214064,0.6644 0.5227339,0.96066 l -1.1993431,1.19723 1.5840256,1.56011 1.1964668,-1.19348 c 0.6140517,0.40346 1.3028827,0.68232 2.0233517,0.82331 l 7.19e-4,1.69892 h 2.226848 z m 0.221462,-3.9957 c -1.788948,0.7502 -3.8576,-0.0928 -4.6097055,-1.87438 -0.7521065,-1.78321 0.090598,-3.84627 1.8802645,-4.59604 1.78823,-0.74936 3.856881,0.0929 4.608987,1.87437 0.752106,1.78165 -0.0906,3.84612 -1.879546,4.59605 z"
+                      style="fill: rgb(255, 224, 178); stroke-linecap: round; stroke-linejoin: round; stroke: rgb(107, 60, 0); stroke-width: 1px;"/>
+            </g>
+            <rect class="djs-hit djs-hit-all" x="0" y="0" width="100" height="80"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="-5" y="-5" rx="14" width="110" height="90" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-shape djs-frame" data-element-id="Group_1eze2dy" style="display: block;"
+           transform="matrix(1 0 0 1 510 110)">
+            <g class="djs-visual">
+                <rect x="0" y="0" width="320" height="610" rx="10" ry="10"
+                      style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(32, 80, 34); stroke-width: 1.5px; fill: none; stroke-dasharray: 10, 6, 0, 6; pointer-events: none;"/>
+            </g>
+            <rect class="djs-hit djs-hit-stroke" x="0" y="0" width="320" height="610"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="-5" y="-5" rx="14" width="330" height="620" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-shape" data-element-id="Group_1eze2dy_label" style="display: block;"
+           transform="matrix(1 0 0 1 658 117)">
+            <g class="djs-visual">
+                <text lineHeight="1.2" class="djs-label"
+                      style="font-family: Arial, sans-serif; font-size: 11px; font-weight: normal; fill: rgb(32, 80, 34);">
+                    <tspan x="0" y="9.899999999999999">ODS</tspan>
+                </text>
+            </g>
+            <rect class="djs-hit djs-hit-all" x="0" y="0" width="24" height="14"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="-5" y="-5" rx="4" width="34" height="24" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-shape djs-frame" data-element-id="Group_160to0q" style="display: block;"
+           transform="matrix(1 0 0 1 1000 85)">
+            <g class="djs-visual">
+                <rect x="0" y="0" width="380" height="645" rx="10" ry="10"
+                      style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1.5px; fill: none; stroke-dasharray: 10, 6, 0, 6; pointer-events: none;"/>
+            </g>
+            <rect class="djs-hit djs-hit-stroke" x="0" y="0" width="380" height="645"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="-5" y="-5" rx="14" width="390" height="655" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-shape" data-element-id="Group_160to0q_label" style="display: block;"
+           transform="matrix(1 0 0 1 1161 92)">
+            <g class="djs-visual">
+                <text lineHeight="1.2" class="djs-label"
+                      style="font-family: Arial, sans-serif; font-size: 11px; font-weight: normal; fill: rgb(34, 36, 42);">
+                    <tspan x="0" y="9.899999999999999">ODS-&gt;DWD</tspan>
+                </text>
+            </g>
+            <rect class="djs-hit djs-hit-all" x="0" y="0" width="61" height="14"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="-5" y="-5" rx="4" width="71" height="24" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-shape djs-frame" data-element-id="Group_046gz2b" style="display: block;"
+           transform="matrix(1 0 0 1 1512 82)">
+            <g class="djs-visual">
+                <rect x="0" y="0" width="415" height="645" rx="10" ry="10"
+                      style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1.5px; fill: none; stroke-dasharray: 10, 6, 0, 6; pointer-events: none;"/>
+            </g>
+            <rect class="djs-hit djs-hit-stroke" x="0" y="0" width="415" height="645"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="-5" y="-5" rx="14" width="425" height="655" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-shape" data-element-id="Group_046gz2b_label" style="display: block;"
+           transform="matrix(1 0 0 1 1688 89)">
+            <g class="djs-visual">
+                <text lineHeight="1.2" class="djs-label"
+                      style="font-family: Arial, sans-serif; font-size: 11px; font-weight: normal; fill: rgb(34, 36, 42);">
+                    <tspan x="0" y="9.899999999999999">DWD-&gt;DWS</tspan>
+                </text>
+            </g>
+            <rect class="djs-hit djs-hit-all" x="0" y="0" width="63" height="14"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="-5" y="-5" rx="4" width="73" height="24" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-shape djs-frame" data-element-id="Group_10av2g2" style="display: block;"
+           transform="matrix(1 0 0 1 2000 80)">
+            <g class="djs-visual">
+                <rect x="0" y="0" width="470" height="650" rx="10" ry="10"
+                      style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1.5px; fill: none; stroke-dasharray: 10, 6, 0, 6; pointer-events: none;"/>
+            </g>
+            <rect class="djs-hit djs-hit-stroke" x="0" y="0" width="470" height="650"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="-5" y="-5" rx="14" width="480" height="660" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-shape" data-element-id="Group_10av2g2_label" style="display: block;"
+           transform="matrix(1 0 0 1 2224 87)">
+            <g class="djs-visual">
+                <text lineHeight="1.2" class="djs-label"
+                      style="font-family: Arial, sans-serif; font-size: 11px; font-weight: normal; fill: rgb(34, 36, 42);">
+                    <tspan x="0" y="9.899999999999999">ADS</tspan>
+                </text>
+            </g>
+            <rect class="djs-hit djs-hit-all" x="0" y="0" width="23" height="14"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="-5" y="-5" rx="4" width="33" height="24" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-shape djs-frame" data-element-id="Group_067m3wy" style="display: block;"
+           transform="matrix(1 0 0 1 505 760)">
+            <g class="djs-visual">
+                <rect x="0" y="0" width="325" height="300" rx="10" ry="10"
+                      style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1.5px; fill: none; stroke-dasharray: 10, 6, 0, 6; pointer-events: none;"/>
+            </g>
+            <rect class="djs-hit djs-hit-stroke" x="0" y="0" width="325" height="300"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="-5" y="-5" rx="14" width="335" height="310" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-shape" data-element-id="Group_067m3wy_label" style="display: block;"
+           transform="matrix(1 0 0 1 623 767)">
+            <g class="djs-visual">
+                <text lineHeight="1.2" class="djs-label"
+                      style="font-family: Arial, sans-serif; font-size: 11px; font-weight: normal; fill: rgb(34, 36, 42);">
+                    <tspan x="18.953125" y="9.899999999999999">Mandatory</tspan>
+                    <tspan x="0" y="23.099999999999998">Task/Data prepare</tspan>
+                </text>
+            </g>
+            <rect class="djs-hit djs-hit-all" x="0" y="0" width="90" height="27"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="-5" y="-5" rx="4" width="100" height="37" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-shape" data-element-id="begin_simon_id" style="display: block;"
+           transform="matrix(1 0 0 1 -50 195)">
+            <g class="djs-visual">
+                <rect x="0" y="0" width="100" height="30" rx="0" ry="0"
+                      style="stroke-linecap: round; stroke-linejoin: round; stroke: none; stroke-width: 2px; fill: none;"/>
+                <path d="m 0, 0 m 10,0 l -10,0 l 0,30 l 10,0"
+                      style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px;"/>
+                <text lineHeight="1.2" class="djs-label"
+                      style="font-family: Arial, sans-serif; font-size: 12px; font-weight: normal; fill: rgb(34, 36, 42);">
+                    <tspan x="7" y="17.799999999999997">begin</tspan>
+                </text>
+            </g>
+            <rect class="djs-hit djs-hit-all" x="0" y="0" width="100" height="30"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="-5" y="-5" rx="4" width="110" height="40" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-connection" data-element-id="SequenceFlow_0h21x7r" style="display: block;">
+            <g class="djs-visual">
+                <defs>
+                    <marker id="marker-3pp1yjllhkmuco18woyvc9cj6" viewBox="0 0 20 20" refX="11" refY="10"
+                            markerWidth="10" markerHeight="10" orient="auto">
+                        <path d="M 1 5 L 11 10 L 1 15 Z"
+                              style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/>
+                    </marker>
+                </defs>
+                <path data-corner-radius="5"
+                      style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-3pp1yjllhkmuco18woyvc9cj6');"
+                      d="M208,210L290,210"/>
+            </g>
+            <path d="M208,210L290,210" class="djs-hit djs-hit-stroke"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="203" y="205" rx="4" width="92" height="10" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-connection" data-element-id="Flow_1us96s3" style="display: block;">
+            <g class="djs-visual">
+                <defs>
+                    <marker id="marker-3bkbo9rygick2vq2ynd9tdlgm" viewBox="0 0 20 20" refX="11" refY="10"
+                            markerWidth="10" markerHeight="10" orient="auto">
+                        <path d="M 1 5 L 11 10 L 1 15 Z"
+                              style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/>
+                    </marker>
+                </defs>
+                <path data-corner-radius="5"
+                      style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-3bkbo9rygick2vq2ynd9tdlgm');"
+                      d="M390,210L610,210"/>
+            </g>
+            <path d="M390,210L610,210" class="djs-hit djs-hit-stroke"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="385" y="205" rx="4" width="230" height="10" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-connection" data-element-id="Flow_0ff0tt7" style="display: block;">
+            <g class="djs-visual">
+                <defs>
+                    <marker id="marker-ez6gv7nu1ikwqt7ia4r02dpsc" viewBox="0 0 20 20" refX="11" refY="10"
+                            markerWidth="10" markerHeight="10" orient="auto">
+                        <path d="M 1 5 L 11 10 L 1 15 Z"
+                              style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/>
+                    </marker>
+                </defs>
+                <path data-corner-radius="5"
+                      style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-ez6gv7nu1ikwqt7ia4r02dpsc');"
+                      d="M1260,210L1325,210C1327.5,210,1330,212.5,1330,215L1330,305C1330,307.5,1332.5,310,1335,310L1570,310"/>
+            </g>
+            <path d="M1260,210L1330,210L1330,310L1570,310" class="djs-hit djs-hit-stroke"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="1255" y="205" rx="4" width="320" height="110" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-connection" data-element-id="Flow_13e7qwl" style="display: block;">
+            <g class="djs-visual">
+                <defs>
+                    <marker id="marker-6omi69wtkbdjknbkxxz439mkf" viewBox="0 0 20 20" refX="11" refY="10"
+                            markerWidth="10" markerHeight="10" orient="auto">
+                        <path d="M 1 5 L 11 10 L 1 15 Z"
+                              style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/>
+                    </marker>
+                </defs>
+                <path data-corner-radius="5"
+                      style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-6omi69wtkbdjknbkxxz439mkf');"
+                      d="M390,210L555,210C557.5,210,560,212.5,560,215L560,315C560,317.5,562.5,320,565,320L610,320"/>
+            </g>
+            <path d="M390,210L560,210L560,320L610,320" class="djs-hit djs-hit-stroke"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="385" y="205" rx="4" width="230" height="120" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-connection" data-element-id="Flow_0uev2lx" style="display: block;">
+            <g class="djs-visual">
+                <defs>
+                    <marker id="marker-86hdjgqlpcw1i42j29qr3gjza" viewBox="0 0 20 20" refX="11" refY="10"
+                            markerWidth="10" markerHeight="10" orient="auto">
+                        <path d="M 1 5 L 11 10 L 1 15 Z"
+                              style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/>
+                    </marker>
+                </defs>
+                <path data-corner-radius="5"
+                      style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-86hdjgqlpcw1i42j29qr3gjza');"
+                      d="M390,210L555,210C557.5,210,560,212.5,560,215L560,410C560,412.5,562.5,415,565,415L610,415"/>
+            </g>
+            <path d="M390,210L560,210L560,415L610,415" class="djs-hit djs-hit-stroke"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="385" y="205" rx="4" width="230" height="215" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-connection" data-element-id="Flow_1i9nk5i" style="display: block;">
+            <g class="djs-visual">
+                <defs>
+                    <marker id="marker-32ubmbry2ln4px69u60tch5ra" viewBox="0 0 20 20" refX="11" refY="10"
+                            markerWidth="10" markerHeight="10" orient="auto">
+                        <path d="M 1 5 L 11 10 L 1 15 Z"
+                              style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/>
+                    </marker>
+                </defs>
+                <path data-corner-radius="5"
+                      style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-32ubmbry2ln4px69u60tch5ra');"
+                      d="M390,210L555,210C557.5,210,560,212.5,560,215L560,505C560,507.5,562.5,510,565,510L610,510"/>
+            </g>
+            <path d="M390,210L560,210L560,510L610,510" class="djs-hit djs-hit-stroke"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="385" y="205" rx="4" width="230" height="310" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-connection" data-element-id="Flow_1qjlg4d" style="display: block;">
+            <g class="djs-visual">
+                <defs>
+                    <marker id="marker-8f60r5775adl48r9ut8umkn3t" viewBox="0 0 20 20" refX="11" refY="10"
+                            markerWidth="10" markerHeight="10" orient="auto">
+                        <path d="M 1 5 L 11 10 L 1 15 Z"
+                              style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/>
+                    </marker>
+                </defs>
+                <path data-corner-radius="5"
+                      style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-8f60r5775adl48r9ut8umkn3t');"
+                      d="M390,210L555,210C557.5,210,560,212.5,560,215L560,615C560,617.5,562.5,620,565,620L610,620"/>
+            </g>
+            <path d="M390,210L560,210L560,620L610,620" class="djs-hit djs-hit-stroke"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="385" y="205" rx="4" width="230" height="420" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-connection" data-element-id="Flow_0isaw67" style="display: block;">
+            <g class="djs-visual">
+                <defs>
+                    <marker id="marker-bwuksxbnvis9x6bcsxm1wtx6x" viewBox="0 0 20 20" refX="11" refY="10"
+                            markerWidth="10" markerHeight="10" orient="auto">
+                        <path d="M 1 5 L 11 10 L 1 15 Z"
+                              style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/>
+                    </marker>
+                </defs>
+                <path data-corner-radius="5"
+                      style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-bwuksxbnvis9x6bcsxm1wtx6x');"
+                      d="M710,320L755,320C757.5,320,760,322.5,760,325L760,410C760,412.5,762.5,415,765,415L870,415"/>
+            </g>
+            <path d="M710,320L760,320L760,415L870,415" class="djs-hit djs-hit-stroke"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="705" y="315" rx="4" width="170" height="105" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-connection" data-element-id="Flow_1ntfu6e" style="display: block;">
+            <g class="djs-visual">
+                <defs>
+                    <marker id="marker-2thkthn5agjre3wobp74m8iep" viewBox="0 0 20 20" refX="11" refY="10"
+                            markerWidth="10" markerHeight="10" orient="auto">
+                        <path d="M 1 5 L 11 10 L 1 15 Z"
+                              style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/>
+                    </marker>
+                </defs>
+                <path data-corner-radius="5"
+                      style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-2thkthn5agjre3wobp74m8iep');"
+                      d="M710,510L755,510C757.5,510,760,507.5,760,505L760,420C760,417.5,762.5,415,765,415L870,415"/>
+            </g>
+            <path d="M710,510L760,510L760,415L870,415" class="djs-hit djs-hit-stroke"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="705" y="410" rx="4" width="170" height="105" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-connection" data-element-id="Flow_1ok3ot6" style="display: block;">
+            <g class="djs-visual">
+                <defs>
+                    <marker id="marker-8az1i1q2xnw9lg49wxcx0z9nf" viewBox="0 0 20 20" refX="11" refY="10"
+                            markerWidth="10" markerHeight="10" orient="auto">
+                        <path d="M 1 5 L 11 10 L 1 15 Z"
+                              style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/>
+                    </marker>
+                </defs>
+                <path data-corner-radius="5"
+                      style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-8az1i1q2xnw9lg49wxcx0z9nf');"
+                      d="M710,620L755,620C757.5,620,760,617.5,760,615L760,420C760,417.5,762.5,415,765,415L870,415"/>
+            </g>
+            <path d="M710,620L760,620L760,415L870,415" class="djs-hit djs-hit-stroke"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="705" y="410" rx="4" width="170" height="215" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-connection" data-element-id="Flow_0tbjzlz" style="display: block;">
+            <g class="djs-visual">
+                <defs>
+                    <marker id="marker-b42p7nhqb13c2w8h4z7vpcsb5" viewBox="0 0 20 20" refX="11" refY="10"
+                            markerWidth="10" markerHeight="10" orient="auto">
+                        <path d="M 1 5 L 11 10 L 1 15 Z"
+                              style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/>
+                    </marker>
+                </defs>
+                <path data-corner-radius="5"
+                      style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-b42p7nhqb13c2w8h4z7vpcsb5');"
+                      d="M970,415L1025,415C1027.5,415,1030,412.5,1030,410L1030,315C1030,312.5,1032.5,310,1035,310L1160,310"/>
+            </g>
+            <path d="M970,415L1030,415L1030,310L1160,310" class="djs-hit djs-hit-stroke"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="965" y="305" rx="4" width="200" height="115" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-connection" data-element-id="Flow_0lcwadl" style="display: block;">
+            <g class="djs-visual">
+                <defs>
+                    <marker id="marker-1dumy0g1qdnaslwzhafcnq5t4" viewBox="0 0 20 20" refX="11" refY="10"
+                            markerWidth="10" markerHeight="10" orient="auto">
+                        <path d="M 1 5 L 11 10 L 1 15 Z"
+                              style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/>
+                    </marker>
+                </defs>
+                <path data-corner-radius="5"
+                      style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-1dumy0g1qdnaslwzhafcnq5t4');"
+                      d="M970,415L1160,415"/>
+            </g>
+            <path d="M970,415L1160,415" class="djs-hit djs-hit-stroke"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="965" y="410" rx="4" width="200" height="10" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-connection" data-element-id="Flow_1fdjwc7" style="display: block;">
+            <g class="djs-visual">
+                <defs>
+                    <marker id="marker-9xscx53pnk6e7w0twq90v40ll" viewBox="0 0 20 20" refX="11" refY="10"
+                            markerWidth="10" markerHeight="10" orient="auto">
+                        <path d="M 1 5 L 11 10 L 1 15 Z"
+                              style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/>
+                    </marker>
+                </defs>
+                <path data-corner-radius="5"
+                      style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-9xscx53pnk6e7w0twq90v40ll');"
+                      d="M970,415L1025,415C1027.5,415,1030,417.5,1030,420L1030,545C1030,547.5,1032.5,550,1035,550L1160,550"/>
+            </g>
+            <path d="M970,415L1030,415L1030,550L1160,550" class="djs-hit djs-hit-stroke"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="965" y="410" rx="4" width="200" height="145" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-connection" data-element-id="Flow_1apfk9a" style="display: block;">
+            <g class="djs-visual">
+                <defs>
+                    <marker id="marker-5ik6vvia0jf2vfg4e546ahrqc" viewBox="0 0 20 20" refX="11" refY="10"
+                            markerWidth="10" markerHeight="10" orient="auto">
+                        <path d="M 1 5 L 11 10 L 1 15 Z"
+                              style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/>
+                    </marker>
+                </defs>
+                <path data-corner-radius="5"
+                      style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-5ik6vvia0jf2vfg4e546ahrqc');"
+                      d="M1670,310L1730,310"/>
+            </g>
+            <path d="M1670,310L1730,310" class="djs-hit djs-hit-stroke"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="1665" y="305" rx="4" width="70" height="10" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-connection" data-element-id="Flow_1bw5h1u" style="display: block;">
+            <g class="djs-visual">
+                <defs>
+                    <marker id="marker-bdqu125md8ockpiautd6i8wzk" viewBox="0 0 20 20" refX="11" refY="10"
+                            markerWidth="10" markerHeight="10" orient="auto">
+                        <path d="M 1 5 L 11 10 L 1 15 Z"
+                              style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/>
+                    </marker>
+                </defs>
+                <path data-corner-radius="5"
+                      style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-bdqu125md8ockpiautd6i8wzk');"
+                      d="M1260,310L1570,310"/>
+            </g>
+            <path d="M1260,310L1570,310" class="djs-hit djs-hit-stroke"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="1255" y="305" rx="4" width="320" height="10" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-connection" data-element-id="Flow_1nrk476" style="display: block;">
+            <g class="djs-visual">
+                <defs>
+                    <marker id="marker-6g81z8x3rm9oplccryouoxon5" viewBox="0 0 20 20" refX="11" refY="10"
+                            markerWidth="10" markerHeight="10" orient="auto">
+                        <path d="M 1 5 L 11 10 L 1 15 Z"
+                              style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/>
+                    </marker>
+                </defs>
+                <path data-corner-radius="5"
+                      style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-6g81z8x3rm9oplccryouoxon5');"
+                      d="M1260,415L1325,415C1327.5,415,1330,412.5,1330,410L1330,315C1330,312.5,1332.5,310,1335,310L1570,310"/>
+            </g>
+            <path d="M1260,415L1330,415L1330,310L1570,310" class="djs-hit djs-hit-stroke"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="1255" y="305" rx="4" width="320" height="115" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-connection" data-element-id="Flow_19bplht" style="display: block;">
+            <g class="djs-visual">
+                <defs>
+                    <marker id="marker-09qete987792png7w68kfvz7r" viewBox="0 0 20 20" refX="11" refY="10"
+                            markerWidth="10" markerHeight="10" orient="auto">
+                        <path d="M 1 5 L 11 10 L 1 15 Z"
+                              style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/>
+                    </marker>
+                </defs>
+                <path data-corner-radius="5"
+                      style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-09qete987792png7w68kfvz7r');"
+                      d="M1260,550L1570,550"/>
+            </g>
+            <path d="M1260,550L1570,550" class="djs-hit djs-hit-stroke"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="1255" y="545" rx="4" width="320" height="10" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-connection" data-element-id="Flow_1a4gteh" style="display: block;">
+            <g class="djs-visual">
+                <defs>
+                    <marker id="marker-4nnf0oml9xjy4yslvnmhxswi1" viewBox="0 0 20 20" refX="11" refY="10"
+                            markerWidth="10" markerHeight="10" orient="auto">
+                        <path d="M 1 5 L 11 10 L 1 15 Z"
+                              style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/>
+                    </marker>
+                </defs>
+                <path data-corner-radius="5"
+                      style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-4nnf0oml9xjy4yslvnmhxswi1');"
+                      d="M1830,310L1865,310C1867.5,310,1870,312.5,1870,315L1870,385C1870,387.5,1872.5,390,1875,390L2040,390"/>
+            </g>
+            <path d="M1830,310L1870,310L1870,390L2040,390" class="djs-hit djs-hit-stroke"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="1825" y="305" rx="4" width="220" height="90" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-connection" data-element-id="Flow_12jilhq" style="display: block;">
+            <g class="djs-visual">
+                <defs>
+                    <marker id="marker-c5w0hiwnhaxis8yveo845n83u" viewBox="0 0 20 20" refX="11" refY="10"
+                            markerWidth="10" markerHeight="10" orient="auto">
+                        <path d="M 1 5 L 11 10 L 1 15 Z"
+                              style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/>
+                    </marker>
+                </defs>
+                <path data-corner-radius="5"
+                      style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-c5w0hiwnhaxis8yveo845n83u');"
+                      d="M1670,550L1865,550C1867.5,550,1870,547.5,1870,545L1870,395C1870,392.5,1872.5,390,1875,390L2040,390"/>
+            </g>
+            <path d="M1670,550L1870,550L1870,390L2040,390" class="djs-hit djs-hit-stroke"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="1665" y="385" rx="4" width="380" height="170" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-connection" data-element-id="Flow_087d5j5" style="display: block;">
+            <g class="djs-visual">
+                <defs>
+                    <marker id="marker-a9twz55j5haosutxzg7h8rfi4" viewBox="0 0 20 20" refX="11" refY="10"
+                            markerWidth="10" markerHeight="10" orient="auto">
+                        <path d="M 1 5 L 11 10 L 1 15 Z"
+                              style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/>
+                    </marker>
+                </defs>
+                <path data-corner-radius="5"
+                      style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-a9twz55j5haosutxzg7h8rfi4');"
+                      d="M2140,390L2175,390C2177.5,390,2180,387.5,2180,385L2180,275C2180,272.5,2182.5,270,2185,270L2260,270"/>
+            </g>
+            <path d="M2140,390L2180,390L2180,270L2260,270" class="djs-hit djs-hit-stroke"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="2135" y="265" rx="4" width="130" height="130" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-connection" data-element-id="Flow_1svyg4o" style="display: block;">
+            <g class="djs-visual">
+                <defs>
+                    <marker id="marker-bb92qv3g1rrn5zk4j3eed1asm" viewBox="0 0 20 20" refX="11" refY="10"
+                            markerWidth="10" markerHeight="10" orient="auto">
+                        <path d="M 1 5 L 11 10 L 1 15 Z"
+                              style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/>
+                    </marker>
+                </defs>
+                <path data-corner-radius="5"
+                      style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-bb92qv3g1rrn5zk4j3eed1asm');"
+                      d="M2360,270L2426,270C2428.5,270,2431,272.5,2431,275L2431,385C2431,387.5,2433.5,390,2436,390L2542,390"/>
+            </g>
+            <path d="M2360,270L2431,270L2431,390L2542,390" class="djs-hit djs-hit-stroke"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="2355" y="265" rx="4" width="192" height="130" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-connection" data-element-id="Flow_130ttz9" style="display: block;">
+            <g class="djs-visual">
+                <defs>
+                    <marker id="marker-dlrf1qzspadjc49gghwbhy99k" viewBox="0 0 20 20" refX="11" refY="10"
+                            markerWidth="10" markerHeight="10" orient="auto">
+                        <path d="M 1 5 L 11 10 L 1 15 Z"
+                              style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/>
+                    </marker>
+                </defs>
+                <path data-corner-radius="5"
+                      style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-dlrf1qzspadjc49gghwbhy99k');"
+                      d="M2140,390L2260,390"/>
+            </g>
+            <path d="M2140,390L2260,390" class="djs-hit djs-hit-stroke"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="2135" y="385" rx="4" width="130" height="10" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-connection" data-element-id="Flow_1bxayw9" style="display: block;">
+            <g class="djs-visual">
+                <defs>
+                    <marker id="marker-2ucja0e22wunoqu86r86zjfc8" viewBox="0 0 20 20" refX="11" refY="10"
+                            markerWidth="10" markerHeight="10" orient="auto">
+                        <path d="M 1 5 L 11 10 L 1 15 Z"
+                              style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/>
+                    </marker>
+                </defs>
+                <path data-corner-radius="5"
+                      style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-2ucja0e22wunoqu86r86zjfc8');"
+                      d="M2140,390L2175,390C2177.5,390,2180,392.5,2180,395L2180,495C2180,497.5,2182.5,500,2185,500L2260,500"/>
+            </g>
+            <path d="M2140,390L2180,390L2180,500L2260,500" class="djs-hit djs-hit-stroke"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="2135" y="385" rx="4" width="130" height="120" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-connection" data-element-id="Flow_1f5tds3" style="display: block;">
+            <g class="djs-visual">
+                <defs>
+                    <marker id="marker-2953czn5r5kpm9jjxfrwn1qmp" viewBox="0 0 20 20" refX="11" refY="10"
+                            markerWidth="10" markerHeight="10" orient="auto">
+                        <path d="M 1 5 L 11 10 L 1 15 Z"
+                              style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/>
+                    </marker>
+                </defs>
+                <path data-corner-radius="5"
+                      style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-2953czn5r5kpm9jjxfrwn1qmp');"
+                      d="M2360,500L2426,500C2428.5,500,2431,497.5,2431,495L2431,395C2431,392.5,2433.5,390,2436,390L2542,390"/>
+            </g>
+            <path d="M2360,500L2431,500L2431,390L2542,390" class="djs-hit djs-hit-stroke"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="2355" y="385" rx="4" width="192" height="120" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-connection" data-element-id="Flow_0miqxr5" style="display: block;">
+            <g class="djs-visual">
+                <defs>
+                    <marker id="marker-3w46p1ji5bxxpok7nqn256pns" viewBox="0 0 20 20" refX="11" refY="10"
+                            markerWidth="10" markerHeight="10" orient="auto">
+                        <path d="M 1 5 L 11 10 L 1 15 Z"
+                              style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/>
+                    </marker>
+                </defs>
+                <path data-corner-radius="5"
+                      style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-3w46p1ji5bxxpok7nqn256pns');"
+                      d="M2360,390L2542,390"/>
+            </g>
+            <path d="M2360,390L2542,390" class="djs-hit djs-hit-stroke"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="2355" y="385" rx="4" width="192" height="10" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-connection" data-element-id="Flow_1l6ypsf" style="display: block;">
+            <g class="djs-visual">
+                <defs>
+                    <marker id="marker-38w3j51zd3v7t35ztcoogqpxm" viewBox="0 0 20 20" refX="11" refY="10"
+                            markerWidth="10" markerHeight="10" orient="auto">
+                        <path d="M 1 5 L 11 10 L 1 15 Z"
+                              style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/>
+                    </marker>
+                </defs>
+                <path data-corner-radius="5"
+                      style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-38w3j51zd3v7t35ztcoogqpxm');"
+                      d="M390,210L445,210C447.5,210,450,212.5,450,215L450,865C450,867.5,452.5,870,455,870L610,870"/>
+            </g>
+            <path d="M390,210L450,210L450,870L610,870" class="djs-hit djs-hit-stroke"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="385" y="205" rx="4" width="230" height="670" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-connection" data-element-id="Flow_1x83u87" style="display: block;">
+            <g class="djs-visual">
+                <defs>
+                    <marker id="marker-16vs1w3u8qz5400ihrxvot3mx" viewBox="0 0 20 20" refX="11" refY="10"
+                            markerWidth="10" markerHeight="10" orient="auto">
+                        <path d="M 1 5 L 11 10 L 1 15 Z"
+                              style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/>
+                    </marker>
+                </defs>
+                <path data-corner-radius="5"
+                      style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-16vs1w3u8qz5400ihrxvot3mx');"
+                      d="M390,210L445,210C447.5,210,450,212.5,450,215L450,975C450,977.5,452.5,980,455,980L610,980"/>
+            </g>
+            <path d="M390,210L450,210L450,980L610,980" class="djs-hit djs-hit-stroke"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="385" y="205" rx="4" width="230" height="780" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-connection" data-element-id="Flow_11rlgoa" style="display: block;">
+            <g class="djs-visual">
+                <defs>
+                    <marker id="marker-6j7acvuhwoasjf3iy2rhz7tmm" viewBox="0 0 20 20" refX="11" refY="10"
+                            markerWidth="10" markerHeight="10" orient="auto">
+                        <path d="M 1 5 L 11 10 L 1 15 Z"
+                              style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/>
+                    </marker>
+                </defs>
+                <path data-corner-radius="5"
+                      style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-6j7acvuhwoasjf3iy2rhz7tmm');"
+                      d="M710,870L755,870C757.5,870,760,867.5,760,865L760,420C760,417.5,762.5,415,765,415L870,415"/>
+            </g>
+            <path d="M710,870L760,870L760,415L870,415" class="djs-hit djs-hit-stroke"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="705" y="410" rx="4" width="170" height="465" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-connection" data-element-id="Flow_0y34f94" style="display: block;">
+            <g class="djs-visual">
+                <defs>
+                    <marker id="marker-7cllaq0ixgict9xmdzh2n414n" viewBox="0 0 20 20" refX="11" refY="10"
+                            markerWidth="10" markerHeight="10" orient="auto">
+                        <path d="M 1 5 L 11 10 L 1 15 Z"
+                              style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/>
+                    </marker>
+                </defs>
+                <path data-corner-radius="5"
+                      style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-7cllaq0ixgict9xmdzh2n414n');"
+                      d="M710,980L755,980C757.5,980,760,977.5,760,975L760,420C760,417.5,762.5,415,765,415L870,415"/>
+            </g>
+            <path d="M710,980L760,980L760,415L870,415" class="djs-hit djs-hit-stroke"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="705" y="410" rx="4" width="170" height="575" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-connection" data-element-id="Flow_02opcr2" style="display: block;">
+            <g class="djs-visual">
+                <defs>
+                    <marker id="marker-e5xn6q5kphin1cd2imq5xogua" viewBox="0 0 20 20" refX="11" refY="10"
+                            markerWidth="10" markerHeight="10" orient="auto">
+                        <path d="M 1 5 L 11 10 L 1 15 Z"
+                              style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/>
+                    </marker>
+                </defs>
+                <path data-corner-radius="5"
+                      style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-e5xn6q5kphin1cd2imq5xogua');"
+                      d="M710,210L1160,210"/>
+            </g>
+            <path d="M710,210L1160,210" class="djs-hit djs-hit-stroke"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="705" y="205" rx="4" width="460" height="10" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-shape" data-element-id="Flow_02opcr2_label" style="display: block;"
+           transform="matrix(1 0 0 1 873 192)">
+            <g class="djs-visual">
+                <text lineHeight="1.2" class="djs-label"
+                      style="font-family: Arial, sans-serif; font-size: 11px; font-weight: normal; fill: rgb(34, 36, 42);">
+                    <tspan x="0" y="9.899999999999999">nodependency</tspan>
+                </text>
+            </g>
+            <rect class="djs-hit djs-hit-all" x="0" y="0" width="73" height="14"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="-5" y="-5" rx="4" width="83" height="24" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-connection" data-element-id="Flow_1jz011p" style="display: block;">
+            <g class="djs-visual">
+                <defs>
+                    <marker id="marker-8qpogqzt4ddfklt7moixt8jay" viewBox="0 0 20 20" refX="11" refY="10"
+                            markerWidth="10" markerHeight="10" orient="auto">
+                        <path d="M 1 5 L 11 10 L 1 15 Z"
+                              style="stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 1px; fill: rgb(34, 36, 42);"/>
+                    </marker>
+                </defs>
+                <path data-corner-radius="5"
+                      style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; marker-end: url('#marker-8qpogqzt4ddfklt7moixt8jay');"
+                      d="M710,415L870,415"/>
+            </g>
+            <path d="M710,415L870,415" class="djs-hit djs-hit-stroke"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="705" y="410" rx="4" width="170" height="10" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+    <g class="djs-group">
+        <g class="djs-element djs-connection" data-element-id="Association_05npldt" style="display: block;">
+            <g class="djs-visual">
+                <path data-corner-radius="5"
+                      style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(34, 36, 42); stroke-width: 2px; stroke-dasharray: 0, 5;"
+                      d="M172,210L50,210"/>
+            </g>
+            <path d="M172,210L50,210" class="djs-hit djs-hit-stroke"
+                  style="fill: none; stroke-opacity: 0; stroke: white; stroke-width: 15px;"/>
+            <rect x="45" y="205" rx="4" width="132" height="10" class="djs-outline" style="fill: none;"/>
+        </g>
+    </g>
+</svg>
