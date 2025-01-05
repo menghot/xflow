@@ -50,9 +50,6 @@ const SqlEditor = forwardRef<SqlEditorRef, SqlEditorProps>((sqlEditorProps, ref)
                         'Content-Type': 'text/plain',
                     }
                 });
-                // const nodes = mapTreeData([response.data])
-                console.info(response)
-                //setTreeData(nodes); // Map data to include icons
                 setSqlText(response.data)
             }
 

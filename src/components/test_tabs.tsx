@@ -23,8 +23,6 @@ const DraggableTabNode: React.FC<Readonly<DraggableTabPaneProps>> = ({...props})
         id: props['data-node-key'],
     });
 
-    //console.info(className)
-
     const style: React.CSSProperties = {
         ...props.style,
         transform: CSS.Translate.toString(transform),
@@ -56,7 +54,7 @@ const TT = forwardRef<TTRef, TTProps>((ttProps, ref) => {
     const [items, setItems] = useState<NonNullable<TabsProps['items']>>([
         {key: '1', style: {}, label: <span><DatabaseOutlined/> [New *] - console </span>, children: <DagEditor/>},
     ]);
-    const [activeKey, setActiveKey] = useState('1');
+    const [activeKey, setActiveKey] = useState<string>('');
 
     // const add = () => {
     //     const newKey = String((items || []).length + 1);
@@ -109,15 +107,17 @@ const TT = forwardRef<TTRef, TTProps>((ttProps, ref) => {
         }
     };
 
-    const get = (path: string, type: "dag" | "sql" | "bpmn") => {
+    const getEditor = (path: string, type: "dag" | "sql" | "bpmn") => {
         if (path.endsWith('.sql')) {
             return <SqlEditor filePath={path}/>
         } else if (type === 'bpmn') {
             return <BpmnEditor filePath={path}/>
         } else if (type === 'dag') {
             return <DagEditor filePath={path}/>
-        } else
+        } else {
             return type
+        }
+
     }
 
 
@@ -127,10 +127,9 @@ const TT = forwardRef<TTRef, TTProps>((ttProps, ref) => {
             ...(items || []),
             {
                 key: path,
-                label: <span><DatabaseOutlined/>{path}</span>,
-                children: get(path, type)
+                label: <span><DatabaseOutlined/>{path.substring(path.lastIndexOf('/') + 1)}</span>,
+                children: getEditor(path, type)
             }
-
         ]);
         setActiveKey(path);
     }
@@ -139,13 +138,19 @@ const TT = forwardRef<TTRef, TTProps>((ttProps, ref) => {
         openEditor,
     }));
 
+    const onChange = (activeKey: string) => {
+        setActiveKey(activeKey)
+    }
+
+
     return (
         <div>
             <Tabs
                 type="editable-card" size={"small"}
                 items={items}
-                activeKey={activeKey}
                 onEdit={onEdit}
+                onChange={onChange}
+                activeKey={activeKey}
                 renderTabBar={(tabBarProps, DefaultTabBar) => (
                     <DndContext sensors={[sensor]} onDragEnd={onDragEnd} collisionDetection={closestCenter}>
                         <SortableContext items={items.map((i) => i.key)} strategy={horizontalListSortingStrategy}>
