@@ -53,7 +53,7 @@ const MainTabs = forwardRef<MainTabsRef, MainTabProps>((ttProps, ref) => {
 
     console.log(ttProps)
     const [items, setItems] = useState<NonNullable<TabsProps['items']>>([
-        {key: '1', style: {}, label: <span><DatabaseOutlined/> [New *] - console </span>, children: <DagEditor/>},
+        // {key: '1', style: {}, label: <span><DatabaseOutlined/> [New *] - console </span>, children: <DagEditor/>},
     ]);
     const [activeKey, setActiveKey] = useState<string>('');
 
@@ -168,6 +168,7 @@ const MainTabs = forwardRef<MainTabsRef, MainTabProps>((ttProps, ref) => {
                 type="editable-card" size={"small"}
                 items={items}
                 onEdit={onEdit}
+                hideAdd={true}
                 onChange={onChange}
                 activeKey={activeKey}
                 renderTabBar={(tabBarProps, DefaultTabBar) => (
