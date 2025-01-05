@@ -24,7 +24,8 @@ function CodeEditor() {
     }
 
     return <div style={{height: '260px'}}>
-        <CodeMirror style={{ textAlign: 'left' }}  onCreateEditor={setEditorView} value={value} theme="dark" height="200px" onChange={onChange}
+        <CodeMirror style={{textAlign: 'left'}} onCreateEditor={setEditorView} value={value} theme="dark" height="200px"
+                    onChange={onChange}
                     extensions={[python()]}/>
         <button onClick={displaySelectedText}>Display Selected Text</button>
     </div>;

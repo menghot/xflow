@@ -1,5 +1,5 @@
-import {useState, useEffect, forwardRef, useImperativeHandle} from 'react';
-import {Tree, Spin, Alert, Modal} from 'antd';
+import {forwardRef, useEffect, useImperativeHandle, useState} from 'react';
+import {Alert, Spin, Tree} from 'antd';
 import api from "../services/api"
 import {FileOutlined, FolderOutlined} from "@ant-design/icons";
 
@@ -14,6 +14,7 @@ interface DataNode {
 // for external usage -------------
 interface DagFileTreeProps {
     autoExp?: boolean
+    editor: (path: string) => void;
 }
 
 export interface DagFileTreeRef {
@@ -22,7 +23,7 @@ export interface DagFileTreeRef {
 
 // for external usage -------------
 
-const TreeDisplay = forwardRef<DagFileTreeRef, DagFileTreeProps>((_, ref) => {
+const TreeDisplay = forwardRef<DagFileTreeRef, DagFileTreeProps>((dagFileTreeProps, ref) => {
     const [treeData, setTreeData] = useState<DataNode[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error] = useState<string | null>(null);
@@ -49,10 +50,7 @@ const TreeDisplay = forwardRef<DagFileTreeRef, DagFileTreeProps>((_, ref) => {
     //     }));
 
     const titleRender = (node: DataNode) => (
-        <span onDoubleClick={() => Modal.info({
-            title: 'File Path',
-            content: node.key,
-        })}>
+        <span onDoubleClick={() => dagFileTreeProps.editor(node.key)}>
              {node.isLeaf ? <FileOutlined style={{marginRight: 6}}/> : <FolderOutlined style={{marginRight: 6}}/>}
             {node.title}
     </span>

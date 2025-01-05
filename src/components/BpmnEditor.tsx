@@ -20,9 +20,9 @@ import myApi from "../services/api"
 import {AxiosError} from "axios";
 import {Canvas} from "bpmn-js/lib/features/context-pad/ContextPadProvider";
 
-import {Button, Splitter, Tabs} from 'antd';
-import {SettingFilled, ThunderboltFilled, AppleOutlined} from '@ant-design/icons';
 import type {TabsProps} from 'antd';
+import {Button, Splitter, Tabs} from 'antd';
+import {AppleOutlined, SettingFilled, ThunderboltFilled} from '@ant-design/icons';
 import TrinoLogoWBk from "./icons/TrinoLogoWBk.tsx";
 
 interface ResponseData {

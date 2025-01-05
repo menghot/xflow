@@ -1,11 +1,10 @@
+import type {TabsProps} from 'antd';
 import {Tabs} from "antd";
 // import TrinoLogoWBk from "./icons/TrinoLogoWBk.tsx";
 // import {AppleOutlined} from "@ant-design/icons";
 import CodeMirror, {EditorView} from "@uiw/react-codemirror";
 import {sql} from "@codemirror/lang-sql";
 import React, {forwardRef, useImperativeHandle} from "react";
-
-import type {TabsProps} from 'antd';
 
 interface MainTabsProps {
     autoExp?: boolean
@@ -29,7 +28,7 @@ const MainTabs = forwardRef<MainTabsRef, MainTabsProps>((tabProps, ref) => {
     // =================== on editor SQL change
 
 
-    const onSQLChange = ()=> {
+    const onSQLChange = () => {
         console.debug(codeMirrorEditorView)
         console.debug("onSQLChange call")
     }

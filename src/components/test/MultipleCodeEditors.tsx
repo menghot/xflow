@@ -11,7 +11,7 @@ interface EditorConfig {
 
 const Editors: React.FC = () => {
     const [editors, setEditors] = useState<EditorConfig[]>([
-       // {id: 1, language: 'javascript', content: 'console.log("Hello, JavaScript!");'},
+        // {id: 1, language: 'javascript', content: 'console.log("Hello, JavaScript!");'},
         // {id: 2, language: 'sql', content: 'SELECT * FROM users;'},
     ]);
 
@@ -33,7 +33,8 @@ const Editors: React.FC = () => {
     return (
         <div style={{padding: '20px'}}>
             <h1>Dynamic CodeMirror Editors</h1>
-            <button onClick={() => addEditor('javascript', 'console.log("Hello, JavaScript!");')} style={{marginRight: '10px'}}>
+            <button onClick={() => addEditor('javascript', 'console.log("Hello, JavaScript!");')}
+                    style={{marginRight: '10px'}}>
                 Add JavaScript Editor
             </button>
             <button onClick={() => addEditor('sql', 'show catalogs')}>Add SQL Editor</button>

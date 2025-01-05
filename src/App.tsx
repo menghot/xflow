@@ -1,17 +1,17 @@
 // src/App.tsx
 import React, {useRef} from "react";
-import XcodeFlow from "./components/icons/Xcodeflow";
+import XcodeFlowIcon from "./components/icons/Xcodeflow";
 import {Splitter} from 'antd';
 import TableTree, {TableTreeRef} from "./components/TableTree";
 import DagFileTree , {DagFileTreeRef} from "./components/DagFileTree";
-import MainTabs, {MainTabsRef} from "./components/MainTabs.tsx";
-import TT from "./components/test_tabs.tsx";
+import TT, {TTRef} from "./components/test_tabs.tsx";
+// import Dag from "./components/Dag.tsx";
 
 const App: React.FC = () => {
     // reference sub components
     const tableTreeRef = useRef<TableTreeRef>(null);
     const dagFileTreeRef = useRef<DagFileTreeRef>(null);
-    const mainTabsRef = useRef<MainTabsRef>(null);
+    const ttRef = useRef<TTRef>(null);
 
     console.log("x-codeflow")
     // const triggerFetch = () => {
@@ -20,11 +20,16 @@ const App: React.FC = () => {
     //     mainTabsRef.current?.openConsole();
     // };
 
+    const editFile = (path: string) =>  {
+        ttRef.current?.openEditor(path, 'dag');
+    }
+
     return (
         <div>
             <div style={{padding: '0 0 0 20px'}}>
-                <XcodeFlow/>
+                <XcodeFlowIcon/>
             </div>
+            {/*<div style={{width:"100vh",height:"50vh"}}><Dag dagFilePath=""/></div>*/}
             <div>
                 <Splitter style={{height: 800, boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'}}>
                     <Splitter.Panel defaultSize="18%" min="10%" max="100%">
@@ -33,7 +38,7 @@ const App: React.FC = () => {
                                 <TableTree ref={tableTreeRef} />
                             </Splitter.Panel>
                             <Splitter.Panel>
-                                <DagFileTree ref={dagFileTreeRef}/>
+                                <DagFileTree editor={editFile} ref={dagFileTreeRef}/>
                             </Splitter.Panel>
                             <Splitter.Panel>
                                 Git Panel
@@ -41,14 +46,15 @@ const App: React.FC = () => {
                         </Splitter>
                     </Splitter.Panel>
                     <Splitter.Panel>
-                        <Splitter style={{height: 380, boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'}}>
-                            <Splitter.Panel defaultSize="82%" min="20%" max="90%">
-                                <TT/>
-                            </Splitter.Panel>
-                            <Splitter.Panel>
-                                <MainTabs ref={mainTabsRef} autoExp={true}/>
-                            </Splitter.Panel>
-                        </Splitter>
+                        <TT ref={ttRef}/>
+                        {/*<Splitter style={{height: 380, boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'}}>*/}
+                        {/*    <Splitter.Panel defaultSize="82%" min="20%" max="90%">*/}
+                        {/*        <TT/>*/}
+                        {/*    </Splitter.Panel>*/}
+                        {/*    /!*<Splitter.Panel>*!/*/}
+                        {/*    /!*    <MainTabs ref={mainTabsRef} autoExp={true}/>*!/*/}
+                        {/*    /!*</Splitter.Panel>*!/*/}
+                        {/*</Splitter>*/}
                         {/*<Splitter layout="vertical" style={{height: 800}}>*/}
                             {/*<Splitter.Panel>*/}
                             {/*</Splitter.Panel>*/}

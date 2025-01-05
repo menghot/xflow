@@ -1,5 +1,6 @@
 import os
 
+from airflow.models import DagBag
 from airflow.www.app import csrf
 from flask import Blueprint, request, jsonify
 from flask_cors import CORS
@@ -42,6 +43,7 @@ def build_file_tree(base_path):
 @csrf.exempt
 def get_file_tree():
     path = dag_folder
+
     if not path or not os.path.exists(path):
         return jsonify({"error": "Invalid or non-existent path"}), 400
 
@@ -59,3 +61,49 @@ def get_file_tree():
         root_node["children"] = build_file_tree(simplified_path)
 
     return jsonify([root_node])
+
+
+@dag_blueprint.route("/get-file-content", methods=["GET"])
+@csrf.exempt
+def get_file_content():
+    # Get the file path from the query parameters
+    file_path = request.args.get('path')
+
+    print(dag_folder, file_path)
+
+    if not file_path or not os.path.exists(file_path):
+        return jsonify({"error": "Invalid or non-existent path"}), 400
+
+    # Check if it's a file (not a directory)
+    if not os.path.isfile(file_path):
+        return jsonify({'error': 'The provided path is not a file'}), 400
+
+    try:
+        # Read the file content
+        with open(file_path, 'r') as file:
+            content = file.read()
+
+        return content
+
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+def get_dag_structure(dag_id):
+    dag_bag = DagBag()
+    dag = dag_bag.get_dag(dag_id)
+    nodes = [{"id": task.task_id} for task in dag.tasks]
+    edges = [{"source": upstream, "target": task.task_id}
+             for task in dag.tasks
+             for upstream in task.upstream_task_ids]
+    return {"nodes": nodes, "edges": edges}
+
+
+@dag_blueprint.route('/<dag_id>', methods=['GET'])
+@csrf.exempt
+def dag_graph(dag_id):
+    try:
+        dag_structure = get_dag_structure(dag_id)
+        return jsonify(dag_structure)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 400
