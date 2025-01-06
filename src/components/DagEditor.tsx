@@ -63,7 +63,7 @@ const DagEditor = forwardRef<SqlEditorRef, SqlEditorProps>((sqlEditorProps, ref)
     }));
 
 
-    return <div>
+    return <div style={{padding: "6px"}}>
         <div>TODO: tool bar to add button for dag deployment/debug</div>
         <Splitter layout="vertical" style={{height: "100vh"}}>
             <Splitter.Panel defaultSize="30%" min="10%" max="90%">
