@@ -28,17 +28,20 @@ const App: React.FC = () => {
             </div>
             {/*<div style={{width:"100vh",height:"50vh"}}><Dag dagFilePath=""/></div>*/}
             <div>
-                <Splitter style={{height: 800, boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'}}>
+                <Splitter style={{height: "100vh", boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'}}>
                     <Splitter.Panel defaultSize="18%" min="10%" max="100%">
                         <Splitter layout="vertical" style={{height: 800, boxShadow: '0 0 0px rgba(0, 0, 0, 0.1)'}}>
+
                             <Splitter.Panel>
+                                <div>Connections & tables</div>
                                 <TableTree ref={tableTreeRef}/>
                             </Splitter.Panel>
                             <Splitter.Panel>
+                                <div>File Explorer</div>
                                 <DagFileTree editor={editFile} ref={dagFileTreeRef}/>
                             </Splitter.Panel>
                             <Splitter.Panel>
-                                Git Panel
+                            Git Panel
                             </Splitter.Panel>
                         </Splitter>
                     </Splitter.Panel>

@@ -1,7 +1,7 @@
 import {forwardRef, useEffect, useImperativeHandle, useState} from 'react';
 import {Alert, Spin, Tree} from 'antd';
 import api from "../services/api"
-import {ConsoleSqlOutlined, FileOutlined, FolderOutlined, PythonOutlined} from "@ant-design/icons";
+import {ConsoleSqlOutlined, FileOutlined, FolderOutlined, PicRightOutlined, PythonOutlined} from "@ant-design/icons";
 
 interface DataNode {
     title: string;
@@ -57,11 +57,14 @@ const TreeDisplay = forwardRef<DagFileTreeRef, DagFileTreeProps>((dagFileTreePro
             return <ConsoleSqlOutlined style={{marginRight: 6}}/>;
         } else if (node.title.endsWith(".py")) {
             return <PythonOutlined style={{marginRight: 6}}/>;
+        } else if (node.title.endsWith(".bpmn")) {
+            return <PicRightOutlined style={{marginRight: 6}}/>;
         }
+
         return <FileOutlined style={{marginRight: 6}}/>;
     }
 
-    const handleDoubleClick = ( node: DataNode) => {
+    const handleDoubleClick = (node: DataNode) => {
         setSelectedKeys([node.key]); // Set the node as selected
         dagFileTreeProps.editor(node.key)
     };

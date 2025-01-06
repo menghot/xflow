@@ -1,7 +1,5 @@
-import React, {forwardRef, useEffect, useRef, useState} from 'react';
+import React, {forwardRef, useEffect, useImperativeHandle, useRef, useState} from 'react';
 import BpmnModeler from 'bpmn-js/lib/Modeler';
-import diagram1 from '../assets/diagram3.bpmn?raw';
-
 //bpmn css files is mandatory
 import 'bpmn-js/dist/assets/diagram-js.css'
 import 'bpmn-js/dist/assets/bpmn-font/css/bpmn.css'
@@ -16,16 +14,22 @@ import {BpmnPropertiesPanelModule, BpmnPropertiesProviderModule} from 'bpmn-js-p
 import Modeling from "bpmn-js/lib/features/modeling/Modeling";
 import {ElementRegistry} from "bpmn-js/lib/features/auto-place/BpmnAutoPlaceUtil";
 import {Moddle} from "bpmn-js/lib/model/Types";
-import myApi from "../services/api"
 import {AxiosError} from "axios";
 import {Canvas} from "bpmn-js/lib/features/context-pad/ContextPadProvider";
 
-import type {TabsProps} from 'antd';
-import {Button, Splitter, Tabs} from 'antd';
-import {AppleOutlined, SettingFilled, ThunderboltFilled} from '@ant-design/icons';
-import TrinoLogoWBk from "./icons/TrinoLogoWBk.tsx";
+import {Alert, Button, notification, Select, Splitter, Tabs, type TabsProps} from 'antd';
+import api from "../services/api";
+import {
+    CaretRightOutlined,
+    DeploymentUnitOutlined,
+    DownloadOutlined,
+    ExportOutlined,
+    HistoryOutlined,
+    InfoCircleOutlined, SaveOutlined, SmileOutlined,
+    TableOutlined
+} from "@ant-design/icons";
 
-interface ResponseData {
+interface SqlQueryResponse {
     status: string;
     message: string;
     data: Record<string, never>[]; // Array of data rows, each row is a key-value pair
@@ -33,35 +37,61 @@ interface ResponseData {
 }
 
 export interface BpmnEditorRef {
-    openFile: (path: string) => void;
+    openFile: (path: string, modeler: BpmnModeler) => void;
 }
 
 interface BpmnEditorProps {
     autoExp?: boolean,
-    filePath?: string
+    filePath: string
 }
 
 const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) => {
 
     console.log(ref)
     console.log(bpmnProps)
+    const [apiStatus, setApiStatus] = useState<'success' | 'error' | null>(null);
+    const [notifier, contextHolder] = notification.useNotification();
+
+    const openNotification = () => {
+        notifier.open({
+            message: 'Notification Title',
+            description:
+                'This is the content of the notification. This is the content of the notification. This is the content of the notification.',
+            icon: <SmileOutlined style={{color: '#108ee9'}}/>,
+        });
+    };
+
 
     // bpmn js
     const [modeler, setModeler] = useState<BpmnModeler | null>(null);
     const containerRef = useRef<HTMLDivElement>(null);
     const propertiesRef = useRef<HTMLDivElement>(null);
     const [currentNode, setCurrentNode] = React.useState("");
-    const [sqlText, setSqlText] = React.useState("");
+    const [editorText, setEditorText] = React.useState("");
 
     // code mirror editor
     const [editorView, setEditorView] = React.useState<EditorView | null>(null)
 
     // query tables
-    const [queryResponse, setQueryResponse] = useState<ResponseData | null>(null); // Response from the API
+    const [queryResponse, setQueryResponse] = useState<SqlQueryResponse | null>(null); // Response from the API
     const [loading, setLoading] = useState<boolean>(false); // Loading state for button
+    const tabItems: TabsProps['items'] = [
+        {
+            key: '1',
+            label: <span><HistoryOutlined/> Query History</span>,
+            children: "",
+        }, {
+            key: '2',
+            label: <span><TableOutlined/> Results</span>,
+            children: "",
+        }, {
+            key: '3',
+            label: <span><InfoCircleOutlined/> Execution Logs</span>,
+            children: "",
+        },
+    ];
 
-
-    const exportDiagram = async () => {
+    const exportBpmn = async () => {
         try {
             if (modeler) {
                 const {xml} = await modeler.saveXML({format: true});
@@ -72,44 +102,48 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
                 }
             }
         } catch (err) {
+            console.info(queryResponse)
             console.error('Failed to export BPMN model', err);
         }
     };
 
-    const previewBpmn2dag = async () => {
-        try {
-            if (modeler) {
-                const {xml} = await modeler.saveXML({format: true});
-                myApi.post('/api/bpmn/preview', xml, {
-                    headers: {
-                        'Content-Type': 'application/xml' // Specify the Content-Type
-                    }
-                })
-                    .then(response => {
-                        console.log('Response:', response.data);
-                    })
-                    .catch(error => {
-                        console.error('Error:', error.response ? error.response.data : error.message);
-                    });
-            }
-        } catch (err) {
-            console.error('Failed to export BPMN model', err);
-        }
-    }
 
-    const deploy = async () => {
+    // const previewAsDag = async () => {
+    //     try {
+    //         if (modeler) {
+    //             const {xml} = await modeler.saveXML({format: true});
+    //             api.post('/api/bpmn/preview', xml, {
+    //                 headers: {
+    //                     'Content-Type': 'application/xml' // Specify the Content-Type
+    //                 }
+    //             })
+    //                 .then(response => {
+    //                     console.log('Response:', response.data);
+    //                 })
+    //                 .catch(error => {
+    //                     console.error('Error:', error.response ? error.response.data : error.message);
+    //                 });
+    //         }
+    //     } catch (err) {
+    //         console.error('Failed to export BPMN model', err);
+    //     }
+    // }
+
+    const deployDag = async () => {
         try {
             if (modeler) {
                 const {xml} = await modeler.saveXML({format: true});
-                myApi.post('/api/bpmn/deploy', xml, {
+                api.post('/api/bpmn/deploy', xml, {
                     headers: {
                         'Content-Type': 'application/xml' // Specify the Content-Type
                     }
                 })
                     .then(response => {
                         console.log('Response:', response.data);
+                        setApiStatus("success")
                     })
                     .catch(error => {
+                         openNotification()
                         console.error('Error:', error.response ? error.response.data : error.message);
                     });
             }
@@ -161,13 +195,10 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
             })
             setModeler(modeler);
 
-            // import a default diagram
-            modeler.importXML(diagram1).then(() => {
-                const canvas: Canvas = modeler.get('canvas')
-                canvas.zoom('fit-viewport');
-            }).catch((err) => {
-                console.error('Error loading BPMN diagram:', err);
-            });
+            console.log("open file ===========> ", bpmnProps.filePath)
+
+
+            openFile(bpmnProps.filePath, modeler);
 
             const eventBus = modeler.get('eventBus');
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -178,9 +209,9 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
                 setCurrentNode(element.id)
                 const docs = element.businessObject.documentation || [];
                 if (docs.length > 0) {
-                    setSqlText(docs[0].text);
+                    setEditorText(docs[0].text);
                 } else {
-                    setSqlText('')
+                    setEditorText('')
                 }
             });
 
@@ -194,6 +225,40 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
         };
     }, []);
 
+    const openFile = async (path: string, modelerRef: BpmnModeler) => {
+        try {
+            setLoading(true);
+            const response = await api.get<string>(`api/dag/get-file-content?path=${encodeURIComponent(path)}`, {
+                headers: {'Content-Type': 'text/plain'}
+            });
+
+            if (modelerRef) {
+                modelerRef.importXML(response.data).then(() => {
+                    const canvas: Canvas = modelerRef.get('canvas')
+                    canvas.zoom('fit-viewport');
+                }).catch((err) => {
+                    console.error('Error loading BPMN diagram:', err);
+                });
+            } else if (modeler) {
+                modeler.importXML(response.data).then(() => {
+                    const canvas: Canvas = modeler.get('canvas')
+                    canvas.zoom('fit-viewport');
+                }).catch((err) => {
+                    console.error('Error loading BPMN diagram:', err);
+                });
+            }
+        } catch (err) {
+            console.log(err)
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    useImperativeHandle(ref, () => ({
+        openFile,
+    }));
+
+
     const onCanvasResize = (sizes: number[]) => {
         console.log(sizes)
         if (modeler) {
@@ -203,7 +268,7 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
     }
 
     const onSQLChange = (v: string) => {
-        setSqlText(v)
+        setEditorText(v)
 
         // Sync to properties panel
         if (modeler) {
@@ -230,34 +295,12 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
         }
     };
 
-    const renderTable = (data: Record<string, never>[], headers: string[]) => {
-        return (
-            <table className="query-tables">
-                <thead>
-                <tr>
-                    {headers.map((header, index) => (
-                        <th key={index}>{header}</th>
-                    ))}
-                </tr>
-                </thead>
-                <tbody>
-                {data.map((row, rowIndex) => (
-                    <tr key={rowIndex}>
-                        {headers.map((header, colIndex) => (
-                            <td key={colIndex}>{row[header]}</td>
-                        ))}
-                    </tr>
-                ))}
-                </tbody>
-            </table>
-        );
-    };
 
-    const executeSqlQuery = async () => {
+    const executeQuery = async () => {
         setLoading(true);
-
-        let sql = sqlText;
+        let sql = editorText;
         if (editorView) {
+            // run selected sql if any
             const selection = editorView.state.selection.main;
             const selected = editorView.state.doc.sliceString(selection.from, selection.to);
             if (selected !== '') {
@@ -266,7 +309,7 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
         }
 
         try {
-            const result = await myApi.post<ResponseData>('/api/sql/query', {
+            const result = await api.post<SqlQueryResponse>('/api/sql/query', {
                 conn_id: 'postgres_default',
                 sql: sql,
             });
@@ -280,31 +323,47 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
         }
     };
 
-    const onTabChange = (key: string) => {
-        console.log(key);
-    };
+    return <div style={{padding: "6px"}}>
+        {contextHolder}
+        {apiStatus === 'success' && (
+            <Alert
+                message="Success"
+                description="The API call was successful."
+                type="success"
+                showIcon
+                closable
+                style={{marginTop: 20}}
+                onClose={() => setApiStatus(null)} // Dismiss alert on close
+            />
+        )}
+        {apiStatus === 'error' && (
+            <Alert
+                message="Error"
+                description="Something went wrong during the API call."
+                type="error"
+                showIcon
+                closable
+                style={{marginTop: 20}}
+                onClose={() => setApiStatus(null)} // Dismiss alert on close
+            />
+        )}
+        <div>
+            <Button style={{margin: "4px"}} icon={<DownloadOutlined/>} onClick={() => exportAsImage('svg')}
+                    size="small">Export SVG
+                Diagram</Button>
+            <Button style={{margin: "4px"}} icon={<ExportOutlined/>} onClick={exportBpmn} size="small">Export Pipeline
+                Diagram</Button>
+            <Button style={{margin: "4px"}} type="primary" icon={<SaveOutlined/>} onClick={exportBpmn} size="small">Save
+                Diagram</Button>
+            {/*<Button onClick={previewAsDag} size="small" disabled={loading}>Preview Dag</Button>*/}
+            <Button style={{margin: "4px"}} type="primary" icon={<DeploymentUnitOutlined/>} onClick={deployDag}
+                    size="small" disabled={loading}>Deploy To Airflow</Button>
+        </div>
+        <Splitter layout="vertical" style={{height: "100vh"}}>
+            <Splitter.Panel defaultSize="30%" max="90%">
 
-    const tabItems: TabsProps['items'] = [
-        {
-            key: '1',
-            label: <p><TrinoLogoWBk size={14} color={'black'}/>dag</p>,
-            children: <p>DAG</p>,
-        },
-        {
-            key: '2',
-            label: <p><AppleOutlined/>sql</p>,
-            children: <div style={{height: '200px'}}>
-                <CodeMirror onCreateEditor={setEditorView} value={sqlText} theme="light"
-                            height="180px" onChange={onSQLChange} extensions={[sql()]}/>
-            </div>,
-        },
-    ];
-
-    return <div>
-
-        <Splitter style={{height: 800, boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'}}>
-            <Splitter.Panel>
-                <Splitter onResizeEnd={onCanvasResize} style={{height: 380, boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'}}>
+                <Splitter onResizeEnd={onCanvasResize}
+                          style={{height: "620px", boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'}}>
                     <Splitter.Panel defaultSize="82%" min="20%" max="90%">
                         <div ref={containerRef} style={{width: '100%', height: '100%'}}></div>
                     </Splitter.Panel>
@@ -312,46 +371,37 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
                         <div ref={propertiesRef}></div>
                     </Splitter.Panel>
                 </Splitter>
-                <Splitter layout="vertical" style={{height: 800, boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'}}>
-                    <Splitter.Panel>
-                        <Tabs defaultActiveKey="1" items={tabItems} onChange={onTabChange}/>
-                        <div>
-                            <Button onClick={() => exportAsImage('svg')} size="small" style={{}}>Export SVG
-                                Diagram</Button>
-                            <Button onClick={() => exportDiagram()} size="small" style={{}}>Export Diagram</Button>
-                            <Button onClick={executeSqlQuery} size="small" disabled={loading}
-                                    style={{}}><ThunderboltFilled/>Execute
-                                SQL</Button>
-                            <Button onClick={previewBpmn2dag} size="small" disabled={loading} style={{}}>Preview
-                                Dag</Button>
-                            <Button onClick={deploy} size="small" disabled={loading} style={{}}>Deploy To
-                                Airflow</Button>
-                            <Button onClick={deploy} size="small" disabled={loading}><SettingFilled/>Deploy To
-                                Airflow</Button>
-                        </div>
-                    </Splitter.Panel>
-                    <Splitter.Panel>
-                        <div>
-                            {loading && <p>Loading...</p>}
-                            {queryResponse && queryResponse.status === 'success' && (
-                                <div>
-                                    <h5>Query Results</h5>
-                                    {renderTable(queryResponse.data, queryResponse.headers)}
-                                </div>
-                            )}
-                            {queryResponse && queryResponse.status === 'error' && (
-                                <div>
-                                    <h2>Error</h2>
-                                    <p>There was an error executing the query.</p>
-                                </div>
-                            )}
-                        </div>
-                    </Splitter.Panel>
-                </Splitter>
             </Splitter.Panel>
-        </Splitter>
-    </div>;
-});
 
+            <Splitter.Panel defaultSize="20%">
+                <CodeMirror height="300px" onCreateEditor={setEditorView} value={editorText} theme="light"
+                            onChange={onSQLChange} extensions={[sql()]}/>
+            </Splitter.Panel>
+
+            <Splitter.Panel>
+                <div style={{padding: "6px 6px 0 0"}}>
+                    <Button icon={<CaretRightOutlined/>} type="primary" onClick={executeQuery} size="small"
+                            disabled={loading}>Execute SQL</Button>
+                    <span style={{padding: "20px"}}>Limit:
+                        <Select size={"small"}
+                                defaultValue="100"
+                                style={{width: 80}}
+                                options={[
+                                    {value: '10', label: '10'},
+                                    {value: '100', label: '100'},
+                                    {value: '1000', label: '1000'},
+                                ]}
+                        />
+                    </span>
+                </div>
+                <div>TODO: Set Status</div>
+                <div>
+                    <Tabs size={"small"} items={tabItems}/>
+                </div>
+            </Splitter.Panel>
+        </Splitter></div>
+
+
+});
 
 export default BpmnEditor;
