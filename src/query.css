@@ -2,7 +2,8 @@
 .query-tables {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin-top: 4px;
+    margin-bottom: 6px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     background-color: #fff;
     border-radius: 4px;
