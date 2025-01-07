@@ -1,60 +1,68 @@
-import {forwardRef, useEffect, useImperativeHandle, useState} from 'react';
-import {Alert, Dropdown, MenuProps, Spin, Tree} from 'antd';
+import React, {forwardRef, useEffect, useImperativeHandle, useState} from 'react';
+import {Dropdown, MenuProps, Spin, Tree, Input, Popconfirm} from 'antd';
 import api from "../services/api"
-import {ConsoleSqlOutlined, FileOutlined, FolderOutlined, PicRightOutlined, PythonOutlined} from "@ant-design/icons";
+import {
+    ConsoleSqlOutlined, CopyOutlined, DeleteOutlined, FileAddOutlined,
+    FileOutlined,
+    FolderOutlined,
+    PicRightOutlined,
+    PythonOutlined,
+    SyncOutlined
+} from "@ant-design/icons";
 
-interface DataNode {
+// const {Search} = Input;
+import type {DataNode} from "antd/es/tree";
+
+
+interface TreeDataNode extends DataNode {
     title: string;
     key: string;
     isLeaf?: boolean;
     type: 'connection' | 'schema' | 'table'; // Add type property
-    children?: DataNode[];
+    children?: TreeDataNode[];
 }
 
 interface DagFileTreeProps {
     autoExp?: boolean
-    // The Callback for sub-component call parent
-    editor: (path: string) => void;
+    // The Callback for subcomponent call parent
+    openFile: (path: string) => void;
 }
 
 export interface DagFileTreeRef {
-    // For parent component call sub-component
+    // For parent component call subcomponent
     fetchTreeData: () => void;
 }
 
 // for external usage -------------
 
 const TreeDisplay = forwardRef<DagFileTreeRef, DagFileTreeProps>((dagFileTreeProps, ref) => {
-    const [treeData, setTreeData] = useState<DataNode[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
-    const [error] = useState<string | null>(null);
-    const [selectedKeys, setSelectedKeys] = useState<string[]>([]);
-    const [selectedNode, setSelectedNode] = useState<string | null>(null);
 
-    // const [selectedNodeKey, setSelectedNodeKey] = useState<string | null>(null);
+    const [treeData, setTreeData] = useState<TreeDataNode[]>([]);
+    const [filteredTreeData, setFilteredTreeData] = useState<TreeDataNode[]>([]); // Displayed tree data
+
+    const [selectedKeys, setSelectedKeys] = useState<string[]>([]);
+    const [expandedKeys, setExpandedKeys] = useState<React.Key[]>([]);
+    const [autoExpandParent, setAutoExpandParent] = useState(true);
+    const [searchTerm, setSearchTerm] = useState<string>("");
+
+    const [rightClickedNode, setRightClickedNode] = useState<TreeDataNode | null>(null);
 
     const fetchTreeData = async () => {
         try {
             setLoading(true);
-            const response = await api.get<DataNode[]>('api/dag/file-tree');
+            const response = await api.get<TreeDataNode[]>('api/dag/file-tree');
             setTreeData(response.data);
+            setFilteredTreeData(response.data);
         } catch (err) {
             console.error(err)
+            // Show alert
         } finally {
             setLoading(false)
-            console.log(selectedNode, '---fetchTreeData--')
         }
     };
 
-    // Map tree data to include icons
-    // const mapTreeData = (nodes: DataNode[]): DataNode[] =>
-    //     nodes.map(node => ({
-    //         ...node,
-    //         icon: node.isLeaf ? <FileOutlined onClick={handleDoubleClick}/> : <FolderOutlined/>,
-    //         children: node.children ? mapTreeData(node.children) : undefined,
-    //     }));
-
-    const getNodeTitleIcon = (node: DataNode) => {
+    const getNodeTitleIcon = (node: TreeDataNode) => {
         if (!node.isLeaf) {
             return <FolderOutlined style={{marginRight: 6}}/>
         } else if (node.title.endsWith(".sql")) {
@@ -67,26 +75,56 @@ const TreeDisplay = forwardRef<DagFileTreeRef, DagFileTreeProps>((dagFileTreePro
         return <FileOutlined style={{marginRight: 6}}/>;
     }
 
-    const handleDoubleClick = (node: DataNode) => {
+    const handleDoubleClick = (node: TreeDataNode) => {
         setSelectedKeys([node.key]); // Set the node as selected
-        dagFileTreeProps.editor(node.key)
+        dagFileTreeProps.openFile(node.key)
     };
 
 
     const items: MenuProps['items'] = [
         {
             key: '1',
-            label: (
-                <span onClick={fetchTreeData}>Refresh</span>
-            ),
+            label: (<span onClick={fetchTreeData}><SyncOutlined/> Refresh</span>),
         }, {
             key: '2',
+            label: (<span><CopyOutlined/> Duplicate File</span>),
+            disabled: !rightClickedNode?.isLeaf,
+        }, {
+            key: '3',
+            label: (<span><FileAddOutlined/> New File</span>),
+            disabled: rightClickedNode?.isLeaf,
+
+        }, {
+            key: '4',
+            label: (<span><FileAddOutlined/> New From Template</span>),
+            disabled: rightClickedNode?.isLeaf,
+            children: [
+                {
+                    key: '4-1',
+                    label: 'BPMN Template',
+                },
+                {
+                    key: '4-2',
+                    label: 'DAG Template',
+                },
+            ],
+
+        }, {
+            key: '5',
             label: (
-                <span>Add file</span>
+                <Popconfirm
+                    placement="rightTop"
+                    title=''
+                    description=''
+                    okText="Yes"
+                    cancelText="No">
+                    <span><DeleteOutlined/> Delete File</span>
+                </Popconfirm>
             ),
+            disabled: !rightClickedNode?.isLeaf,
         }]
 
-    const titleRender = (node: DataNode) => {
+    const titleRender = (node: TreeDataNode) => {
         return <Dropdown menu={{items}} trigger={['contextMenu']}>
             <span onDoubleClick={() => handleDoubleClick(node)}>
             {getNodeTitleIcon(node)}{node.title}
@@ -102,16 +140,77 @@ const TreeDisplay = forwardRef<DagFileTreeRef, DagFileTreeProps>((dagFileTreePro
         fetchTreeData,
     }));
 
-    if (error) {
-        return <Alert message="Error" description={error} type="error" showIcon/>;
-    }
 
+    // Function to filter tree based on the search term
+    const filterTree = (nodes: TreeDataNode[], term: string): string[] => {
+        const keys: string[] = [];
+
+        const filterNodes = (node: TreeDataNode): TreeDataNode | null => {
+            if (!node.children) {
+                if (node.title.toLowerCase().includes(term.toLowerCase())) {
+                    keys.push(node.key);
+                    return node;
+                }
+                return null;
+            }
+
+            const filteredChildren = node.children
+                .map(filterNodes)
+                .filter((child) => child !== null);
+
+            if (filteredChildren.length > 0 || node.title.toLowerCase().includes(term.toLowerCase())) {
+                keys.push(node.key);
+                return {...node, children: filteredChildren as TreeDataNode[]};
+            }
+            return null;
+        };
+
+        const filteredTree = nodes.map(filterNodes).filter((node) => node !== null);
+        setFilteredTreeData(filteredTree as TreeDataNode[]);
+        return keys;
+    };
+
+    const handleSearch = (value: string) => {
+        setSearchTerm(value);
+        const keys = filterTree(treeData, value);
+        setExpandedKeys(keys); // Automatically expand matching nodes
+        //console.log(" setExpandedKeys ----> ", keys)
+    };
+
+    const onExpand = (newExpandedKeys: React.Key[]) => {
+        setExpandedKeys(newExpandedKeys);
+        setAutoExpandParent(false);
+    };
+
+    // =========================================================
     return <Spin spinning={loading} tip="Loading tree data...">
-        <Tree onRightClick={(a) => {
-            setSelectedNode(a.node.key)
-        }} selectedKeys={selectedKeys} titleRender={titleRender} showIcon
-              treeData={treeData}/>
-    </Spin>;
+        <Input
+            size={"small"}
+            style={{marginBottom: 4}}
+            placeholder="Search"
+            allowClear
+            value={searchTerm}
+            onChange={(e) => handleSearch(e.target.value)}
+        />
+
+        <Tree showIcon
+              onClick={(_, node) =>
+                  setSelectedKeys([node.key])}
+              onRightClick={(a) => {
+                  setRightClickedNode(a.node)
+                  setSelectedKeys([a.node.key])
+              }}
+              selectedKeys={selectedKeys}
+              expandedKeys={expandedKeys}
+              onExpand={onExpand}
+              filterTreeNode={(node) => {
+                  return (searchTerm !=='' && node.title.toLowerCase().includes(searchTerm.toLowerCase()))
+              }}
+              autoExpandParent={autoExpandParent}
+              titleRender={titleRender}
+              treeData={filteredTreeData}
+        />
+    </Spin>
 });
 
 export default TreeDisplay;

@@ -1,5 +1,5 @@
 import {forwardRef, useEffect, useImperativeHandle, useState} from 'react';
-import {Alert, Spin, Tree} from 'antd';
+import {Alert, Input, Spin, Tree} from 'antd';
 import api from "../services/api"
 import {ClusterOutlined, DatabaseOutlined, TableOutlined} from "@ant-design/icons";
 
@@ -76,7 +76,15 @@ const TreeDisplay = forwardRef<TableTreeRef, TableTreeProps>((_, ref) => {
         return <Alert message="Error" description={error} type="error" showIcon/>;
     }
 
-    return <Spin spinning={loading} tip="Loading tree data..."><Tree showIcon treeData={treeData}/></Spin>;
+    return <Spin spinning={loading} tip="Loading tree data...">
+        <Input
+            size={"small"}
+            style={{marginBottom: 4}}
+            placeholder="Search"
+            allowClear
+        />
+        <Tree showIcon treeData={treeData}/>
+    </Spin>;
 });
 
 export default TreeDisplay;
