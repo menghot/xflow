@@ -29,7 +29,6 @@ const SqlEditor = forwardRef<SqlEditorRef, SqlEditorProps>((sqlEditorProps, ref)
     const [editorView, setEditorView] = React.useState<EditorView | null>(null)
     const [editorText, setEditorText] = React.useState<string | undefined>("")
     const [loading, setLoading] = useState<boolean>(false); // Loading state for button
-    const [queryResponse, setQueryResponse] = useState<QueryResponse | null>(null); // Response from the API
     const [activeKey, setActiveKey] = useState<string>('');
 
     const sqlResultRef = useRef<SqlResultRef>(null);
@@ -85,7 +84,6 @@ const SqlEditor = forwardRef<SqlEditorRef, SqlEditorProps>((sqlEditorProps, ref)
 
     const executeQuery = async () => {
         setActiveKey("2")
-
         setLoading(true);
         sqlResultRef?.current?.setLoadingStatus(true);
         let sql = editorText;
@@ -103,20 +101,16 @@ const SqlEditor = forwardRef<SqlEditorRef, SqlEditorProps>((sqlEditorProps, ref)
                 conn_id: 'postgres_default',
                 sql: sql,
             });
-            setQueryResponse(result.data); // Update response with API result
-
             setLoading(false);
             sqlResultRef?.current?.setQueryResponse(result.data)
 
         } catch (err) {
             const error = err as AxiosError;
             console.error('Error executing SQL query:', error);
-            setQueryResponse({status: 'error', message: error.message, data: [], headers: []}); // Update response in case of error
         } finally {
             setLoading(false);
             sqlResultRef?.current?.setLoadingStatus(false);
         }
-        console.log(queryResponse)
     };
 
     const onChange = (activeKey: string) => {

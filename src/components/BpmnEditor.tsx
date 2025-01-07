@@ -16,8 +16,9 @@ import {ElementRegistry} from "bpmn-js/lib/features/auto-place/BpmnAutoPlaceUtil
 import {Moddle} from "bpmn-js/lib/model/Types";
 import {AxiosError} from "axios";
 import {Canvas} from "bpmn-js/lib/features/context-pad/ContextPadProvider";
+import SqlResult, {SqlResultRef} from "./SqlResult.tsx";
 
-import {Alert, Button, notification, Select, Splitter, Tabs, type TabsProps} from 'antd';
+import {Button, notification, Select, Splitter, Tabs, type TabsProps} from 'antd';
 import api from "../services/api";
 import {
     CaretRightOutlined,
@@ -25,11 +26,13 @@ import {
     DownloadOutlined,
     ExportOutlined,
     HistoryOutlined,
-    InfoCircleOutlined, SaveOutlined, SmileOutlined,
+    InfoCircleOutlined,
+    SaveOutlined,
+    SmileOutlined,
     TableOutlined
 } from "@ant-design/icons";
 
-interface SqlQueryResponse {
+interface QueryResponse {
     status: string;
     message: string;
     data: Record<string, never>[]; // Array of data rows, each row is a key-value pair
@@ -47,21 +50,7 @@ interface BpmnEditorProps {
 
 const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) => {
 
-    console.log(ref)
-    console.log(bpmnProps)
-    const [apiStatus, setApiStatus] = useState<'success' | 'error' | null>(null);
     const [notifier, contextHolder] = notification.useNotification();
-
-    const openNotification = () => {
-        notifier.open({
-            message: 'Notification Title',
-            description:
-                'This is the content of the notification. This is the content of the notification. This is the content of the notification.',
-            icon: <SmileOutlined style={{color: '#108ee9'}}/>,
-        });
-    };
-
-
     // bpmn js
     const [modeler, setModeler] = useState<BpmnModeler | null>(null);
     const containerRef = useRef<HTMLDivElement>(null);
@@ -73,8 +62,10 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
     const [editorView, setEditorView] = React.useState<EditorView | null>(null)
 
     // query tables
-    const [queryResponse, setQueryResponse] = useState<SqlQueryResponse | null>(null); // Response from the API
     const [loading, setLoading] = useState<boolean>(false); // Loading state for button
+    const sqlResultRef = useRef<SqlResultRef>(null);
+    const [activeKey, setActiveKey] = useState<string>('');
+
     const tabItems: TabsProps['items'] = [
         {
             key: '1',
@@ -83,7 +74,7 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
         }, {
             key: '2',
             label: <span><TableOutlined/> Results</span>,
-            children: "",
+            children: <SqlResult ref={sqlResultRef}/>,
         }, {
             key: '3',
             label: <span><InfoCircleOutlined/> Execution Logs</span>,
@@ -97,12 +88,32 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
                 const {xml} = await modeler.saveXML({format: true});
                 if (xml) {
                     download(xml, 'diagram.bpmn', 'application/xml');
-                } else {
-                    console.error('Failed to export BPMN model');
                 }
             }
         } catch (err) {
-            console.info(queryResponse)
+            console.error('Failed to export BPMN model', err);
+        }
+    };
+
+    const saveBpmn = async () => {
+        try {
+            if (modeler) {
+                const {xml} = await modeler.saveXML({format: true});
+                await api.post('/api/bpmn/save?file_path=' + bpmnProps.filePath, xml, {
+                    headers: {
+                        'Content-Type': 'application/xml' // Specify the Content-Type
+                    }
+                }).then(response => {
+                    console.log('Response:', response.data);
+                    notifier.open({
+                        message: 'Save bpmn success',
+                        description: 'File path ' + bpmnProps.filePath,
+                        icon: <SmileOutlined style={{color: '#108ee9'}}/>,
+                    });
+
+                })
+            }
+        } catch (err) {
             console.error('Failed to export BPMN model', err);
         }
     };
@@ -140,10 +151,15 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
                 })
                     .then(response => {
                         console.log('Response:', response.data);
-                        setApiStatus("success")
+                        //setApiStatus("success")
+                        notifier.open({
+                            message: 'Deploy dag success',
+                            description: 'File path ' + response.data.dag_file,
+                            icon: <SmileOutlined style={{color: '#108ee9'}}/>,
+                        });
+
                     })
                     .catch(error => {
-                         openNotification()
                         console.error('Error:', error.response ? error.response.data : error.message);
                     });
             }
@@ -295,9 +311,12 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
         }
     };
 
-
+    const onChange = (activeKey: string) => {
+        setActiveKey(activeKey)
+    }
     const executeQuery = async () => {
         setLoading(true);
+        setActiveKey("2")
         let sql = editorText;
         if (editorView) {
             // run selected sql if any
@@ -309,15 +328,15 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
         }
 
         try {
-            const result = await api.post<SqlQueryResponse>('/api/sql/query', {
+            const result = await api.post<QueryResponse>('/api/sql/query', {
                 conn_id: 'postgres_default',
                 sql: sql,
             });
-            setQueryResponse(result.data); // Update response with API result
+            sqlResultRef?.current?.setQueryResponse(result.data)
+
         } catch (err) {
             const error = err as AxiosError;
             console.error('Error executing SQL query:', error);
-            setQueryResponse({status: 'error', message: error.message, data: [], headers: []}); // Update response in case of error
         } finally {
             setLoading(false);
         }
@@ -325,35 +344,13 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
 
     return <div style={{padding: "6px"}}>
         {contextHolder}
-        {apiStatus === 'success' && (
-            <Alert
-                message="Success"
-                description="The API call was successful."
-                type="success"
-                showIcon
-                closable
-                style={{marginTop: 20}}
-                onClose={() => setApiStatus(null)} // Dismiss alert on close
-            />
-        )}
-        {apiStatus === 'error' && (
-            <Alert
-                message="Error"
-                description="Something went wrong during the API call."
-                type="error"
-                showIcon
-                closable
-                style={{marginTop: 20}}
-                onClose={() => setApiStatus(null)} // Dismiss alert on close
-            />
-        )}
         <div>
             <Button style={{margin: "4px"}} icon={<DownloadOutlined/>} onClick={() => exportAsImage('svg')}
                     size="small">Export SVG
                 Diagram</Button>
             <Button style={{margin: "4px"}} icon={<ExportOutlined/>} onClick={exportBpmn} size="small">Export Pipeline
                 Diagram</Button>
-            <Button style={{margin: "4px"}} type="primary" icon={<SaveOutlined/>} onClick={exportBpmn} size="small">Save
+            <Button style={{margin: "4px"}} type="primary" icon={<SaveOutlined/>} onClick={saveBpmn} size="small">Save
                 Diagram</Button>
             {/*<Button onClick={previewAsDag} size="small" disabled={loading}>Preview Dag</Button>*/}
             <Button style={{margin: "4px"}} type="primary" icon={<DeploymentUnitOutlined/>} onClick={deployDag}
@@ -396,7 +393,7 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
                 </div>
                 <div>TODO: Set Status</div>
                 <div>
-                    <Tabs size={"small"} items={tabItems}/>
+                    <Tabs size={"small"} onChange={onChange} activeKey={activeKey} items={tabItems}/>
                 </div>
             </Splitter.Panel>
         </Splitter></div>

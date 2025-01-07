@@ -11,13 +11,14 @@ interface DataNode {
     children?: DataNode[];
 }
 
-// for external usage -------------
 interface DagFileTreeProps {
     autoExp?: boolean
+    // The Callback for sub-component call parent
     editor: (path: string) => void;
 }
 
 export interface DagFileTreeRef {
+    // For parent component call sub-component
     fetchTreeData: () => void;
 }
 
@@ -32,13 +33,11 @@ const TreeDisplay = forwardRef<DagFileTreeRef, DagFileTreeProps>((dagFileTreePro
 
     // const [selectedNodeKey, setSelectedNodeKey] = useState<string | null>(null);
 
-
     const fetchTreeData = async () => {
         try {
             setLoading(true);
             const response = await api.get<DataNode[]>('api/dag/file-tree');
-            const nodes = response.data
-            setTreeData(nodes);
+            setTreeData(response.data);
         } catch (err) {
             console.error(err)
         } finally {
@@ -65,7 +64,6 @@ const TreeDisplay = forwardRef<DagFileTreeRef, DagFileTreeProps>((dagFileTreePro
         } else if (node.title.endsWith(".bpmn")) {
             return <PicRightOutlined style={{marginRight: 6}}/>;
         }
-
         return <FileOutlined style={{marginRight: 6}}/>;
     }
 
@@ -84,7 +82,7 @@ const TreeDisplay = forwardRef<DagFileTreeRef, DagFileTreeProps>((dagFileTreePro
         }, {
             key: '2',
             label: (
-                <span >Add new file</span>
+                <span>Add file</span>
             ),
         }]
 
@@ -107,7 +105,6 @@ const TreeDisplay = forwardRef<DagFileTreeRef, DagFileTreeProps>((dagFileTreePro
     if (error) {
         return <Alert message="Error" description={error} type="error" showIcon/>;
     }
-
 
     return <Spin spinning={loading} tip="Loading tree data...">
         <Tree onRightClick={(a) => {

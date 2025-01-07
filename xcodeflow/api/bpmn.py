@@ -49,6 +49,26 @@ def deploy():
         with open(output_file, "w") as f:
             f.write(dag_code)
         print(f"DAG saved to {output_file}")
+        return jsonify({"status": "success", "dag_file": os.path.abspath(output_file)}), 200
+
+    except Exception as e:
+        print(e)
+        return jsonify({"status": "error", "message": str(e)}), 500
+
+
+@bpmn_blueprint.route("/save", methods=["POST"])
+@csrf.exempt
+def save():
+    try:
+        # Get JSON data from the request
+        bpmn_xml = request.data.decode('utf-8')
+        file_path = request.args.get('file_path')
+
+        # Save DAG to $AIRFLOW_HOME/dags by default
+
+        with open(file_path, "w") as f:
+            f.write(bpmn_xml)
+        print(f"DAG saved to {file_path}")
         return jsonify({"status": "success"}), 200
 
     except Exception as e:

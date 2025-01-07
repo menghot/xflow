@@ -10,7 +10,7 @@ interface SqlQueryResponse {
 
 
 export interface SqlResultRef {
-    setLoadingStatus: (loading : boolean) => void
+    setLoadingStatus: (loading: boolean) => void
     setQueryResponse: (rsp: SqlQueryResponse) => void
 }
 
@@ -19,10 +19,9 @@ interface SqlResultProps {
     filePath?: string
 }
 
-const SqlResult = forwardRef<SqlResultRef, SqlResultProps>((sqlResultProps, ref) => {
+const SqlResult = forwardRef<SqlResultRef, SqlResultProps>((_, ref) => {
 
-    console.log(ref, sqlResultProps);
-
+    //console.log(ref, sqlResultProps);
     const [loading, setLoading] = useState<boolean>(false); // Loading state for button
     const [queryResponse, setSqlQueryResponse] = useState<SqlQueryResponse | null>(null);
 
@@ -49,7 +48,7 @@ const SqlResult = forwardRef<SqlResultRef, SqlResultProps>((sqlResultProps, ref)
         );
     };
 
-    const setLoadingStatus = (loading : boolean) => {
+    const setLoadingStatus = (loading: boolean) => {
         setLoading(loading)
     }
 
@@ -58,7 +57,7 @@ const SqlResult = forwardRef<SqlResultRef, SqlResultProps>((sqlResultProps, ref)
     }
 
 
-     useImperativeHandle(ref, () => ({
+    useImperativeHandle(ref, () => ({
         setLoadingStatus, setQueryResponse
     }));
 
