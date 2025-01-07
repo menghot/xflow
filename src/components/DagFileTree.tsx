@@ -1,5 +1,5 @@
 import {forwardRef, useEffect, useImperativeHandle, useState} from 'react';
-import {Alert, Spin, Tree} from 'antd';
+import {Alert, Dropdown, MenuProps, Spin, Tree} from 'antd';
 import api from "../services/api"
 import {ConsoleSqlOutlined, FileOutlined, FolderOutlined, PicRightOutlined, PythonOutlined} from "@ant-design/icons";
 
@@ -28,6 +28,10 @@ const TreeDisplay = forwardRef<DagFileTreeRef, DagFileTreeProps>((dagFileTreePro
     const [loading, setLoading] = useState<boolean>(true);
     const [error] = useState<string | null>(null);
     const [selectedKeys, setSelectedKeys] = useState<string[]>([]);
+    const [selectedNode, setSelectedNode] = useState<string | null>(null);
+
+    // const [selectedNodeKey, setSelectedNodeKey] = useState<string | null>(null);
+
 
     const fetchTreeData = async () => {
         try {
@@ -38,7 +42,8 @@ const TreeDisplay = forwardRef<DagFileTreeRef, DagFileTreeProps>((dagFileTreePro
         } catch (err) {
             console.error(err)
         } finally {
-            setLoading(false);
+            setLoading(false)
+            console.log(selectedNode, '---fetchTreeData--')
         }
     };
 
@@ -70,10 +75,24 @@ const TreeDisplay = forwardRef<DagFileTreeRef, DagFileTreeProps>((dagFileTreePro
     };
 
 
+    const items: MenuProps['items'] = [
+        {
+            key: '1',
+            label: (
+                <span onClick={fetchTreeData}>Refresh</span>
+            ),
+        }, {
+            key: '2',
+            label: (
+                <span >Add new file</span>
+            ),
+        }]
+
     const titleRender = (node: DataNode) => {
-        return <span onDoubleClick={() => handleDoubleClick(node)}>
+        return <Dropdown menu={{items}} trigger={['contextMenu']}>
+            <span onDoubleClick={() => handleDoubleClick(node)}>
             {getNodeTitleIcon(node)}{node.title}
-        </span>
+        </span></Dropdown>
     }
 
     useEffect(() => {
@@ -89,8 +108,12 @@ const TreeDisplay = forwardRef<DagFileTreeRef, DagFileTreeProps>((dagFileTreePro
         return <Alert message="Error" description={error} type="error" showIcon/>;
     }
 
+
     return <Spin spinning={loading} tip="Loading tree data...">
-        <Tree selectedKeys={selectedKeys} titleRender={titleRender} showIcon treeData={treeData}/>
+        <Tree onRightClick={(a) => {
+            setSelectedNode(a.node.key)
+        }} selectedKeys={selectedKeys} titleRender={titleRender} showIcon
+              treeData={treeData}/>
     </Spin>;
 });
 
