@@ -39,28 +39,20 @@ def build_file_tree(base_path):
     return file_tree_nodes
 
 
-@dag_blueprint.route("/file-tree", methods=["GET"])
+@dag_blueprint.route("/file-trees", methods=["GET"])
 @csrf.exempt
-def get_file_tree():
-    path = dag_folder
-
-    if not path or not os.path.exists(path):
-        return jsonify({"error": "Invalid or non-existent path"}), 400
-
-    # Simplify and normalize the root path
-    simplified_path = os.path.abspath(path)
-
-    # Build the tree starting from the root
-    root_node = {
-        "title": os.path.basename(simplified_path) or simplified_path,  # Root folder/file name
-        "key": simplified_path,
-        "isLeaf": not os.path.isdir(simplified_path),
-    }
-
-    if os.path.isdir(simplified_path):
-        root_node["children"] = build_file_tree(simplified_path)
-
-    return jsonify([root_node])
+def get_file_trees():
+    nodes = []
+    for path in ['/Users/simon/airflow/dags', '/Users/simon/airflow/bpmn']:
+        root_node = {
+            "title": os.path.basename(path) or path,  # Root folder/file name
+            "key": path,
+            "isLeaf": not os.path.isdir(path),
+        }
+        if os.path.isdir(path):
+            root_node["children"] = build_file_tree(path)
+        nodes.append(root_node)
+    return nodes
 
 
 @dag_blueprint.route("/get-file-content", methods=["GET"])
@@ -107,3 +99,58 @@ def dag_graph(dag_id):
         return jsonify(dag_structure)
     except Exception as e:
         return jsonify({"error": str(e)}), 400
+
+
+@dag_blueprint.route("/file-tree", methods=["GET"])
+@csrf.exempt
+def build_file_tree_with_sort():
+    """
+    Build a file tree from multiple paths, sorting nodes by title (alphabetical order).
+    Folders are listed before files.
+    """
+
+    def simplify_path(full_path):
+        return os.path.abspath(full_path)
+
+    def build_tree(current_path):
+        # Ignore "__pycache__" and hidden files/folders
+        entries = [
+            entry for entry in os.listdir(current_path)
+            if entry != "__pycache__" and not entry.startswith('.')
+        ]
+
+        # Sort entries: Folders first, then files, both alphabetically
+        entries.sort(key=lambda e: (not os.path.isdir(os.path.join(current_path, e)), e.lower()))
+
+        children = []
+        for entry in entries:
+            entry_path = os.path.join(current_path, entry)
+            is_folder = os.path.isdir(entry_path)
+            children.append({
+                "title": entry,
+                "key": simplify_path(entry_path),
+                "isLeaf": not is_folder,
+                "children": build_tree(entry_path) if is_folder else None
+            })
+        return children
+
+    # Build a tree for each path
+    trees = []
+    for path in ['/Users/simon/airflow/dags', '/Users/simon/airflow/bpmn']:
+        if os.path.exists(path):
+            root = {
+                "title": os.path.basename(path) or path,
+                "key": simplify_path(path),
+                "isLeaf": False,
+                "children": build_tree(path)
+            }
+            trees.append(root)
+        else:
+            trees.append({
+                "title": f"{path} (Path does not exist)",
+                "key": simplify_path(path),
+                "isLeaf": True,
+                "children": None
+            })
+
+    return trees
