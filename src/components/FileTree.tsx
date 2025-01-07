@@ -1,8 +1,11 @@
 import React, {forwardRef, useEffect, useImperativeHandle, useState} from 'react';
-import {Dropdown, MenuProps, Spin, Tree, Input, Popconfirm} from 'antd';
+import {Dropdown, Input, MenuProps, Popconfirm, Spin, Tree} from 'antd';
 import api from "../services/api"
 import {
-    ConsoleSqlOutlined, CopyOutlined, DeleteOutlined, FileAddOutlined,
+    ConsoleSqlOutlined,
+    CopyOutlined,
+    DeleteOutlined,
+    FileAddOutlined,
     FileOutlined,
     FolderOutlined,
     PicRightOutlined,
@@ -204,7 +207,7 @@ const TreeDisplay = forwardRef<FileTreeRef, FileTreeProps>((fileTreeProps, ref) 
               expandedKeys={expandedKeys}
               onExpand={onExpand}
               filterTreeNode={(node) => {
-                  return (searchTerm !=='' && node.title.toLowerCase().includes(searchTerm.toLowerCase()))
+                  return (searchTerm !== '' && node.title.toLowerCase().includes(searchTerm.toLowerCase()))
               }}
               autoExpandParent={autoExpandParent}
               titleRender={titleRender}

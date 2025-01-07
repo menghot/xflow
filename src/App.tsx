@@ -37,11 +37,11 @@ const App: React.FC = () => {
                                 <TableTree ref={tableTreeRef}/>
                             </Splitter.Panel>
                             <Splitter.Panel>
-                                <div style={{backgroundColor: "#89e0e3"}}><UnorderedListOutlined /> File Explorer</div>
+                                <div style={{backgroundColor: "#89e0e3"}}><UnorderedListOutlined/> File Explorer</div>
                                 <FileTree openFile={openFile} ref={fileTreeRef}/>
                             </Splitter.Panel>
                             <Splitter.Panel>
-                                <div style={{backgroundColor: "#89e0e3"}}><GithubOutlined /> Git Panel</div>
+                                <div style={{backgroundColor: "#89e0e3"}}><GithubOutlined/> Git Panel</div>
                                 <div> .</div>
                                 <div> TO BE IMPLEMENT</div>
                             </Splitter.Panel>
