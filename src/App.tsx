@@ -2,14 +2,14 @@ import React, {useRef} from "react";
 import XcodeFlowIcon from "./components/icons/Xcodeflow";
 import {Splitter} from 'antd';
 import TableTree, {TableTreeRef} from "./components/TableTree";
-import DagFileTree, {DagFileTreeRef} from "./components/DagFileTree";
+import FileTree, {FileTreeRef} from "./components/FileTree";
 import MainTabs, {MainTabsRef} from "./components/MainTabs";
 import {DatabaseOutlined, GithubOutlined, UnorderedListOutlined} from "@ant-design/icons";
 
 const App: React.FC = () => {
     // References to sub components
     const tableTreeRef = useRef<TableTreeRef>(null);
-    const fileTreeRef = useRef<DagFileTreeRef>(null);
+    const fileTreeRef = useRef<FileTreeRef>(null);
     const mainTabsRef = useRef<MainTabsRef>(null);
 
     // const triggerFetch = () => {
@@ -38,7 +38,7 @@ const App: React.FC = () => {
                             </Splitter.Panel>
                             <Splitter.Panel>
                                 <div style={{backgroundColor: "#89e0e3"}}><UnorderedListOutlined /> File Explorer</div>
-                                <DagFileTree openFile={openFile} ref={fileTreeRef}/>
+                                <FileTree openFile={openFile} ref={fileTreeRef}/>
                             </Splitter.Panel>
                             <Splitter.Panel>
                                 <div style={{backgroundColor: "#89e0e3"}}><GithubOutlined /> Git Panel</div>

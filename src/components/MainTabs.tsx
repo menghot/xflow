@@ -50,7 +50,7 @@ interface MainTabProps {
 
 const MainTabs = forwardRef<MainTabsRef, MainTabProps>((ttProps, ref) => {
 
-    console.log(ttProps)
+    console.log('ttProps, ', ttProps)
     const [items, setItems] = useState<NonNullable<TabsProps['items']>>([
         // {key: '1', style: {}, label: <span><DatabaseOutlined/> [New *] - console </span>, children: <DagEditor/>},
     ]);

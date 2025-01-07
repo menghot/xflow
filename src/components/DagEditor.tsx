@@ -37,7 +37,7 @@ const DagEditor = forwardRef<SqlEditorRef, SqlEditorProps>((sqlEditorProps, ref)
             //setLoading(true);
             console.log(path)
             if (path) {
-                const response = await api.get<string>(`api/dag/get-file-content?path=${encodeURIComponent(path)}`, {
+                const response = await api.get<string>(`api/file/get-file-content?path=${encodeURIComponent(path)}`, {
                     headers: {
                         'Content-Type': 'text/plain',
                     }

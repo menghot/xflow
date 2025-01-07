@@ -244,7 +244,7 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
     const openFile = async (path: string, modelerRef: BpmnModeler) => {
         try {
             setLoading(true);
-            const response = await api.get<string>(`api/dag/get-file-content?path=${encodeURIComponent(path)}`, {
+            const response = await api.get<string>(`api/file/get-file-content?path=${encodeURIComponent(path)}`, {
                 headers: {'Content-Type': 'text/plain'}
             });
 

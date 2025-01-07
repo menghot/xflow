@@ -50,7 +50,7 @@ const DagPreviewer: React.FC<{ dagFilePath: string }> = ({dagFilePath}) => {
     useEffect(() => {
         const fetchDAG = async () => {
             try {
-                const response = await api.get("http://127.0.0.1:8080/xcodeflow/api/dag/demo_bpmn");
+                const response = await api.get("http://127.0.0.1:8080/xcodeflow/api/file/demo_bpmn");
 
                 const data = response.data;
 

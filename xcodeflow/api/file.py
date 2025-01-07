@@ -5,13 +5,13 @@ from airflow.www.app import csrf
 from flask import Blueprint, request, jsonify
 from flask_cors import CORS
 
-dag_blueprint = Blueprint(
+file_blueprint = Blueprint(
     "dag",  # Blueprint name
     __name__,
-    url_prefix="/xcodeflow/api/dag",
+    url_prefix="/xcodeflow/api/file",
 )
 
-CORS(dag_blueprint)
+CORS(file_blueprint)
 
 dag_folder = os.path.join(os.path.dirname(__file__), "../../../dags")
 dag_folder = os.path.abspath(dag_folder)
@@ -39,7 +39,7 @@ def build_file_tree(base_path):
     return file_tree_nodes
 
 
-@dag_blueprint.route("/file-trees", methods=["GET"])
+@file_blueprint.route("/file-trees", methods=["GET"])
 @csrf.exempt
 def get_file_trees():
     nodes = []
@@ -55,7 +55,7 @@ def get_file_trees():
     return nodes
 
 
-@dag_blueprint.route("/get-file-content", methods=["GET"])
+@file_blueprint.route("/get-file-content", methods=["GET"])
 @csrf.exempt
 def get_file_content():
     # Get the file path from the query parameters
@@ -91,7 +91,7 @@ def get_dag_structure(dag_id):
     return {"nodes": nodes, "edges": edges}
 
 
-@dag_blueprint.route('/<dag_id>', methods=['GET'])
+@file_blueprint.route('/<dag_id>', methods=['GET'])
 @csrf.exempt
 def dag_graph(dag_id):
     try:
@@ -101,7 +101,7 @@ def dag_graph(dag_id):
         return jsonify({"error": str(e)}), 400
 
 
-@dag_blueprint.route("/file-tree", methods=["GET"])
+@file_blueprint.route("/file-tree", methods=["GET"])
 @csrf.exempt
 def build_file_tree_with_sort():
     """

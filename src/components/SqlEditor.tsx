@@ -59,7 +59,7 @@ const SqlEditor = forwardRef<SqlEditorRef, SqlEditorProps>((sqlEditorProps, ref)
         try {
             setLoading(true);
             if (path) {
-                const response = await api.get<string>(`api/dag/get-file-content?path=${encodeURIComponent(path)}`, {
+                const response = await api.get<string>(`api/file/get-file-content?path=${encodeURIComponent(path)}`, {
                     headers: {'Content-Type': 'text/plain'}
                 });
                 setEditorText(response.data)

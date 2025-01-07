@@ -22,20 +22,20 @@ interface TreeDataNode extends DataNode {
     children?: TreeDataNode[];
 }
 
-interface DagFileTreeProps {
+interface FileTreeProps {
     autoExp?: boolean
     // The Callback for subcomponent call parent
     openFile: (path: string) => void;
 }
 
-export interface DagFileTreeRef {
+export interface FileTreeRef {
     // For parent component call subcomponent
     fetchTreeData: () => void;
 }
 
 // for external usage -------------
 
-const TreeDisplay = forwardRef<DagFileTreeRef, DagFileTreeProps>((dagFileTreeProps, ref) => {
+const TreeDisplay = forwardRef<FileTreeRef, FileTreeProps>((fileTreeProps, ref) => {
     const [loading, setLoading] = useState<boolean>(true);
 
     const [treeData, setTreeData] = useState<TreeDataNode[]>([]);
@@ -51,7 +51,7 @@ const TreeDisplay = forwardRef<DagFileTreeRef, DagFileTreeProps>((dagFileTreePro
     const fetchTreeData = async () => {
         try {
             setLoading(true);
-            const response = await api.get<TreeDataNode[]>('api/dag/file-tree');
+            const response = await api.get<TreeDataNode[]>('api/file/file-tree');
             setTreeData(response.data);
             setFilteredTreeData(response.data);
         } catch (err) {
@@ -77,7 +77,7 @@ const TreeDisplay = forwardRef<DagFileTreeRef, DagFileTreeProps>((dagFileTreePro
 
     const handleDoubleClick = (node: TreeDataNode) => {
         setSelectedKeys([node.key]); // Set the node as selected
-        dagFileTreeProps.openFile(node.key)
+        fileTreeProps.openFile(node.key)
     };
 
 
