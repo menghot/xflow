@@ -1,8 +1,14 @@
-import {Button, Select, Splitter, Tabs, type TabsProps} from "antd";
+import {Button, Flex, Select, Splitter, Tabs, type TabsProps} from "antd";
 import React, {forwardRef, useImperativeHandle, useRef, useState} from "react";
 import CodeMirror, {EditorView} from "@uiw/react-codemirror";
 import api from "../services/api.ts";
-import {CaretRightOutlined, HistoryOutlined, InfoCircleOutlined, TableOutlined} from "@ant-design/icons";
+import {
+    CaretRightOutlined,
+    HistoryOutlined,
+    InfoCircleOutlined,
+    SaveOutlined,
+    TableOutlined
+} from "@ant-design/icons";
 import {sql} from "@codemirror/lang-sql";
 import {AxiosError} from "axios";
 import SqlResult, {SqlResultRef} from "./SqlResult.tsx";
@@ -48,12 +54,6 @@ const SqlEditor = forwardRef<SqlEditorRef, SqlEditorProps>((sqlEditorProps, ref)
         },
     ];
 
-
-    const onSQLChange = () => {
-        console.debug(editorView)
-        console.debug(sqlEditorProps)
-        console.debug(ref)
-    }
 
     const openFile = async (path: string | undefined) => {
         try {
@@ -113,17 +113,40 @@ const SqlEditor = forwardRef<SqlEditorRef, SqlEditorProps>((sqlEditorProps, ref)
         }
     };
 
-    const onChange = (activeKey: string) => {
+    const onTabsChange = (activeKey: string) => {
         setActiveKey(activeKey)
     }
 
 
+    const onEditorChange = (value: string) => {
+        setEditorText(value)
+    }
+
+
+    const save = async () => {
+        try {
+            await api.post('/api/file/save?file_path=' + sqlEditorProps.filePath, editorText, {
+                headers: {
+                    'Content-Type': 'text/plain',
+                }
+            }).then(response => {
+                console.log('Response:', response.data);
+            })
+
+        } catch (err) {
+            console.error('Failed to export BPMN model', err);
+        }
+    };
+
+
     return <div style={{padding: "6px"}}>
-        <div>TODO: Implement tool bar include db connection & execution configuration</div>
+        <Flex gap="small">
+            <Button onClick={save} size={"small"} icon={<SaveOutlined/>}>Save</Button>
+        </Flex>
         <Splitter layout="vertical" style={{height: "100vh"}}>
             <Splitter.Panel defaultSize="30%" min="10%" max="90%">
                 <CodeMirror height="300px" onCreateEditor={onCreateEditor} value={editorText} theme="light"
-                            onChange={onSQLChange} extensions={[sql()]}/>
+                            onChange={onEditorChange} extensions={[sql()]}/>
             </Splitter.Panel>
             <Splitter.Panel defaultSize="70%">
                 <div style={{padding: "6px 6px 0 0"}}>
@@ -144,7 +167,7 @@ const SqlEditor = forwardRef<SqlEditorRef, SqlEditorProps>((sqlEditorProps, ref)
                 <div>TODO: Set Status</div>
                 <div>
                     <Tabs size={"small"}
-                          onChange={onChange}
+                          onChange={onTabsChange}
                           activeKey={activeKey} items={tabItems}/>
                 </div>
             </Splitter.Panel>

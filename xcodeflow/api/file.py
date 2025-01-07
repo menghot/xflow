@@ -156,6 +156,8 @@ def save():
         content = request.data.decode('utf-8')
         file_path = request.args.get('file_path')
 
+        print(file_path, content)
+
         with open(file_path, "w") as f:
             f.write(content)
         return jsonify({"status": "success"}), 200
