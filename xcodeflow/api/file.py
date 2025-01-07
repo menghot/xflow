@@ -108,7 +108,6 @@ def build_file_tree_with_sort():
     Build a file tree from multiple paths, sorting nodes by title (alphabetical order).
     Folders are listed before files.
     """
-
     def simplify_path(full_path):
         return os.path.abspath(full_path)
 
@@ -145,12 +144,22 @@ def build_file_tree_with_sort():
                 "children": build_tree(path)
             }
             trees.append(root)
-        else:
-            trees.append({
-                "title": f"{path} (Path does not exist)",
-                "key": simplify_path(path),
-                "isLeaf": True,
-                "children": None
-            })
 
     return trees
+
+
+@file_blueprint.route("/save", methods=["POST"])
+@csrf.exempt
+def save():
+    try:
+        # Get JSON data from the request
+        content = request.data.decode('utf-8')
+        file_path = request.args.get('file_path')
+
+        with open(file_path, "w") as f:
+            f.write(content)
+        return jsonify({"status": "success"}), 200
+
+    except Exception as e:
+        print(e)
+        return jsonify({"status": "error", "message": str(e)}), 500

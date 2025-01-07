@@ -10,6 +10,7 @@ import {
     FolderOutlined,
     PicRightOutlined,
     PythonOutlined,
+    RetweetOutlined,
     SyncOutlined
 } from "@ant-design/icons";
 
@@ -99,21 +100,24 @@ const TreeDisplay = forwardRef<FileTreeRef, FileTreeProps>((fileTreeProps, ref) 
 
         }, {
             key: '4',
-            label: (<span><FileAddOutlined/> New From Template</span>),
+            label: (<span><RetweetOutlined /> Rename</span>),
+            disabled: !rightClickedNode?.isLeaf,
+        } , {
+            key: '5',
+            label: (<span><FileAddOutlined/> New From</span>),
             disabled: rightClickedNode?.isLeaf,
             children: [
                 {
-                    key: '4-1',
+                    key: '5-1',
                     label: 'BPMN Template',
                 },
                 {
-                    key: '4-2',
+                    key: '5-2',
                     label: 'DAG Template',
                 },
             ],
-
         }, {
-            key: '5',
+            key: '6',
             label: (
                 <Popconfirm
                     placement="rightTop"
@@ -121,7 +125,7 @@ const TreeDisplay = forwardRef<FileTreeRef, FileTreeProps>((fileTreeProps, ref) 
                     description=''
                     okText="Yes"
                     cancelText="No">
-                    <span><DeleteOutlined/> Delete File</span>
+                    <span><DeleteOutlined/> Delete</span>
                 </Popconfirm>
             ),
             disabled: !rightClickedNode?.isLeaf,
