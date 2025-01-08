@@ -1,4 +1,4 @@
-import {Button, Flex, Select, Splitter, Tabs, type TabsProps} from "antd";
+import {Button, Flex, notification, Select, Splitter, Tabs, type TabsProps} from "antd";
 import React, {forwardRef, useImperativeHandle, useRef, useState} from "react";
 import CodeMirror, {EditorView} from "@uiw/react-codemirror";
 import api from "../services/api.ts";
@@ -6,7 +6,7 @@ import {
     CaretRightOutlined,
     HistoryOutlined,
     InfoCircleOutlined,
-    SaveOutlined,
+    SaveOutlined, SmileOutlined,
     TableOutlined
 } from "@ant-design/icons";
 import {sql} from "@codemirror/lang-sql";
@@ -36,6 +36,7 @@ const SqlEditor = forwardRef<SqlEditorRef, SqlEditorProps>((sqlEditorProps, ref)
     const [editorText, setEditorText] = React.useState<string | undefined>("")
     const [loading, setLoading] = useState<boolean>(false); // Loading state for button
     const [activeKey, setActiveKey] = useState<string>('');
+    const [notifier, contextHolder] = notification.useNotification();
 
     const sqlResultRef = useRef<SqlResultRef>(null);
     const tabItems: TabsProps['items'] = [
@@ -131,6 +132,11 @@ const SqlEditor = forwardRef<SqlEditorRef, SqlEditorProps>((sqlEditorProps, ref)
                 }
             }).then(response => {
                 console.log('Response:', response.data);
+                notifier.open({
+                    message: 'Save file success',
+                    description: 'File path ' + sqlEditorProps.filePath,
+                    icon: <SmileOutlined style={{color: '#108ee9'}}/>,
+                });
             })
 
         } catch (err) {
@@ -141,6 +147,7 @@ const SqlEditor = forwardRef<SqlEditorRef, SqlEditorProps>((sqlEditorProps, ref)
 
     return <div style={{padding: "6px"}}>
         <Flex gap="small">
+            {contextHolder}
             <Button onClick={save} size={"small"} icon={<SaveOutlined/>}>Save</Button>
         </Flex>
         <Splitter layout="vertical" style={{height: "100vh"}}>
