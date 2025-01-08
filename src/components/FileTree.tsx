@@ -48,9 +48,10 @@ const TreeDisplay = forwardRef<FileTreeRef, FileTreeProps>((fileTreeProps, ref) 
     const [selectedKeys, setSelectedKeys] = useState<string[]>([]);
     const [expandedKeys, setExpandedKeys] = useState<React.Key[]>([]);
     const [autoExpandParent, setAutoExpandParent] = useState(true);
+    const [rightClickedNode, setRightClickedNode] = useState<TreeDataNode | null>(null);
+
     const [searchTerm, setSearchTerm] = useState<string>("");
 
-    const [rightClickedNode, setRightClickedNode] = useState<TreeDataNode | null>(null);
 
     const fetchTreeData = async () => {
         try {
@@ -81,7 +82,16 @@ const TreeDisplay = forwardRef<FileTreeRef, FileTreeProps>((fileTreeProps, ref) 
 
     const handleDoubleClick = (node: TreeDataNode) => {
         setSelectedKeys([node.key]); // Set the node as selected
-        fileTreeProps.openFile(node.key)
+        if (node.isLeaf) {
+            // call callback to notify parent open file
+            fileTreeProps.openFile(node.key);
+        } else {
+            if (expandedKeys.some(e => e === node.key)) {
+                setExpandedKeys((prevKeys) => prevKeys.filter((key) => key !== node.key));
+            } else {
+                setExpandedKeys([...expandedKeys, node.key])
+            }
+        }
     };
 
 
@@ -100,9 +110,9 @@ const TreeDisplay = forwardRef<FileTreeRef, FileTreeProps>((fileTreeProps, ref) 
 
         }, {
             key: '4',
-            label: (<span><RetweetOutlined /> Rename</span>),
+            label: (<span><RetweetOutlined/> Rename</span>),
             disabled: !rightClickedNode?.isLeaf,
-        } , {
+        }, {
             key: '5',
             label: (<span><FileAddOutlined/> New From</span>),
             disabled: rightClickedNode?.isLeaf,
