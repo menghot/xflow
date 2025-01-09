@@ -1,4 +1,4 @@
-import {Button, Flex, notification, Select, Splitter, Tabs, type TabsProps} from "antd";
+import {Button, Flex, notification, Select, Tabs, type TabsProps} from "antd";
 import React, {forwardRef, useImperativeHandle, useRef, useState} from "react";
 import CodeMirror, {EditorView} from "@uiw/react-codemirror";
 import api from "../services/api.ts";
@@ -15,12 +15,15 @@ import SqlResult, {SqlResultRef} from "./SqlResult.tsx";
 
 
 interface SqlEditorProps {
-    autoExp?: boolean,
-    filePath?: string
+    filePath?: string //load file from file path
+    embedded?: boolean
+    text?: string  // init editor text
+    onEditorChange?: (text: string) => void  //the call back to for notifier
 }
 
 export interface SqlEditorRef {
     openFile: (path: string) => void;
+    setEditorText: (text: string) => void;
 }
 
 
@@ -80,7 +83,7 @@ const SqlEditor = forwardRef<SqlEditorRef, SqlEditorProps>((sqlEditorProps, ref)
 
 
     useImperativeHandle(ref, () => ({
-        openFile,
+        openFile,setEditorText
     }));
 
     const executeQuery = async () => {
@@ -121,6 +124,10 @@ const SqlEditor = forwardRef<SqlEditorRef, SqlEditorProps>((sqlEditorProps, ref)
 
     const onEditorChange = (value: string) => {
         setEditorText(value)
+        // Trigger call back
+        if (sqlEditorProps.onEditorChange) {
+            sqlEditorProps.onEditorChange(value)
+        }
     }
 
 
@@ -144,22 +151,25 @@ const SqlEditor = forwardRef<SqlEditorRef, SqlEditorProps>((sqlEditorProps, ref)
         }
     };
 
+    const getToolbar = () => {
+        if (!sqlEditorProps.embedded) {
+            return <Button onClick={save} size={"small"} icon={<SaveOutlined/>}>Save</Button>;
+        }
+    }
 
-    return <div style={{padding: "6px"}}>
+    return <div>
         <Flex gap="small">
             {contextHolder}
-            <Button onClick={save} size={"small"} icon={<SaveOutlined/>}>Save</Button>
+            {getToolbar()}
         </Flex>
-        <Splitter layout="vertical" style={{height: "100vh"}}>
-            <Splitter.Panel defaultSize="30%" min="10%" max="90%">
-                <CodeMirror height="300px" onCreateEditor={onCreateEditor} value={editorText} theme="light"
-                            onChange={onEditorChange} extensions={[sql()]}/>
-            </Splitter.Panel>
-            <Splitter.Panel defaultSize="70%">
-                <div style={{padding: "6px 6px 0 0"}}>
-                    <Button icon={<CaretRightOutlined/>} type="primary" onClick={executeQuery} size="small"
-                            disabled={loading}>Execute SQL</Button>
-                    <span style={{padding: "20px"}}>Limit:
+        <div>
+            <CodeMirror height="160px" onCreateEditor={onCreateEditor} value={editorText} theme="light"
+                        onChange={onEditorChange} extensions={[sql()]}/></div>
+
+        <div style={{padding: "6px 6px 0 0"}}>
+            <Button icon={<CaretRightOutlined/>} type="primary" onClick={executeQuery} size="small"
+                    disabled={loading}>Execute SQL</Button>
+            <span style={{padding: "20px"}}>Limit:
                         <Select size={"small"}
                                 defaultValue="100"
                                 style={{width: 80}}
@@ -170,14 +180,13 @@ const SqlEditor = forwardRef<SqlEditorRef, SqlEditorProps>((sqlEditorProps, ref)
                                 ]}
                         />
                     </span>
-                </div>
-                <div>TODO: Set Status</div>
-                <div>
-                    <Tabs size={"small"}
-                          onChange={onTabsChange}
-                          activeKey={activeKey} items={tabItems}/>
-                </div>
-            </Splitter.Panel>
-        </Splitter></div>
+        </div>
+        <div>TODO: Set Status</div>
+        <div>
+            <Tabs size={"small"}
+                  onChange={onTabsChange}
+                  activeKey={activeKey} items={tabItems}/>
+        </div>
+    </div>
 });
 export default SqlEditor;

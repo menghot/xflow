@@ -12,12 +12,6 @@ const App: React.FC = () => {
     const fileTreeRef = useRef<FileTreeRef>(null);
     const mainTabsRef = useRef<MainTabsRef>(null);
 
-    // const triggerFetch = () => {
-    //     console.log('Triggering TreeDisplay fetch...');
-    //     tableTreeRef.current?.fetchTreeData();
-    //     mainTabsRef.current?.openConsole();
-    // };
-
     const openFile = (path: string) => {
         mainTabsRef.current?.openEditor(path, 'dag');
     }
@@ -27,21 +21,29 @@ const App: React.FC = () => {
             <div style={{padding: '0 0 0 20px'}}>
                 <XcodeFlowIcon/>
             </div>
-            {/*<div style={{width:"100vh",height:"50vh"}}><Dag dagFilePath=""/></div>*/}
             <div>
-                <Splitter style={{height: "100dvh", boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'}}>
-                    <Splitter.Panel defaultSize="18%" min="10%" max="100%">
-                        <Splitter layout="vertical" style={{height: 800, boxShadow: '0 0 0px rgba(0, 0, 0, 0.1)'}}>
-                            <Splitter.Panel>
-                                <div style={{backgroundColor: "#89e0e3"}}><DatabaseOutlined/> Connections & tables</div>
+                <Splitter style={{height: "calc(100vh - 80px)", boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'}}>
+                    <Splitter.Panel defaultSize="20%" min="10%" max="100%">
+                        <Splitter layout="vertical" style={{boxShadow: '0 0 0px rgba(0, 0, 0, 0.1)'}}>
+                            <Splitter.Panel defaultSize="40%">
+                                <div
+                                    style={{position: "sticky", top: "0", left:"0", zIndex: "999", backgroundColor: "#89e0e3"}}>
+                                    <DatabaseOutlined/> Connections & tables
+                                </div>
                                 <TableTree ref={tableTreeRef}/>
                             </Splitter.Panel>
-                            <Splitter.Panel>
-                                <div style={{backgroundColor: "#89e0e3"}}><UnorderedListOutlined/> File Explorer</div>
+                            <Splitter.Panel defaultSize="40%">
+                                <div
+                                    style={{position: "sticky", top: "0", left:"0", zIndex: "999", backgroundColor: "#89e0e3"}}>
+                                    <UnorderedListOutlined/> File Explorer
+                                </div>
                                 <FileTree openFile={openFile} ref={fileTreeRef}/>
                             </Splitter.Panel>
                             <Splitter.Panel>
-                                <div style={{backgroundColor: "#89e0e3"}}><GithubOutlined/> Git Panel</div>
+                                <div
+                                    style={{position: "sticky", top: "0", left:"0", zIndex: "999", backgroundColor: "#89e0e3"}}>
+                                    <GithubOutlined/> Git Panel
+                                </div>
                                 <div> .</div>
                                 <div> TO BE IMPLEMENT</div>
                             </Splitter.Panel>
@@ -49,21 +51,6 @@ const App: React.FC = () => {
                     </Splitter.Panel>
                     <Splitter.Panel>
                         <MainTabs ref={mainTabsRef}/>
-                        {/*<Splitter style={{height: 380, boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'}}>*/}
-                        {/*    <Splitter.Panel defaultSize="82%" min="20%" max="90%">*/}
-                        {/*        <TT/>*/}
-                        {/*    </Splitter.Panel>*/}
-                        {/*    /!*<Splitter.Panel>*!/*/}
-                        {/*    /!*    <MainTabs ref={mainTabsRef} autoExp={true}/>*!/*/}
-                        {/*    /!*</Splitter.Panel>*!/*/}
-                        {/*</Splitter>*/}
-                        {/*<Splitter layout="vertical" style={{height: 800}}>*/}
-                        {/*<Splitter.Panel>*/}
-                        {/*</Splitter.Panel>*/}
-                        {/*<Splitter.Panel>*/}
-
-                        {/*</Splitter.Panel>*/}
-                        {/*</Splitter>*/}
                     </Splitter.Panel>
                 </Splitter>
 

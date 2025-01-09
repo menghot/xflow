@@ -65,9 +65,7 @@ const SqlResult = forwardRef<SqlResultRef, SqlResultProps>((_, ref) => {
     return <div>
         {loading && <p>Loading...</p>}
         {queryResponse && queryResponse.status === 'success' && (
-            <div>{renderTable(queryResponse.data, queryResponse.headers)}
-                <div>...</div>
-            </div>
+            <div>{renderTable(queryResponse.data, queryResponse.headers)}</div>
         )}
         {queryResponse && queryResponse.status === 'error' && (
             <div>

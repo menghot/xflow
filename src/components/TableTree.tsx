@@ -79,7 +79,7 @@ const TreeDisplay = forwardRef<TableTreeRef, TableTreeProps>((_, ref) => {
     return <Spin spinning={loading} tip="Loading tree data...">
         <Input
             size={"small"}
-            style={{marginBottom: 4}}
+            style={{marginBottom: 4, position:"sticky",  top: "22px", zIndex:"99"}}
             placeholder="Search"
             allowClear
         />
