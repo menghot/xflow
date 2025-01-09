@@ -203,7 +203,7 @@ const TreeDisplay = forwardRef<FileTreeRef, FileTreeProps>((fileTreeProps, ref) 
     return <div><Spin spinning={loading} tip="Loading tree data...">
         <Input
             size={"small"}
-            style={{marginBottom: 4,  position:"sticky", top: "0px", zIndex:"99"}}
+            style={{marginBottom: 4, position: "sticky", top: "0px", zIndex: "99"}}
             placeholder="Search"
             allowClear
             value={searchTerm}

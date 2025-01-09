@@ -42,7 +42,7 @@ const applyDagreLayout = (nodes: Node[], edges: Edge[]): { nodes: Node[]; edges:
     return {nodes: layoutedNodes, edges};
 };
 
-const DagPreviewer: React.FC<{ dagFilePath: string }> = ({dagFilePath}) => {
+const DagGraph: React.FC<{ dagFilePath: string }> = ({dagFilePath}) => {
     const [nodes, setNodes] = useState<Node[]>([]);
     const [edges, setEdges] = useState<Edge[]>([]);
     const [error, setError] = useState<string | null>(null);
@@ -82,11 +82,12 @@ const DagPreviewer: React.FC<{ dagFilePath: string }> = ({dagFilePath}) => {
             }
         };
 
-        fetchDAG();
+        fetchDAG().then();
+
     }, [dagFilePath]);
 
     return (
-        <div style={{height: "500px"}}>
+        <div style={{height: "100%"}}>
             {error ? (
                 <div style={{color: "red"}}>Error: {error}</div>
             ) : (
@@ -98,4 +99,4 @@ const DagPreviewer: React.FC<{ dagFilePath: string }> = ({dagFilePath}) => {
     );
 };
 
-export default DagPreviewer;
+export default DagGraph;

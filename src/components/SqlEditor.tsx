@@ -3,10 +3,12 @@ import React, {forwardRef, useImperativeHandle, useRef, useState} from "react";
 import CodeMirror, {EditorView} from "@uiw/react-codemirror";
 import api from "../services/api.ts";
 import {
+    BugOutlined,
     CaretRightOutlined,
+    CheckOutlined,
     HistoryOutlined,
-    InfoCircleOutlined,
-    SaveOutlined, SmileOutlined,
+    SaveOutlined,
+    SmileOutlined,
     TableOutlined
 } from "@ant-design/icons";
 import {sql} from "@codemirror/lang-sql";
@@ -40,23 +42,35 @@ const SqlEditor = forwardRef<SqlEditorRef, SqlEditorProps>((sqlEditorProps, ref)
     const [loading, setLoading] = useState<boolean>(false); // Loading state for button
     const [activeKey, setActiveKey] = useState<string>('');
     const [notifier, contextHolder] = notification.useNotification();
+    const [btnText, setBtnText] = React.useState<string>("Execute ")
 
     const sqlResultRef = useRef<SqlResultRef>(null);
     const tabItems: TabsProps['items'] = [
         {
             key: '1',
-            label: <span><HistoryOutlined/> Query History</span>,
-            children: "",
-        }, {
-            key: '2',
             label: <span><TableOutlined/> Results</span>,
             children: <SqlResult ref={sqlResultRef}/>,
         }, {
+            key: '2',
+            label: <span><HistoryOutlined/> Query History</span>,
+            children: "",
+        }, {
             key: '3',
-            label: <span><InfoCircleOutlined/> Execution Logs</span>,
+            label: <span><BugOutlined/> Execution Logs</span>,
             children: "",
         },
-    ];
+    ]
+
+    const connections = [
+        {
+            value: 'trino-default',
+            label: 'trino-default'
+        },
+        {
+            value: 'postgres-default',
+            label: 'postgres-default'
+        },
+    ]
 
 
     const openFile = async (path: string | undefined) => {
@@ -83,11 +97,11 @@ const SqlEditor = forwardRef<SqlEditorRef, SqlEditorProps>((sqlEditorProps, ref)
 
 
     useImperativeHandle(ref, () => ({
-        openFile,setEditorText
+        openFile, setEditorText
     }));
 
     const executeQuery = async () => {
-        setActiveKey("2")
+        setActiveKey("1")
         setLoading(true);
         sqlResultRef?.current?.setLoadingStatus(true);
         let sql = editorText;
@@ -153,36 +167,67 @@ const SqlEditor = forwardRef<SqlEditorRef, SqlEditorProps>((sqlEditorProps, ref)
 
     const getToolbar = () => {
         if (!sqlEditorProps.embedded) {
-            return <Button onClick={save} size={"small"} icon={<SaveOutlined/>}>Save</Button>;
+            return <Flex gap="small" justify={"right"} align={"flex-end"}>
+                <Select size={"small"}
+                        defaultValue="trino-default" placeholder={"connection"}
+                        style={{width: "160px"}}
+                        options={connections}/>
+                <Button onClick={save}
+                        size={"small"}
+                        icon={<CheckOutlined/>}/>
+                <Button onClick={save}
+                        size={"small"}
+                        icon={<SaveOutlined/>}/>
+            </Flex>
         }
     }
 
-    return <div>
-        <Flex gap="small">
-            {contextHolder}
-            {getToolbar()}
-        </Flex>
-        <div>
-            <CodeMirror height="160px" onCreateEditor={onCreateEditor} value={editorText} theme="light"
-                        onChange={onEditorChange} extensions={[sql()]}/></div>
 
-        <div style={{padding: "6px 6px 0 0"}}>
-            <Button icon={<CaretRightOutlined/>} type="primary" onClick={executeQuery} size="small"
-                    disabled={loading}>Execute SQL</Button>
-            <span style={{padding: "20px"}}>Limit:
-                        <Select size={"small"}
-                                defaultValue="100"
-                                style={{width: 80}}
-                                options={[
-                                    {value: '10', label: '10'},
-                                    {value: '100', label: '100'},
-                                    {value: '1000', label: '1000'},
-                                ]}
-                        />
-                    </span>
-        </div>
-        <div>TODO: Set Status</div>
+    const onEditorMouseOver = () => {
+        if (editorView) {
+            // run selected sql if any
+            const selection = editorView.state.selection.main;
+            const selected = editorView.state.doc.sliceString(selection.from, selection.to);
+            if (selected !== '') {
+                setBtnText("Execute Selected Query ");
+            } else {
+                setBtnText("Execute Query ");
+            }
+
+        }
+    }
+
+
+    return <div>
+        {contextHolder}
+        {getToolbar()}
         <div>
+            <CodeMirror height="160px"
+                        onCreateEditor={onCreateEditor}
+                        onMouseMove={onEditorMouseOver}
+                        onClickCapture={onEditorMouseOver}
+                        value={editorText} theme="light"
+                        onChange={onEditorChange}
+                        extensions={[sql()]}/>
+        </div>
+        <div style={{padding: "6px 6px 0 0"}}>
+            <Button icon={<CaretRightOutlined/>}
+                    type="primary"
+                    onClick={executeQuery}
+                    size="small"
+                    disabled={loading}>{btnText}</Button>
+            <span style={{padding: "20px"}}>LIMIT:
+                <Select size={"small"}
+                        defaultValue="100"
+                        style={{width: 80}}
+                        options={[
+                            {value: '10', label: '10'},
+                            {value: '100', label: '100'},
+                            {value: '1000', label: '1000'},
+                        ]}/>
+            </span>
+        </div>
+        <div style={{marginTop: "10px"}}>
             <Tabs size={"small"}
                   onChange={onTabsChange}
                   activeKey={activeKey} items={tabItems}/>

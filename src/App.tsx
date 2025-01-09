@@ -25,14 +25,14 @@ const App: React.FC = () => {
                 <Splitter style={{height: "calc(100vh - 80px)", boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'}}>
                     <Splitter.Panel defaultSize="20%" min="10%" max="100%">
                         <Splitter layout="vertical" style={{boxShadow: '0 0 0px rgba(0, 0, 0, 0.1)'}}>
-                            <Splitter.Panel defaultSize="40%">
+                            <Splitter.Panel defaultSize="45%">
                                 <div
                                     style={{position: "sticky", top: "0", left:"0", zIndex: "999", backgroundColor: "#89e0e3"}}>
                                     <DatabaseOutlined/> Connections & tables
                                 </div>
                                 <TableTree ref={tableTreeRef}/>
                             </Splitter.Panel>
-                            <Splitter.Panel defaultSize="40%">
+                            <Splitter.Panel defaultSize="45%">
                                 <div
                                     style={{position: "sticky", top: "0", left:"0", zIndex: "999", backgroundColor: "#89e0e3"}}>
                                     <UnorderedListOutlined/> File Explorer
@@ -44,7 +44,6 @@ const App: React.FC = () => {
                                     style={{position: "sticky", top: "0", left:"0", zIndex: "999", backgroundColor: "#89e0e3"}}>
                                     <GithubOutlined/> Git Panel
                                 </div>
-                                <div> .</div>
                                 <div> TO BE IMPLEMENT</div>
                             </Splitter.Panel>
                         </Splitter>

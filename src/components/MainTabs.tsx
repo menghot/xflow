@@ -12,11 +12,9 @@ import BpmnEditor from "./BpmnEditor.tsx";
 
 type TargetKey = React.MouseEvent | React.KeyboardEvent | string;
 
-
 interface DraggableTabPaneProps extends React.HTMLAttributes<HTMLDivElement> {
     'data-node-key': string;
 }
-
 
 const DraggableTabNode: React.FC<Readonly<DraggableTabPaneProps>> = ({...props}) => {
     const {attributes, listeners, setNodeRef, transform, transition} = useSortable({
@@ -56,33 +54,17 @@ const MainTabs = forwardRef<MainTabsRef, MainTabProps>((ttProps, ref) => {
     ]);
     const [activeKey, setActiveKey] = useState<string>('');
 
-    // const add = () => {
-    //     const newKey = String((items || []).length + 1);
-    //     setItems([
-    //         ...(items || []),
-    //         {
-    //             label: `Tab ${newKey}`,
-    //             key: newKey,
-    //             children: `Content of editable tab ${newKey}`,
-    //         },
-    //     ]);
-    //     setActiveKey(newKey);
-    // };
-
     const remove = (targetKey: TargetKey) => {
         if (!items) return;
         const targetIndex = items.findIndex((item) => item.key === targetKey);
         const newItems = items.filter((item) => item.key !== targetKey);
-
         if (newItems.length && targetKey === activeKey) {
             const newActiveKey =
                 newItems[targetIndex === newItems.length ? targetIndex - 1 : targetIndex].key;
             setActiveKey(newActiveKey);
         }
-
         setItems(newItems);
     };
-
 
     const onEdit = (targetKey: TargetKey, action: 'add' | 'remove') => {
         if (action === 'add') {
@@ -95,8 +77,6 @@ const MainTabs = forwardRef<MainTabsRef, MainTabProps>((ttProps, ref) => {
 
 
     const sensor = useSensor(PointerSensor, {activationConstraint: {distance: 10}});
-
-
     const onDragEnd = ({active, over}: DragEndEvent) => {
         if (active.id !== over?.id) {
             setItems((prev) => {
@@ -109,7 +89,7 @@ const MainTabs = forwardRef<MainTabsRef, MainTabProps>((ttProps, ref) => {
 
     const getEditor = (path: string, type: "dag" | "sql" | "bpmn") => {
         if (path.endsWith('.sql')) {
-            return <div style={{padding:"6px"}}><SqlEditor filePath={path}/></div>
+            return <div style={{padding: "6px"}}><SqlEditor filePath={path}/></div>
         } else if (path.endsWith('.bpmn')) {
             return <BpmnEditor filePath={path}/>
         } else if (type === 'dag') {
