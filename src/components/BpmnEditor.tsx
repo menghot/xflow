@@ -14,7 +14,7 @@ import {ElementRegistry} from "bpmn-js/lib/features/auto-place/BpmnAutoPlaceUtil
 import {Moddle} from "bpmn-js/lib/model/Types";
 import {Canvas} from "bpmn-js/lib/features/context-pad/ContextPadProvider";
 
-import {Button, notification, Splitter} from 'antd';
+import {Button, Flex, notification, Splitter} from 'antd';
 import api from "../services/api";
 import {
     DeploymentUnitOutlined,
@@ -276,23 +276,24 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
     }
 
     return <div>
-
-        <div>
-            <Button style={{margin: "4px"}} icon={<DownloadOutlined/>} onClick={() => exportAsImage('svg')}
-                    size="small">Export SVG
-                Diagram</Button>
-            <Button style={{margin: "4px"}} icon={<ExportOutlined/>} onClick={exportBpmn} size="small">Export Pipeline
-                Diagram</Button>
-            <Button style={{margin: "4px"}} type="primary" icon={<SaveOutlined/>} onClick={saveBpmn} size="small">Save
-                Diagram</Button>
-            {/*<Button onClick={previewAsDag} size="small" disabled={loading}>Preview Dag</Button>*/}
-            <Button style={{margin: "4px"}} type="primary" icon={<DeploymentUnitOutlined/>} onClick={deployDag}
-                    size="small" disabled={loading}>Deploy To Airflow</Button>
+        <div style={{position: "sticky", paddingLeft:"0px", paddingBottom:"4px", zIndex: 999}}>
+            <Flex gap="small" justify={"left"} align={"flex-end"}>
+                <Button icon={<DownloadOutlined/>} onClick={() => exportAsImage('svg')}
+                        size="small">SVG</Button>
+                <Button icon={<ExportOutlined/>} onClick={exportBpmn} size="small">Export</Button>
+                <Button type="primary" icon={<SaveOutlined/>} onClick={saveBpmn} size="small">Save
+                </Button>
+                <Button type="primary" icon={<DeploymentUnitOutlined/>} onClick={deployDag}
+                        size="small" disabled={loading}>Deploy</Button>
+            </Flex>
         </div>
         <Splitter onResizeEnd={onCanvasResize}
-                  style={{height: "360px", padding: "1px", boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'}}>
+                  style={{height: "420px", padding: "1px", boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'}}>
             <Splitter.Panel defaultSize="80%" min="20%" max="90%">
-                <div style={{height: "100%"}} ref={containerRef}></div>
+
+                <div style={{height: "100%"}} ref={containerRef}>
+
+                </div>
             </Splitter.Panel>
             <Splitter.Panel>
                 <div ref={propertiesRef}></div>

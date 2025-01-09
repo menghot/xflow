@@ -27,21 +27,39 @@ const App: React.FC = () => {
                         <Splitter layout="vertical" style={{boxShadow: '0 0 0px rgba(0, 0, 0, 0.1)'}}>
                             <Splitter.Panel defaultSize="45%">
                                 <div
-                                    style={{position: "sticky", top: "0", left:"0", zIndex: "999", backgroundColor: "#89e0e3"}}>
+                                    style={{
+                                        position: "sticky",
+                                        top: "0",
+                                        left: "0",
+                                        zIndex: "999",
+                                        backgroundColor: "#89e0e3"
+                                    }}>
                                     <DatabaseOutlined/> Connections & tables
                                 </div>
                                 <TableTree ref={tableTreeRef}/>
                             </Splitter.Panel>
                             <Splitter.Panel defaultSize="45%">
                                 <div
-                                    style={{position: "sticky", top: "0", left:"0", zIndex: "999", backgroundColor: "#89e0e3"}}>
+                                    style={{
+                                        position: "sticky",
+                                        top: "0",
+                                        left: "0",
+                                        zIndex: "999",
+                                        backgroundColor: "#89e0e3"
+                                    }}>
                                     <UnorderedListOutlined/> File Explorer
                                 </div>
                                 <FileTree openFile={openFile} ref={fileTreeRef}/>
                             </Splitter.Panel>
                             <Splitter.Panel>
                                 <div
-                                    style={{position: "sticky", top: "0", left:"0", zIndex: "999", backgroundColor: "#89e0e3"}}>
+                                    style={{
+                                        position: "sticky",
+                                        top: "0",
+                                        left: "0",
+                                        zIndex: "999",
+                                        backgroundColor: "#89e0e3"
+                                    }}>
                                     <GithubOutlined/> Git Panel
                                 </div>
                                 <div> TO BE IMPLEMENT</div>
@@ -49,7 +67,10 @@ const App: React.FC = () => {
                         </Splitter>
                     </Splitter.Panel>
                     <Splitter.Panel>
-                        <MainTabs ref={mainTabsRef}/>
+                        <div style={{padding: "8px"}}>
+                            <MainTabs ref={mainTabsRef}/>
+                        </div>
+
                     </Splitter.Panel>
                 </Splitter>
 

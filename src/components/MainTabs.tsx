@@ -89,7 +89,7 @@ const MainTabs = forwardRef<MainTabsRef, MainTabProps>((ttProps, ref) => {
 
     const getEditor = (path: string, type: "dag" | "sql" | "bpmn") => {
         if (path.endsWith('.sql')) {
-            return <div style={{padding: "6px"}}><SqlEditor filePath={path}/></div>
+            return <SqlEditor filePath={path}/>
         } else if (path.endsWith('.bpmn')) {
             return <BpmnEditor filePath={path}/>
         } else if (type === 'dag') {
