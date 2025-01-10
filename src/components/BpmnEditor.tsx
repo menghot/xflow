@@ -133,6 +133,7 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
             }
         } catch (err) {
             console.error('Failed to export BPMN model', err);
+        } finally {
             setLoading(false);
         }
     }
@@ -276,7 +277,7 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
     }
 
     return <div>
-        <div style={{position: "sticky", paddingLeft:"0px", paddingBottom:"4px", zIndex: 999}}>
+        <div style={{position: "sticky", paddingLeft: "0px", paddingBottom: "4px", zIndex: 999}}>
             <Flex gap="small" justify={"left"} align={"flex-end"}>
                 <Button icon={<DownloadOutlined/>} onClick={() => exportAsImage('svg')}
                         size="small">SVG</Button>

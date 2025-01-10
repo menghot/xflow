@@ -1,4 +1,4 @@
-import {Button, Flex, Splitter} from "antd";
+import {Button, Flex} from "antd";
 import React, {forwardRef, useImperativeHandle} from "react";
 import CodeMirror, {EditorView} from "@uiw/react-codemirror";
 import {python} from "@codemirror/lang-python";
@@ -59,31 +59,24 @@ const DagEditor = forwardRef<SqlEditorRef, SqlEditorProps>((sqlEditorProps, ref)
 
     }
 
-    return <div style={{padding: "6px"}}>
-        <Splitter layout="vertical" style={{height: "calc(100vh - 180px)"}}>
-            <Splitter.Panel defaultSize="400px">
-                <div style={{position: "absolute", right: "100px", top: "10px", zIndex: 999}}>
-                    <Flex gap="small" justify={"right"} align={"flex-end"}>
-                        <Button onClick={save}
-                                size={"small"}
-                                icon={<CheckOutlined/>}>Validate</Button>
-                        <Button onClick={save}
-                                size={"small"}
-                                icon={<SaveOutlined/>}>Save</Button>
-                    </Flex>
-                </div>
-                <CodeMirror height={"400px"} maxHeight={"800px"} onCreateEditor={init} value={editorText}
-                            theme="light"
-                            onChange={onSQLChange} extensions={[python()]}/>
+    return <div style={{ height: "800px", width:"100px"}}>
+        <div style={{position: "absolute", right: "100px", top: "10px", zIndex: 999}}>
+            <Flex gap="small" justify={"right"} align={"flex-end"}>
+                <Button onClick={save}
+                        size={"small"}
+                        icon={<CheckOutlined/>}>Validate</Button>
+                <Button onClick={save}
+                        size={"small"}
+                        icon={<SaveOutlined/>}>Save</Button>
+            </Flex>
+        </div>
+        <CodeMirror height={"400px"} maxHeight={"800px"} onCreateEditor={init} value={editorText}
+                    theme="light"
+                    onChange={onSQLChange} extensions={[python()]}/>
 
-            </Splitter.Panel>
-
-            <Splitter.Panel defaultSize="60%">
-
-                <div style={{position: "sticky", top: "30px", marginLeft: "30px"}}><span
-                    color={"#223300"}>DAG Preview</span></div>
-                <DagGraph dagFilePath={""}/>
-            </Splitter.Panel>
-        </Splitter></div>
+        <DagGraph dagFilePath={""}/>
+        <div style={{position: "sticky", top: "30px", marginLeft: "30px"}}><span
+            color={"#223300"}>DAG Preview</span></div>
+    </div>
 });
 export default DagEditor;
