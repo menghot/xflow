@@ -5,6 +5,7 @@ import 'bpmn-js/dist/assets/diagram-js.css'
 import 'bpmn-js/dist/assets/bpmn-font/css/bpmn.css'
 import 'bpmn-js/dist/assets/bpmn-font/css/bpmn-codes.css'
 import 'bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css'
+import 'bpmn-js-color-picker/colors/color-picker.css'
 import '@bpmn-io/properties-panel/assets/properties-panel.css';
 
 
@@ -13,6 +14,7 @@ import Modeling from "bpmn-js/lib/features/modeling/Modeling";
 import {ElementRegistry} from "bpmn-js/lib/features/auto-place/BpmnAutoPlaceUtil";
 import {Moddle} from "bpmn-js/lib/model/Types";
 import {Canvas} from "bpmn-js/lib/features/context-pad/ContextPadProvider";
+import BpmnColorPickerModule from "bpmn-js-color-picker";
 
 import {Button, Flex, notification, Splitter} from 'antd';
 import api from "../services/api";
@@ -174,7 +176,7 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
         if (containerRef.current && containerRef.current.getAttribute("loaded") !== "loaded") {
             const modeler = new BpmnModeler({
                 container: containerRef.current!,
-                additionalModules: [BpmnPropertiesPanelModule, BpmnPropertiesProviderModule],
+                additionalModules: [BpmnPropertiesPanelModule, BpmnPropertiesProviderModule, BpmnColorPickerModule],
                 propertiesPanel: {
                     parent: propertiesRef.current,
                 },

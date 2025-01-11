@@ -87,7 +87,7 @@ const DagGraph: React.FC<{ dagFilePath: string }> = ({dagFilePath}) => {
     }, [dagFilePath]);
 
     return (
-        <div style={{ height: "800px", width:"100px"}}>
+        <div style={{height: "100%", width:"100%"}}>
             {error ? (
                 <div style={{color: "red"}}>Error: {error}</div>
             ) : (
