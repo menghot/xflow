@@ -7,7 +7,9 @@ import 'bpmn-js/dist/assets/bpmn-font/css/bpmn-codes.css'
 import 'bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css'
 import 'bpmn-js-color-picker/colors/color-picker.css'
 import '@bpmn-io/properties-panel/assets/properties-panel.css';
-
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
+import  custom from '../custom'
 
 import {BpmnPropertiesPanelModule, BpmnPropertiesProviderModule} from 'bpmn-js-properties-panel';
 import Modeling from "bpmn-js/lib/features/modeling/Modeling";
@@ -176,7 +178,7 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
         if (containerRef.current && containerRef.current.getAttribute("loaded") !== "loaded") {
             const modeler = new BpmnModeler({
                 container: containerRef.current!,
-                additionalModules: [BpmnPropertiesPanelModule, BpmnPropertiesProviderModule, BpmnColorPickerModule],
+                additionalModules: [custom, BpmnPropertiesPanelModule, BpmnPropertiesProviderModule, BpmnColorPickerModule],
                 propertiesPanel: {
                     parent: propertiesRef.current,
                 },
