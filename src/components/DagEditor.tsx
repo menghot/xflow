@@ -82,7 +82,7 @@ const DagEditor = forwardRef<SqlEditorRef, SqlEditorProps>((sqlEditorProps, ref)
 
                 <div style={{position: "sticky", top: "30px", marginLeft: "30px"}}><span
                     color={"#223300"}>DAG Preview</span></div>
-                <DagGraph dagFilePath={""}/>
+                <DagGraph dagFilePath={sqlEditorProps.filePath}/>
             </Splitter.Panel>
         </Splitter></div>
 });

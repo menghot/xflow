@@ -6,7 +6,7 @@ from flask import Blueprint, request, jsonify
 from flask_cors import CORS
 
 file_blueprint = Blueprint(
-    "dag",  # Blueprint name
+    "file",  # Blueprint name
     __name__,
     url_prefix="/xcodeflow/api/file",
 )

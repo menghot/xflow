@@ -9,7 +9,7 @@ import 'bpmn-js-color-picker/colors/color-picker.css'
 import '@bpmn-io/properties-panel/assets/properties-panel.css';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
-import  custom from '../custom'
+import custom from '../custom'
 
 import {BpmnPropertiesPanelModule, BpmnPropertiesProviderModule} from 'bpmn-js-properties-panel';
 import Modeling from "bpmn-js/lib/features/modeling/Modeling";
@@ -18,7 +18,7 @@ import {Moddle} from "bpmn-js/lib/model/Types";
 import {Canvas} from "bpmn-js/lib/features/context-pad/ContextPadProvider";
 import BpmnColorPickerModule from "bpmn-js-color-picker";
 
-import {Button, Flex, notification, Splitter} from 'antd';
+import {Button, Flex, notification,} from 'antd';
 import api from "../services/api";
 import {
     DeploymentUnitOutlined,
@@ -272,13 +272,20 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
     }));
 
 
-    const onCanvasResize = (sizes: number[]) => {
-        console.log(sizes)
-        if (modeler) {
-            const canvas: Canvas = modeler.get('canvas')
-            canvas.zoom('fit-viewport');
-        }
-    }
+    // const onCanvasResize = (sizes: number[]) => {
+    //     console.log(sizes)
+    //     if (modeler) {
+    //         const canvas: Canvas = modeler.get('canvas')
+    //         canvas.zoom('fit-viewport');
+    //     }
+    // }
+
+    const [isExpanded, setIsExpanded] = useState(false);
+
+    const togglePanel = () => {
+        setIsExpanded((prev) => !prev);
+    };
+
 
     return <div>
         <div style={{position: "sticky", paddingLeft: "0px", paddingBottom: "4px", zIndex: 999}}>
@@ -292,19 +299,18 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
                         size="small" disabled={loading}>Deploy</Button>
             </Flex>
         </div>
-        <Splitter onResizeEnd={onCanvasResize}
-                  style={{height: "420px", padding: "1px", boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'}}>
-            <Splitter.Panel defaultSize="80%" min="20%" max="90%">
-
-                <div style={{height: "100%"}} ref={containerRef}>
-
-                </div>
-            </Splitter.Panel>
-            <Splitter.Panel>
-                <div ref={propertiesRef}></div>
-            </Splitter.Panel>
-        </Splitter>
-        <SqlEditor text={""} ref={sqlEditorRef} embedded={true} onEditorChange={onEditorChange}/>
+        <div className={"my-border"}>
+            <div style={{height: "40vh"}} ref={containerRef}/>
+        </div>
+        <div className={`side-panel ${isExpanded ? "expanded" : ""}`}>
+            <button className="toggle-button" onClick={togglePanel}>
+                {isExpanded ? "»" : "«"}
+            </button>
+            <div className="panel-content" ref={propertiesRef}/>
+        </div>
+        <div style={{marginTop: "6px", marginBottom:"6px"}}>
+            <SqlEditor text={""} ref={sqlEditorRef} embedded={true} onEditorChange={onEditorChange}/>
+        </div>
         {contextHolder}
     </div>
 });

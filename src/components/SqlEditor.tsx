@@ -201,8 +201,8 @@ const SqlEditor = forwardRef<SqlEditorRef, SqlEditorProps>((sqlEditorProps, ref)
     return <div>
         {contextHolder}
         {getToolbar()}
-        <div>
-            <CodeMirror height="160px"
+        <div className={"my-border"} >
+            <CodeMirror height="120px"
                         onCreateEditor={onCreateEditor}
                         onMouseMove={onEditorMouseOver}
                         onClickCapture={onEditorMouseOver}

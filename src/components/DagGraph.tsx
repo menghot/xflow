@@ -42,7 +42,7 @@ const applyDagreLayout = (nodes: Node[], edges: Edge[]): { nodes: Node[]; edges:
     return {nodes: layoutedNodes, edges};
 };
 
-const DagGraph: React.FC<{ dagFilePath: string }> = ({dagFilePath}) => {
+const DagGraph: React.FC<{ dagFilePath: string|undefined }> = ({dagFilePath}) => {
     const [nodes, setNodes] = useState<Node[]>([]);
     const [edges, setEdges] = useState<Edge[]>([]);
     const [error, setError] = useState<string | null>(null);
@@ -50,7 +50,7 @@ const DagGraph: React.FC<{ dagFilePath: string }> = ({dagFilePath}) => {
     useEffect(() => {
         const fetchDAG = async () => {
             try {
-                const response = await api.get("http://127.0.0.1:8080/xcodeflow/api/file/demo_bpmn");
+                const response = await api.get("api/dag/graph?path=" + dagFilePath);
 
                 const data = response.data;
 
@@ -87,7 +87,7 @@ const DagGraph: React.FC<{ dagFilePath: string }> = ({dagFilePath}) => {
     }, [dagFilePath]);
 
     return (
-        <div style={{height: "100%", width:"100%"}}>
+        <div style={{height: "100%", width: "100%"}}>
             {error ? (
                 <div style={{color: "red"}}>Error: {error}</div>
             ) : (
