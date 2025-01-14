@@ -9,9 +9,10 @@ export interface DagPreviewRef {
 
 interface DagPreviewProps {
     bpmnXml: string
+    height?: string
 }
 
-const DagPreview = forwardRef<DagPreviewRef, DagPreviewProps>((_, ref) => {
+const DagPreview = forwardRef<DagPreviewRef, DagPreviewProps>((dagPreviewProps, ref) => {
 
     const [bpmnXml, setBpmnXml] = React.useState<string>("")
 
@@ -26,7 +27,8 @@ const DagPreview = forwardRef<DagPreviewRef, DagPreviewProps>((_, ref) => {
 
 
     return <div>
-        <CodeMirror height="40vh"
+
+        <CodeMirror height={dagPreviewProps.height}
                     value={bpmnXml}
                     theme="light"
                     extensions={[xml()]}/>

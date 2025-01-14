@@ -1,6 +1,6 @@
 import React, {forwardRef, useEffect, useImperativeHandle, useRef, useState} from 'react';
 import BpmnModeler from 'bpmn-js/lib/Modeler';
-//bpmn css files is mandatory
+
 import 'bpmn-js/dist/assets/diagram-js.css'
 import 'bpmn-js/dist/assets/bpmn-font/css/bpmn.css'
 import 'bpmn-js/dist/assets/bpmn-font/css/bpmn-codes.css'
@@ -23,13 +23,13 @@ import api from "../services/api";
 import {
     DeploymentUnitOutlined,
     DownloadOutlined,
-    ExportOutlined,
+    ExportOutlined, RedoOutlined,
     SaveOutlined,
     SmileOutlined,
 } from "@ant-design/icons";
 import SqlEditor, {SqlEditorRef} from "./SqlEditor.tsx";
-import {xml} from "@codemirror/lang-xml";
 import CodeMirror from "@uiw/react-codemirror";
+import {python} from "@codemirror/lang-python";
 
 
 export interface BpmnEditorRef {
@@ -56,6 +56,7 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
     const [loading, setLoading] = useState<boolean>(false); // Loading state for button
     const [displayMode, setDisplayMode] = useState<string>("preview"); // Loading state for button
 
+    const [dag, setDag] = React.useState("");
 
     const exportBpmn = async () => {
         try {
@@ -92,28 +93,6 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
             console.error('Failed to export BPMN model', err);
         }
     };
-
-
-    // const previewAsDag = async () => {
-    //     try {
-    //         if (modeler) {
-    //             const {xml} = await modeler.saveXML({format: true});
-    //             api.post('/api/bpmn/preview', xml, {
-    //                 headers: {
-    //                     'Content-Type': 'application/xml' // Specify the Content-Type
-    //                 }
-    //             })
-    //                 .then(response => {
-    //                     console.log('Response:', response.data);
-    //                 })
-    //                 .catch(error => {
-    //                     console.error('Error:', error.response ? error.response.data : error.message);
-    //                 });
-    //         }
-    //     } catch (err) {
-    //         console.error('Failed to export BPMN model', err);
-    //     }
-    // }
 
     const deployDag = async () => {
         try {
@@ -189,15 +168,17 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
             })
 
             setModeler(modeler);
-            console.log("open file ===========> ", bpmnProps.filePath)
-            openFile(bpmnProps.filePath, modeler).then();
+            console.debug("open file ===========> ", bpmnProps.filePath)
+            openFile(bpmnProps.filePath, modeler).then()
 
-            const eventBus = modeler.get('eventBus');
+            const eventBus = modeler.get('eventBus')
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-expect-error
             eventBus.on('element.click', ({element}) => {
                 const elementRegistry: ElementRegistry = modeler.get('elementRegistry');
                 console.log(elementRegistry, currentNode)
+                console.log("eventBus 1: ", eventBus)
+
                 setCurrentNode(element.id)
                 const docs = element.businessObject.documentation || [];
                 if (docs.length > 0) {
@@ -205,7 +186,20 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
                 } else {
                     sqlEditorRef?.current?.setEditorText('')
                 }
-            });
+            })
+
+
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-expect-error
+            eventBus.on('canvas.init', () => {
+                console.log("eventBus: ")
+            })
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-expect-error
+            eventBus.on('diagram.init', () => {
+                console.log("eventBus: ", eventBus)
+            })
+
 
             // set BpmnModeler loaded
             containerRef.current.setAttribute("loaded", "loaded");
@@ -228,14 +222,7 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
                 modelerRef.importXML(response.data).then(() => {
                     const canvas: Canvas = modelerRef.get('canvas')
                     //canvas.zoom('fit-viewport');
-                    canvas.zoom(0.82, {x:0.5, y:0.5})
-                }).catch((err) => {
-                    console.error('Error loading BPMN diagram:', err);
-                });
-            } else if (modeler) {
-                modeler.importXML(response.data).then(() => {
-                    const canvas: Canvas = modeler.get('canvas')
-                    canvas.zoom('fit-viewport');
+                    canvas.zoom(0.82, {x: 0.5, y: 0.5})
                 }).catch((err) => {
                     console.error('Error loading BPMN diagram:', err);
                 });
@@ -276,15 +263,6 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
         openFile,
     }));
 
-
-    // const onCanvasResize = (sizes: number[]) => {
-    //     console.log(sizes)
-    //     if (modeler) {
-    //         const canvas: Canvas = modeler.get('canvas')
-    //         canvas.zoom('fit-viewport');
-    //     }
-    // }
-
     const [isExpanded, setIsExpanded] = useState(false);
 
     const togglePanel = () => {
@@ -293,15 +271,40 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
 
 
     const changeDisplayMode = () => {
+
         if (modeler) {
             const canvas: Canvas = modeler?.get('canvas');
-            console.log( canvas.zoom());
+            console.log(canvas.zoom());
             //console.log( canvas.zoom('fit-viewport'));
+            if (dag === "") {
+                generateDag().then();
+            }
         }
         if (displayMode === "preview") {
             setDisplayMode("sql");
         } else {
             setDisplayMode("preview");
+        }
+    }
+
+    const generateDag = async () => {
+        try {
+            if (modeler) {
+                const {xml} = await modeler.saveXML({format: true});
+                api.post('/api/bpmn/preview', xml, {
+                    headers: {
+                        'Content-Type': 'application/xml' // Specify the Content-Type
+                    }
+                })
+                    .then(response => {
+                        setDag(response.data.data)
+                    })
+                    .catch(error => {
+                        console.error('Error:', error.response ? error.response.data : error.message);
+                    });
+            }
+        } catch (err) {
+            console.error('Failed to export BPMN model', err);
         }
     }
 
@@ -325,10 +328,14 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
             <SqlEditor height={"128px"} text={""} ref={sqlEditorRef} embedded={true} onEditorChange={onEditorChange}/>
         </div>
         <div style={{marginTop: "6px", display: displayMode === "sql" ? "" : "none", marginBottom: "6px"}}>
-            <CodeMirror height="40vh"
-                        value={""}
-                        theme="light"
-                        extensions={[xml()]}/>
+            <Button style={{marginBottom: "6px"}} size={"small"} onClick={generateDag} icon={<RedoOutlined/>}>Generate
+                DAG</Button>
+            <div className={"my-border"}>
+                <CodeMirror height="30vh"
+                            value={dag}
+                            theme="light"
+                            extensions={[python()]}/>
+            </div>
         </div>
         <div className={`side-panel ${isExpanded ? "expanded" : ""}`}>
             <button className="toggle-button" onClick={togglePanel}>
