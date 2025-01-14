@@ -18,6 +18,7 @@ import SqlResult, {SqlResultRef} from "./SqlResult.tsx";
 
 interface SqlEditorProps {
     filePath?: string //load file from file path
+    height?: string
     embedded?: boolean
     text?: string  // init editor text
     onEditorChange?: (text: string) => void  //the call back to for notifier
@@ -202,7 +203,7 @@ const SqlEditor = forwardRef<SqlEditorRef, SqlEditorProps>((sqlEditorProps, ref)
         {contextHolder}
         {getToolbar()}
         <div className={"my-border"} >
-            <CodeMirror height="120px"
+            <CodeMirror height={sqlEditorProps.height}
                         onCreateEditor={onCreateEditor}
                         onMouseMove={onEditorMouseOver}
                         onClickCapture={onEditorMouseOver}
