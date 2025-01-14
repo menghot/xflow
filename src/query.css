@@ -137,7 +137,7 @@
     left: -40px; /* Positioned to the left of the panel */
     width: 30px;
     height: 30px;
-    background-color: #4c79af;
+    background-color: #04aa5f;
     color: white;
     border: none;
     border-radius: 4px;
@@ -149,7 +149,7 @@
 }
 
 .toggle-button:hover {
-    background-color: #04aa5f;
+    background-color: #4c79af;
 }
 
 .panel-content {

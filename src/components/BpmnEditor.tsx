@@ -28,6 +28,8 @@ import {
     SmileOutlined,
 } from "@ant-design/icons";
 import SqlEditor, {SqlEditorRef} from "./SqlEditor.tsx";
+import {xml} from "@codemirror/lang-xml";
+import CodeMirror from "@uiw/react-codemirror";
 
 
 export interface BpmnEditorRef {
@@ -43,6 +45,7 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
 
     const [notifier, contextHolder] = notification.useNotification();
     const sqlEditorRef = useRef<SqlEditorRef>(null);
+    //const dagPreviewRef = useRef<DagPreviewRef>(null);
 
     // bpmn js
     const [modeler, setModeler] = useState<BpmnModeler | null>(null);
@@ -51,6 +54,7 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
     const [currentNode, setCurrentNode] = React.useState("");
 
     const [loading, setLoading] = useState<boolean>(false); // Loading state for button
+    const [displayMode, setDisplayMode] = useState<string>("preview"); // Loading state for button
 
 
     const exportBpmn = async () => {
@@ -287,12 +291,21 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
     };
 
 
+    const changeDisplayMode = () => {
+        if (displayMode === "preview") {
+            setDisplayMode("sql");
+        } else {
+            setDisplayMode("preview");
+        }
+    }
+
     return <div>
         <div style={{position: "sticky", paddingLeft: "0px", paddingBottom: "4px", zIndex: 999}}>
             <Flex gap="small" justify={"left"} align={"flex-end"}>
                 <Button icon={<DownloadOutlined/>} onClick={() => exportAsImage('svg')}
                         size="small">SVG</Button>
                 <Button icon={<ExportOutlined/>} onClick={exportBpmn} size="small">Export</Button>
+                <Button icon={<ExportOutlined/>} onClick={() => changeDisplayMode()} size="small">{displayMode}</Button>
                 <Button type="primary" icon={<SaveOutlined/>} onClick={saveBpmn} size="small">Save
                 </Button>
                 <Button type="primary" icon={<DeploymentUnitOutlined/>} onClick={deployDag}
@@ -302,14 +315,20 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
         <div className={"my-border"}>
             <div style={{height: "40vh"}} ref={containerRef}/>
         </div>
+        <div style={{marginTop: "6px", display: displayMode === "preview" ? "" : "none", marginBottom: "6px"}}>
+            <SqlEditor text={""} ref={sqlEditorRef} embedded={true} onEditorChange={onEditorChange}/>
+        </div>
+        <div style={{marginTop: "6px", display: displayMode === "sql" ? "" : "none", marginBottom: "6px"}}>
+            <CodeMirror height="40vh"
+                        value={""}
+                        theme="light"
+                        extensions={[xml()]}/>
+        </div>
         <div className={`side-panel ${isExpanded ? "expanded" : ""}`}>
             <button className="toggle-button" onClick={togglePanel}>
                 {isExpanded ? "»" : "«"}
             </button>
             <div className="panel-content" ref={propertiesRef}/>
-        </div>
-        <div style={{marginTop: "6px", marginBottom:"6px"}}>
-            <SqlEditor text={""} ref={sqlEditorRef} embedded={true} onEditorChange={onEditorChange}/>
         </div>
         {contextHolder}
     </div>

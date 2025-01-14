@@ -67,15 +67,15 @@ const DagGraph: React.FC<{ dagFilePath: string|undefined }> = ({dagFilePath}) =>
                     target: edge.target,
                 }));
 
-                console.log(apiNodes)
-                console.log(apiEdges)
+                //console.log(apiNodes)
+                //console.log(apiEdges)
 
                 // Apply Dagre layout
                 const {nodes: layoutedNodes, edges: layoutedEdges} = applyDagreLayout(apiNodes, apiEdges);
                 setNodes(layoutedNodes);
                 setEdges(layoutedEdges);
-                console.log(layoutedNodes)
-                console.log(layoutedEdges)
+                //console.log(layoutedNodes)
+                //console.log(layoutedEdges)
                 setError(null);
             } catch (err) {
                 setError((err as Error).message);
