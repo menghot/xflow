@@ -1,6 +1,6 @@
 import { html } from 'htm/preact';
 
-import { TextFieldEntry, isTextFieldEntryEdited } from '@bpmn-io/properties-panel';
+import {TextFieldEntry, isTextFieldEntryEdited, TextAreaEntry} from '@bpmn-io/properties-panel';
 import { useService } from 'bpmn-js-properties-panel';
 
 export default function(element) {
@@ -43,12 +43,11 @@ function Connection(props) {
   return html`<${TextFieldEntry}
     id=${ id }
     element=${ element }
-    description=${ translate('Set database connection') }
-    label=${ translate('Connection') }
+    label=${ translate('Connection Id') }
     getValue=${ getValue }
     setValue=${ setValue }
     debounce=${ debounce }
-    tooltip=${ translate('Set database connection.') }
+    tooltip=${ translate('Set database connection id, Support Trino/Spark/Postgresql/Oracle') }
   />`;
 }
 
@@ -73,11 +72,11 @@ function SQL(props) {
     });
   };
 
-  return html`<${TextFieldEntry}
+  return html`<${TextAreaEntry}
     id=${ id }
     element=${ element }
-    description=${ translate('Set SQL') }
-    label=${ translate('SQL') }
+    description=${ translate('') }
+    label=${ translate('Query') }
     getValue=${ getValue }
     setValue=${ setValue }
     debounce=${ debounce }

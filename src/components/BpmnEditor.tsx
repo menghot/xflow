@@ -14,7 +14,7 @@ import custom from '../custom'
 import {BpmnPropertiesPanelModule, BpmnPropertiesProviderModule} from 'bpmn-js-properties-panel';
 import Modeling from "bpmn-js/lib/features/modeling/Modeling";
 import {ElementRegistry} from "bpmn-js/lib/features/auto-place/BpmnAutoPlaceUtil";
-import {Moddle} from "bpmn-js/lib/model/Types";
+// import {Moddle} from "bpmn-js/lib/model/Types";
 import {Canvas} from "bpmn-js/lib/features/context-pad/ContextPadProvider";
 import BpmnColorPickerModule from "bpmn-js-color-picker";
 
@@ -180,15 +180,17 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
             eventBus.on('element.click', ({element}) => {
                 const elementRegistry: ElementRegistry = modeler.get('elementRegistry');
                 console.log(elementRegistry, currentNode)
-                console.log("eventBus 1: ", eventBus)
+                console.log("eventBus 1: ", element.businessObject)
 
                 setCurrentNode(element.id)
-                const docs = element.businessObject.documentation || [];
-                if (docs.length > 0) {
-                    sqlEditorRef?.current?.setEditorText(docs[0].text)
-                } else {
-                    sqlEditorRef?.current?.setEditorText('')
-                }
+                sqlEditorRef?.current?.setEditorText(element.businessObject.sql)
+                setIsExpanded(true)
+                //const docs = element.businessObject.documentation || [];
+                // if (docs.length > 0) {
+                //     sqlEditorRef?.current?.setEditorText(docs[0].text)
+                // } else {
+                //     sqlEditorRef?.current?.setEditorText('')
+                // }
             })
 
 
@@ -243,20 +245,22 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
             const element = elementRegistry.get(currentNode)
 
             if (element) {
-                let docs = element.businessObject.documentation || [];
-                if (docs.length === 0) {
-                    const moddle: Moddle = modeler.get('moddle');
-                    docs = [...docs, moddle.create('bpmn:Documentation', {text: text})]
-                } else {
-                    docs[0].text = text
-                }
+                // let docs = element.businessObject.documentation || [];
+                // if (docs.length === 0) {
+                //     const moddle: Moddle = modeler.get('moddle');
+                //     docs = [...docs, moddle.create('bpmn:Documentation', {text: text})]
+                // } else {
+                //     docs[0].text = text
+                // }
+
+                element.businessObject.documentation.sql = text
 
                 // update properties panel
                 const modeling: Modeling = modeler.get('modeling');
                 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-expect-error
                 modeling.updateModdleProperties(element, element.businessObject, {
-                    documentation: docs,
+                    sql: text,
                 });
             }
         }
