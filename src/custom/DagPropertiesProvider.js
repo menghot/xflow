@@ -1,9 +1,9 @@
 // Import your custom property entries.
 // The entry is a text input field with logic attached to create,
 // update and delete the "spell" property.
-import spellProps from './parts/SpellProps';
 
-import { is } from 'bpmn-js/lib/util/ModelUtil';
+import {is} from 'bpmn-js/lib/util/ModelUtil';
+import dagProps from "./parts/DagProps";
 
 const LOW_PRIORITY = 500;
 
@@ -15,7 +15,7 @@ const LOW_PRIORITY = 500;
  * @param {PropertiesPanel} propertiesPanel
  * @param {Function} translate
  */
-export default function MagicPropertiesProvider(propertiesPanel, translate) {
+export default function DagPropertiesProvider(propertiesPanel, translate) {
 
   // API ////////
 
@@ -40,7 +40,7 @@ export default function MagicPropertiesProvider(propertiesPanel, translate) {
 
       // Add the "magic" group
       if (is(element, 'bpmn:ServiceTask')) {
-        groups.push(createMagicGroup(element, translate));
+        groups.push(createDagGroup(element, translate));
       }
 
       return groups;
@@ -56,18 +56,17 @@ export default function MagicPropertiesProvider(propertiesPanel, translate) {
   propertiesPanel.registerProvider(LOW_PRIORITY, this);
 }
 
-MagicPropertiesProvider.$inject = [ 'propertiesPanel', 'translate' ];
 
-// Create the custom magic group
-function createMagicGroup(element, translate) {
+// Create the custom dag group
+function createDagGroup(element, translate) {
 
-  // create a group called "Magic properties".
-  const magicGroup = {
+  // create a group called "DAG properties".
+  return {
     id: 'magic',
     label: translate('SQL Task Configuration'),
-    entries: spellProps(element),
+    entries: dagProps(element),
     //tooltip: translate('Make sure you know what you are doing!')
   };
-
-  return magicGroup;
 }
+
+//DagPropertiesProvider.$inject = [ 'propertiesPanel', 'translate' ];
