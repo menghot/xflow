@@ -31,7 +31,7 @@ import SqlEditor, {SqlEditorRef} from "./SqlEditor.tsx";
 import CodeMirror from "@uiw/react-codemirror";
 import {python} from "@codemirror/lang-python";
 
-import magicModdleDescriptor from './descriptors/magic.json';
+import dagModdleDescriptor from '../custom/parts/DagDescriptor.json';
 
 export interface BpmnEditorRef {
     openFile: (path: string, modeler: BpmnModeler) => void;
@@ -166,7 +166,7 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
                 propertiesPanel: {
                     parent: propertiesRef.current,
                 }, moddleExtensions: {
-                    magic: magicModdleDescriptor
+                    magic: dagModdleDescriptor
                 }
             })
 

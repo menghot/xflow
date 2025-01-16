@@ -69,4 +69,4 @@ function createDagGroup(element, translate) {
   };
 }
 
-//DagPropertiesProvider.$inject = [ 'propertiesPanel', 'translate' ];
+DagPropertiesProvider.$inject = [ 'propertiesPanel', 'translate' ];

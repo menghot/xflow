@@ -2,7 +2,7 @@ import CustomReplaceMenuProvider from "./CustomizeReplaceMenuProvider";
 import DagPropertiesProvider from "./DagPropertiesProvider";
 
 export default {
-    __init__: ['customReplaceMenuProvider', 'magicPropertiesProvider'],
+    __init__: ['customReplaceMenuProvider', 'dagPropertiesProvider'],
     customReplaceMenuProvider: ['type', CustomReplaceMenuProvider],
-    magicPropertiesProvider: ['type', DagPropertiesProvider],
+    dagPropertiesProvider: ['type', DagPropertiesProvider],
 };
