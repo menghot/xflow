@@ -130,10 +130,13 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
     const exportAsImage = async (type: string) => {
         try {
             if (modeler) {
+                console.log("svg .....")
                 if (type === 'svg') {
                     const {svg} = await modeler.saveSVG();
                     download(svg, 'diagram.svg', 'image/svg+xml');
                 }
+            } else {
+                console.log("not ready .....")
             }
         } catch (err) {
             console.error(`Failed to export diagram as ${type}`, err);
@@ -180,29 +183,30 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
             eventBus.on('element.click', ({element}) => {
                 const elementRegistry: ElementRegistry = modeler.get('elementRegistry');
                 console.log(elementRegistry, currentNode)
-                console.log("eventBus 1: ", element.businessObject)
+                console.log("eventBus 1: element.click ", element.businessObject)
+
+                element.abc = function () {
+                    console.log("element.abc")
+                }
 
                 setCurrentNode(element.id)
                 sqlEditorRef?.current?.setEditorText(element.businessObject.sql)
                 setIsExpanded(true)
-                //const docs = element.businessObject.documentation || [];
-                // if (docs.length > 0) {
-                //     sqlEditorRef?.current?.setEditorText(docs[0].text)
-                // } else {
-                //     sqlEditorRef?.current?.setEditorText('')
-                // }
             })
+
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-expect-error
+            eventBus.on('propertiesPanel.changed', 2000, (event) => {
+                const {element} = event.context;
+                const customProperty = element.businessObject.sql;
+                console.log('Selected Value:', customProperty);
+            });
 
 
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-expect-error
-            eventBus.on('canvas.init', () => {
-                console.log("eventBus: ")
-            })
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-expect-error
-            eventBus.on('diagram.init', () => {
-                console.log("eventBus: ", eventBus)
+            eventBus.on('contextPad.getProviders', 2000, () => {
+                console.log("eventBus: ---  contextPad.getProviders")
             })
 
 
@@ -332,7 +336,7 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
             <div style={{height: "40vh"}} ref={containerRef}/>
         </div>
         <div style={{marginTop: "6px", display: displayMode === "preview" ? "" : "none", marginBottom: "6px"}}>
-            <SqlEditor height={"128px"} text={""} ref={sqlEditorRef} embedded={true} onEditorChange={onEditorChange}/>
+            <SqlEditor height={"328px"} text={""} ref={sqlEditorRef} embedded={true} onEditorChange={onEditorChange}/>
         </div>
         <div style={{marginTop: "6px", display: displayMode === "sql" ? "" : "none", marginBottom: "6px"}}>
             <Button style={{marginBottom: "6px"}} size={"small"} onClick={generateDag} icon={<RedoOutlined/>}>Generate

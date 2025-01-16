@@ -4,7 +4,6 @@ import {TextFieldEntry, isTextFieldEntryEdited, TextAreaEntry} from '@bpmn-io/pr
 import {useService} from 'bpmn-js-properties-panel';
 
 export default function (element) {
-
     return [
         {
             id: 'connection',
@@ -21,8 +20,6 @@ export default function (element) {
 }
 
 function Connection(props) {
-    console.log("Connection ---> ", props)
-
 
     const {element, id} = props;
 
@@ -72,7 +69,7 @@ function SQL(props) {
             sql: value
         });
     };
-
+    //tooltip=${translate('The SQL')}
     return html`
         <${TextAreaEntry}
                 id=${id}
@@ -82,6 +79,5 @@ function SQL(props) {
                 getValue=${getValue}
                 setValue=${setValue}
                 debounce=${debounce}
-                tooltip=${translate('Set SQL')}
         />`;
 }
