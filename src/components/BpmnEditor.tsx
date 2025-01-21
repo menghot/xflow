@@ -191,7 +191,7 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
 
                 setCurrentNode(element.id)
                 sqlEditorRef?.current?.setEditorText(element.businessObject.sql)
-                setIsExpanded(true)
+                //setIsExpanded(true)
             })
 
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -336,7 +336,7 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
             <div style={{height: "40vh"}} ref={containerRef}/>
         </div>
         <div style={{marginTop: "6px", display: displayMode === "preview" ? "" : "none", marginBottom: "6px"}}>
-            <SqlEditor height={"328px"} text={""} ref={sqlEditorRef} embedded={true} onEditorChange={onEditorChange}/>
+            <SqlEditor height={"128px"} text={""} ref={sqlEditorRef} embedded={true} onEditorChange={onEditorChange}/>
         </div>
         <div style={{marginTop: "6px", display: displayMode === "sql" ? "" : "none", marginBottom: "6px"}}>
             <Button style={{marginBottom: "6px"}} size={"small"} onClick={generateDag} icon={<RedoOutlined/>}>Generate
