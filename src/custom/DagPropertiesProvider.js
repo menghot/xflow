@@ -17,56 +17,61 @@ const LOW_PRIORITY = 500;
  */
 export default function DagPropertiesProvider(propertiesPanel, translate) {
 
-  // API ////////
-
-  /**
-   * Return the groups provided for the given element.
-   *
-   * @param {DiagramElement} element
-   *
-   * @return {(Object[]) => (Object[])} groups middleware
-   */
-  this.getGroups = function(element) {
+    // API ////////
 
     /**
-     * We return a middleware that modifies
-     * the existing groups.
+     * Return the groups provided for the given element.
      *
-     * @param {Object[]} groups
+     * @param {DiagramElement} element
      *
-     * @return {Object[]} modified groups
+     * @return {(Object[]) => (Object[])} groups middleware
      */
-    return function(groups) {
+    this.getGroups = function (element) {
 
-      // Add the "magic" group
-      if (is(element, 'bpmn:ServiceTask')) {
-        groups.push(createDagGroup(element, translate));
-      }
+        /**
+         * We return a middleware that modifies
+         * the existing groups.
+         *
+         * @param {Object[]} groups
+         *
+         * @return {Object[]} modified groups
+         */
+        return function (groups) {
 
-      return groups;
+            // Add the "magic" group
+            if (is(element, 'bpmn:ServiceTask')) {
+                groups.push(createDagGroup(element, translate));
+            }
+
+            // handle other task types
+            // if (is(element, 'bpmn:Task')) {
+            //     groups.push(createDagGroup(element, translate));
+            // }
+
+            return groups;
+        };
     };
-  };
 
 
-  // registration ////////
+    // registration ////////
 
-  // Register our custom magic properties provider.
-  // Use a lower priority to ensure it is loaded after
-  // the basic BPMN properties.
-  propertiesPanel.registerProvider(LOW_PRIORITY, this);
+    // Register our custom magic properties provider.
+    // Use a lower priority to ensure it is loaded after
+    // the basic BPMN properties.
+    propertiesPanel.registerProvider(LOW_PRIORITY, this);
 }
 
 
 // Create the custom dag group
 function createDagGroup(element, translate) {
 
-  // create a group called "DAG properties".
-  return {
-    id: 'magic',
-    label: translate('SQL Task'),
-    entries: dagProps(element),
-    //tooltip: translate('Make sure you know what you are doing!')
-  };
+    // create a group called "DAG properties".
+    return {
+        id: 'magic',
+        label: translate('SQL Task'),
+        entries: dagProps(element),
+        //tooltip: translate('Make sure you know what you are doing!')
+    };
 }
 
-DagPropertiesProvider.$inject = [ 'propertiesPanel', 'translate' ];
+DagPropertiesProvider.$inject = ['propertiesPanel', 'translate'];

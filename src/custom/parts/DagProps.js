@@ -15,6 +15,11 @@ export default function (element) {
             element,
             component: SQL,
             isEdited: isTextFieldEntryEdited
+        }, {
+            id: 'props',
+            element,
+            component: Properties,
+            isEdited: isTextFieldEntryEdited
         }
     ];
 }
@@ -76,6 +81,39 @@ function SQL(props) {
                 element=${element}
                 description=${translate('')}
                 label=${translate('Query')}
+                getValue=${getValue}
+                setValue=${setValue}
+                debounce=${debounce}
+        />`;
+}
+
+
+function Properties(props) {
+
+    console.log("Properties ---> ", props)
+
+    const {element, id} = props;
+
+    const modeling = useService('modeling');
+    const translate = useService('translate');
+    const debounce = useService('debounceInput');
+
+    const getValue = () => {
+        return element.businessObject.props || '';
+    };
+
+    const setValue = value => {
+        return modeling.updateProperties(element, {
+            props: value
+        });
+    };
+    //tooltip=${translate('The SQL')}
+    return html`
+        <${TextAreaEntry}
+                id=${id}
+                element=${element}
+                description=${translate('')}
+                label=${translate('Properties')}
                 getValue=${getValue}
                 setValue=${setValue}
                 debounce=${debounce}

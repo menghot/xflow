@@ -4,12 +4,13 @@ export default class MyReplaceMenuProvider {
         this.replaceMenuProvider = replaceMenuProvider;
         this.popupMenu = popupMenu;
         // Overwrite/Remove the injected provider
-        replaceMenuProvider.getEntries = function(target) {
-          return [];
-        };
-        replaceMenuProvider.getPopupMenuEntries = function(target) {
-          return [];
-        };
+        // remove all default tasks, User task,  Received Task, Manual Task ....
+        // replaceMenuProvider.getEntries = function(target) {
+        //  return [];
+        // };
+        // replaceMenuProvider.getPopupMenuEntries = function(target) {
+        //  return [];
+        // };
         popupMenu.registerProvider('bpmn-replace', 2000, this);
     }
 
@@ -17,37 +18,44 @@ export default class MyReplaceMenuProvider {
     getPopupMenuEntries(target) {
         return this.replaceMenuProvider._createEntries(target, [
             {
-                label: 'Python',
-                actionName: 'replace-with-python-task',
-                className: 'bpmn-icon-service-task',
+                label: 'SQL Task',
+                actionName: 'replace-with-sql-task',
+                className: 'bpmn-icon-sql-task',
                 target: {
                     type: 'bpmn:ServiceTask',
                 },
             },{
-                label: 'SQL Task',
-                actionName: 'replace-with-sql-task',
-                className: 'bpmn-icon-custom-task',
+                label: 'Spark Task',
+                actionName: 'replace-with-spark-task',
+                className: 'bpmn-icon-spark-task',
                 target: {
                     type: 'bpmn:ServiceTask',
+                },
+            },{
+                label: 'Java Task',
+                actionName: 'replace-with-java-task',
+                className: 'bpmn-icon-java-task',
+                target: {
+                    type: 'bpmn:Task',
                 },
             },{
                 label: 'HTTP Call',
                 actionName: 'replace-with-http-task',
                 className: 'bpmn-icon-custom-task',
                 target: {
-                    type: 'bpmn:ServiceTask',
+                    type: 'bpmn:Task',
                 },
             },{
                 label: 'Bash Script',
-                actionName: 'replace-with-http-task',
+                actionName: 'replace-with-bash-task',
                 className: 'bpmn-icon-script-task',
                 target: {
-                    type: 'bpmn:ServiceTask',
+                    type: 'bpmn:ScriptTask',
                 },
             },{
-                label: 'Java Application (SpringBoot)',
-                actionName: 'replace-with-java-task',
-                className: 'bpmn-icon-custom-task',
+                label: 'Python',
+                actionName: 'replace-with-python-task',
+                className: 'bpmn-icon-service-task',
                 target: {
                     type: 'bpmn:ServiceTask',
                 },

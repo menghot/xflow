@@ -21,6 +21,10 @@
           "name": "sql",
           "isAttr": true,
           "type": "String"
+        },{
+          "name": "props",
+          "isAttr": true,
+          "type": "String"
         }
       ]
     }
