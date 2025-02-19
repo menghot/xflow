@@ -1,5 +1,5 @@
 {
-  "name": "Magic",
+  "name": "magic",
   "prefix": "magic",
   "uri": "http://magic",
   "xml": {
@@ -8,9 +8,9 @@
   "associations": [],
   "types": [
     {
-      "name": "BewitchedStartEvent",
+      "name": "MyTask",
       "extends": [
-        "bpmn:ServiceTask"
+        "bpmn:Task"
       ],
       "properties": [
         {
@@ -25,6 +25,10 @@
           "name": "props",
           "isAttr": false,
           "type": "String"
+        },{
+          "name": "suitable",
+          "isAttr": true,
+          "type": "Integer"
         }
       ]
     }

@@ -333,7 +333,7 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
             </Flex>
         </div>
         <div className={"my-border"}>
-            <div style={{height: "40vh"}} ref={containerRef}/>
+            <div style={{height: "50vh"}} ref={containerRef}/>
         </div>
         <div style={{marginTop: "6px", display: displayMode === "preview" ? "" : "none", marginBottom: "6px"}}>
             <SqlEditor height={"128px"} text={""} ref={sqlEditorRef} embedded={true} onEditorChange={onEditorChange}/>

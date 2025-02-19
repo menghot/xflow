@@ -22,7 +22,7 @@ export default class MyReplaceMenuProvider {
                 actionName: 'replace-with-sql-task',
                 className: 'bpmn-icon-sql-task',
                 target: {
-                    type: 'bpmn:ServiceTask',
+                    type: 'bpmn:Task',
                 },
             },{
                 label: 'Spark Task',
