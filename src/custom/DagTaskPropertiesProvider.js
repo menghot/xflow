@@ -41,7 +41,7 @@ export default function DagTaskPropertiesProvider(propertiesPanel, translate) {
             console.log("----groups:-----",element, groups)
 
             // Add the "magic" group
-            if (is(element, 'bpmn:ServiceTask')) {
+            if (is(element, 'bpmn:Task')) {
                 groups.push(createDagGroup(element, translate));
             }
 
