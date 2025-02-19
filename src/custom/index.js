@@ -1,8 +1,8 @@
 import CustomReplaceMenuProvider from "./CustomizeReplaceMenuProvider";
-import DagPropertiesProvider from "./DagPropertiesProvider";
+import DagTaskPropertiesProvider from "./DagTaskPropertiesProvider";
 
 export default {
-    __init__: ['customReplaceMenuProvider', 'dagPropertiesProvider'],
+    __init__: ['customReplaceMenuProvider', 'dagTaskPropertiesProvider'],
     customReplaceMenuProvider: ['type', CustomReplaceMenuProvider],
-    dagPropertiesProvider: ['type', DagPropertiesProvider],
+    dagTaskPropertiesProvider: ['type', DagTaskPropertiesProvider],
 };

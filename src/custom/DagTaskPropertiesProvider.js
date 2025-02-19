@@ -3,7 +3,7 @@
 // update and delete the "spell" property.
 
 import {is} from 'bpmn-js/lib/util/ModelUtil';
-import dagProps from "./parts/DagProps";
+import dagProps from "./parts/DagTaskProps";
 
 const LOW_PRIORITY = 500;
 
@@ -15,7 +15,7 @@ const LOW_PRIORITY = 500;
  * @param {PropertiesPanel} propertiesPanel
  * @param {Function} translate
  */
-export default function DagPropertiesProvider(propertiesPanel, translate) {
+export default function DagTaskPropertiesProvider(propertiesPanel, translate) {
 
     // API ////////
 
@@ -37,6 +37,8 @@ export default function DagPropertiesProvider(propertiesPanel, translate) {
          * @return {Object[]} modified groups
          */
         return function (groups) {
+
+            console.log("----groups:-----",element, groups)
 
             // Add the "magic" group
             if (is(element, 'bpmn:ServiceTask')) {
@@ -68,10 +70,10 @@ function createDagGroup(element, translate) {
     // create a group called "DAG properties".
     return {
         id: 'magic',
-        label: translate('SQL Task'),
+        label: translate('Properties'),
         entries: dagProps(element),
         //tooltip: translate('Make sure you know what you are doing!')
     };
 }
 
-DagPropertiesProvider.$inject = ['propertiesPanel', 'translate'];
+DagTaskPropertiesProvider.$inject = ['propertiesPanel', 'translate'];

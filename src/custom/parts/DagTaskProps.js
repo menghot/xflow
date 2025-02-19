@@ -83,7 +83,9 @@ function SQL(props) {
                 label=${translate('Query')}
                 getValue=${getValue}
                 setValue=${setValue}
+                rows="4"
                 debounce=${debounce}
+                
         />`;
 }
 
@@ -113,9 +115,10 @@ function Properties(props) {
                 id=${id}
                 element=${element}
                 description=${translate('')}
-                label=${translate('Properties')}
+                label=${translate('Configurations')}
                 getValue=${getValue}
                 setValue=${setValue}
+                rows="10"
                 debounce=${debounce}
         />`;
 }

@@ -15,15 +15,15 @@
       "properties": [
         {
           "name": "connection",
-          "isAttr": true,
+          "isAttr": false,
           "type": "String"
         },{
           "name": "sql",
-          "isAttr": true,
+          "isAttr": false,
           "type": "String"
         },{
           "name": "props",
-          "isAttr": true,
+          "isAttr": false,
           "type": "String"
         }
       ]
