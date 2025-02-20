@@ -9,7 +9,7 @@
   "types": [
     {
       "name": "MyTask",
-      "extends": [
+      "superClass": [
         "bpmn:Task"
       ],
       "properties": [
@@ -17,15 +17,18 @@
           "name": "connection",
           "isAttr": false,
           "type": "String"
-        },{
+        },
+        {
           "name": "sql",
           "isAttr": false,
           "type": "String"
-        },{
+        },
+        {
           "name": "props",
           "isAttr": false,
           "type": "String"
-        },{
+        },
+        {
           "name": "suitable",
           "isAttr": true,
           "type": "Integer"
