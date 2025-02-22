@@ -28,12 +28,12 @@ export default class CustomContextPad {
         function appendServiceTask(suitabilityScore) {
             return function (event, element) {
                 if (autoPlace) {
-                    const businessObject = bpmnFactory.create('bpmn:Task');
+                    const businessObject = bpmnFactory.create('magic:MyTask');
 
                     businessObject.suitable = suitabilityScore;
 
                     const shape = elementFactory.createShape({
-                        type: 'bpmn:Task',
+                        type: 'magic:MyTask',
                         businessObject: businessObject
                     });
 
@@ -72,7 +72,7 @@ export default class CustomContextPad {
             'append.average-task': {
                 group: 'model',
                 className: 'bpmn-icon-task yellow',
-                title: translate('Append Task with average suitability score'),
+                title: translate('Append Task with average suitability score00000000'),
                 action: {
                     click: appendServiceTask(SUITABILITY_SCORE_AVERAGE),
                     dragstart: appendServiceTaskStart(SUITABILITY_SCORE_AVERAGE)

@@ -28,7 +28,7 @@ export default class CustomPalette {
                 businessObject.suitable = suitabilityScore;
 
                 const shape = elementFactory.createShape({
-                    type: 'bpmn:Task',
+                    type: 'magic:MyTask',
                     businessObject: businessObject
                 });
 

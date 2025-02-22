@@ -32,8 +32,7 @@ export default class CustomRenderer extends BaseRenderer {
         // revert to magic:MyTask
         element.type = 'magic:MyTask'
 
-        const suitabilityScore = this.getSuitabilityScore(element);
-
+        const suitabilityScore = element.businessObject.suitable
         if (!isNil(suitabilityScore)) {
             const color = this.getColor(suitabilityScore);
 
@@ -52,7 +51,14 @@ export default class CustomRenderer extends BaseRenderer {
 
             svgClasses(text).add('djs-label');
 
-            svgAppend(text, document.createTextNode(suitabilityScore));
+            let taskType = 'SQL'
+            if(suitabilityScore < 25) {
+                taskType = 'Spark'
+            } else if (suitabilityScore < 50) {
+                taskType = 'Script'
+            }
+
+            svgAppend(text, document.createTextNode(taskType));
 
             svgAppend(parentNode, text);
         }
@@ -68,13 +74,13 @@ export default class CustomRenderer extends BaseRenderer {
         return this.bpmnRenderer.getShapePath(shape);
     }
 
-    getSuitabilityScore(element) {
-        const businessObject = getBusinessObject(element);
-
-        const {suitable} = businessObject;
-
-        return Number.isFinite(suitable) ? suitable : null;
-    }
+    // getSuitabilityScore(element) {
+    //     const businessObject = getBusinessObject(element);
+    //
+    //     const {suitable} = businessObject;
+    //
+    //     return Number.isFinite(suitable) ? suitable : null;
+    // }
 
     getColor(suitabilityScore) {
         if (suitabilityScore > 75) {

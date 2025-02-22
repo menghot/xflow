@@ -70,7 +70,7 @@ function createDagGroup(element, translate) {
     // create a group called "DAG properties".
     return {
         id: 'magic',
-        label: translate('Properties'),
+        label: translate('SQL Task Configuration'),
         entries: dagProps(element),
         //tooltip: translate('Make sure you know what you are doing!')
     };

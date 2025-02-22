@@ -196,6 +196,13 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
 
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-expect-error
+            eventBus.on('element.changed', ({element}) => {
+                console.log('------element.changed-0000----', element)
+            })
+
+
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-expect-error
             eventBus.on('propertiesPanel.changed', 2000, (event) => {
                 const {element} = event.context;
                 const customProperty = element.businessObject.sql;

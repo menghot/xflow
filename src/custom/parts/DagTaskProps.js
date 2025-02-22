@@ -11,6 +11,11 @@ export default function (element) {
             component: Connection,
             isEdited: isTextFieldEntryEdited
         }, {
+            id: 'suitable',
+            element,
+            component: Suitable,
+            isEdited: isTextFieldEntryEdited
+        }, {
             id: 'sql',
             element,
             component: SQL,
@@ -115,10 +120,42 @@ function Properties(props) {
                 id=${id}
                 element=${element}
                 description=${translate('')}
-                label=${translate('Configurations')}
+                label=${translate('Parameters')}
                 getValue=${getValue}
                 setValue=${setValue}
-                rows="10"
+                rows="4"
+                debounce=${debounce}
+        />`;
+}
+
+function Suitable(props) {
+
+    console.log("Suitable ---> ", props)
+
+    const {element, id} = props;
+
+    const modeling = useService('modeling');
+    const translate = useService('translate');
+    const debounce = useService('debounceInput');
+
+    const getValue = () => {
+        return element.businessObject.suitable || '';
+    };
+
+    const setValue = value => {
+        return modeling.updateProperties(element, {
+            suitable: value
+        });
+    };
+    //tooltip=${translate('The SQL')}
+    return html`
+        <${TextAreaEntry}
+                id=${id}
+                element=${element}
+                description=${translate('')}
+                label=${translate('Suitable')}
+                getValue=${getValue}
+                setValue=${setValue}
                 debounce=${debounce}
         />`;
 }
