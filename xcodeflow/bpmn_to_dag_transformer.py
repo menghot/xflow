@@ -86,8 +86,8 @@ with DAG(dag_id='{self.process_id}', default_args=default_args, schedule_interva
 
 if __name__ == '__main__':
     # Set the BPMN file path and output DAG file
-    bpmn_file = "/Users/simon/workspaces/react-sql-editor/src/assets/diagram3.bpmn"
-    output_file = "/Users/simon/airflow/dags/example_dag.py"
+    bpmn_file = "/Users/simon/workspaces/xcodeflow.git/bpmn/diagram.bpmn"
+    output_file = "/Users/simon/workspaces/xcodeflow.git/bpmn/diagram.bpmn.py"
 
     # Instantiate the transformer and transform the BPMN to DAG
     transformer = BPMNToAirflowTransformer(bpmn_file, None)

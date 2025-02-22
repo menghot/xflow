@@ -23,12 +23,12 @@ export default class CustomPalette {
 
         function createTask(suitabilityScore) {
             return function (event) {
-                const businessObject = bpmnFactory.create('magic:MyTask');
+                const businessObject = bpmnFactory.create('bpmn:Task');
 
                 businessObject.suitable = suitabilityScore;
 
                 const shape = elementFactory.createShape({
-                    type: 'magic:MyTask',
+                    type: 'bpmn:Task',
                     businessObject: businessObject
                 });
 

@@ -9,7 +9,7 @@
   "types": [
     {
       "name": "MyTask",
-      "superClass": [
+      "extends": [
         "bpmn:Task"
       ],
       "properties": [
@@ -30,7 +30,7 @@
         },
         {
           "name": "suitable",
-          "isAttr": true,
+          "isAttr": false,
           "type": "Integer"
         }
       ]

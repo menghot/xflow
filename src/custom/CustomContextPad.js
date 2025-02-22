@@ -28,12 +28,12 @@ export default class CustomContextPad {
         function appendServiceTask(suitabilityScore) {
             return function (event, element) {
                 if (autoPlace) {
-                    const businessObject = bpmnFactory.create('magic:MyTask');
+                    const businessObject = bpmnFactory.create('bpmn:Task');
 
                     businessObject.suitable = suitabilityScore;
 
                     const shape = elementFactory.createShape({
-                        type: 'magic:MyTask',
+                        type: 'bpmn:Task',
                         businessObject: businessObject
                     });
 

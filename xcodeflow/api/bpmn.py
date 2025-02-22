@@ -1,5 +1,5 @@
 import os
-
+import traceback
 from airflow.www.app import csrf
 from flask import Blueprint, request, jsonify
 from flask_cors import CORS
@@ -26,11 +26,13 @@ def preview():
     try:
         # Get JSON data from the request
         bpmn_xml = request.data.decode('utf-8')
+        print("bpmn_xml ===> ", bpmn_xml)
         transformer = BPMNToAirflowTransformer(None, bpmn_xml)
+
         dag_code = transformer.generate_airflow_dag()
         return jsonify({"status": "success", "data": dag_code}), 200
     except Exception as e:
-        print(e)
+        print(traceback.format_exc())
         return jsonify({"status": "error", "message": str(e)}), 500
 
 

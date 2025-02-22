@@ -20,17 +20,18 @@ export default class CustomRenderer extends BaseRenderer {
     }
 
     canRender(element) {
-        return element.type === 'magic:MyTask';
+        const suitabilityScore = element.businessObject.suitable
+        return element.type === 'bpmn:Task' &&  !isNil(suitabilityScore);
     }
 
     drawShape(parentNode, element) {
 
         // FIXME: use bpmn task draw shape
-        element.type = 'bpmn:Task'
+        // element.type = 'bpmn:Task'
         const shape = this.bpmnRenderer.drawShape(parentNode, element);
 
         // revert to magic:MyTask
-        element.type = 'magic:MyTask'
+        // element.type = 'magic:MyTask'
 
         const suitabilityScore = element.businessObject.suitable
         if (!isNil(suitabilityScore)) {
@@ -42,8 +43,7 @@ export default class CustomRenderer extends BaseRenderer {
                 transform: 'translate(-20, -10)'
             });
 
-            var text = svgCreate('text');
-
+            const text = svgCreate('text');
             svgAttr(text, {
                 fill: '#fff',
                 transform: 'translate(-15, 5)'
