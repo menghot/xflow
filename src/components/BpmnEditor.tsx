@@ -340,10 +340,10 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
             </Flex>
         </div>
         <div className={"my-border"}>
-            <div style={{height: "50vh"}} ref={containerRef}/>
+            <div style={{height: "35vh"}} ref={containerRef}/>
         </div>
         <div style={{marginTop: "6px", display: displayMode === "preview" ? "" : "none", marginBottom: "6px"}}>
-            <SqlEditor height={"128px"} text={""} ref={sqlEditorRef} embedded={true} onEditorChange={onEditorChange}/>
+            <SqlEditor height={"228px"} text={""} ref={sqlEditorRef} embedded={true} onEditorChange={onEditorChange}/>
         </div>
         <div style={{marginTop: "6px", display: displayMode === "sql" ? "" : "none", marginBottom: "6px"}}>
             <Button style={{marginBottom: "6px"}} size={"small"} onClick={generateDag} icon={<RedoOutlined/>}>Generate
