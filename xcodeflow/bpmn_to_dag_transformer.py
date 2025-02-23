@@ -7,6 +7,7 @@ class BPMNToAirflowTransformer:
         self.bpmn_content = bpmn_content
         self.namespaces = {
             "bpmn": "http://www.omg.org/spec/BPMN/20100524/MODEL",
+            "magic": "http://magic",
         }
         if self.bpmn_content is not None:
             self.root = ET.fromstring(bpmn_content)
@@ -30,9 +31,14 @@ class BPMNToAirflowTransformer:
         """
         Extracts tasks from the BPMN file and maps them to Airflow task names.
         """
-        for task_type in ["task", "serviceTask", "receiveTask"]:
+        for task_type in ["startEvent", "task", "serviceTask", "receiveTask", "endEvent"]:
             for task in self.root.findall(f".//bpmn:{task_type}", self.namespaces):
                 task_id = task.attrib["id"]
+                magic_elements = task.findall("magic:*", self.namespaces)
+                print(magic_elements)
+                if len(magic_elements) == 0:
+                    print("No magic elements found for task {}".format(task_id))
+
                 task_name = task.attrib.get("name", "").replace(" ", "_").lower() or task_id.lower()
                 self.tasks[task_id] = task_name
 
@@ -68,6 +74,7 @@ default_args = {{
 
 with DAG(dag_id='{self.process_id}', default_args=default_args, schedule_interval=None) as dag:
 """
+        dag_code += f"    # tasks\n"
 
         # Add Airflow tasks
         airflow_tasks = {}
@@ -77,6 +84,9 @@ with DAG(dag_id='{self.process_id}', default_args=default_args, schedule_interva
             dag_code += f"    {task_var} = PythonOperator(task_id='{task_name}', python_callable=sample_task, op_args=['{task_name}'])\n"
 
         # Add sequence flows
+        dag_code += f"    \n"
+        dag_code += f"    # sequence_flows\n"
+
         for source, target in self.sequence_flows:
             if source in airflow_tasks and target in airflow_tasks:
                 dag_code += f"    {airflow_tasks[source]} >> {airflow_tasks[target]}\n"
@@ -86,8 +96,8 @@ with DAG(dag_id='{self.process_id}', default_args=default_args, schedule_interva
 
 if __name__ == '__main__':
     # Set the BPMN file path and output DAG file
-    bpmn_file = "/Users/simon/workspaces/xcodeflow.git/bpmn/diagram.bpmn"
-    output_file = "/Users/simon/workspaces/xcodeflow.git/bpmn/diagram.bpmn.py"
+    bpmn_file = "/Users/simon/workspaces/xcodeflow.git/bpmn/demo_process.bpmn"
+    output_file = "/Users/simon/workspaces/xcodeflow.git/bpmn/demo_process.bpmn.py"
 
     # Instantiate the transformer and transform the BPMN to DAG
     transformer = BPMNToAirflowTransformer(bpmn_file, None)
