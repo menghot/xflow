@@ -184,11 +184,6 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
                 const elementRegistry: ElementRegistry = modeler.get('elementRegistry');
                 console.log(elementRegistry, currentNode)
                 console.log("eventBus 1: element.click ", element.businessObject)
-
-                element.abc = function () {
-                    console.log("element.abc")
-                }
-
                 setCurrentNode(element.id)
                 sqlEditorRef?.current?.setEditorText(element.businessObject.sql)
                 //setIsExpanded(true)
@@ -206,7 +201,7 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
             eventBus.on('propertiesPanel.changed', 2000, (event) => {
                 const {element} = event.context;
                 const customProperty = element.businessObject.sql;
-                console.log('Selected Value:', customProperty);
+                console.log('Selected Value: ---0- ', customProperty);
             });
 
 
@@ -256,13 +251,6 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
             const element = elementRegistry.get(currentNode)
 
             if (element) {
-                // let docs = element.businessObject.documentation || [];
-                // if (docs.length === 0) {
-                //     const moddle: Moddle = modeler.get('moddle');
-                //     docs = [...docs, moddle.create('bpmn:Documentation', {text: text})]
-                // } else {
-                //     docs[0].text = text
-                // }
 
                 element.businessObject.documentation.sql = text
 

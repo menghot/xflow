@@ -1,4 +1,12 @@
+import re
 import xml.etree.ElementTree as ET
+
+
+def return_english_letters(s):
+    if bool(re.fullmatch(r"[A-Z_a-z0-9]+", s)):
+        return s
+    else:
+        return ''
 
 
 class BPMNToAirflowTransformer:
@@ -40,11 +48,13 @@ class BPMNToAirflowTransformer:
                 magic_data = {magic_elem.tag.split("}")[1]: magic_elem.text for magic_elem in
                               task.findall("magic:*", self.namespaces)}
 
-                # if magic_data:
                 self.tasks[task_id] = {
                     "task_name": task_name,
                     "magic": magic_data
                 }
+
+    def is_all_english_letters(s):
+        return bool(re.fullmatch(r"[A-Za-z]+", s))
 
     def extract_sequence_flows(self):
         """
@@ -89,16 +99,18 @@ with DAG(dag_id='{self.process_id}', default_args=default_args, schedule_interva
             task_name = item["task_name"]
             dag_code += f"    \n"
             dag_code += f"    ################################################################### {i}\n"
-            airflow_tasks[task_id] = f"task_{task_id.lower()}"
-            task_id_var = f"task_{task_id.lower()}"
+
+            english_letters = return_english_letters(task_name)
+            airflow_tasks[task_id] = f"t_{english_letters}_{task_id.lower().replace('activity_', '')}"
+            task_id_var = f"t_{english_letters}_{task_id.lower().replace('activity_', '')}"
+
             if "sql" in item["magic"]:
-                print("------", item["magic"])
                 task_code = f"""    {task_id_var} = SQLExecuteQueryOperator(conn_id='postgres_default', task_id='{task_name}',sql=f\"""{item["magic"]["sql"]}\""")\n"""
                 dag_code += task_code
+            elif "script" in item["magic"]:
+                dag_code += item["magic"]["script"]
             else:
                 dag_code += f"    {task_id_var} = PythonOperator(task_id='{task_name}', python_callable=sample_task, op_args=['{task_name}'])\n"
-
-
 
         # Add sequence flows
         dag_code += f"    \n"
@@ -118,9 +130,9 @@ if __name__ == '__main__':
 
     # Instantiate the transformer and transform the BPMN to DAG
     transformer = BPMNToAirflowTransformer(bpmn_file, None)
-    dag_code = transformer.generate_airflow_dag()
-    print(dag_code)
+    dag_code_text = transformer.generate_airflow_dag()
+    print(dag_code_text)
     with open(output_file, "w") as f:
-        f.write(dag_code)
+        f.write(dag_code_text)
 
     print(f"DAG saved to {output_file}")

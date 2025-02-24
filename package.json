@@ -1,7 +1,7 @@
 {
-  "name": "react-sql-editor",
+  "name": "xcodeflow",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "dev": "vite --host 192.168.80.241",
     "build": "tsc -b && vite build",
