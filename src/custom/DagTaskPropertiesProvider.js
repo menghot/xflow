@@ -45,10 +45,6 @@ export default function DagTaskPropertiesProvider(propertiesPanel, translate) {
                 groups.push(createDagGroup(element, translate));
             }
 
-            // handle other task types
-            // if (is(element, 'bpmn:Task')) {
-            //     groups.push(createDagGroup(element, translate));
-            // }
 
             return groups;
         };

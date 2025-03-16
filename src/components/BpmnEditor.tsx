@@ -186,6 +186,8 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
                 console.log("eventBus 1: element.click ", element.businessObject)
                 setCurrentNode(element.id)
                 sqlEditorRef?.current?.setEditorText(element.businessObject.sql)
+                console.log("--connection----", element.businessObject.connection)
+                sqlEditorRef?.current?.setConnId(element.businessObject.connection)
                 //setIsExpanded(true)
             })
 

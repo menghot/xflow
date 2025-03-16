@@ -27,6 +27,7 @@ interface SqlEditorProps {
 export interface SqlEditorRef {
     openFile: (path: string) => void;
     setEditorText: (text: string) => void;
+    setConnId: (conn_id: string) => void;
 }
 
 
@@ -40,6 +41,7 @@ interface QueryResponse {
 const SqlEditor = forwardRef<SqlEditorRef, SqlEditorProps>((sqlEditorProps, ref) => {
     const [editorView, setEditorView] = React.useState<EditorView | null>(null)
     const [editorText, setEditorText] = React.useState<string | undefined>("")
+    const [connId, setConnId] = React.useState<string | undefined>("")
     const [loading, setLoading] = useState<boolean>(false); // Loading state for button
     const [activeKey, setActiveKey] = useState<string>('');
     const [notifier, contextHolder] = notification.useNotification();
@@ -98,7 +100,7 @@ const SqlEditor = forwardRef<SqlEditorRef, SqlEditorProps>((sqlEditorProps, ref)
 
 
     useImperativeHandle(ref, () => ({
-        openFile, setEditorText
+        openFile, setEditorText, setConnId
     }));
 
     const executeQuery = async () => {
@@ -117,7 +119,7 @@ const SqlEditor = forwardRef<SqlEditorRef, SqlEditorProps>((sqlEditorProps, ref)
 
         try {
             const result = await api.post<QueryResponse>('/api/sql/query', {
-                conn_id: 'postgres_default',
+                conn_id: connId,
                 sql: sql,
             });
             setLoading(false);

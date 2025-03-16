@@ -1,9 +1,18 @@
-pip install "apache-airflow[celery]==2.8.4" --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.8.4/constraints-3.9.txt"
+pip install "apache-airflow[celery]==2.10.5" \
+--constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.10.5/constraints-3.9.txt"
+
 pip install psycopg2 connexion[swagger-ui]
 pip install flask_cors
 pip install apache-airflow-providers-postgres
+pip install apache-airflow-providers-apache-hive
+pip install apache-airflow-providers-apache-spark
 pip install trino
 pip install pyspark
+pip install pyhive
+pip install thrift
+pip install pyarrow
+pip install fastavro
+pip install pandas
 
 airflow db init
 airflow users create -r Admin -u admin -e admin@example.com -f admin -l admin -p admin

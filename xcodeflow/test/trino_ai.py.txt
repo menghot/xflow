@@ -1,0 +1,85 @@
+from fastapi import FastAPI
+import trino
+import ollama
+import json
+
+
+
+# Fetch Metadata: Table and Columns
+def get_table_metadata():
+    app = FastAPI()
+
+    # Trino Connection
+    TRINO_HOST = "127.0.0.1"  # Change this to your Trino host
+    TRINO_PORT = 8082
+    TRINO_USER = "trino-user"
+    CATALOG = "tpcds"
+    SCHEMA = "sf1"
+
+    conn = trino.dbapi.connect(
+        host=TRINO_HOST,
+        port=TRINO_PORT,
+        user=TRINO_USER,
+        catalog=CATALOG,
+        schema=SCHEMA,
+    )
+
+    query = f"SELECT table_name, column_name, data_type FROM {CATALOG}.information_schema.columns WHERE table_schema = '{SCHEMA}'"
+    cursor = conn.cursor()
+    cursor.execute(query)
+    rows = cursor.fetchall()
+
+    tables = {}
+    for table_name, column_name, data_type in rows:
+        #if table_name == 'customer' or table_name == 'reason':
+        if table_name not in tables:
+            tables[table_name] = []
+        tables[table_name].append(f"{column_name} ({data_type})")
+
+    return tables
+
+
+# Load metadata
+TABLE_METADATA = get_table_metadata()
+
+
+@app.get("/")
+def home():
+    return {"message": "Text-to-SQL API using Trino and Ollama"}
+
+
+@app.get("/generate_sql/")
+def generate_sql():
+    """Generate SQL from a natural language query"""
+    table_info = json.dumps(TABLE_METADATA)
+
+    print(table_info)
+
+    query = "Get the customer who has most number of orders"
+
+    prompt = f"""
+    You are a SQL expert. Convert the following natural language query into a SQL query that works for Trino engine.
+    Use the following table schema (json format):
+    {table_info}
+
+    Query: {query}
+    """
+
+    response = ollama.chat(
+        model="deepseek-r1:7b",
+        messages=[{"role": "user", "content": prompt}]
+    )
+
+    sql_query = response["message"]["content"]
+
+    return {"query": query, "generated_sql": sql_query}
+
+
+@app.post("/execute_sql/")
+def execute_sql(query: str):
+    """Execute the generated SQL query"""
+    cursor = conn.cursor()
+    cursor.execute(query)
+    result = cursor.fetchall()
+
+    return {"query": query, "result": result}

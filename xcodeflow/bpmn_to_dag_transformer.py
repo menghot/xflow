@@ -1,7 +1,6 @@
 import re
 import xml.etree.ElementTree as ET
 
-
 def return_english_letters(s):
     if bool(re.fullmatch(r"[A-Z_a-z0-9]+", s)):
         return s
@@ -65,6 +64,7 @@ class BPMNToAirflowTransformer:
             target = sequence_flow.attrib["targetRef"]
             self.sequence_flows.append((source, target))
 
+
     def generate_airflow_dag(self):
         """
         Generates the Airflow DAG Python code.
@@ -75,11 +75,15 @@ class BPMNToAirflowTransformer:
 from airflow.operators.python import PythonOperator
 from datetime import datetime
 from airflow.providers.common.sql.operators.sql import SQLExecuteQueryOperator
+from xcodeflow.task.sql_task import execute_sql
 
 
 def sample_task(task_name):
     print(f"Executing: {{task_name}}")
 
+def execute_sql(connection, sql):
+    print(f"Executing: {{connection}}, {{sql}}")
+    execute_sql(connection, sql)
 
 default_args = {{
     'start_date': datetime(2023, 1, 1),
@@ -104,9 +108,12 @@ with DAG(dag_id='{self.process_id}', default_args=default_args, schedule_interva
             airflow_tasks[task_id] = f"t_{english_letters}_{task_id.lower().replace('activity_', '')}"
             task_id_var = f"t_{english_letters}_{task_id.lower().replace('activity_', '')}"
 
-            if "sql" in item["magic"]:
-                task_code = f"""    {task_id_var} = SQLExecuteQueryOperator(conn_id='postgres_default', task_id='{task_name}',sql=f\"""{item["magic"]["sql"]}\""")\n"""
+            if "sql" in item["magic"] and "spark" not in item["magic"]["connection"]:
+                task_code = f"""    {task_id_var} = SQLExecuteQueryOperator(conn_id='{item["magic"]["connection"]}', task_id='{task_name}',sql=f\"""{item["magic"]["sql"]}\""")\n"""
                 dag_code += task_code
+            # if "sql" in item["magic"]:
+            #     task_code = f"""    {task_id_var} = PythonOperator(task_id='{task_name}', python_callable=execute_sql, op_args=['{item["magic"]["connection"]}', f\"""{item["magic"]["sql"]}\"""])\n"""
+            #     dag_code += task_code
             elif "script" in item["magic"]:
                 dag_code += item["magic"]["script"]
             else:
