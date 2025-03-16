@@ -5,7 +5,7 @@ from airflow import DAG
 from airflow.www.app import csrf
 from flask import Blueprint, request, jsonify
 from flask_cors import CORS
-
+from xcodeflow import AIRFLOW_HOME
 dag_blueprint = Blueprint(
     "dag",  # Blueprint name
     __name__,
@@ -14,7 +14,7 @@ dag_blueprint = Blueprint(
 
 CORS(dag_blueprint)
 
-dag_folder = os.path.join(os.path.dirname(__file__), "../../../dags")
+dag_folder = os.path.join(AIRFLOW_HOME, "dags")
 dag_folder = os.path.abspath(dag_folder)
 
 

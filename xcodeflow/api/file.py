@@ -4,7 +4,7 @@ from airflow.models import DagBag
 from airflow.www.app import csrf
 from flask import Blueprint, request, jsonify
 from flask_cors import CORS
-
+from xcodeflow import AIRFLOW_HOME
 file_blueprint = Blueprint(
     "file",  # Blueprint name
     __name__,
@@ -13,8 +13,8 @@ file_blueprint = Blueprint(
 
 CORS(file_blueprint)
 
-dag_folder = os.path.join(os.path.dirname(__file__), "../../../dags")
-dag_folder = os.path.abspath(dag_folder)
+DAG_FOLDER = os.path.join(AIRFLOW_HOME, "dags")
+BPMN_HOME = os.path.join(AIRFLOW_HOME, "bpmn")
 
 
 def build_file_tree(base_path):
@@ -43,7 +43,7 @@ def build_file_tree(base_path):
 @csrf.exempt
 def get_file_trees():
     nodes = []
-    for path in ['/Users/simon/airflow/dags', '/Users/simon/airflow/bpmn']:
+    for path in [DAG_FOLDER, BPMN_HOME]:
         root_node = {
             "title": os.path.basename(path) or path,  # Root folder/file name
             "key": path,
@@ -61,7 +61,7 @@ def get_file_content():
     # Get the file path from the query parameters
     file_path = request.args.get('path')
 
-    print(dag_folder, file_path)
+    print(DAG_FOLDER, file_path)
 
     if not file_path or not os.path.exists(file_path):
         return jsonify({"error": "Invalid or non-existent path"}), 400
@@ -136,7 +136,7 @@ def build_file_tree_with_sort():
 
     # Build a tree for each path
     trees = []
-    for path in ['/Users/simon/airflow/dags', '/Users/simon/airflow/bpmn']:
+    for path in [DAG_FOLDER, BPMN_HOME]:
         if os.path.exists(path):
             root = {
                 "title": os.path.basename(path) or path,
