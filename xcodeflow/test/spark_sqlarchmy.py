@@ -19,7 +19,5 @@ def execute_sql():
 
 
 if __name__ == '__main__':
-
     # Create a connection string using PyHive
     execute_sql()
-

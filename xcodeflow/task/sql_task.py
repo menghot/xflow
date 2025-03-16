@@ -1,6 +1,8 @@
-from xcodeflow.connection_plugin import ConnectionAccessPlugin
 import sqlalchemy
 from airflow.hooks.base import BaseHook
+
+from xcodeflow.conn_plugin import ConnectionAccessPlugin
+
 
 def execute_sql(conn_id, sql):
     """

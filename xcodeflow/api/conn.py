@@ -4,7 +4,7 @@ from airflow.www.app import csrf
 from flask import Blueprint, request, jsonify
 from flask_cors import CORS
 
-from xcodeflow.connection_plugin import ConnectionAccessPlugin
+from xcodeflow.conn_plugin import ConnectionAccessPlugin
 
 db_blueprint = Blueprint(
     "db",  # Blueprint name
@@ -18,14 +18,6 @@ CORS(db_blueprint)
 @db_blueprint.route("/connections", methods=["GET"])
 @csrf.exempt
 def get_connections():
-    # {
-    #     title: string;
-    # key: string;
-    # isLeaf?: boolean;
-    # connType?: string;
-    # children?: DataNode[];
-    # }
-    # {"conn_type": "postgres", "connection_id": "postgres_default", "description": "", "extra": {}, "host": "127.0.0.1", "login": "airflow", "port": 5432, "schema": "airflow"}
     return [{"title": conn["connection_id"],
              "key": conn["connection_id"],
              "conn_type": conn["conn_type"],

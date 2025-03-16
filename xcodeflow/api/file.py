@@ -108,6 +108,7 @@ def build_file_tree_with_sort():
     Build a file tree from multiple paths, sorting nodes by title (alphabetical order).
     Folders are listed before files.
     """
+
     def simplify_path(full_path):
         return os.path.abspath(full_path)
 

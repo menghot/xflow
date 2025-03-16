@@ -1,5 +1,6 @@
 import importlib.util
 import os
+
 from airflow.models import DAG
 
 
@@ -43,7 +44,7 @@ def parse_dag_file(dag_file_path):
 # Example Usage
 if __name__ == "__main__":
     # Path to your DAG Python file
-    dag_file = "/Users/simon/workspaces/xcodeflow.git/dags/process_0.py"  # Replace with the path to your DAG file
+    dag_file = "/dags/process_0.py"  # Replace with the path to your DAG file
 
     try:
         dag_structure = parse_dag_file(dag_file)

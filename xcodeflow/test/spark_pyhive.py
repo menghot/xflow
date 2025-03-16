@@ -1,11 +1,9 @@
-from pyhive import hive
 import pandas as pd
+from pyhive import hive
 
 if __name__ == '__main__':
-
     # Connect to Spark Thrift Server using PyHive
     with hive.Connection(host='localhost', port=10000, username='your_username', database='default') as conn:
-
         # Create a cursor to execute SQL queries
         cursor = conn.cursor()
 
@@ -20,4 +18,3 @@ if __name__ == '__main__':
 
         # Display the results
         print(df)
-

@@ -1,7 +1,6 @@
 import pyarrow.parquet as pq
 
 if __name__ == "__main__":
-
     # Load the Parquet file
     parquet_file = pq.ParquetFile("data.parquet")
 

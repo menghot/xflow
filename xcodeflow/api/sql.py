@@ -6,7 +6,7 @@ from airflow.www.app import csrf
 from flask import Blueprint, request, jsonify
 from flask_cors import CORS
 
-from xcodeflow.connection_plugin import ConnectionAccessPlugin
+from xcodeflow.conn_plugin import ConnectionAccessPlugin
 
 api_blueprint = Blueprint(
     "api",  # Blueprint name
@@ -101,6 +101,6 @@ def execute_sql(conn_id, sql):
 
 if __name__ == "__main__":
     print(sys.path)
-    #print(execute_sql('trino_default', 'show catalogs;').values())
-    #print(execute_sql('postgres_default', 'select current_date').values())
+    # print(execute_sql('trino_default', 'show catalogs;').values())
+    # print(execute_sql('postgres_default', 'select current_date').values())
     print(execute_sql('hiveserver2_default', 'select current_date').values())

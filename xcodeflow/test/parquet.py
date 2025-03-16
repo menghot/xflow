@@ -1,5 +1,6 @@
 import pyarrow.parquet as pq
 
+
 # from xcodeflow.main.avro import read_avro
 
 
@@ -56,6 +57,7 @@ def main():
     load_parquet('data.parquet')
     table = pq.read_table("data.parquet", columns=["c_customer_sk", "c_customer_id"])
     print(table.to_pandas())
+
 
 if __name__ == "__main__":
     main()

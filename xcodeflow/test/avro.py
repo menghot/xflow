@@ -1,5 +1,7 @@
-import fastavro
 import sys
+
+import fastavro
+
 
 def read_avro(file_path):
     """Reads and prints records from an Iceberg Avro file."""
@@ -11,6 +13,7 @@ def read_avro(file_path):
     except Exception as e:
         print(f"Error reading Avro file: {e}")
 
+
 def main():
     """Main function to accept file path from command line."""
     if len(sys.argv) != 2:
@@ -20,6 +23,7 @@ def main():
     file_path = sys.argv[1]
     print(f"Reading Iceberg Avro file: {file_path}")
     read_avro(file_path)
+
 
 if __name__ == "__main__":
     main()

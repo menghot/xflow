@@ -2,7 +2,6 @@ import importlib
 import os
 
 from airflow import DAG
-from airflow.models import DagBag
 from airflow.www.app import csrf
 from flask import Blueprint, request, jsonify
 from flask_cors import CORS
