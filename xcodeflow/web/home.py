@@ -4,7 +4,7 @@ from flask import Blueprint, send_from_directory
 
 STATIC_FOLDER = '../static'
 
-my_blueprint = Blueprint(
+home_blueprint = Blueprint(
     "xcodeflow",  # Blueprint name
     __name__,
     url_prefix="/xcodeflow",
@@ -13,7 +13,7 @@ my_blueprint = Blueprint(
 )
 
 
-@my_blueprint.route("/")
+@home_blueprint.route("/")
 def index():
     folder = os.path.join(os.path.dirname(__file__), STATIC_FOLDER)
     return send_from_directory(folder, "index.html")
