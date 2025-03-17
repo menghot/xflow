@@ -5,10 +5,9 @@ from airflow.www.app import csrf
 from flask import Blueprint, request, jsonify
 from flask_cors import CORS
 
-from xcodeflow import AIRFLOW_HOME
+from xcodeflow import DAG_HOME
 from xcodeflow.bpmn_trans import BPMNToAirflowTransformer
 
-dag_folder = os.path.join(AIRFLOW_HOME, "dags")
 
 bpmn_blueprint = Blueprint(
     "bpmn",  # Blueprint name
@@ -50,7 +49,7 @@ def deploy():
         dag_code = transformer.generate_airflow_dag()
 
         # Save DAG to $AIRFLOW_HOME/dags by default
-        output_file = os.path.join(dag_folder, transformer.process_id + ".py")
+        output_file = os.path.join(DAG_HOME, transformer.process_id + ".py")
 
         with open(output_file, "w") as f:
             f.write(dag_code)

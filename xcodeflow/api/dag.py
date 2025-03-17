@@ -6,8 +6,6 @@ from airflow.www.app import csrf
 from flask import Blueprint, request, jsonify
 from flask_cors import CORS
 
-from xcodeflow import AIRFLOW_HOME
-
 dag_blueprint = Blueprint(
     "dag",  # Blueprint name
     __name__,
@@ -15,9 +13,6 @@ dag_blueprint = Blueprint(
 )
 
 CORS(dag_blueprint)
-
-dag_folder = os.path.join(AIRFLOW_HOME, "dags")
-dag_folder = os.path.abspath(dag_folder)
 
 
 def parse_dag_file(dag_file_path):
@@ -62,8 +57,6 @@ def parse_dag_file(dag_file_path):
 def get_graph():
     # Get the file path from the query parameters
     file_path = request.args.get('path')
-
-    print(dag_folder, file_path)
 
     if not file_path or not os.path.exists(file_path):
         return jsonify({"error": "Invalid or non-existent path"}), 400
