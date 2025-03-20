@@ -154,13 +154,9 @@ def save():
         # Get JSON data from the request
         content = request.data.decode('utf-8')
         file_path = request.args.get('file_path')
-
-        print(file_path, content)
-
         with open(file_path, "w") as f:
             f.write(content)
         return jsonify({"status": "success"}), 200
-
     except Exception as e:
         print(e)
         return jsonify({"status": "error", "message": str(e)}), 500

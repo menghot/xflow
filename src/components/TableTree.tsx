@@ -1,5 +1,5 @@
 import {forwardRef, useEffect, useImperativeHandle, useState} from 'react';
-import {Alert, Input, Spin, Tree} from 'antd';
+import {Alert, Input, Select, Spin, Tree} from 'antd';
 import api from "../services/api"
 import {ClusterOutlined, DatabaseOutlined, TableOutlined} from "@ant-design/icons";
 
@@ -17,7 +17,7 @@ interface TableTreeProps {
 }
 
 export interface TableTreeRef {
-    fetchTreeData: () => void;
+    fetchTreeData: (v:string) => void;
 }
 
 // for external usage -------------
@@ -27,11 +27,13 @@ const TreeDisplay = forwardRef<TableTreeRef, TableTreeProps>((_, ref) => {
     const [treeData, setTreeData] = useState<DataNode[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error] = useState<string | null>(null);
+    const [connectionId, setConnectionId] = useState<string>("trino_default");
 
-    const fetchTreeData = async () => {
+    const fetchTreeData = async (conn:string) => {
         try {
             setLoading(true);
-            const response = await api.get<DataNode>('api/db/tree?connection_id=postgres_default');
+            console.log('------------------', conn)
+            const response = await api.get<DataNode>('api/db/tree?connection_id=' + conn);
             const nodes = mapTreeData([response.data])
             setTreeData(nodes); // Map data to include icons
         } catch (err) {
@@ -64,7 +66,8 @@ const TreeDisplay = forwardRef<TableTreeRef, TableTreeProps>((_, ref) => {
     };
 
     useEffect(() => {
-        fetchTreeData().then();
+
+        fetchTreeData(connectionId).then();
     }, []);
 
     useImperativeHandle(ref, () => ({
@@ -72,11 +75,35 @@ const TreeDisplay = forwardRef<TableTreeRef, TableTreeProps>((_, ref) => {
     }));
 
 
+    const onConnectionIdChange = (value: string) => {
+        console.log(value, connectionId , '-------ss 1')
+        setConnectionId(value)
+        console.log(value, connectionId , '-------ss 2')
+        fetchTreeData(value).then()
+
+    };
+
+
     if (error) {
         return <Alert message="Error" description={error} type="error" showIcon/>;
     }
 
     return <Spin spinning={loading} tip="Loading tree data...">
+        <Select
+            size={"small"}
+            style={{width: 160}}
+            defaultValue={connectionId}
+            onSelect={(e, v) => {
+                console.log(e)
+                onConnectionIdChange(v.value)
+            }}
+            loading={false}
+            options={[
+                {value: 'trino_default', label: 'trino_default'},
+                {value: 'hive_server2', label: 'hive_server2'},
+                {value: 'postgres_default',
+                label: 'postgres_default'}]}
+        />
         <Input
             size={"small"}
             style={{marginBottom: 4, position: "sticky", top: "22px", zIndex: "99"}}

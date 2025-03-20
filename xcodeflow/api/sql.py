@@ -77,7 +77,7 @@ def execute_sql(conn_id, sql):
 
         print(conn_url)
 
-        # Create a SQLAlchemy engine
+        # Create a SQLAlchemy engine trino://root:@localhost:8082/ice?ssl=false
         engine = sqlalchemy.create_engine(conn_url)
 
         # Execute the SQL query
@@ -100,7 +100,7 @@ def execute_sql(conn_id, sql):
 
 
 if __name__ == "__main__":
-    print(sys.path)
+    #print(sys.path)
     print(execute_sql('trino_default', 'show catalogs;').values())
-    print(execute_sql('postgres_default', 'select current_date').values())
-    print(execute_sql('hiveserver2_default', 'select current_date').values())
+    #print(execute_sql('postgres_default', 'select current_date').values())
+    #print(execute_sql('hiveserver2_default', 'select current_date').values())

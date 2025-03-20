@@ -38,34 +38,55 @@ def build_tree_api():
 
 
 def fetch_schemas_and_tables(connection):
-    if connection.conn_type == 'postgres':
-        conn_type = 'postgresql'
+    """Fetch schemas and tables from the database, including Hive."""
+    conn_type = connection.conn_type.lower()
+    host, port, schema = connection.host, connection.port, connection.schema
+    username, password = connection.login, connection.password
+    schemas, tables = [], {}
+
+    if conn_type == 'hiveserver2':
+        # Hive Connection using PyHive
+        print(f"Connecting to Hive: {host}:{port}")
+        engine = sqlalchemy.create_engine(f"hive://{host}:{port}/{schema}", echo=False)
+        try:
+            with engine.connect() as conn:
+                result = conn.execute("SHOW DATABASES")
+                schemas = [row[0] for row in result.fetchall()]
+                for schema in schemas:
+                    result = conn.execute(f"SHOW TABLES FROM {schema}")
+                    tables[schema] = [row[1] for row in result.fetchall()]
+        except Exception as e:
+            print(f"Error fetching schemas/tables: {e}")
+        finally:
+            engine.dispose()
     else:
-        conn_type = connection.conn_type
+        # Other Databases (PostgreSQL, Trino, etc.)
+        conn_url = ""
+        if conn_type == 'postgres':
+            conn_url = f"postgresql://{username}:{password}@{host}:{port}/{schema}"
+        elif conn_type == 'trino':
+            conn_url = f"trino://{username}:@{host}:{port}/{schema}?SSL=false"
 
-    # Parse the connection URL
-    conn_url = f"{conn_type}://{connection.login}:{connection.password}@{connection.host}:{connection.port}/{connection.schema}"
+        print(f"Connecting to: {conn_url}")
+        engine = sqlalchemy.create_engine(conn_url, echo=False)
 
-    engine = sqlalchemy.create_engine(conn_url)
-
-    """Fetch schemas and tables from the database."""
-    schemas = []
-    tables = {}
-    with engine.connect() as conn:
-        result = conn.execute("SELECT schema_name FROM information_schema.schemata;")
-        if result.cursor:
-            schemas = [row[0] for row in result.cursor.fetchall()]
-
-        for schema in schemas:
-            result = conn.execute(f"SELECT table_name FROM information_schema.tables WHERE table_schema = '{schema}';")
-            if result.cursor:
-                tables[schema] = [row[0] for row in result.cursor.fetchall()]
+        try:
+            with engine.connect() as conn:
+                result = conn.execute("SELECT schema_name FROM information_schema.schemata WHERE schema_name != 'information_schema'")
+                schemas = [row[0] for row in result.fetchall()]
+                for schema in schemas:
+                    result = conn.execute(f"SELECT table_name FROM information_schema.tables WHERE table_schema = '{schema}'")
+                    tables[schema] = [row[0] for row in result.fetchall()]
+        except Exception as e:
+            print(f"Error fetching schemas/tables: {e}")
+        finally:
+            engine.dispose()
 
     return schemas, tables
 
 
 def build_tree(connection_id):
-    """Builds the tree structure."""
+    """Builds the hierarchical database tree structure."""
     conn = BaseHook.get_connection(connection_id)
     print(conn)
     schemas, tables = fetch_schemas_and_tables(conn)
@@ -84,7 +105,7 @@ def build_tree(connection_id):
             "key": f"{conn.conn_id}/{schema}",
             "children": []
         }
-        for table in tables[schema]:
+        for table in tables.get(schema, []):
             table_node = {
                 "title": table,
                 "type": "table",
