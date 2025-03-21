@@ -33,8 +33,8 @@ const TreeDisplay = forwardRef<TableTreeRef, TableTreeProps>((_, ref) => {
         try {
             setLoading(true);
             console.log('------------------', conn)
-            const response = await api.get<DataNode>('api/db/tree?connection_id=' + conn);
-            const nodes = mapTreeData([response.data])
+            const response = await api.get<DataNode[]>('api/db/tree?connection_id=' + conn);
+            const nodes = mapTreeData(response.data)
             setTreeData(nodes); // Map data to include icons
         } catch (err) {
             console.log(err)
@@ -100,9 +100,8 @@ const TreeDisplay = forwardRef<TableTreeRef, TableTreeProps>((_, ref) => {
             loading={false}
             options={[
                 {value: 'trino_default', label: 'trino_default'},
-                {value: 'hive_server2', label: 'hive_server2'},
-                {value: 'postgres_default',
-                label: 'postgres_default'}]}
+                {value: 'hive_server2',  label: 'spark_jdbc'},
+                {value: 'postgres_default', label: 'postgres_default'}]}
         />
         <Input
             size={"small"}

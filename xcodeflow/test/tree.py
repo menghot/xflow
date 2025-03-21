@@ -6,29 +6,29 @@ from flask_cors import CORS
 
 from xcodeflow.conn_plugin import ConnectionAccessPlugin
 
-db_blueprint = Blueprint(
-    "db",  # Blueprint name
-    __name__,
-    url_prefix="/xcodeflow/api/db",
-)
-
+db_blueprint = Blueprint("db", __name__, url_prefix="/xcodeflow/api/db")
 CORS(db_blueprint)
 
-sql_get_schemas = "SELECT schema_name FROM information_schema.schemata WHERE schema_name != 'information_schema'"
 
 @db_blueprint.route("/connections", methods=["GET"])
 @csrf.exempt
 def get_connections():
-    return [{"title": conn["connection_id"],
-             "key": conn["connection_id"],
-             "conn_type": conn["conn_type"],
-             "isLeaf": False} for conn in ConnectionAccessPlugin.list_connections()]
+    """Fetches available database connections."""
+    return jsonify([
+        {
+            "title": conn["connection_id"],
+            "key": conn["connection_id"],
+            "conn_type": conn["conn_type"],
+            "isLeaf": False
+        } for conn in ConnectionAccessPlugin.list_connections()
+    ])
 
 
-@db_blueprint.route('/tree', methods=['GET'])
+@db_blueprint.route("/tree", methods=["GET"])
 @csrf.exempt
 def build_tree_api():
-    connection_id = request.args.get('connection_id')
+    """API endpoint to build the database tree structure."""
+    connection_id = request.args.get("connection_id")
     if not connection_id:
         return jsonify({"error": "connection_id is required"}), 400
     try:
@@ -62,12 +62,13 @@ def fetch_schemas_and_tables(connection):
         return [], {}
 
     schemas, tables = [], {}
+
     try:
         with engine.connect() as conn:
-            result = conn.execute(sql_get_schemas)
+            result = conn.execute("SHOW SCHEMAS")
             schemas = [row[0] for row in result.fetchall()]
             for schema in schemas:
-                result = conn.execute(f"SELECT table_name FROM information_schema.tables WHERE table_schema = '{schema}'")
+                result = conn.execute(f"SHOW TABLES FROM {schema}")
                 tables[schema] = [row[0] for row in result.fetchall()]
     except Exception as e:
         print(f"Error fetching schemas/tables: {e}")
@@ -118,38 +119,45 @@ def build_tree(connection_id):
 
     if catalogs:
         return [{
-            "title": catalog,
-            "type": "catalog",
-            "key": f"{conn.conn_id}/{catalog}",
-            "children": [
+                    "title": catalog,
+                    "type": "catalog",
+                    "key": f"{conn.conn_id}/{catalog}",
+                    "children": [
+                        {
+                            "title": schema,
+                            "type": "schema",
+                            "key": f"{conn.conn_id}/{catalog}/{schema}",
+                            "children": [
+                                {
+                                    "title": table,
+                                    "type": "table",
+                                    "key": f"{conn.conn_id}/{catalog}/{schema}/{table}",
+                                    "isLeaf": True
+                                } for table in tables[catalog].get(schema, [])
+                            ]
+                        } for schema in schemas.get(catalog, [])
+                    ]
+                } for catalog in catalogs
+            ]
+    else:
+        return [
                 {
                     "title": schema,
                     "type": "schema",
-                    "key": f"{conn.conn_id}/{catalog}/{schema}",
+                    "key": f"{conn.conn_id}/{schema}",
                     "children": [
                         {
                             "title": table,
                             "type": "table",
-                            "key": f"{conn.conn_id}/{catalog}/{schema}/{table}",
+                            "key": f"{conn.conn_id}/{schema}/{table}",
                             "isLeaf": True
-                        } for table in tables[catalog].get(schema, [])
+                        } for table in tables.get(schema, [])
                     ]
-                } for schema in schemas.get(catalog, [])
+                } for schema in schemas
             ]
-        } for catalog in catalogs]
-    else:
-        return [
-            {
-                "title": schema,
-                "type": "schema",
-                "key": f"{conn.conn_id}/{schema}",
-                "children": [
-                    {
-                        "title": table,
-                        "type": "table",
-                        "key": f"{conn.conn_id}/{schema}/{table}",
-                        "isLeaf": True
-                    } for table in tables.get(schema, [])
-                ]
-            } for schema in schemas
-        ]
+
+if __name__ == "__main__":
+    #tree = build_tree("trino_default")
+    #print(tree)
+    tree = build_tree("hive_server2")
+    print(tree)
