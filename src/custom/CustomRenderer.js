@@ -1,7 +1,7 @@
 import BaseRenderer from 'diagram-js/lib/draw/BaseRenderer';
 import {append as svgAppend, attr as svgAttr, classes as svgClasses, create as svgCreate} from 'tiny-svg';
 import {getRoundRectPath} from 'bpmn-js/lib/draw/BpmnRenderUtil';
-import {getBusinessObject, is} from 'bpmn-js/lib/util/ModelUtil';
+import {is} from 'bpmn-js/lib/util/ModelUtil';
 
 import {isNil} from 'min-dash';
 
@@ -21,7 +21,7 @@ export default class CustomRenderer extends BaseRenderer {
 
     canRender(element) {
         const suitabilityScore = element.businessObject.suitable
-        return element.type === 'bpmn:Task' &&  !isNil(suitabilityScore);
+        return element.type === 'bpmn:Task' && !isNil(suitabilityScore);
     }
 
     drawShape(parentNode, element) {
@@ -52,7 +52,7 @@ export default class CustomRenderer extends BaseRenderer {
             svgClasses(text).add('djs-label');
 
             let taskType = 'SQL'
-            if(suitabilityScore < 25) {
+            if (suitabilityScore < 25) {
                 taskType = 'Spark'
             } else if (suitabilityScore < 50) {
                 taskType = 'Script'

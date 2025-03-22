@@ -23,7 +23,8 @@ import api from "../services/api";
 import {
     DeploymentUnitOutlined,
     DownloadOutlined,
-    ExportOutlined, RedoOutlined,
+    ExportOutlined,
+    RedoOutlined,
     SaveOutlined,
     SmileOutlined,
 } from "@ant-design/icons";

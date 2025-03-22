@@ -40,7 +40,7 @@ const App: React.FC = () => {
                                     }}>
                                     <DatabaseOutlined/> Connections & tables
                                 </div>
-                                <TableTree  ref={tableTreeRef}/>
+                                <TableTree ref={tableTreeRef}/>
                             </Splitter.Panel>
                             <Splitter.Panel defaultSize="45%">
                                 <div

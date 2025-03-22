@@ -156,7 +156,6 @@ const SqlEditor = forwardRef<SqlEditorRef, SqlEditorProps>((sqlEditorProps, ref)
         };
 
 
-
         const save = async () => {
             try {
                 await api.post('/api/file/save?file_path=' + sqlEditorProps.filePath, editorText, {

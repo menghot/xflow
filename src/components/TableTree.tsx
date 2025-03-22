@@ -17,7 +17,7 @@ interface TableTreeProps {
 }
 
 export interface TableTreeRef {
-    changeConnection: (v:string) => void;
+    changeConnection: (v: string) => void;
 }
 
 // for external usage -------------
@@ -29,7 +29,7 @@ const TreeDisplay = forwardRef<TableTreeRef, TableTreeProps>((_, ref) => {
     const [error] = useState<string | null>(null);
     const [connectionId, setConnectionId] = useState<string>("trino_default");
 
-    const fetchTreeData = async (conn:string) => {
+    const fetchTreeData = async (conn: string) => {
         try {
             setLoading(true);
             const response = await api.get<DataNode[]>('api/db/tree?connection_id=' + conn);
@@ -97,7 +97,7 @@ const TreeDisplay = forwardRef<TableTreeRef, TableTreeProps>((_, ref) => {
             loading={false}
             options={[
                 {value: 'trino_default', label: 'trino_default'},
-                {value: 'hive_server2',  label: 'spark_jdbc'},
+                {value: 'hive_server2', label: 'spark_jdbc'},
                 {value: 'postgres_default', label: 'postgres_default'}]}
         />
         <Input

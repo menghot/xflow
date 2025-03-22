@@ -1,4 +1,3 @@
-
 declare module 'bpmn-js-color-picker' {
     import {Module} from "didi";
 

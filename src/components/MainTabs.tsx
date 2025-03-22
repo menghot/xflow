@@ -88,7 +88,7 @@ const MainTabs = forwardRef<MainTabsRef, MainTabProps>((ttProps, ref) => {
         }
     };
 
-    const  onEditorConnectionChange = (v:string) => {
+    const onEditorConnectionChange = (v: string) => {
         if (ttProps.onEditorConnectionChange) {
             ttProps.onEditorConnectionChange(v)
         }
@@ -99,7 +99,7 @@ const MainTabs = forwardRef<MainTabsRef, MainTabProps>((ttProps, ref) => {
         if (path.endsWith('.sql')) {
             return <SqlEditor height="32vh" onEditorConnectionChange={onEditorConnectionChange} filePath={path}/>
         } else if (path.endsWith('.bpmn')) {
-            return <BpmnEditor onEditorConnectionChange={onEditorConnectionChange}  filePath={path}/>
+            return <BpmnEditor onEditorConnectionChange={onEditorConnectionChange} filePath={path}/>
         } else if (type === 'dag') {
             return <DagEditor filePath={path}/>
         } else {

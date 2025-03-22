@@ -42,7 +42,7 @@ const applyDagreLayout = (nodes: Node[], edges: Edge[]): { nodes: Node[]; edges:
     return {nodes: layoutedNodes, edges};
 };
 
-const DagGraph: React.FC<{ dagFilePath: string|undefined }> = ({dagFilePath}) => {
+const DagGraph: React.FC<{ dagFilePath: string | undefined }> = ({dagFilePath}) => {
     const [nodes, setNodes] = useState<Node[]>([]);
     const [edges, setEdges] = useState<Edge[]>([]);
     const [error, setError] = useState<string | null>(null);

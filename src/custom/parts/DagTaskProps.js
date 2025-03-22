@@ -91,7 +91,7 @@ function SQL(props) {
                 setValue=${setValue}
                 rows="4"
                 debounce=${debounce}
-                
+
         />`;
 }
 

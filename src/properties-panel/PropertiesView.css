@@ -1,11 +1,11 @@
 .element-properties label {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 .element-properties label:after {
-  content: ': ';
+    content: ': ';
 }
 
 .element-properties button + button {
-  margin-left: 10px;
+    margin-left: 10px;
 }
