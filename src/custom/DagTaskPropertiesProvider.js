@@ -37,15 +37,10 @@ export default function DagTaskPropertiesProvider(propertiesPanel, translate) {
          * @return {Object[]} modified groups
          */
         return function (groups) {
-
-            console.log("----groups:-----", element, groups)
-
             // Add the "magic" group
             if (is(element, 'bpmn:Task')) {
                 groups.push(createDagGroup(element, translate));
             }
-
-
             return groups;
         };
     };

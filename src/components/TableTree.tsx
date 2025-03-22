@@ -17,7 +17,7 @@ interface TableTreeProps {
 }
 
 export interface TableTreeRef {
-    fetchTreeData: (v:string) => void;
+    changeConnection: (v:string) => void;
 }
 
 // for external usage -------------
@@ -32,7 +32,6 @@ const TreeDisplay = forwardRef<TableTreeRef, TableTreeProps>((_, ref) => {
     const fetchTreeData = async (conn:string) => {
         try {
             setLoading(true);
-            console.log('------------------', conn)
             const response = await api.get<DataNode[]>('api/db/tree?connection_id=' + conn);
             const nodes = mapTreeData(response.data)
             setTreeData(nodes); // Map data to include icons
@@ -71,16 +70,13 @@ const TreeDisplay = forwardRef<TableTreeRef, TableTreeProps>((_, ref) => {
     }, []);
 
     useImperativeHandle(ref, () => ({
-        fetchTreeData,
+        changeConnection,
     }));
 
 
-    const onConnectionIdChange = (value: string) => {
-        console.log(value, connectionId , '-------ss 1')
+    const changeConnection = (value: string) => {
         setConnectionId(value)
-        console.log(value, connectionId , '-------ss 2')
         fetchTreeData(value).then()
-
     };
 
 
@@ -91,11 +87,12 @@ const TreeDisplay = forwardRef<TableTreeRef, TableTreeProps>((_, ref) => {
     return <Spin spinning={loading} tip="Loading tree data...">
         <Select
             size={"small"}
+            value={connectionId}
             style={{width: 160}}
             defaultValue={connectionId}
             onSelect={(e, v) => {
                 console.log(e)
-                onConnectionIdChange(v.value)
+                changeConnection(v.value)
             }}
             loading={false}
             options={[

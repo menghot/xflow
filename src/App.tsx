@@ -16,6 +16,10 @@ const App: React.FC = () => {
         mainTabsRef.current?.openEditor(path, 'dag');
     }
 
+    const onEditorConnectionChanged = (conn: string) => {
+        tableTreeRef.current?.changeConnection(conn)
+    }
+
     return (
         <div>
             <div style={{padding: '0 0 0 20px'}}>
@@ -36,7 +40,7 @@ const App: React.FC = () => {
                                     }}>
                                     <DatabaseOutlined/> Connections & tables
                                 </div>
-                                <TableTree ref={tableTreeRef}/>
+                                <TableTree  ref={tableTreeRef}/>
                             </Splitter.Panel>
                             <Splitter.Panel defaultSize="45%">
                                 <div
@@ -68,7 +72,7 @@ const App: React.FC = () => {
                     </Splitter.Panel>
                     <Splitter.Panel>
                         <div style={{padding: "8px"}}>
-                            <MainTabs ref={mainTabsRef}/>
+                            <MainTabs onEditorConnectionChange={onEditorConnectionChanged} ref={mainTabsRef}/>
                         </div>
 
                     </Splitter.Panel>

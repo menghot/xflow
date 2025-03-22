@@ -8,9 +8,7 @@ export default class CustomPalette {
         this.create = create;
         this.elementFactory = elementFactory;
         this.translate = translate;
-        console.log('before-----', palette);
         palette.registerProvider(this);
-        console.log('after-----', palette);
     }
 
     getPaletteEntries(element) {

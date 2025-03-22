@@ -30,6 +30,7 @@ export default function (element) {
 }
 
 function Connection(props) {
+    //console.log("Connection ---> ", props)
 
     const {element, id} = props;
 
@@ -62,7 +63,7 @@ function Connection(props) {
 
 function SQL(props) {
 
-    console.log("SQL ---> ", props)
+    //console.log("SQL ---> ", props)
 
     const {element, id} = props;
 
@@ -97,7 +98,7 @@ function SQL(props) {
 
 function Properties(props) {
 
-    console.log("Properties ---> ", props)
+    //console.log("Properties ---> ", props)
 
     const {element, id} = props;
 
@@ -130,7 +131,7 @@ function Properties(props) {
 
 function Suitable(props) {
 
-    console.log("Suitable ---> ", props)
+    //console.log("Suitable ---> ", props)
 
     const {element, id} = props;
 

@@ -39,7 +39,8 @@ export interface BpmnEditorRef {
 
 interface BpmnEditorProps {
     autoExp?: boolean,
-    filePath: string
+    filePath: string,
+    onEditorConnectionChange?: (connectId: string) => void
 }
 
 const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) => {
@@ -186,33 +187,13 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
                 console.log("eventBus 1: element.click ", element.businessObject)
                 setCurrentNode(element.id)
                 sqlEditorRef?.current?.setEditorText(element.businessObject.sql)
-                console.log("--connection----", element.businessObject.connection)
-                sqlEditorRef?.current?.setConnId(element.businessObject.connection)
-                //setIsExpanded(true)
+                if (element.businessObject.connection) {
+                    if (bpmnProps.onEditorConnectionChange) {
+                        bpmnProps.onEditorConnectionChange(element.businessObject.connection);
+                    }
+                    sqlEditorRef?.current?.updateConnectId(element.businessObject.connection);
+                }
             })
-
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-expect-error
-            eventBus.on('element.changed', ({element}) => {
-                console.log('------element.changed-0000----', element)
-            })
-
-
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-expect-error
-            eventBus.on('propertiesPanel.changed', 2000, (event) => {
-                const {element} = event.context;
-                const customProperty = element.businessObject.sql;
-                console.log('Selected Value: ---0- ', customProperty);
-            });
-
-
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-expect-error
-            eventBus.on('contextPad.getProviders', 2000, () => {
-                console.log("eventBus: ---  contextPad.getProviders")
-            })
-
 
             // set BpmnModeler loaded
             containerRef.current.setAttribute("loaded", "loaded");
@@ -251,11 +232,7 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
         if (modeler) {
             const elementRegistry: ElementRegistry = modeler.get('elementRegistry');
             const element = elementRegistry.get(currentNode)
-
             if (element) {
-
-                element.businessObject.documentation.sql = text
-
                 // update properties panel
                 const modeling: Modeling = modeler.get('modeling');
                 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -265,6 +242,28 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
                 });
             }
         }
+    }
+
+
+    const onEditorConnectionChange = (v: string) => {
+
+        if (modeler) {
+            const elementRegistry: ElementRegistry = modeler.get('elementRegistry');
+            const element = elementRegistry.get(currentNode)
+            if (element) {
+                console.log(currentNode, v, "--------------onEditorConnectionChange------------", element)
+                const modeling: Modeling = modeler.get('modeling');
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-expect-error
+                modeling.updateModdleProperties(element, element.businessObject, {
+                    connection: v,
+                });
+            }
+            if (bpmnProps.onEditorConnectionChange) {
+                bpmnProps.onEditorConnectionChange(v)
+            }
+        }
+
     }
 
     useImperativeHandle(ref, () => ({
@@ -316,6 +315,7 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
         }
     }
 
+
     return <div>
         <div style={{position: "sticky", paddingLeft: "0px", paddingBottom: "4px", zIndex: 999}}>
             <Flex gap="small" justify={"left"} align={"flex-end"}>
@@ -333,7 +333,8 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
             <div style={{height: "35vh"}} ref={containerRef}/>
         </div>
         <div style={{marginTop: "6px", display: displayMode === "preview" ? "" : "none", marginBottom: "6px"}}>
-            <SqlEditor height={"228px"} text={""} ref={sqlEditorRef} embedded={true} onEditorChange={onEditorChange}/>
+            <SqlEditor onEditorConnectionChange={onEditorConnectionChange} height={"228px"} text={""} ref={sqlEditorRef}
+                       embedded={true} onEditorChange={onEditorChange}/>
         </div>
         <div style={{marginTop: "6px", display: displayMode === "sql" ? "" : "none", marginBottom: "6px"}}>
             <Button style={{marginBottom: "6px"}} size={"small"} onClick={generateDag} icon={<RedoOutlined/>}>Generate

@@ -43,6 +43,7 @@ export interface MainTabsRef {
 
 interface MainTabProps {
     autoExp?: boolean,
+    onEditorConnectionChange?: (connectId: string) => void
 }
 
 
@@ -87,11 +88,18 @@ const MainTabs = forwardRef<MainTabsRef, MainTabProps>((ttProps, ref) => {
         }
     };
 
+    const  onEditorConnectionChange = (v:string) => {
+        if (ttProps.onEditorConnectionChange) {
+            ttProps.onEditorConnectionChange(v)
+        }
+    }
+
+
     const getEditor = (path: string, type: "dag" | "sql" | "bpmn") => {
         if (path.endsWith('.sql')) {
-            return <SqlEditor height="32vh" filePath={path}/>
+            return <SqlEditor height="32vh" onEditorConnectionChange={onEditorConnectionChange} filePath={path}/>
         } else if (path.endsWith('.bpmn')) {
-            return <BpmnEditor filePath={path}/>
+            return <BpmnEditor onEditorConnectionChange={onEditorConnectionChange}  filePath={path}/>
         } else if (type === 'dag') {
             return <DagEditor filePath={path}/>
         } else {
