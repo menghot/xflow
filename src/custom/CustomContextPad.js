@@ -3,12 +3,13 @@ const SUITABILITY_SCORE_HIGH = 100,
     SUITABILITY_SCORE_LOW = 25;
 
 export default class CustomContextPad {
-    constructor(bpmnFactory, config, contextPad, create, elementFactory, injector, translate) {
+    constructor(bpmnFactory, config, contextPad, create, elementFactory, injector, translate, selection) {
         this.bpmnFactory = bpmnFactory;
         this.create = create;
         this.elementFactory = elementFactory;
         this.translate = translate;
-
+        this.selection = selection
+        console.log(selection, '------selection-------')
 
         // contextPad._eventBus.on('contextPad.open',4000, (event) => {
         //     console.log("------contextPad.open-------", event)
@@ -19,14 +20,14 @@ export default class CustomContextPad {
         //     //}
         // });
 
-
         contextPad._eventBus.on('element.contextmenu', 1500, (event) => {
             event.preventDefault()
             const element = event.element;
             if (contextPad.isOpen()) {
                 contextPad.close();
             } else {
-                contextPad.open(element, event.originalEvent || event.event);
+                //contextPad.open(element, event.originalEvent || event.event);
+                selection.select(element)
             }
         })
 
@@ -119,5 +120,6 @@ CustomContextPad.$inject = [
     'create',
     'elementFactory',
     'injector',
-    'translate'
+    'translate',
+    'selection'
 ];

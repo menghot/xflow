@@ -6,7 +6,7 @@ from flask import Blueprint, request, jsonify
 from flask_cors import CORS
 
 from xcodeflow import DAG_HOME
-from xcodeflow.bpmn_trans import BPMNToAirflowTransformer
+from xcodeflow.dag_generator import DagGenerator
 
 
 bpmn_blueprint = Blueprint(
@@ -30,7 +30,7 @@ def preview():
         # Get JSON data from the request
         bpmn_xml = request.data.decode('utf-8')
         print("bpmn_xml ===> ", bpmn_xml)
-        transformer = BPMNToAirflowTransformer(None, bpmn_xml)
+        transformer = DagGenerator(None, bpmn_xml)
 
         dag_code = transformer.generate_airflow_dag()
         return jsonify({"status": "success", "data": dag_code}), 200
@@ -45,7 +45,7 @@ def deploy():
     try:
         # Get JSON data from the request
         bpmn_xml = request.data.decode('utf-8')
-        transformer = BPMNToAirflowTransformer(None, bpmn_xml)
+        transformer = DagGenerator(None, bpmn_xml)
         dag_code = transformer.generate_airflow_dag()
 
         # Save DAG to $AIRFLOW_HOME/dags by default

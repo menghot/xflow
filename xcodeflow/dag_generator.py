@@ -9,7 +9,7 @@ def return_english_letters(s):
         return ''
 
 
-class BPMNToAirflowTransformer:
+class DagGenerator:
     def __init__(self, bpmn_file, bpmn_content):
         self.bpmn_file = bpmn_file
         self.bpmn_content = bpmn_content
@@ -50,6 +50,7 @@ class BPMNToAirflowTransformer:
 
                 self.tasks[task_id] = {
                     "task_name": task_name,
+                    "task_type": task_type,
                     "magic": magic_data
                 }
 
@@ -73,6 +74,7 @@ class BPMNToAirflowTransformer:
         """
         dag_code = f"""from airflow import DAG
 from airflow.operators.python import PythonOperator
+from airflow.operators.empty import EmptyOperator
 from datetime import datetime
 from airflow.providers.common.sql.operators.sql import SQLExecuteQueryOperator
 
@@ -100,6 +102,7 @@ with DAG(dag_id='{self.process_id}', default_args=default_args, schedule_interva
         for task_id, item in self.tasks.items():
             i = i + 1
             task_name = item["task_name"]
+            task_type = item["task_type"]
             dag_code += f"    \n"
             dag_code += f"    ################################################################### {i}\n"
 
@@ -118,6 +121,8 @@ with DAG(dag_id='{self.process_id}', default_args=default_args, schedule_interva
                 dag_code += task_code
             elif "script" in item["magic"]:
                 dag_code += item["magic"]["script"]
+            elif task_type in ["startEvent", "endEvent"]:
+                dag_code += f"    {task_id_var} = EmptyOperator(task_id='{task_name}')\n"
             else:
                 dag_code += f"    {task_id_var} = PythonOperator(task_id='{task_name}', python_callable=sample_task, op_args=['{task_name}'])\n"
 
@@ -138,7 +143,7 @@ if __name__ == '__main__':
     output_file = "/Users/simon/workspaces/xcodeflow.git/dags/demo_process.py"
 
     # Instantiate the transformer and transform the BPMN to DAG
-    transformer = BPMNToAirflowTransformer(bpmn_file, None)
+    transformer = DagGenerator(bpmn_file, None)
     dag_code_text = transformer.generate_airflow_dag()
     print(dag_code_text)
     with open(output_file, "w") as f:
