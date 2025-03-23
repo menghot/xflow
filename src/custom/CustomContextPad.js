@@ -9,6 +9,27 @@ export default class CustomContextPad {
         this.elementFactory = elementFactory;
         this.translate = translate;
 
+
+        // contextPad._eventBus.on('contextPad.open',4000, (event) => {
+        //     console.log("------contextPad.open-------", event)
+        //     console.log("------contextPad.open-------", event.originalEvent?.type)
+        //     // Close default context pad triggered by left-click
+        //     //if (event.originalEvent?.type === 'click') {
+        //         return false; // Block default behavior
+        //     //}
+        // });
+
+
+        contextPad._eventBus.on('element.contextmenu', 1500, (event) => {
+            event.preventDefault()
+            const element = event.element;
+            if (contextPad.isOpen()) {
+                contextPad.close();
+            } else {
+                contextPad.open(element, event.originalEvent || event.event);
+            }
+        })
+
         if (config.autoPlace !== false) {
             this.autoPlace = injector.get('autoPlace', false);
         }

@@ -13,7 +13,7 @@ export default function (element) {
         }, {
             id: 'suitable',
             element,
-            component: Suitable,
+            component: TaskType,
             isEdited: isTextFieldEntryEdited
         }, {
             id: 'sql',
@@ -129,7 +129,7 @@ function Properties(props) {
         />`;
 }
 
-function Suitable(props) {
+function TaskType(props) {
 
     //console.log("Suitable ---> ", props)
 
@@ -154,7 +154,7 @@ function Suitable(props) {
                 id=${id}
                 element=${element}
                 description=${translate('')}
-                label=${translate('Suitable')}
+                label=${translate('Task_Type')}
                 getValue=${getValue}
                 setValue=${setValue}
                 debounce=${debounce}

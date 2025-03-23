@@ -176,16 +176,19 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
             })
 
             setModeler(modeler);
-            console.debug("open file ===========> ", bpmnProps.filePath)
             openFile(bpmnProps.filePath, modeler).then()
 
             const eventBus = modeler.get('eventBus')
+            console.log(eventBus)
+
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-expect-error
-            eventBus.on('element.click', ({element}) => {
-                const elementRegistry: ElementRegistry = modeler.get('elementRegistry');
-                console.log(elementRegistry, currentNode)
-                console.log("eventBus 1: element.click ", element.businessObject)
+            eventBus.on('element.click', 1200, (event) => {
+                //event.preventDefault()
+                const element = event.element
+                // const elementRegistry: ElementRegistry = modeler.get('elementRegistry');
+                // console.log(elementRegistry, currentNode)
+                // console.log("eventBus 1: element.click ", element.businessObject)
                 setCurrentNode(element.id)
                 sqlEditorRef?.current?.setEditorText(element.businessObject.sql)
                 if (element.businessObject.connection) {
@@ -194,7 +197,33 @@ const BpmnEditor = forwardRef<BpmnEditorRef, BpmnEditorProps>((bpmnProps, ref) =
                     }
                     sqlEditorRef?.current?.updateConnectId(element.businessObject.connection);
                 }
+
+                // const  ss = modeler.get('selection')
+                // if (ss) {
+                //     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                //     // @ts-expect-error
+                //     ss.select(event.element);
+                //    console.log(modeler.get('selection') , '-------selection-------')
+                //
+                // }
+                //event.preventDefault()
+                //event.stopPropagation();
+                //return false;
+
             })
+
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-expect-error
+            eventBus.on('element.contextmenu', function (event) {
+                console.info("-------element.contextmenu--------", event)
+                //const element = event.element;
+                // if (contextPad.isOpen()) {
+                //   contextPad.close();
+                // } else {
+                //   contextPad.open(element, event.originalEvent || event.event);
+                // }
+            });
+
 
             // set BpmnModeler loaded
             containerRef.current.setAttribute("loaded", "loaded");
