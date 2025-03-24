@@ -9,16 +9,13 @@ export default class CustomContextPad {
         this.elementFactory = elementFactory;
         this.translate = translate;
         this.selection = selection
-        console.log(selection, '------selection-------')
 
-        // contextPad._eventBus.on('contextPad.open',4000, (event) => {
-        //     console.log("------contextPad.open-------", event)
-        //     console.log("------contextPad.open-------", event.originalEvent?.type)
-        //     // Close default context pad triggered by left-click
-        //     //if (event.originalEvent?.type === 'click') {
-        //         return false; // Block default behavior
-        //     //}
-        // });
+        contextPad._eventBus.on('element.click', 500, (event) => {
+            //overwrite the default behavior
+            if (contextPad.isOpen()) {
+                contextPad.close();
+            }
+        })
 
         contextPad._eventBus.on('element.contextmenu', 1500, (event) => {
             event.preventDefault()
