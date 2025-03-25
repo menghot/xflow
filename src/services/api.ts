@@ -1,7 +1,7 @@
 import axios from 'axios';
-
+//-    baseURL: 'http://192.168.80.241:8080/xcodeflow',
 const api = axios.create({
-    baseURL: 'http://192.168.80.241:8080/xcodeflow',
+    baseURL: '/xcodeflow',
     headers: {
         'Content-Type': 'application/json',
     },
