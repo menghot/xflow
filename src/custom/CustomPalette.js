@@ -1,6 +1,6 @@
-const SUITABILITY_SCORE_HIGH = 100,
-    SUITABILITY_SCORE_AVERAGE = 50,
-    SUITABILITY_SCORE_LOW = 25;
+const SVC_TYPE_PYTHON = 'PYTHON',
+    SVC_TYPE_SPARK = 'SPARK',
+    SVC_TYPE_SQL = 'SQL';
 
 export default class CustomPalette {
     constructor(bpmnFactory, create, elementFactory, palette, translate) {
@@ -19,11 +19,11 @@ export default class CustomPalette {
             translate
         } = this;
 
-        function createTask(suitabilityScore) {
+        function createTask(serviceType) {
             return function (event) {
                 const businessObject = bpmnFactory.create('bpmn:Task');
 
-                businessObject.suitable = suitabilityScore;
+                businessObject.serviceType = serviceType;
 
                 const shape = elementFactory.createShape({
                     type: 'bpmn:Task',
@@ -40,8 +40,8 @@ export default class CustomPalette {
                 className: 'bpmn-icon-task red',
                 title: translate('Create Task with low suitability score'),
                 action: {
-                    dragstart: createTask(SUITABILITY_SCORE_LOW),
-                    click: createTask(SUITABILITY_SCORE_LOW)
+                    dragstart: createTask(SVC_TYPE_SQL),
+                    click: createTask(SVC_TYPE_SQL)
                 }
             },
             'create.average-task': {
@@ -49,8 +49,8 @@ export default class CustomPalette {
                 className: 'bpmn-icon-task yellow',
                 title: translate('Create Task with average suitability score'),
                 action: {
-                    dragstart: createTask(SUITABILITY_SCORE_AVERAGE),
-                    click: createTask(SUITABILITY_SCORE_AVERAGE)
+                    dragstart: createTask(SVC_TYPE_SPARK),
+                    click: createTask(SVC_TYPE_SPARK)
                 }
             },
             'create.high-task': {
@@ -58,8 +58,8 @@ export default class CustomPalette {
                 className: 'bpmn-icon-task green',
                 title: translate('Create Task with high suitability score'),
                 action: {
-                    dragstart: createTask(SUITABILITY_SCORE_HIGH),
-                    click: createTask(SUITABILITY_SCORE_HIGH)
+                    dragstart: createTask(SVC_TYPE_PYTHON),
+                    click: createTask(SVC_TYPE_PYTHON)
                 }
             }
         };

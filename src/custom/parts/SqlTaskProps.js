@@ -11,7 +11,7 @@ export default function (element) {
             component: Connection,
             isEdited: isTextFieldEntryEdited
         }, {
-            id: 'suitable',
+            id: 'serviceType',
             element,
             component: TaskType,
             isEdited: isTextFieldEntryEdited
@@ -131,7 +131,7 @@ function Properties(props) {
 
 function TaskType(props) {
 
-    //console.log("Suitable ---> ", props)
+    //console.log("serviceType ---> ", props)
 
     const {element, id} = props;
 
@@ -140,12 +140,12 @@ function TaskType(props) {
     const debounce = useService('debounceInput');
 
     const getValue = () => {
-        return element.businessObject.suitable || '';
+        return element.businessObject.serviceType || '';
     };
 
     const setValue = value => {
         return modeling.updateProperties(element, {
-            suitable: value
+            serviceType: value
         });
     };
     //tooltip=${translate('The SQL')}

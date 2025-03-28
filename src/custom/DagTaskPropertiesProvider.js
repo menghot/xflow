@@ -3,7 +3,9 @@
 // update and delete the "spell" property.
 
 import {is} from 'bpmn-js/lib/util/ModelUtil';
-import dagProps from "./parts/DagTaskProps";
+import sqlTaskProps from "./parts/SqlTaskProps";
+// import sparkTaskProps from "./parts/SparkTaskProps";
+// import pythonTaskProps from "./parts/PythonTaskProps";
 
 const LOW_PRIORITY = 500;
 
@@ -58,11 +60,21 @@ export default function DagTaskPropertiesProvider(propertiesPanel, translate) {
 // Create the custom dag group
 function createDagGroup(element, translate) {
 
-    // create a group called "DAG properties".
+    console.log('-----------createDagGroup----------------', element)
+    const serviceType = element.businessObject.serviceType
+    if (serviceType === 'SPARK') {
+
+
+    } else if (serviceType === 'PYTHON') {
+
+
+    }
+
+    // create a group called "SQL task properties".
     return {
         id: 'magic',
         label: translate('SQL Task Configuration'),
-        entries: dagProps(element),
+        entries: sqlTaskProps(element),
         //tooltip: translate('Make sure you know what you are doing!')
     };
 }

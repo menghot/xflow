@@ -8,7 +8,7 @@
   "associations": [],
   "types": [
     {
-      "name": "MyTask",
+      "name": "SqlTask",
       "extends": [
         "bpmn:Task"
       ],
@@ -29,9 +29,9 @@
           "type": "String"
         },
         {
-          "name": "suitable",
+          "name": "serviceType",
           "isAttr": false,
-          "type": "Integer"
+          "type": "String"
         }
       ]
     }

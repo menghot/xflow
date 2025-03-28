@@ -20,8 +20,8 @@ export default class CustomRenderer extends BaseRenderer {
     }
 
     canRender(element) {
-        const suitabilityScore = element.businessObject.suitable
-        return element.type === 'bpmn:Task' && !isNil(suitabilityScore);
+        const serviceType = element.businessObject.serviceType
+        return element.type === 'bpmn:Task' && !isNil(serviceType);
     }
 
     drawShape(parentNode, element) {
@@ -30,12 +30,12 @@ export default class CustomRenderer extends BaseRenderer {
         // element.type = 'bpmn:Task'
         const shape = this.bpmnRenderer.drawShape(parentNode, element);
 
-        // revert to magic:MyTask
-        // element.type = 'magic:MyTask'
+        // revert to magic:SqlTask
+        // element.type = 'magic:SqlTask'
 
-        const suitabilityScore = element.businessObject.suitable
-        if (!isNil(suitabilityScore)) {
-            const color = this.getColor(suitabilityScore);
+        const serviceType = element.businessObject.serviceType
+        if (!isNil(serviceType)) {
+            const color = this.getColor(serviceType);
 
             const rect = drawRect(parentNode, 50, 20, TASK_BORDER_RADIUS, color);
 
@@ -50,16 +50,7 @@ export default class CustomRenderer extends BaseRenderer {
             });
 
             svgClasses(text).add('djs-label');
-
-            let taskType = 'SQL'
-            if (suitabilityScore < 25) {
-                taskType = 'Spark'
-            } else if (suitabilityScore < 50) {
-                taskType = 'Script'
-            }
-
-            svgAppend(text, document.createTextNode(taskType));
-
+            svgAppend(text, document.createTextNode(serviceType));
             svgAppend(parentNode, text);
         }
 
@@ -74,22 +65,22 @@ export default class CustomRenderer extends BaseRenderer {
         return this.bpmnRenderer.getShapePath(shape);
     }
 
-    // getSuitabilityScore(element) {
+    // getserviceType(element) {
     //     const businessObject = getBusinessObject(element);
     //
-    //     const {suitable} = businessObject;
+    //     const {serviceType} = businessObject;
     //
-    //     return Number.isFinite(suitable) ? suitable : null;
+    //     return Number.isFinite(serviceType) ? serviceType : null;
     // }
 
-    getColor(suitabilityScore) {
-        if (suitabilityScore > 75) {
+    getColor(serviceType) {
+        if (serviceType === 'SQL') {
             return COLOR_GREEN;
-        } else if (suitabilityScore > 25) {
+        } else if (serviceType === 'SPARK') {
             return COLOR_YELLOW;
+        } else {
+            return COLOR_RED;
         }
-
-        return COLOR_RED;
     }
 }
 

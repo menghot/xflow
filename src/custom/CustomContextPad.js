@@ -1,6 +1,6 @@
-const SUITABILITY_SCORE_HIGH = 100,
-    SUITABILITY_SCORE_AVERAGE = 50,
-    SUITABILITY_SCORE_LOW = 25;
+const SVC_TYPE_PYTHON = 'PYTHON',
+    SVC_TYPE_SPARK = 'SPARK',
+    SVC_TYPE_SQL = 'SQL';
 
 export default class CustomContextPad {
     constructor(bpmnFactory, config, contextPad, create, elementFactory, injector, translate, selection) {
@@ -44,18 +44,15 @@ export default class CustomContextPad {
             translate
         } = this;
 
-        function appendServiceTask(suitabilityScore) {
+        function appendServiceTask(serviceType) {
             return function (event, element) {
                 if (autoPlace) {
                     const businessObject = bpmnFactory.create('bpmn:Task');
-
-                    businessObject.suitable = suitabilityScore;
-
+                    businessObject.serviceType = serviceType;
                     const shape = elementFactory.createShape({
                         type: 'bpmn:Task',
                         businessObject: businessObject
                     });
-
                     autoPlace.append(element, shape);
                 } else {
                     appendServiceTaskStart(event, element);
@@ -63,17 +60,14 @@ export default class CustomContextPad {
             };
         }
 
-        function appendServiceTaskStart(suitabilityScore) {
+        function appendServiceTaskStart(serviceType) {
             return function (event) {
                 const businessObject = bpmnFactory.create('bpmn:Task');
-
-                businessObject.suitable = suitabilityScore;
-
+                businessObject.serviceType = serviceType;
                 const shape = elementFactory.createShape({
                     type: 'bpmn:Task',
                     businessObject: businessObject
                 });
-
                 create.start(event, shape, element);
             };
         }
@@ -82,28 +76,28 @@ export default class CustomContextPad {
             'append.low-task': {
                 group: 'model',
                 className: 'bpmn-icon-task red',
-                title: translate('Append Task with low suitability score'),
+                title: translate('Append Task with Spark Application'),
                 action: {
-                    click: appendServiceTask(SUITABILITY_SCORE_LOW),
-                    dragstart: appendServiceTaskStart(SUITABILITY_SCORE_LOW)
+                    click: appendServiceTask(SVC_TYPE_SQL),
+                    dragstart: appendServiceTaskStart(SVC_TYPE_SQL)
                 }
             },
             'append.average-task': {
                 group: 'model',
                 className: 'bpmn-icon-task yellow',
-                title: translate('Append Task with average suitability score00000000'),
+                title: translate('Append Spark Task '),
                 action: {
-                    click: appendServiceTask(SUITABILITY_SCORE_AVERAGE),
-                    dragstart: appendServiceTaskStart(SUITABILITY_SCORE_AVERAGE)
+                    click: appendServiceTask(SVC_TYPE_SPARK),
+                    dragstart: appendServiceTaskStart(SVC_TYPE_SPARK)
                 }
             },
             'append.high-task': {
                 group: 'model',
                 className: 'bpmn-icon-task green',
-                title: translate('Append Task with high suitability score'),
+                title: translate('Append Task Trino SQL task'),
                 action: {
-                    click: appendServiceTask(SUITABILITY_SCORE_HIGH),
-                    dragstart: appendServiceTaskStart(SUITABILITY_SCORE_HIGH)
+                    click: appendServiceTask(SVC_TYPE_PYTHON),
+                    dragstart: appendServiceTaskStart(SVC_TYPE_PYTHON)
                 }
             }
         };
