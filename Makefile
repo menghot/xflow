@@ -21,3 +21,12 @@ npm-build:
 
 npm-watch:
 	@npm run watch
+
+docker0:
+	-@npm run build
+	-rm -rf docker/xcodeflow
+	-cp -r xcodeflow docker/
+	-rm -rf docker/xcodeflow/test
+	-mv dist docker/xcodeflow/static
+	-cd docker && docker build -t xflow .
+

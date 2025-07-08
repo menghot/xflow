@@ -92,6 +92,7 @@ def fetch_catalogs_schemas_and_tables(connection):
             try:
                 result = conn.execute("SHOW CATALOGS")
                 catalogs = [row[0] for row in result.fetchall() if row[0] not in ['system']]
+                print('--catalogs----', result)
                 for catalog in catalogs:
                     # TODO, skip catalog if exception
                     result = conn.execute(f"SHOW SCHEMAS FROM {catalog}")
