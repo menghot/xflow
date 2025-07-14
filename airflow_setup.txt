@@ -1,3 +1,10 @@
+annotations:
+  nginx.ingress.kubernetes.io/configuration-snippet: |
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+
+
 pip install "apache-airflow[celery]==2.10.5" \
 --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.10.5/constraints-3.9.txt"
 
