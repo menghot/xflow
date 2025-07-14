@@ -1,0 +1,32 @@
+用英文将如下评价较好
+沟通能力良好, 能用英语详细介绍项目经历。 
+对常用大数据数据产品原理有一定了解。 
+有AI 产品落地经验（图片方向）
+熟悉paimon表格式.  流批处理经验
+
+不足：
+技术深度不足， spark，flink 使用经验以为公有云平台产品为主
+0.  数据血缘column level 设计使用未涉及
+1.  混淆了 spark master/worker/driver/executor的关系,  对开源组件不够熟悉。 
+2.  不熟悉iceberg表格式 .  parquet文件格式，无法完整表达文件结构，大数据如何使用parquet优化查
+
+
+Strengths:
+
+Demonstrates good communication skills and is able to describe project experience in English clearly.
+
+Has a solid understanding of core concepts behind commonly used big data products.
+
+Possesses hands-on experience in implementing AI products, particularly in the image processing domain.
+
+Familiar with the Paimon table format and has experience in both batch and streaming data processing.
+
+Areas for Improvement:
+
+Lacks sufficient technical depth; experience with Spark and Flink is primarily through managed services on public cloud platforms.
+
+Has not been involved in column-level data lineage design.
+
+Confused the roles of Spark Master, Worker, Driver, and Executor, indicating limited familiarity with open-source components.
+
+Unfamiliar with the Iceberg table format and the internal structure of Parquet files; unable to clearly explain how Parquet optimizations are leveraged in big data processing.
