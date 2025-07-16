@@ -5,6 +5,41 @@ annotations:
 
 
 
+
+
+from airflow.contrib.auth.backends.oauth_auth import AirflowSecurityManager
+
+class AzureOAuthSecurityManager(AirflowSecurityManager):
+    def get_oauth_user_info(self, provider, resp):
+        if provider == "azure":
+            # 获取用户组信息
+            graph_data = requests.get(
+                "https://graph.microsoft.com/v1.0/me/memberOf",
+                headers={"Authorization": f"Bearer {resp['access_token']}"},
+                params={"$select": "id,displayName"}
+            ).json()
+            
+            return {
+                "username": resp.get("preferred_username"),
+                "email": resp.get("email"),
+                "role": self.map_azure_group_to_role(graph_data)
+            }
+
+    def map_azure_group_to_role(self, groups_data):
+        # 硬编码映射（生产环境建议配置化）
+        group_mapping = {
+            "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX": "Admin",  # 使用组ID更安全
+            "airflow-data-team": "DataEngineer"
+        }
+        
+        for group in groups_data.get('value', []):
+            if group['id'] in group_mapping:
+                return group_mapping[group['id']]
+        return "Viewer"  # 安全默认值
+
+
+
+
 pip install "apache-airflow[celery]==2.10.5" \
 --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.10.5/constraints-3.9.txt"
 
