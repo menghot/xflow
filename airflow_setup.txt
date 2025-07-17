@@ -3,7 +3,17 @@ annotations:
     proxy_set_header X-Forwarded-Proto $scheme;
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 
+keytool -genkeypair -alias hms -keyalg RSA -keysize 2048 -validity 365 -keystore hms.jks -storepass changeit -dname "CN=hms-stg.sc.co, OU=IT, O=SC, L=GZ, S=GD, C=CN"
+keytool -certreq -alias hms -keystore hms.jks -file hms.csr -storepass changeit
+openssl x509 -req -in hms.csr -CA ../ca.crt -CAkey ../ca.key -CAcreateserial -out hms.crt -days 365 -extfile <(printf "subjectAltName=DNS.1:trino1.sc.co,IP.1:192.168.80.1")
+openssl x509 -noout -text -in hms.crt 
+keytool -import -trustcacerts -alias rootca -file ../ca.crt -keystore hms.jks  -storepass changeit  -noprompt
+keytool -import -alias hms -file hms.crt   -keystore hms.jks -storepass changeit  -noprompt
+keytool -list -v -keystore hms.jks  -storepass changeit 
 
+keytool -genkeypair -alias dummy -keyalg RSA -keystore truststore.jks -storepass changeit -dname "CN=Dummy" -validity 1
+keytool -delete -alias dummy -keystore truststore.jks -storepass changeit
+keytool -import -trustcacerts -alias rootca -file ../ca.crt -keystore truststore.jks  -storepass changeit  -noprompt
 
 
 
