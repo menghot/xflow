@@ -6,9 +6,16 @@ annotations:
 https://get.helm.sh/helm-v3.17.4-linux-amd64.tar.gz
 
 #openssl genrsa -out ca.key 2048
-#openssl req -new -x509 -days 3650 -key ca.key -subj "/C=CN/ST=GD/L=GZ/O=SC, Inc./CN=SC GDP Dev Root CA G1" -out ca.crt
+#openssl req -new -x509 -days 3650 -key ca.key -subj "/C=CN/ST=GD/L=GZ/O=SC, Inc./CN=SC GDP Dev Root CA G1" -out ca.
 
 
+//                .config("spark.hive.metastore.use.SSL", "true")
+//                .config("spark.hive.metastore.truststore.path", "/Users/simon/ssl/hms/truststore.jks")
+//                .config("spark.hive.metastore.truststore.password", "changeit")
+
+hive.metastore.thrift.client.ssl.enabled=true
+hive.metastore.thrift.client.ssl.trust-certificate=/Users/simon/ssl/hms/truststore.jks
+hive.metastore.thrift.client.ssl.trust-certificate-password=changeit
 
 
 keytool -genkeypair -alias hms -keyalg RSA -keysize 2048 -validity 365 -keystore hms.jks -storepass changeit -dname "CN=hms-stg.sc.co, OU=IT, O=SC, L=GZ, S=GD, C=CN"
